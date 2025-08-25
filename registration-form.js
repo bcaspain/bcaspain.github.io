@@ -733,6 +733,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Make entire contribution option boxes clickable
+    const contributionOptions = document.querySelectorAll('.contribution-option');
+    contributionOptions.forEach(optionDiv => {
+        optionDiv.addEventListener('click', function(e) {
+            // Don't trigger if clicking on the checkbox itself or count input
+            if (e.target.type === 'checkbox' || e.target.type === 'number' || e.target.tagName === 'LABEL') {
+                return;
+            }
+            
+            // Find the checkbox within this option
+            const checkbox = this.querySelector('input[type="checkbox"]');
+            if (checkbox && !checkbox.disabled) {
+                // Toggle the checkbox
+                checkbox.checked = !checkbox.checked;
+                
+                // Trigger the change event to update the UI
+                const changeEvent = new Event('change', { bubbles: true });
+                checkbox.dispatchEvent(changeEvent);
+            }
+        });
+        
+        // Add cursor pointer to show it's clickable
+        optionDiv.style.cursor = 'pointer';
+    });
+    
     // Function to update children-under-5 option visibility
     function updateChildrenUnder5Visibility() {
         const adultCheckbox = document.getElementById('adult');
