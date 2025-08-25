@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         adult: 65,
         children: 35,
         students: 55,
-        'children-under-5': 0
+        'children-under-5': 0,
+        'day-pass': 25
     });
     
     // Security: Form integrity tracking
@@ -204,11 +205,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const adultCountElement = document.getElementById('adult-count');
             const childrenCountElement = document.getElementById('children-count');
             const childrenUnder5CountElement = document.getElementById('children-under-5-count');
+            const dayPassCountElement = document.getElementById('day-pass-count');
             const customDonationElement = document.getElementById('custom-donation-amount');
             const studentElement = document.getElementById('students');
             
             // Security: Validate elements exist
-            if (!adultCountElement || !childrenCountElement || !childrenUnder5CountElement || !customDonationElement || !studentElement) {
+            if (!adultCountElement || !childrenCountElement || !childrenUnder5CountElement || !dayPassCountElement || !customDonationElement || !studentElement) {
                 logSecurityEvent('MISSING_FORM_ELEMENTS', null);
                 return null;
             }
@@ -217,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const adultCount = Math.max(0, Math.min(50, parseInt(adultCountElement.value) || 0));
             const childAboveCount = Math.max(0, Math.min(50, parseInt(childrenCountElement.value) || 0));
             const childBelowCount = Math.max(0, Math.min(50, parseInt(childrenUnder5CountElement.value) || 0));
+            const dayPassCount = Math.max(0, Math.min(50, parseInt(dayPassCountElement.value) || 0));
             const isStudentSelected = Boolean(studentElement.checked);
             
             // Security: Recalculate prices using secure method
@@ -238,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 adultCount,
                 childAboveCount,
                 childBelowCount,
+                dayPassCount,
                 customDonationAmount,
                 isStudentSelected,
                 ticketPrice,
@@ -581,29 +585,34 @@ document.addEventListener('DOMContentLoaded', function() {
         const childrenCheckbox = document.getElementById('children');
         const childrenUnder5Checkbox = document.getElementById('children-under-5');
         const studentCheckbox = document.getElementById('students');
+        const dayPassCheckbox = document.getElementById('day-pass');
         
         // Get the container divs
         const adultOption = adultCheckbox.closest('.contribution-option');
         const childrenOption = childrenCheckbox.closest('.contribution-option');
         const childrenUnder5Option = childrenUnder5Checkbox.closest('.contribution-option');
         const studentOption = studentCheckbox.closest('.contribution-option');
+        const dayPassOption = dayPassCheckbox.closest('.contribution-option');
 
         if (checkbox.id === 'students') {
             // If student is selected/deselected
             const isStudentSelected = checkbox.checked;
             
-            // Handle Regular and Children options
+            // Handle Regular, Children, and Day Pass options
             adultCheckbox.disabled = isStudentSelected;
             childrenCheckbox.disabled = isStudentSelected;
             childrenUnder5Checkbox.disabled = isStudentSelected;
+            dayPassCheckbox.disabled = isStudentSelected;
             
             // Add visual indication for disabled options
             adultOption.style.opacity = isStudentSelected ? '0.5' : '1';
             childrenOption.style.opacity = isStudentSelected ? '0.5' : '1';
             childrenUnder5Option.style.opacity = isStudentSelected ? '0.5' : '1';
+            dayPassOption.style.opacity = isStudentSelected ? '0.5' : '1';
             adultOption.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
             childrenOption.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
             childrenUnder5Option.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
+            dayPassOption.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
             
             if (isStudentSelected) {
                 // Uncheck other options if student is selected
@@ -631,10 +640,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     childrenUnder5Option.style.borderColor = '#ddd';
                     childrenUnder5Option.style.background = '#f8f9fa';
                 }
+                if (dayPassCheckbox.checked) {
+                    dayPassCheckbox.checked = false;
+                    const dayPassCount = document.getElementById('day-pass-count');
+                    dayPassCount.style.display = 'none';
+                    dayPassCount.value = '0';
+                    dayPassOption.style.borderColor = '#ddd';
+                    dayPassOption.style.background = '#f8f9fa';
+                }
             }
         } else {
-            // If Regular or Children options are selected/deselected
-            const isRegularOrChildrenSelected = adultCheckbox.checked || childrenCheckbox.checked || childrenUnder5Checkbox.checked;
+            // If Regular, Children, or Day Pass options are selected/deselected
+            const isRegularOrChildrenSelected = adultCheckbox.checked || childrenCheckbox.checked || childrenUnder5Checkbox.checked || dayPassCheckbox.checked;
             
             // Handle Student option
             studentCheckbox.disabled = isRegularOrChildrenSelected;
@@ -644,7 +661,7 @@ document.addEventListener('DOMContentLoaded', function() {
             studentOption.style.cursor = isRegularOrChildrenSelected ? 'not-allowed' : 'pointer';
             
             if (isRegularOrChildrenSelected && studentCheckbox.checked) {
-                // Uncheck student if Regular or Children are selected
+                // Uncheck student if Regular, Children, or Day Pass are selected
                 studentCheckbox.checked = false;
                 studentOption.style.borderColor = '#ddd';
                 studentOption.style.background = '#f8f9fa';
@@ -1110,8 +1127,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return errors;
         }
         
-        const { adultCount, childAboveCount, childBelowCount, customDonationAmount, isStudentSelected, ticketPrice, totalAmount } = formData;
-        const totalPeople = adultCount + (isStudentSelected ? 1 : 0) + childAboveCount + childBelowCount;
+        const { adultCount, childAboveCount, childBelowCount, dayPassCount, customDonationAmount, isStudentSelected, ticketPrice, totalAmount } = formData;
+        const totalPeople = adultCount + (isStudentSelected ? 1 : 0) + childAboveCount + childBelowCount + dayPassCount;
         
         // Tickets are now mandatory - must select at least one ticket type
         if (totalPeople === 0) {
@@ -1139,6 +1156,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             if (checkbox.id === 'children-under-5' && childBelowCount === 0) {
                 errors.push('Please enter a count for children (up to 5 years)');
+            }
+            if (checkbox.id === 'day-pass' && dayPassCount === 0) {
+                errors.push('Please enter a count for day pass (guests)');
             }
         }
         
@@ -1345,8 +1365,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const sanitizedContact = sanitizeInput(htmlFormData.get('contact'), 'phone');
         const sanitizedTransactionId = sanitizeInput(document.getElementById('transactionId').value.trim(), 'text');
         
-        // Security: Use secure calculation instead of user input
-        const { adultCount, childAboveCount, childBelowCount, customDonationAmount, isStudentSelected, totalAmount } = secureFormData;
+                    // Security: Use secure calculation instead of user input
+            const { adultCount, childAboveCount, childBelowCount, dayPassCount, customDonationAmount, isStudentSelected, totalAmount } = secureFormData;
         
         // Security: Create data object with integrity hash
         const data = {
@@ -1361,6 +1381,7 @@ document.addEventListener('DOMContentLoaded', function() {
             student: isStudentSelected ? 1 : 0,
             child_above: childAboveCount,
             child_below: childBelowCount,
+            day_pass: dayPassCount,
             total_amount: totalAmount,
             payment_proof: sanitizedTransactionId || 'Not provided',
             
@@ -1376,7 +1397,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 adult: adultCount,
                 student: isStudentSelected ? 1 : 0,
                 child_above: childAboveCount,
-                child_below: childBelowCount
+                child_below: childBelowCount,
+                day_pass: dayPassCount
             })
         };
         
@@ -1386,7 +1408,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         function sendToGoogleSheets(data) {
             // Send to Registration Google Sheets
-            const registrationScriptUrl = 'https://script.google.com/macros/s/AKfycbzF0ATmNUgdWwwmhQAn9PgXSTrd9LI1nnYCLBUHVWG-TPuarJyHsX_lOYZKA2Yejk2VmA/exec';
+            const registrationScriptUrl = 'https://script.google.com/macros/s/AKfycbzsupwSMKIarJWyj8hmvZKbVPP2nW6w_4ZVwUaeKg_aucgQVaqyLXImBTlMbYoRzfjP_Q/exec';
             
             // Simple direct request (no CORS complications)
             fetch(registrationScriptUrl, {
