@@ -140,13 +140,24 @@
                             </div>
                         </div>
                         
+
                         <!-- Contribution Types Section -->
                         <div class="contribution-types" style="margin-bottom: 2rem;">                            
                             <!-- BCA Members Section -->
                             <div style="border: 2px solid var(--red); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; background: rgba(255, 255, 255, 0.8); position: relative;">
                                 <!-- BCA Members Tag -->
-                                <div style="position: absolute; top: -12px; left: 20px; background: var(--red); color: white; padding: 4px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                                                <div style="position: absolute; top: -12px; left: 20px; background: var(--red); color: white; padding: 4px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                     Select Tickets (Mandatory) *
+                                </div>
+                                
+                                <!-- Ticket Validity Note -->
+                                <div style="margin: 0.5rem 0 1rem 0;">
+                                    <p style="color: var(--red); font-weight: 600; margin: 0 0 0.3rem 0; font-size: 0.9rem; line-height: 1.3;">
+                                        <strong>Ticket Validity:</strong> All tickets (except day pass) are valid for all days of Puja.
+                                    </p>
+                                    <p style="color: #666; font-weight: 500; margin: 0; font-size: 0.85rem; line-height: 1.2;">
+                                        <strong>Dates:</strong> Sunday, September 28 – Thursday, October 2, 2025
+                                    </p>
                                 </div>
                                 <!-- BCA Members Options -->
                                 <div id="bcaMembersOptions" class="contribution-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
@@ -185,35 +196,20 @@
                                     <input type="number" id="children-under-5-count" name="children-under-5-count" min="0" value="0" placeholder="Count" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; display: none;">
                                 </div>
                                 
-
-                            </div>
-                            </div>
-                            
-                            <!-- Guests Section
-                            <div style="border: 2px solid var(--red); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; background: rgba(255, 255, 255, 0.8); position: relative;">
-                                <!-- Guests Tag -->
-                                <!-- <div style="position: absolute; top: -12px; left: 20px; background: var(--red); color: white; padding: 4px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                    Guests
-                                </div> -->
-                                <!-- Guests Options -->
-                                <!-- <div id="guestsOptions" class="contribution-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-                                    <div class="contribution-option" style="background: #f8f9fa; border: 2px solid #ddd; border-radius: 10px; padding: 1rem; transition: all 0.3s ease;">
-                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                            <input type="checkbox" id="day-pass" name="contributionTypes" value="day-pass" data-price="20" data-category="guests" style="width: 18px; height: 18px; accent-color: var(--red);">
-                                            <label for="day-pass" style="font-weight: 600; color: #333; cursor: pointer; margin: 0;">Day Pass (Guests)</label>
-                                            <span style="color: var(--red); font-weight: 700; margin-left: auto;">€20</span>
-                                        </div>
-                                        <input type="number" id="day-pass-count" name="day-pass-count" min="0" value="0" placeholder="Count" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; display: none;">
+                                <div class="contribution-option" style="background: #f8f9fa; border: 2px solid #ddd; border-radius: 10px; padding: 1rem; transition: all 0.3s ease;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                        <input type="checkbox" id="day-pass" name="contributionTypes" value="day-pass" data-price="20" data-category="bca-members" style="width: 18px; height: 18px; accent-color: var(--red);">
+                                        <label for="day-pass" style="font-weight: 600; color: #333; cursor: pointer; margin: 0;">Day Pass (Guests)</label>
+                                        <span style="color: var(--red); font-weight: 700; margin-left: auto;">€25</span>
                                     </div>
+                                    <input type="number" id="day-pass-count" name="day-pass-count" min="0" value="0" placeholder="Count" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; display: none;">
                                 </div>
-                            </div>  -->
+                                
 
-                            <!-- Ticket Validity Note -->
-                            <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid var(--red);">
-                                <p style="color: var(--red); font-weight: 600; margin: 0; font-size: 1rem;">
-                                    <strong>NOTE:</strong> All tickets are valid for full-day entry during the Puja period (Sunday, September 28 – Thursday, October 2, 2025).
-                                </p>
                             </div>
+                            </div>
+
+
 
                             <!-- Additional Donation Section -->
                             <div class="contribution-option" style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(220, 53, 69, 0.1) 100%); border: 2px solid rgba(255, 193, 7, 0.3); border-radius: 10px; padding: 1.5rem; transition: all 0.3s ease; width: 100%; margin: 1rem 0;">
@@ -260,62 +256,38 @@
                             
                             <!-- Payment Methods Header -->
                             <h4 style="color: var(--green); font-size: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; text-align: center; justify-content: center;">
-                                <i class="fas fa-credit-card"></i> Payment Methods
+                                <i class="fas fa-university"></i> Payment Method
                             </h4>
                             
-                            <!-- Payment Instructions Note -->
-                            <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--red); margin-bottom: 1.5rem;">
-                                <p style="margin: 0; color: var(--red); font-weight: 600; font-size: 0.95rem;">
-                                    <i class="fas fa-exclamation-circle" style="color: var(--red); margin-right: 0.5rem;"></i>
-                                    NOTE: Please transfer the above amount using one of the payment methods below.
-                                </p>
-                            </div>
+
+                            
+
 
                             <!-- Important Payment Note -->
-                            <div style="background: rgba(220, 53, 69, 0.1); padding: 0.8rem; border-radius: 8px; border-left: 3px solid var(--red); margin-bottom: 0.5rem;">
-                                <i class="fas fa-exclamation-circle" style="color: var(--red); margin-right: 0.5rem; font-size: 0.9rem;"></i>
-                                <strong style="color: var(--red); font-size: 0.9rem;">Important:</strong> Please mention in subject/Concepto: <span style="font-weight: 700; color: var(--red); font-size: 1.2rem;">Your NAME - Donation</span>
-                            </div>
-                            
-                            <!-- Method 1: Baizum -->
-                            <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 1.5rem; border: 2px solid var(--green);">
-                                <h5 style="color: var(--green); font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    <i class="fas fa-mobile-alt"></i> Method 1: Bizum
-                                </h5>
-                                
-                                <div class="baizum-details">
-                                    <div style="margin-bottom: 1rem;">
-                                        <strong style="color: #333; font-size: 1.1rem;">Phone Number:</strong>
-                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
-                                            <span id="baizumPhoneNumber" style="color: var(--green); font-weight: 600; font-size: 1.3rem;">+34 682 00 01 31</span>
-                                            <button type="button" class="copy-btn" onclick="copyToClipboard('baizumPhoneNumber', 'Baizum phone number')" title="Copy Baizum phone number" style="background: var(--green); color: white; border: none; padding: 4px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;">
-                                                <i class="fas fa-copy"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
 
                             
-                            <!-- OR Divider -->
-                            <div style="text-align: center; margin: 1.5rem 0; position: relative;">
-                                <div style="background: white; padding: 0 1rem; font-weight: 700; color: var(--red); font-size: 1.1rem; display: inline-block; position: relative; z-index: 2;">OR</div>
-                                <div style="position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--red), transparent); z-index: 1;"></div>
-                            </div>
+
 
 
                             <!-- Method 2: Bank Transfer -->
                             <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 1.5rem; border: 2px solid var(--green);">
                                 <h5 style="color: var(--green); font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    <i class="fas fa-university"></i> Method 2: Bank Transfer
+                                    <i class="fas fa-university"></i> Bank Transfer
                                 </h5>
-                                
+                                <!-- Payment Instructions Note -->
+                                <div style="margin: 0.5rem 0 1rem 0;">
+                                    <p style="color: var(--red); font-weight: 600; margin: 0 0 0.3rem 0; font-size: 0.9rem; line-height: 1.3;">
+                                        <strong>Payment Note:</strong> Please transfer the above amount using the payment method below.
+                                    </p>
+                                    <p style="color: #666; font-weight: 500; margin: 0; font-size: 0.85rem; line-height: 1.2;">
+                                        <strong>Important:</strong> Mention in subject/Concepto: Your NAME - Donation
+                                    </p>
+                                </div>                            
                                 <div class="bank-details">
                                     <div style="margin-bottom: 1rem;">
                                         <strong style="color: #333; font-size: 1.1rem;">Account Number:</strong>
                                         <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
-                                            <span id="bankAccountNumber" style="color: var(--green); font-weight: 500; font-family: monospace; font-size: 1.1rem;">ES260049 2990 20 2914599908</span>
+                                            <span id="bankAccountNumber" style="color: var(--green); font-weight: 500; font-family: monospace; font-size: 1.1rem;">ES26 0049 2990 2029 1459 9908</span>
                                             <button type="button" class="copy-btn" onclick="copyToClipboard('bankAccountNumber', 'Bank account number')" title="Copy bank account number" style="background: var(--green); color: white; border: none; padding: 4px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;">
                                                 <i class="fas fa-copy"></i>
                                             </button>
@@ -1099,6 +1071,30 @@
         
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
+            /* Day Pass Option Mobile Styles (now part of BCA Members section) */
+            #day-pass-count {
+                padding: 6px !important;
+                font-size: 0.85rem !important;
+                height: 32px !important;
+            }
+            
+            /* Ticket Validity Note Mobile Styles */
+            .contribution-types > div:nth-child(2) {
+                padding: 0.8rem !important;
+                margin: 0.8rem 0 1.2rem 0 !important;
+                border-radius: 6px !important;
+            }
+            
+            .contribution-types > div:nth-child(2) p:first-child {
+                font-size: 0.85rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 0.4rem !important;
+            }
+            
+            .contribution-types > div:nth-child(2) p:last-child {
+                font-size: 0.8rem !important;
+                line-height: 1.2 !important;
+            }
             .registration-overview {
                 padding: 1.5rem !important;
                 margin-bottom: 2rem !important;
@@ -1425,6 +1421,30 @@
         
         /* Extra small screens */
         @media (max-width: 480px) {
+            /* Day Pass Option Extra Small Mobile Styles (now part of BCA Members section) */
+            #day-pass-count {
+                padding: 5px !important;
+                font-size: 0.8rem !important;
+                height: 28px !important;
+            }
+            
+            /* Ticket Validity Note Extra Small Mobile Styles */
+            .contribution-types > div:nth-child(2) {
+                padding: 0.6rem !important;
+                margin: 0.6rem 0 1rem 0 !important;
+                border-radius: 5px !important;
+            }
+            
+            .contribution-types > div:nth-child(2) p:first-child {
+                font-size: 0.75rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.3rem !important;
+            }
+            
+            .contribution-types > div:nth-child(2) p:last-child {
+                font-size: 0.7rem !important;
+                line-height: 1.1 !important;
+            }
             .registration-overview {
                 padding: 1rem !important;
             }
