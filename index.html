@@ -384,7 +384,8 @@
     
     <!-- Enhanced Slideshow Script -->
     <script>
-        // Enhanced Gallery Slideshow
+    // Enhanced Gallery Slideshow
+    document.addEventListener('DOMContentLoaded', function() {
         const galleryImages = [
             'gallery/2024/p2.webp',
             'gallery/2024/p3.jpeg',
@@ -411,39 +412,34 @@
             'gallery/2024/p31.jpg',
             'gallery/2024/p32.jpeg'
         ];
-        
-        // Responsive slider sizing
+
         function adjustSliderSize() {
             const slider = document.querySelector('.slideshow-container');
+            if (!slider) return;
             if (window.innerWidth <= 768) {
-                // Mobile
                 slider.style.maxWidth = '100%';
                 slider.style.height = '250px';
             } else if (window.innerWidth <= 1024) {
-                // Tablet
                 slider.style.maxWidth = '500px';
                 slider.style.height = '300px';
             } else {
-                // Desktop
                 slider.style.maxWidth = '600px';
                 slider.style.height = '350px';
             }
         }
-        
-        // Adjust size on load and resize
         window.addEventListener('load', adjustSliderSize);
         window.addEventListener('resize', adjustSliderSize);
-        
+
         let currentSlide = 0;
-    const slideshowImg = document.getElementById('slideshow-image');
-    const leftArrow = document.querySelector('.slideshow-arrow.left');
-    const rightArrow = document.querySelector('.slideshow-arrow.right');
-        
+        const slideshowImg = document.getElementById('slideshow-image');
+        const leftArrow = document.querySelector('.slideshow-arrow.left');
+        const rightArrow = document.querySelector('.slideshow-arrow.right');
+
         function showSlide(index) {
             currentSlide = index;
-            slideshowImg.src = galleryImages[index];
+            if (slideshowImg) slideshowImg.src = galleryImages[index];
         }
-        
+
         function nextSlide() {
             currentSlide = (currentSlide + 1) % galleryImages.length;
             showSlide(currentSlide);
@@ -453,18 +449,15 @@
             currentSlide = (currentSlide - 1 + galleryImages.length) % galleryImages.length;
             showSlide(currentSlide);
         }
-        
+
+        // Attach event listeners only if arrows exist
+        if (leftArrow) leftArrow.addEventListener('click', prevSlide);
+        if (rightArrow) rightArrow.addEventListener('click', nextSlide);
+
         // Auto slideshow
-    setInterval(nextSlide, 1900);
-        
-        // Dot click handlers
-    leftArrow.addEventListener('click', prevSlide);
-    rightArrow.addEventListener('click', nextSlide);
-        
+        setInterval(nextSlide, 1900);
+
         // Initialize
         showSlide(0);
+    });
     </script>
-
-
-</body>
-</html>
