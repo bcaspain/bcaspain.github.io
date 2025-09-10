@@ -143,27 +143,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Gallery Button Section -->
-                <div class="gallery-button-section" style="text-align: center; margin-top: 3rem;">
-                    <a href="gallery.html" class="btn btn-primary btn-large" style="
-                        background: linear-gradient(135deg, var(--red), var(--orange));
-                        color: white;
-                        padding: 1rem 2.5rem;
-                        border-radius: 50px;
-                        text-decoration: none;
-                        font-size: 1.1rem;
-                        font-weight: 600;
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 0.5rem;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-                    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(220, 53, 69, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(220, 53, 69, 0.3)'">
-                        <i class="fas fa-images" style="font-size: 1.2rem;"></i>
-                        View Gallery
-                    </a>
-                </div>
                 </div>
             </div>
         </section>
@@ -686,38 +665,6 @@
             }
         }
         
-        /* Gallery Button Responsive Styles */
-        .gallery-button-section {
-            text-align: center;
-            margin-top: 3rem;
-        }
-        
-        .gallery-button-section .btn {
-            background: linear-gradient(135deg, var(--red), var(--orange));
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-        }
-        
-        .gallery-button-section .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
-            text-decoration: none;
-            color: white;
-        }
-        
-        .gallery-button-section .btn i {
-            font-size: 1.2rem;
-        }
-        
         /* Responsive Design for Attractions */
         @media (max-width: 1200px) {
             .attractions-grid {
@@ -727,16 +674,6 @@
         }
         
         @media (max-width: 768px) {
-            .gallery-button-section {
-                margin-top: 2rem;
-                padding: 0 1rem;
-            }
-            
-            .gallery-button-section .btn {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-            
             .attractions-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -769,20 +706,6 @@
         }
         
         @media (max-width: 480px) {
-            .gallery-button-section {
-                margin-top: 1.5rem;
-                padding: 0 0.5rem;
-            }
-            
-            .gallery-button-section .btn {
-                padding: 0.7rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .gallery-button-section .btn i {
-                font-size: 1rem;
-            }
-            
             .attractions-grid {
                 padding: 0 0.5rem;
                 gap: 1rem;

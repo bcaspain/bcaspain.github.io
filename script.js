@@ -292,18 +292,18 @@ document.addEventListener('DOMContentLoaded', function() {
         toggle.addEventListener('click', toggleNavMenu);
     }
     
-    // Close menu when clicking on nav links (mobile)
+    // Close menu when clicking on nav links (mobile/tablet)
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth < 1280) {
                 closeNavMenu();
             }
         });
     });
     
-    // Close menu when clicking outside (mobile)
+    // Close menu when clicking outside (mobile/tablet)
     document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && navMenu && navMenu.classList.contains('active')) {
+        if (window.innerWidth < 1280 && navMenu && navMenu.classList.contains('active')) {
             if (!navMenu.contains(e.target) && !toggle.contains(e.target)) {
                 closeNavMenu();
             }
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close menu on window resize
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
+        if (window.innerWidth >= 1280) {
             closeNavMenu();
         }
     });
@@ -323,8 +323,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let isScrolling;
 function updateActiveNavLink() {
-    // Skip on mobile devices
-    if (window.innerWidth <= 768) return;
+    // Skip on mobile/tablet devices
+    if (window.innerWidth < 1280) return;
 
     // Check if we're on a multi-page site (not just index.html with sections)
     const currentPage = window.location.pathname;
@@ -405,11 +405,11 @@ function handleScroll() {
         if (backToTopBtn) backToTopBtn.classList.remove('show');
     }
 
-    // Only update active nav link on single-page sites (index.html with sections)
+    // Only update active nav link on single-page sites (index.html with sections) and desktop screens
     const currentPage = window.location.pathname;
     const isSinglePageSite = currentPage === '/' || currentPage === '/index.html' || currentPage.endsWith('index.html');
     
-    if (isSinglePageSite) {
+    if (isSinglePageSite && window.innerWidth >= 1280) {
         updateActiveNavLink();
     }
 }
