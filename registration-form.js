@@ -1210,6 +1210,10 @@ document.addEventListener('DOMContentLoaded', function() {
             margin: 1rem 0;
             color: #ff4444;
             font-weight: 600;
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
         `;
         
         const errorTitle = document.createElement('h4');
@@ -1233,8 +1237,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Insert before the form
         form.parentNode.insertBefore(errorDiv, form);
         
-        // Scroll to error message
-        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Add a small margin to prevent the error from being too close to the top
+        errorDiv.style.marginTop = '20px';
+        
+        // Add visual highlight animation instead of scrolling
+        errorDiv.style.animation = 'highlight 1s ease-in-out 2';
+        
+        // No scrolling - let users see the error message naturally
     }
     
     // Function to show success message and reset form (prevent duplicate success messages)
@@ -1293,8 +1302,10 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Register Now';
             submitBtn.disabled = false;
             
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth' });
+            // Add visual highlight animation instead of scrolling
+            successMessage.style.animation = 'successHighlight 1s ease-in-out 2';
+            
+            // No scrolling - let users see the success message naturally
         }
     }
 
@@ -1507,7 +1518,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add CSS animation for please wait message
+    // Add CSS animation for please wait message and visual feedback
     const style = document.createElement('style');
     style.textContent = `
         @keyframes pulse {
@@ -1519,6 +1530,42 @@ document.addEventListener('DOMContentLoaded', function() {
         @keyframes loading {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
+        }
+        
+        @keyframes highlight {
+            0% { 
+                background-color: rgba(255, 68, 68, 0.1);
+                border-color: #ff4444;
+                box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.3);
+            }
+            50% { 
+                background-color: rgba(255, 68, 68, 0.2);
+                border-color: #ff4444;
+                box-shadow: 0 0 0 6px rgba(255, 68, 68, 0.4);
+            }
+            100% { 
+                background-color: rgba(255, 68, 68, 0.1);
+                border-color: #ff4444;
+                box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.3);
+            }
+        }
+        
+        @keyframes successHighlight {
+            0% { 
+                background-color: rgba(40, 167, 69, 0.1);
+                border-color: #28a745;
+                box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3);
+            }
+            50% { 
+                background-color: rgba(40, 167, 69, 0.2);
+                border-color: #28a745;
+                box-shadow: 0 0 0 6px rgba(40, 167, 69, 0.4);
+            }
+            100% { 
+                background-color: rgba(40, 167, 69, 0.1);
+                border-color: #28a745;
+                box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3);
+            }
         }
     `;
     document.head.appendChild(style);
