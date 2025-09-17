@@ -1373,8 +1373,8 @@
         if (leftArrow) leftArrow.addEventListener('click', prevSlide);
         if (rightArrow) rightArrow.addEventListener('click', nextSlide);
 
-        // Auto slideshow
-        setInterval(nextSlide, 1900);
+        // Auto slideshow disabled - manual navigation only
+        // setInterval(nextSlide, 1900);
 
         // Initialize
         showSlide(0);
@@ -1412,7 +1412,8 @@
         }
 
         function startAutoSlide() {
-            autoSlideInterval = setInterval(nextPhotoSlide, 3000);
+            // Auto slide disabled - manual navigation only
+            // autoSlideInterval = setInterval(nextPhotoSlide, 3000);
         }
 
         function stopAutoSlide() {
@@ -1423,28 +1424,24 @@
         if (nextArrow) {
             nextArrow.addEventListener('click', () => {
                 nextPhotoSlide();
-                stopAutoSlide();
-                startAutoSlide(); // Restart auto-slide after manual interaction
             });
         }
 
         if (prevArrow) {
             prevArrow.addEventListener('click', () => {
                 prevPhotoSlide();
-                stopAutoSlide();
-                startAutoSlide(); // Restart auto-slide after manual interaction
             });
         }
 
-        // Pause auto-slide on hover
-        const photoSlider = document.querySelector('.photo-slider');
-        if (photoSlider) {
-            photoSlider.addEventListener('mouseenter', stopAutoSlide);
-            photoSlider.addEventListener('mouseleave', startAutoSlide);
-        }
+        // Auto-slide disabled - no hover pause needed
+        // const photoSlider = document.querySelector('.photo-slider');
+        // if (photoSlider) {
+        //     photoSlider.addEventListener('mouseenter', stopAutoSlide);
+        //     photoSlider.addEventListener('mouseleave', startAutoSlide);
+        // }
 
-        // Start auto-slide
-        startAutoSlide();
+        // Auto-slide disabled - manual navigation only
+        // startAutoSlide();
 
         // Initialize
         showPhotoSlide(0);

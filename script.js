@@ -332,7 +332,7 @@ function closeNavMenu() {
             menu.classList.remove('active');
             toggle.classList.remove('active');
             
-            // Restore scroll position
+            // Restore scroll position - FIXED to prevent unwanted scrolling
             const scrollY = body.style.top;
             body.style.position = '';
             body.style.top = '';
@@ -340,7 +340,14 @@ function closeNavMenu() {
             body.style.overflow = '';
             body.style.touchAction = '';
             body.style.overscrollBehavior = '';
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            
+            // Only restore scroll position if we have a valid stored position
+            if (scrollY && scrollY !== '0px' && scrollY !== '') {
+                const scrollPosition = parseInt(scrollY.replace('px', '')) * -1;
+                if (scrollPosition > 0) {
+                    window.scrollTo(0, scrollPosition);
+                }
+            }
             
             // Reset link styles
             navLinks.forEach(link => {
@@ -920,8 +927,14 @@ function initFormValidation() {
 // Keyboard Navigation for Lightbox - Removed to prevent conflicts with gallery.html
 // Gallery lightbox keyboard functionality is handled in gallery.html
 
-// Touch Gestures for Mobile
+// Touch Gestures for Mobile - DISABLED to prevent unwanted scroll to top
 function initTouchGestures() {
+    // Touch gesture handler disabled to prevent unwanted scroll to top behavior
+    // when clicking on elements. Users can still use the back-to-top button.
+    console.log('Touch gestures disabled to prevent unwanted scroll behavior');
+    
+    // Original touch gesture code commented out to prevent unwanted scroll to top:
+    /*
     let startX = 0;
     let startY = 0;
     let startTime = 0;
@@ -959,6 +972,7 @@ function initTouchGestures() {
         startY = 0;
         startTime = 0;
     }, { passive: true });
+    */
 }
 
 // Performance Optimization
@@ -1153,10 +1167,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add resize event listener for slideshow reordering
     window.addEventListener('resize', handleSlideshowResize);
     
-    // Close mobile menu when clicking outside
+    // Close mobile menu when clicking outside - FIXED to prevent unwanted scrolling
     document.addEventListener('click', (e) => {
         if (navbar && !navbar.contains(e.target)) {
-            closeNavMenu();
+            // Only close menu if it's actually open to prevent unnecessary scroll restoration
+            const menu = document.getElementById('nav-menu');
+            if (menu && menu.classList.contains('active')) {
+                closeNavMenu();
+            }
         }
     }, { passive: true });
     
