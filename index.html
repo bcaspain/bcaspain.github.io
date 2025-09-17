@@ -332,6 +332,13 @@
                             <img src="sponsor-banner/3.png" alt="Sponsor 3" />
                         </div>
                     </div>
+                    <!-- Navigation Arrows -->
+                    <button class="photo-slider-arrow photo-slider-prev" aria-label="Previous image">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="photo-slider-arrow photo-slider-next" aria-label="Next image">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
             
@@ -634,6 +641,39 @@
                     transform: scale(1.02);
                 }
                 
+                /* Photo Slider Navigation Arrows */
+                .photo-slider-arrow {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(0, 0, 0, 0.6);
+                    color: white;
+                    border: none;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    font-size: 18px;
+                    cursor: pointer;
+                    z-index: 10;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                .photo-slider-arrow:hover {
+                    background: rgba(0, 0, 0, 0.8);
+                    transform: translateY(-50%) scale(1.1);
+                }
+                
+                .photo-slider-prev {
+                    left: 15px;
+                }
+                
+                .photo-slider-next {
+                    right: 15px;
+                }
+                
                 /* Mobile Responsive Styles for Photo Slider */
                 @media (max-width: 480px) {
                     .photo-slider-container {
@@ -648,6 +688,20 @@
                     
                     .photo-slide img {
                         max-height: 200px;
+                    }
+                    
+                    .photo-slider-arrow {
+                        width: 40px;
+                        height: 40px;
+                        font-size: 14px;
+                    }
+                    
+                    .photo-slider-prev {
+                        left: 10px;
+                    }
+                    
+                    .photo-slider-next {
+                        right: 10px;
                     }
                 }
                 
@@ -924,15 +978,6 @@
                     }
                 });
             </script>
-            
-            <!-- <div class="become-sponsor-cta">
-                <h3>Want to Join Our Sponsors?</h3>
-                <p>Support Bengali culture and connect with our community</p>
-                <a href="sponsorships.html" class="btn btn-primary btn-large">
-                    <i class="fas fa-star"></i>
-                    Become a Sponsor
-                </a>
-            </div> -->
         </div>
     </section>
 
@@ -1338,8 +1383,11 @@
     // Photo Slider Functionality
     document.addEventListener('DOMContentLoaded', function() {
         const photoSlides = document.querySelectorAll('.photo-slide');
+        const prevArrow = document.querySelector('.photo-slider-prev');
+        const nextArrow = document.querySelector('.photo-slider-next');
         let currentSlide = 0;
         const totalSlides = photoSlides.length;
+        let autoSlideInterval;
 
         function showPhotoSlide(slideIndex) {
             // Remove active class from all slides
@@ -1358,8 +1406,45 @@
             showPhotoSlide(currentSlide);
         }
 
-        // Auto-advance slider every 3 seconds
-        setInterval(nextPhotoSlide, 3000);
+        function prevPhotoSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showPhotoSlide(currentSlide);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextPhotoSlide, 3000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Event listeners for arrows
+        if (nextArrow) {
+            nextArrow.addEventListener('click', () => {
+                nextPhotoSlide();
+                stopAutoSlide();
+                startAutoSlide(); // Restart auto-slide after manual interaction
+            });
+        }
+
+        if (prevArrow) {
+            prevArrow.addEventListener('click', () => {
+                prevPhotoSlide();
+                stopAutoSlide();
+                startAutoSlide(); // Restart auto-slide after manual interaction
+            });
+        }
+
+        // Pause auto-slide on hover
+        const photoSlider = document.querySelector('.photo-slider');
+        if (photoSlider) {
+            photoSlider.addEventListener('mouseenter', stopAutoSlide);
+            photoSlider.addEventListener('mouseleave', startAutoSlide);
+        }
+
+        // Start auto-slide
+        startAutoSlide();
 
         // Initialize
         showPhotoSlide(0);
