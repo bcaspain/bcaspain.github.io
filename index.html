@@ -289,25 +289,36 @@
                     <a href="https://www.yuptel.com" target="_blank" rel="noopener noreferrer" class="sponsor-link">
                         <img src="sponsor-logos/yuptel.png" alt="YuPTel" />
                     </a>
+                    <a href="https://www.rustomjee.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
+                        <img src="sponsor-logos/rustomjee-logo.png" alt="Rustomjee" />
+                    </a>
                     <a href="https://www.voiptechsolutions.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
                         <img src="sponsor-logos/voip-tech-logo.png" alt="VoIP Tech" />
                     </a>
+                    
                 </div>
                 
                 <h3 class="sponsor-category-title">Other Sponsors</h3>
                 <div class="sponsor-logos">
-                    <a href="https://www.vegworld.es/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
-                        <img src="sponsor-logos/veg-world-logo.png" alt="Veg World India" />
-                    </a>
                     <a href="https://nipponglobal.es/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
                         <img src="sponsor-logos/nippon-logo.jpg" alt="Nippon Global" />
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="sponsor-link">
-                        <img src="sponsor-logos/gft-logo.jpg" alt="GFT" />
                     </a>
                     <a href="https://www.orbislinks.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
                         <img src="sponsor-logos/orbis-links-logo.jpg" alt="Orbis Links" />
                     </a>
+                    <a href="https://www.vegworld.es/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
+                        <img src="sponsor-logos/veg-world-logo.png" alt="Veg World India" />
+                    </a>
+                    <a href="https://chainoptima.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">
+                        <img src="sponsor-logos/Chain-Optimia-solution-logo.webp" alt="GFT" />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="sponsor-link">
+                        <img src="sponsor-logos/ESCAC-AB-Logo.png" alt="GFT" />
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="sponsor-link">
+                        <img src="sponsor-logos/gft-logo.jpg" alt="GFT" />
+                    </a>
+                    
                 </div>
                 
                 <h3 class="sponsor-category-title">Founding Support</h3>
@@ -351,60 +362,52 @@
                     border-radius: 15px;
                     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
                     text-align: center;
+                    position: relative;
                 }
                 
                 .sponsor-category-title {
                     font-size: 1.5rem;
                     font-weight: 600;
-                    color: #2c3e50;
-                    margin: 2rem 0 1.5rem 0;
+                    color: #e11529;
+                    margin: 2rem auto 1.5rem auto;
                     text-transform: uppercase;
                     letter-spacing: 1px;
-                    display: inline-block;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
                     padding: 0.5rem 1.5rem;
-                    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                    background: #ffffff;
                     border-radius: 25px;
                     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                    border: 2px solid #dee2e6;
+                    border: 2px solid #e11529;
                     position: relative;
-                    overflow: hidden;
+                    overflow: visible;
+                    text-align: center;
+                    max-width: fit-content;
+                }
+                
+                .sponsor-category-title::before,
+                .sponsor-category-title::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    width: 60px;
+                    height: 2px;
+                    background: #e11529;
+                    transform: translateY(-50%);
+                    z-index: 1;
+                }
+                
+                .sponsor-category-title::before {
+                    left: -80px;
+                }
+                
+                .sponsor-category-title::after {
+                    right: -80px;
                 }
                 
                 .sponsor-category-title:first-child {
                     margin-top: 0;
-                    background: linear-gradient(135deg, #e11529 0%, #fd7e14 100%);
-                    color: white;
-                    border-color: #e11529;
-                    box-shadow: 0 4px 12px rgba(225, 21, 41, 0.3);
-                }
-                
-                .sponsor-category-title:nth-child(3) {
-                    background: linear-gradient(135deg, #ffc107 0%, #e11529 100%);
-                    color: white;
-                    border-color: #ffc107;
-                    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
-                }
-                
-                .sponsor-category-title:nth-child(5) {
-                    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
-                    color: white;
-                    border-color: #fd7e14;
-                    box-shadow: 0 4px 12px rgba(253, 126, 20, 0.3);
-                }
-                
-                .sponsor-category-title::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: -100%;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-                    transition: left 0.5s ease;
-                }
-                
-                .sponsor-category-title:hover::before {
-                    left: 100%;
                 }
                 
                 .sponsor-logos {
@@ -442,6 +445,18 @@
                     max-height: 160px;
                 }
                 
+                /* Other Sponsors - Smaller logos */
+                .sponsor-section .sponsor-logos:nth-of-type(2) .sponsor-link img {
+                    max-width: 200px;
+                    max-height: 120px;
+                }
+                
+                /* Founding Support - Smallest logos */
+                .sponsor-section .sponsor-logos:nth-of-type(3) .sponsor-link img {
+                    max-width: 150px;
+                    max-height: 90px;
+                }
+                
                 .sponsor-link:hover img {
                     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
                 }
@@ -465,8 +480,39 @@
                         margin-bottom: 1rem;
                     }
                     
+                    /* Show decorative lines on mobile with smaller size and no overflow */
+                    .sponsor-category-title::before,
+                    .sponsor-category-title::after {
+                        display: block;
+                        width: 20px;
+                    }
+                    
+                    .sponsor-category-title::before {
+                        left: -30px;
+                    }
+                    
+                    .sponsor-category-title::after {
+                        right: -30px;
+                    }
+                    
+                    /* Ensure container can accommodate the lines */
+                    .sponsor-section {
+                        padding: 2rem 3rem;
+                    }
+                    
                     .sponsor-logos {
                         gap: 1rem;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-rows: auto auto;
+                        justify-items: center;
+                        align-items: center;
+                    }
+                    
+                    /* Executive Sponsors - 3 items in single column for mobile */
+                    .sponsor-section .sponsor-logos:first-of-type {
+                        grid-template-columns: 1fr;
+                        grid-template-rows: auto auto auto;
                     }
                     
                     .sponsor-link img {
@@ -478,6 +524,18 @@
                     .sponsor-section .sponsor-logos:first-of-type .sponsor-link img {
                         max-width: 160px;
                         max-height: 100px;
+                    }
+                    
+                    /* Other Sponsors - Smaller on mobile */
+                    .sponsor-section .sponsor-logos:nth-of-type(2) .sponsor-link img {
+                        max-width: 100px;
+                        max-height: 60px;
+                    }
+                    
+                    /* Founding Support - Smallest on mobile */
+                    .sponsor-section .sponsor-logos:nth-of-type(3) .sponsor-link img {
+                        max-width: 80px;
+                        max-height: 50px;
                     }
                 }
                 
@@ -492,8 +550,27 @@
                         margin-bottom: 1.2rem;
                     }
                     
+                    /* Show decorative lines on tablet and larger */
+                    .sponsor-category-title::before,
+                    .sponsor-category-title::after {
+                        display: block;
+                        width: 40px;
+                    }
+                    
+                    .sponsor-category-title::before {
+                        left: -60px;
+                    }
+                    
+                    .sponsor-category-title::after {
+                        right: -60px;
+                    }
+                    
                     .sponsor-logos {
                         gap: 1.5rem;
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                        justify-items: center;
+                        align-items: center;
                     }
                     
                     .sponsor-link img {
@@ -505,6 +582,18 @@
                     .sponsor-section .sponsor-logos:first-of-type .sponsor-link img {
                         max-width: 200px;
                         max-height: 120px;
+                    }
+                    
+                    /* Other Sponsors - Smaller on tablet */
+                    .sponsor-section .sponsor-logos:nth-of-type(2) .sponsor-link img {
+                        max-width: 140px;
+                        max-height: 80px;
+                    }
+                    
+                    /* Founding Support - Smallest on tablet */
+                    .sponsor-section .sponsor-logos:nth-of-type(3) .sponsor-link img {
+                        max-width: 110px;
+                        max-height: 65px;
                     }
                 }
                 
@@ -532,6 +621,18 @@
                     .sponsor-section .sponsor-logos:first-of-type .sponsor-link img {
                         max-width: 240px;
                         max-height: 140px;
+                    }
+                    
+                    /* Other Sponsors - Smaller on small desktop */
+                    .sponsor-section .sponsor-logos:nth-of-type(2) .sponsor-link img {
+                        max-width: 160px;
+                        max-height: 100px;
+                    }
+                    
+                    /* Founding Support - Smallest on small desktop */
+                    .sponsor-section .sponsor-logos:nth-of-type(3) .sponsor-link img {
+                        max-width: 120px;
+                        max-height: 75px;
                     }
                 }
                 
@@ -572,6 +673,18 @@
                         max-width: 300px;
                         max-height: 180px;
                     }
+                    
+                    /* Other Sponsors - Smaller on large desktop */
+                    .sponsor-section .sponsor-logos:nth-of-type(2) .sponsor-link img {
+                        max-width: 180px;
+                        max-height: 110px;
+                    }
+                    
+                    /* Founding Support - Smallest on large desktop */
+                    .sponsor-section .sponsor-logos:nth-of-type(3) .sponsor-link img {
+                        max-width: 140px;
+                        max-height: 85px;
+                    }
                 }
                 
                 @media (min-width: 1400px) {
@@ -584,6 +697,18 @@
                     .sponsor-section .sponsor-logos:first-of-type .sponsor-link img {
                         max-width: 320px;
                         max-height: 200px;
+                    }
+                    
+                    /* Other Sponsors - Smaller on extra large desktop */
+                    .sponsor-section .sponsor-logos:nth-of-type(2) .sponsor-link img {
+                        max-width: 200px;
+                        max-height: 120px;
+                    }
+                    
+                    /* Founding Support - Smallest on extra large desktop */
+                    .sponsor-section .sponsor-logos:nth-of-type(3) .sponsor-link img {
+                        max-width: 160px;
+                        max-height: 95px;
                     }
                 }
                 
