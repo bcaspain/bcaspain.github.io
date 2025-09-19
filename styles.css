@@ -7232,3 +7232,123 @@ section + section {
 }
 
 
+
+
+/* Sponsor Styles */
+.sponsors-showcase {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.sponsor-section {
+    margin-bottom: 3rem;
+}
+
+.sponsor-category-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+
+.sponsor-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.sponsor-link {
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sponsor-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Executive Sponsors - Larger size */
+.sponsor-section:first-of-type .sponsor-link img {
+    height: 200px;
+    width: auto;
+    max-width: 400px;
+    object-fit: contain;
+}
+
+/* Other Sponsors - Smaller size */
+.sponsor-section:nth-of-type(2) .sponsor-link img {
+    height: 140px;
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+}
+
+/* Founding Support - Medium size */
+.sponsor-section:nth-of-type(3) .sponsor-link img {
+    height: 120px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sponsor-logos {
+        gap: 1rem;
+    }
+    
+    .sponsor-section:first-of-type .sponsor-link img {
+        height: 150px;
+        max-width: 300px;
+    }
+    
+    .sponsor-section:nth-of-type(2) .sponsor-link img {
+        height: 100px;
+        max-width: 180px;
+    }
+    
+    .sponsor-section:nth-of-type(3) .sponsor-link img {
+        height: 90px;
+        max-width: 150px;
+    }
+    
+    .sponsor-category-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sponsor-logos {
+        gap: 0.8rem;
+    }
+    
+    .sponsor-link {
+        padding: 0.8rem;
+    }
+    
+    .sponsor-section:first-of-type .sponsor-link img {
+        height: 120px;
+        max-width: 200px;
+    }
+    
+    .sponsor-section:nth-of-type(2) .sponsor-link img {
+        height: 80px;
+        max-width: 140px;
+    }
+    
+    .sponsor-section:nth-of-type(3) .sponsor-link img {
+        height: 70px;
+        max-width: 120px;
+    }
+}
