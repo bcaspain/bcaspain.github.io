@@ -1,6 +1,6 @@
 # BCA Spain - Bengali Cultural Association Website
 
-A modern, feature-rich website for the Bengali Cultural Association (BCA) Spain. Built with HTML5, CSS3, and JavaScript, featuring a responsive design and interactive elements for cultural events and community engagement.
+A modern, feature-rich website for the Bengali Cultural Association (BCA) Spain, specifically designed for Durga Puja 2K25 celebrations in Barcelona. Built with HTML5, CSS3, and JavaScript, featuring a responsive design and interactive elements for cultural events and community engagement.
 
 ## 🌟 Features
 
@@ -20,13 +20,14 @@ A modern, feature-rich website for the Bengali Cultural Association (BCA) Spain.
 - **Multi-Page Architecture** - Dedicated pages for different sections
 
 ### Interactive Features
-- **Live Countdown Timer** - Countdown to upcoming events
+- **Live Countdown Timer** - Countdown to Durga Puja 2K25 events
 - **Video Modal System** - Interactive video previews with full-screen playback
 - **Registration Form** - Complete registration system with validation and Google Sheets integration
 - **Contact Form** - Contact form with email validation and Google Sheets integration
-- **Photo Gallery** - Lightbox gallery with keyboard navigation
+- **Photo Gallery** - Lightbox gallery with keyboard navigation and organized by year
 - **Event Timeline** - Visual timeline of festival events
 - **QR Code Generator** - Custom QR code generation for events
+- **News & Media Section** - Dedicated page for community updates and media coverage
 
 ### Performance & Optimization
 - **Fast Loading** - Optimized images (WebP format) and code
@@ -40,26 +41,30 @@ A modern, feature-rich website for the Bengali Cultural Association (BCA) Spain.
 
 ```
 bcaspain.github.io/
-├── index.html              # Main homepage with hero section and countdown
-├── about.html              # About BCA and organization history
-├── events.html             # Events/Attractions page
-├── schedule.html           # Schedule and timeline page
-├── gallery.html            # Photo gallery with lightbox
-├── registration.html       # Registration form with payment options
-├── contact.html            # Contact information and form
-├── styles.css              # Main stylesheet (6995 lines)
-├── mobile-fixes.css        # Mobile-specific optimizations (2026 lines)
-├── script.js               # Main JavaScript functionality (1681 lines)
-├── registration-form.js    # Registration form logic (1504 lines)
+├── index.html              # Main homepage with hero section and countdown (1,581 lines)
+├── about.html              # About BCA and organization history (249 lines)
+├── attractions.html        # Events/Attractions page (922 lines)
+├── schedule.html           # Schedule and timeline page (793 lines)
+├── gallery.html            # Photo gallery with lightbox (1,697 lines)
+├── news-media.html         # News and media coverage page (1,061 lines)
+├── registration.html       # Registration form with payment options (1,954 lines)
+├── contact.html            # Contact information and form (251 lines)
+├── styles.css              # Main stylesheet (7,354 lines)
+├── mobile-fixes.css        # Mobile-specific optimizations (2,596 lines)
+├── script.js               # Main JavaScript functionality (1,858 lines)
+├── registration-form.js    # Registration form logic (1,597 lines)
 ├── README.md               # Project documentation
 ├── CNAME                   # Custom domain configuration (bcaspain.org)
 ├── favicon.ico             # Website favicon
 ├── BCA-logo.webp          # BCA Spain logo
-├── idol.jpg                # Decorative background image
 ├── idol.jpg                # Cultural idol image
-├── gallery/                # Image assets
-│   ├── g1.webp - g15.webp  # Gallery images
-│   └── a11.webp - a16.webp # Additional images
+├── community-program.jpeg  # Community program image
+├── googlec19e2680b94fdd9f.html # Google Search Console verification
+├── gallery/                # Image assets organized by year
+│   ├── 2022/               # 2022 event photos (10 WebP images)
+│   ├── 2023/               # 2023 event photos (21 JPG images)
+│   ├── 2024/               # 2024 event photos (32 mixed format images)
+│   └── extra/              # Additional decorative images
 ├── index-attraction/       # Video assets
 │   ├── bhog.mp4            # Authentic Bengali cuisine
 │   ├── dance.mp4           # Cultural performances
@@ -71,6 +76,22 @@ bcaspain.github.io/
 │   ├── s1.jpeg             # Additional secretary photo
 │   ├── t.jpeg              # Treasurer photo
 │   └── vp.jpeg             # Vice President photo
+├── news-media/             # News and media assets
+│   ├── farewell.png        # Farewell event image
+│   ├── fund-raising.jpg    # Fundraising event image
+│   ├── maa-durga-fiber-glass.jpg # Durga idol image
+│   ├── maa-durga-from-india.jpg  # Durga idol from India
+│   ├── maa-durga-news.jpg  # News coverage image
+│   └── rabindra-jayanti.jpg # Rabindra Jayanti event
+├── schedule/               # Schedule assets
+│   ├── durgapuja-benglai.jpeg # Bengali schedule
+│   └── durgapuja-english.jpeg # English schedule
+├── slider/                 # Homepage slider images
+│   └── a11.webp - a16.webp # Slider images (6 WebP files)
+├── sponsor-banner/         # Sponsor banner images
+│   └── 2.png, 3.png, 4.png # Banner images
+├── sponsor-logos/          # Sponsor company logos
+│   └── [11 company logos]  # Various sponsor logos
 └── qr/                     # QR code functionality
     └── qr.html             # QR code generator page
 ```
@@ -150,13 +171,16 @@ The website is fully responsive and optimized for:
 ## 🔧 Technical Features
 
 ### HTML5 Features
-- Semantic HTML structure
+- Semantic HTML structure across 8 pages
 - Accessibility attributes (ARIA labels, roles)
-- Meta tags for SEO
+- Meta tags for SEO optimization
 - Open Graph tags for social sharing
 - Viewport optimization for mobile devices
+- Google Analytics integration (G-ZHNQ37V3SX)
 
 ### CSS3 Features
+- **Main Stylesheet**: 7,354 lines of CSS
+- **Mobile Optimizations**: 2,596 lines of mobile-specific CSS
 - CSS Grid and Flexbox layouts
 - CSS Custom Properties (variables)
 - Advanced animations and transitions
@@ -165,6 +189,8 @@ The website is fully responsive and optimized for:
 - Hardware-accelerated animations
 
 ### JavaScript Features
+- **Main Script**: 1,858 lines of JavaScript
+- **Registration Logic**: 1,597 lines of form handling
 - ES6+ syntax with modern APIs
 - Intersection Observer API for scroll animations
 - Form validation with real-time feedback
@@ -178,6 +204,7 @@ The website is fully responsive and optimized for:
 - **File Upload**: Support for payment proof uploads (JPG, PNG, PDF)
 - **Real-time Validation**: Instant feedback on form inputs
 - **Email Confirmation**: Double email validation with visual indicators
+- **Multi-page Forms**: Registration and contact forms across different pages
 
 ## 🌐 Deployment
 
@@ -198,8 +225,9 @@ For questions or support regarding this website:
 
 - **Organization**: Bengali Cultural Association Spain
 - **Founded**: 2021
-- **Location**: Spain
+- **Location**: Barcelona, Spain
 - **Mission**: Fostering unity and celebrating Bengali cultural events together
+- **Current Focus**: Durga Puja 2K25 celebrations in Barcelona
 
 ## 📄 License
 
@@ -233,12 +261,18 @@ Potential features for future versions:
 
 ## 📊 Performance Metrics
 
+- **Total Codebase**: 21,913 lines across all files
+- **HTML Pages**: 8 pages with semantic structure
+- **CSS**: 9,950 lines (7,354 main + 2,596 mobile)
+- **JavaScript**: 3,455 lines (1,858 main + 1,597 registration)
+- **Image Assets**: 100+ optimized images (WebP, JPG, PNG)
+- **Video Assets**: 4 MP4 files for cultural content
 - **Page Load Time**: < 2 seconds
 - **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices, SEO)
 - **Mobile Performance**: Optimized for mobile devices
 - **SEO Optimized**: Meta tags, structured data, semantic HTML
 - **Image Optimization**: WebP format for better compression
-- **Code Splitting**: Modular JavaScript for better performance
+- **Code Organization**: Modular JavaScript for better performance
 
 ## 🔍 SEO Features
 
@@ -271,9 +305,29 @@ Potential features for future versions:
 
 **Built with ❤️ for the Bengali Cultural Association Spain**
 
-*Celebrating Bengali culture and fostering community unity in Spain*
+*Celebrating Bengali culture and fostering community unity in Barcelona*
+
+## 📋 Current Website Pages
+
+1. **Homepage** (`index.html`) - Hero section, countdown timer, event highlights
+2. **About** (`about.html`) - Organization history and mission
+3. **Attractions** (`attractions.html`) - Event details and cultural attractions
+4. **Schedule** (`schedule.html`) - Festival timeline and event schedule
+5. **Gallery** (`gallery.html`) - Photo gallery organized by year (2022-2024)
+6. **News & Media** (`news-media.html`) - Community updates and media coverage
+7. **Registration** (`registration.html`) - Event registration with payment options
+8. **Contact** (`contact.html`) - Contact information and inquiry form
+
+## 🎯 Key Highlights
+
+- **Durga Puja 2K25 Focus**: Website specifically designed for Barcelona celebrations
+- **Multi-Year Gallery**: Organized photo collections from 2022-2024 events
+- **Comprehensive Media**: News coverage and community program documentation
+- **Sponsor Integration**: Dedicated sections for sponsor logos and banners
+- **Bilingual Support**: Bengali and English content throughout
+- **Mobile-First Design**: Optimized for all device types
 
 **Last Updated**: January 2025
 **Version**: 2.0
 **Status**: Production Ready
-**Deployment**: GitHub Pages + Custom Domain 
+**Deployment**: GitHub Pages + Custom Domain (bcaspain.org) 
