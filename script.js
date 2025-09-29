@@ -230,6 +230,15 @@ function updateCountdown() {
 
 // Initialize countdown timer with proper interval cleanup
 function initCountdown() {
+    // If the countdown element is not present on the page, skip initializing
+    const countdownElement = document.getElementById('countdown');
+    if (!countdownElement) {
+        if (window.countdownInterval) {
+            clearInterval(window.countdownInterval);
+            window.countdownInterval = null;
+        }
+        return;
+    }
     // Clear any existing interval
     if (window.countdownInterval) {
         clearInterval(window.countdownInterval);
@@ -1163,6 +1172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initVideoModal();
     initMobileButtonFix(); // Initialize mobile button fix
     initMobileSlideshowReorder(); // Initialize mobile slideshow reordering
+    initConfetti(); // Launch celebration confetti if present
     
     // Add resize event listener for slideshow reordering
     window.addEventListener('resize', handleSlideshowResize);
@@ -1845,6 +1855,18 @@ style.textContent += `
         animation: pulse 2s infinite;
     }
 
+    /* Desktop spacing tweaks for countdown message */
+    @media (min-width: 1280px) {
+        .countdown-message {
+            gap: 0.5rem;
+            padding: 0.25rem 0;
+            margin: 0.25rem 0;
+        }
+        .countdown-message i {
+            margin: 0 0.25rem;
+        }
+    }
+
     .countdown-message i {
         color: gold;
     }
@@ -1856,3 +1878,53 @@ style.textContent += `
     }
 `;
 document.head.appendChild(style);
+
+// Simple Confetti Animation for Celebration Message
+function initConfetti() {
+    const container = document.getElementById('confetti');
+    if (!container) return;
+
+    container.style.position = 'absolute';
+    container.style.top = '0';
+    container.style.left = '0';
+    container.style.width = '100%';
+    container.style.height = '0';
+    container.style.overflow = 'visible';
+    container.style.pointerEvents = 'none';
+
+    const colors = ['#FF6B35', '#ffd166', '#06d6a0', '#118ab2', '#ef476f', '#ffcc00'];
+    const numPieces = Math.min(120, Math.floor(window.innerWidth / 10));
+
+    for (let i = 0; i < numPieces; i++) {
+        const piece = document.createElement('span');
+        const size = 6 + Math.random() * 8;
+        piece.style.position = 'absolute';
+        piece.style.top = '-10px';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.width = size + 'px';
+        piece.style.height = size * 0.6 + 'px';
+        piece.style.background = colors[i % colors.length];
+        piece.style.opacity = '0.9';
+        piece.style.borderRadius = '2px';
+        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        piece.style.willChange = 'transform, top, left';
+
+        const duration = 1500 + Math.random() * 1500;
+        const horizontal = (Math.random() - 0.5) * 200; // drift left/right
+        const rotate = 360 + Math.random() * 360;
+
+        piece.animate([
+            { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+            { transform: `translate(${horizontal}px, 60vh) rotate(${rotate}deg)`, opacity: 0.9 }
+        ], {
+            duration,
+            easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)',
+            fill: 'forwards'
+        });
+
+        container.appendChild(piece);
+
+        // Cleanup after animation
+        setTimeout(() => piece.remove(), duration + 100);
+    }
+}
