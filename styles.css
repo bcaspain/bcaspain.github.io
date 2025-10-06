@@ -7352,3 +7352,199 @@ section + section {
         max-width: 120px;
     }
 }
+
+/* Durga Puja 2026 Schedule Section */
+.schedule-2026-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.05) 0%, rgba(255, 193, 7, 0.05) 100%);
+    margin: 2rem 0;
+    position: relative;
+}
+
+.schedule-2026-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--primary-color), var(--red));
+}
+
+.schedule-2026-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(220, 53, 69, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.schedule-2026-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red), var(--primary-color), var(--red));
+}
+
+.schedule-table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 600px;
+}
+
+.schedule-table thead {
+    background: linear-gradient(135deg, var(--red), #b71c1c);
+    color: white;
+}
+
+.schedule-table thead th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+.schedule-table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.schedule-table tbody tr:hover {
+    background: rgba(220, 53, 69, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.schedule-table tbody td {
+    padding: 1rem 1.5rem;
+    border: none;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+}
+
+.schedule-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--red);
+}
+
+.schedule-table tbody td:nth-child(2) {
+    color: #666;
+    font-style: italic;
+}
+
+.schedule-table tbody td:nth-child(3) {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.schedule-table tbody td:last-child {
+    color: #888;
+    font-style: italic;
+}
+
+.schedule-note {
+    background: rgba(220, 53, 69, 0.08);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.schedule-note p {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.schedule-note i {
+    color: var(--red);
+    font-size: 1rem;
+}
+
+/* Mobile Responsive Styles for Schedule 2026 */
+@media (max-width: 768px) {
+    .schedule-2026-section {
+        padding: 2rem 0;
+        margin: 1rem 0;
+    }
+    
+    .schedule-2026-content {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    
+    .schedule-table {
+        font-size: 1rem;
+        min-width: 500px;
+    }
+    
+    .schedule-table thead th {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .schedule-table tbody td {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .schedule-note {
+        padding: 0.8rem 1rem;
+    }
+    
+    .schedule-note p {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-2026-content {
+        padding: 1rem;
+        margin: 0 0.5rem;
+    }
+    
+    .schedule-table {
+        min-width: 400px;
+        font-size: 0.9rem;
+    }
+    
+    .schedule-table thead th {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .schedule-table tbody td {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}

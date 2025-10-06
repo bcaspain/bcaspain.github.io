@@ -166,7 +166,7 @@ function updateLastModified() {
 // Countdown Timer
 function updateCountdown() {
     const now = new Date();
-    const targetDate = new Date('2025-09-28T08:00:00+02:00'); // Using ISO 8601 format with timezone offset
+    const targetDate = new Date('2026-10-17T08:00:00+02:00'); // Using ISO 8601 format with timezone offset
     const timeLeft = targetDate.getTime() - now.getTime();
 
     // Calculate time units
@@ -181,7 +181,7 @@ function updateCountdown() {
         const countdownMessage = `
             <div class="countdown-message">
                 <i class="fas fa-star"></i>
-                <span>Durga Puja 2025 has begun!</span>
+                <span>Durga Puja 2026 has begun!</span>
                 <i class="fas fa-star"></i>
             </div>
         `;
