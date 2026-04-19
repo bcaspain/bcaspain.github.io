@@ -390,6 +390,11 @@
       <div class="footer">
         <p>BCA Event Management System v2.0</p>
         <p>Secure QR Verification Platform</p>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;">
+          <a href="../aviso-legal.html" style="color: inherit;">Aviso Legal</a> ·
+          <a href="../privacidad.html" style="color: inherit;">Política de Privacidad</a> ·
+          <a href="../cookies.html" style="color: inherit;">Política de Cookies</a>
+        </p>
       </div>
     </div>
   </div>
@@ -692,7 +697,11 @@
       };
 
       function updateUIAfterScan(text) {
-        document.getElementById("scannedText").innerHTML = `Scanned: <strong>${text}</strong>`;
+        const scannedEl = document.getElementById("scannedText");
+        scannedEl.textContent = "Scanned: ";
+        const strong = document.createElement("strong");
+        strong.textContent = text;
+        scannedEl.appendChild(strong);
         document.getElementById("result").textContent = "Status: Ready to verify";
         document.getElementById("actionBtn").disabled = false;
         document.getElementById("actionBtn").textContent = "📸 Capture & Verify";
@@ -863,7 +872,11 @@
         capturedText = null;
         scanningActive = true;
         workflowStep = 'scanning';
-        document.getElementById("scannedText").innerHTML = 'Scanned: <em>None</em>';
+        const scannedEl = document.getElementById("scannedText");
+        scannedEl.textContent = "Scanned: ";
+        const em = document.createElement("em");
+        em.textContent = "None";
+        scannedEl.appendChild(em);
         document.getElementById("result").textContent = 'Status: Ready to scan';
         document.getElementById("result").className = "";
         document.getElementById("actionBtn").disabled = true;

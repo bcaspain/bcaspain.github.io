@@ -13,15 +13,18 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bcaspain.github.io/">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
-    <script>
+    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-ZHNQ37V3SX');
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
     </script>
+
+    <!-- Klaro consent manager -->
+    <script defer src="klaro.min.js"></script>
+    <script defer src="klaro-config.js"></script>
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,7 +90,7 @@
         .prayaas-tagline { font-size: 1rem !important; }
     }
     </style>
-    <section id="prayaas" class="prayaas-section" style="padding: 3.5rem 0; background: linear-gradient(135deg, #fff5f5 0%, #fff0e6 100%);">
+    <section id="prayaas" class="prayaas-section" style="padding: calc(var(--navbar-height, 70px) + 3.5rem) 0 3.5rem; background: linear-gradient(135deg, #fff5f5 0%, #fff0e6 100%);">
         <div class="container">
             <!-- Small upcoming event label -->
             <!-- <div style="text-align: center; margin-bottom: 1.2rem;">
@@ -109,7 +112,7 @@
 
                         <!-- Org Name -->
                         <div style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 600; opacity: 0.93; margin-bottom: 1rem; letter-spacing: 0.5px;">
-                            Bengali Cultural Association, Spain
+                            Bengali Cultural Association
                         </div>
 
                         <!-- Ribbon -->
@@ -127,26 +130,47 @@
 
                         <!-- Tagline -->
                         <p class="prayaas-tagline" style="font-size: 1.3rem; line-height: 1.75; opacity: 0.92; margin-bottom: 1.6rem; max-width: 600px;">
-                            A cultural fundraiser evening by <strong>BCA</strong> in collaboration with <strong><a href="https://www.semillaparaelcambio.org/" target="_blank" rel="noopener noreferrer" style="color: #ffd54f; text-decoration: underline; font-size: 1.35rem;">NGO Semilla Para el Cambio</a></strong> — celebrating art, community, and giving back.
+                            A cultural fundraiser evening by <strong>BCA</strong> in collaboration with
+                            <br>
+                            <a href="https://www.semillaparaelcambio.org/" target="_blank" rel="noopener noreferrer"
+                               style="display: inline-block; margin-top: 0.5rem; color: #ffd54f; font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 700; font-style: italic; text-decoration: none; letter-spacing: 0.5px; border-bottom: 2px solid rgba(255,213,79,0.5); padding-bottom: 2px; transition: border-color 0.2s;"
+                               onmouseover="this.style.borderBottomColor='#ffd54f'"
+                               onmouseout="this.style.borderBottomColor='rgba(255,213,79,0.5)'">
+                                Semilla Para el Cambio
+                            </a>
+                            <br>
+                            <span style="font-size: 1.15rem; opacity: 0.88;">— celebrating art, community, and giving back.</span>
                         </p>
 
                         <!-- Event Details -->
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 1.4rem;">
-                            <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); padding: 1rem 1.6rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-size: 1.2rem;">
-                                <i class="fas fa-calendar-day" style="margin-right: 0.5rem; opacity: 0.9;"></i><strong>30 May 2026</strong> · Saturday
+                        <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.4rem 1.8rem; margin-bottom: 1.6rem; display: flex; flex-direction: column; gap: 0.85rem;">
+                            <!-- Top row: date · time · price side by side -->
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 0; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; flex: 0 0 auto; padding-right: 1rem;">
+                                    <i class="fas fa-calendar-day" style="opacity: 0.85; flex-shrink: 0;"></i>
+                                    <span><strong>30 May 2026</strong> · Saturday</span>
+                                </div>
+                                <div style="width: 1px; height: 1.2em; background: rgba(255,255,255,0.3); flex-shrink: 0;"></div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; flex: 0 0 auto; padding: 0 1rem;">
+                                    <i class="fas fa-clock" style="opacity: 0.85; flex-shrink: 0;"></i>
+                                    <span><strong>18:00 – 20:00</strong></span>
+                                </div>
+                                <div style="width: 1px; height: 1.2em; background: rgba(255,255,255,0.3); flex-shrink: 0;"></div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; flex: 0 0 auto; padding-left: 1rem;">
+                                    <i class="fas fa-ticket-alt" style="opacity: 0.85; flex-shrink: 0;"></i>
+                                    <span><strong>€10</strong> per person</span>
+                                </div>
                             </div>
-                            <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); padding: 1rem 1.6rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-size: 1.2rem;">
-                                <i class="fas fa-clock" style="margin-right: 0.5rem; opacity: 0.9;"></i><strong>18:00 – 20:00</strong>
+                            <div style="height: 1px; background: rgba(255,255,255,0.15);"></div>
+                            <!-- Venue row -->
+                            <div style="display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.1rem;">
+                                <i class="fas fa-map-marker-alt" style="color: #ffd54f; margin-top: 0.15rem; flex-shrink: 0;"></i>
+                                <a href="https://maps.app.goo.gl/sdLaHJ83Lr3Wde297" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);"
+                                   onmouseover="this.style.borderBottomColor='rgba(255,255,255,0.9)'"
+                                   onmouseout="this.style.borderBottomColor='rgba(255,255,255,0.4)'">
+                                    <strong>Centre Cívic Cotxeres Borrell</strong> · Carrer de Viladomat 2-8, Eixample, Barcelona
+                                </a>
                             </div>
-                            <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); padding: 1rem 1.6rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); font-size: 1.2rem;">
-                                <i class="fas fa-ticket-alt" style="margin-right: 0.5rem; opacity: 0.9;"></i><strong>€10</strong> per person
-                            </div>
-                        </div>
-
-                        <!-- Venue -->
-                        <div style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 2rem; font-size: 1.2rem; opacity: 0.92;">
-                            <i class="fas fa-map-marker-alt" style="color: #ffd54f; margin-top: 0.25rem; flex-shrink: 0; font-size: 1.3rem;"></i>
-                            <span><strong>Centre Cívic Cotxeres Borrell</strong> · Carrer de Viladomat 2-8, Eixample, Barcelona</span>
                         </div>
 
                         <!-- CTA -->
@@ -156,7 +180,6 @@
                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.25)'">
                                 <i class="fas fa-heart"></i> &nbsp; Reserve Your Seat
                             </a>
-                            <span class="prayaas-cta-note" style="font-size: 1.1rem; opacity: 0.88;">💛 All proceeds support <a href="https://www.semillaparaelcambio.org/" target="_blank" rel="noopener noreferrer" style="color: #ffd54f; text-decoration: underline; font-size: 1.25rem; font-weight: 600;">Semilla Para el Cambio</a></span>
                         </div>
                     </div>
 
@@ -449,6 +472,14 @@
                     Preserving and promoting Bengali culture in Barcelona through community events and traditional celebrations.
                 </p>
                 <div class="footer-bottom">
+                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
+                        <a href="aviso-legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal</a> ·
+                        <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a> ·
+                        <a href="cookies.html" style="color: inherit; text-decoration: underline;">Política de Cookies</a>
+                    </p>
+                    <!-- <p style="margin: 0.25rem 0 0.75rem; font-size: 0.85rem; opacity: 0.85;">
+                        Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
+                    </p> -->
                     <p>
                         &copy; 2026 Bengali Cultural Association Barcelona (A registered non-profit organization in Spain). All rights reserved.
                     </p>
@@ -476,6 +507,9 @@
                         });
                         </script>
                         <div style="font-size: 0.95rem; color: #666; margin-top: 6px;">Stay updated with event news and cultural highlights!</div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 4px; max-width: 520px; margin-left: auto; margin-right: auto;">
+                            Al suscribirte consientes el tratamiento de tu correo por Bengali Cultural Association Barcelona para el envío del boletín. Puedes darte de baja cuando quieras. Más información: <a href="privacidad.html" style="color: #888;">Política de Privacidad</a>. /
+                        </div>
                     </div>
                 </div>
             </div>

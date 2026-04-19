@@ -1137,6 +1137,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!validateEmails()) {
             errors.push('Please enter valid matching email addresses');
         }
+
+        // GDPR: explicit consent required before processing personal data (RGPD Art. 6.1.a)
+        const privacyCheckbox = document.getElementById('registrationPrivacy');
+        if (privacyCheckbox && !privacyCheckbox.checked) {
+            errors.push('You must accept the Privacy Policy to continue.');
+        }
         
         // Validate custom donation if there's a value entered
         const customDonationInput = document.getElementById('custom-donation-amount');

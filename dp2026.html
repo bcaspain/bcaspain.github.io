@@ -13,15 +13,18 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bcaspain.github.io">
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
-    <script>
+    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-ZHNQ37V3SX');
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
     </script>
+
+    <!-- Klaro consent manager -->
+    <script defer src="klaro.min.js"></script>
+    <script defer src="klaro-config.js"></script>
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1446,6 +1449,14 @@
                     Preserving and promoting Bengali culture in Barcelona through community events and traditional celebrations.
                 </p>
                 <div class="footer-bottom">
+                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
+                        <a href="aviso-legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal</a> ·
+                        <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a> ·
+                        <a href="cookies.html" style="color: inherit; text-decoration: underline;">Política de Cookies</a>
+                    </p>
+                    <p style="margin: 0.25rem 0 0.75rem; font-size: 0.85rem; opacity: 0.85;">
+                        Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
+                    </p>
                     <p>
                         &copy; 2025 Bengali Cultural Association Barcelona (A registered non-profit organization in Spain). All rights reserved.
                     </p>
@@ -1473,6 +1484,10 @@
                         });
                         </script>
                         <div style="font-size: 0.95rem; color: #666; margin-top: 6px;">Stay updated with event news and cultural highlights!</div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 4px; max-width: 520px; margin-left: auto; margin-right: auto;">
+                            Al suscribirte consientes el tratamiento de tu correo por Bengali Cultural Association Barcelona para el envío del boletín. Puedes darte de baja cuando quieras. Más información: <a href="privacidad.html" style="color: #888;">Política de Privacidad</a>. /
+                            By subscribing you consent to processing of your email by Bengali Cultural Association Barcelona for newsletter purposes. You can unsubscribe at any time. See our <a href="privacidad.html" style="color: #888;">Privacy Policy</a>.
+                        </div>
                     </div>
                     <!-- Website Visitor Counter -->
                     <!-- <div class="visitor-counter">

@@ -666,7 +666,14 @@ function handleContactForm(e) {
         showNotification('Please fill in all required fields.', 'error');
         return;
     }
-    
+
+    // GDPR: explicit consent required before processing personal data (RGPD Art. 6.1.a)
+    const privacyCheckbox = document.getElementById('contactPrivacy');
+    if (privacyCheckbox && !privacyCheckbox.checked) {
+        showNotification('Please accept the Privacy Policy to continue.', 'error');
+        return;
+    }
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.contactEmail)) {
