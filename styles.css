@@ -71,11 +71,11 @@
     cursor: pointer;
     min-height: 80px;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(255, 107, 53, 0.3);
+    -webkit-tap-highlight-color: rgba(232, 114, 12, 0.3);
 }
 
 .hero-features .feature-item:hover {
-    background: rgba(236, 95, 8, 0.05);
+    background: rgba(232, 114, 12, 0.05);
     transform: translateY(-2px);
     border-color: var(--primary-color);
 }
@@ -254,7 +254,7 @@
     
     .play-overlay {
         opacity: 0.9;
-        background: rgba(255, 107, 53, 0.9);
+        background: rgba(232, 114, 12, 0.9);
         gap: 0.3rem;
     }
     
@@ -310,7 +310,7 @@
         min-height: 90px;
         padding: 0.8rem 0.6rem;
         cursor: pointer;
-        -webkit-tap-highlight-color: rgba(255, 107, 53, 0.3);
+        -webkit-tap-highlight-color: rgba(232, 114, 12, 0.3);
         touch-action: manipulation;
     }
     
@@ -321,7 +321,7 @@
     
     .hero-features .feature-item:active .play-overlay {
         opacity: 1;
-        background: rgb(255, 80, 53);
+        background: rgb(192, 57, 43);
         transform: scale(1.05);
     }
 }
@@ -352,7 +352,7 @@
     
     .play-overlay {
         opacity: 0.95;
-        background: rgba(255, 107, 53, 0.95);
+        background: rgba(232, 114, 12, 0.95);
         gap: 0.2rem;
     }
     
@@ -413,7 +413,7 @@
     
     .play-overlay {
         opacity: 1;
-        background: rgba(255, 107, 53, 1);
+        background: rgba(232, 114, 12, 1);
         gap: 0.2rem;
     }
     
@@ -461,7 +461,7 @@
 @media (hover: none) and (pointer: coarse) {
     .hero-features .feature-item:active {
         transform: scale(0.98);
-        background: rgba(236, 95, 8, 0.1);
+        background: rgba(232, 114, 12, 0.1);
         border-color: var(--primary-color);
     }
     
@@ -472,13 +472,13 @@
     
     .hero-features .feature-item:active .play-overlay {
         opacity: 1;
-        background: rgba(255, 107, 53, 1);
+        background: rgba(232, 114, 12, 1);
         transform: scale(1.02);
     }
     
     .play-overlay {
         opacity: 0.8;
-        background: rgba(255, 107, 53, 0.8);
+        background: rgba(232, 114, 12, 0.8);
     }
 }
 
@@ -491,7 +491,7 @@
 .hero-features .feature-item:focus-visible {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 0 0 4px rgba(232, 114, 12, 0.3);
 }
 
 /* Reduced motion support */
@@ -592,9 +592,9 @@
     --gradient-primary: linear-gradient(135deg, var(--red) 100%, var(--yellow) 10%);
     --gradient-secondary: linear-gradient(135deg, var(--yellow) 0%, var(--red) 100%);
     --gradient-hero: linear-gradient(135deg, var(--yellow) 0%, var(--orange) 50%, var(--red) 100%);
-    --shadow-light: 0 2px 10px rgba(253, 126, 20, 0.1);
-    --shadow-medium: 0 5px 20px rgba(253, 126, 20, 0.15);
-    --shadow-heavy: 0 10px 30px rgba(253, 126, 20, 0.2);
+    --shadow-light: 0 2px 10px rgba(192, 57, 43, 0.1);
+    --shadow-medium: 0 5px 20px rgba(192, 57, 43, 0.15);
+    --shadow-heavy: 0 10px 30px rgba(192, 57, 43, 0.2);
     --border-radius: 12px;
     --transition: all 0.3s ease;
     --navbar-height: 70px;
@@ -605,9 +605,9 @@
     --indigo: #6610f2;
     --purple: #6f42c1;
     --pink: #e83e8c;
-    --red: #e11529;
-    --orange: #fd7e14;
-    --yellow: #ffc107;
+    --red: #C0392B;
+    --orange: #e8720c;
+    --yellow: #E6A800;
     --green: #28a745;
     --teal: #20c997;
 }
@@ -632,7 +632,9 @@ body {
 
 /* Smooth Scrolling Container */
 .scroll-container {
-    overflow-y: auto;
+    /* overflow-y intentionally not set — let the viewport handle scrolling.
+       Setting overflow-y:auto on body with html{height:100%} creates a nested
+       scroll context that breaks iOS URL-bar hide/show and momentum scrolling. */
     -webkit-overflow-scrolling: touch;
 }
 
@@ -758,7 +760,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem;
     background: rgba(255, 255, 255, 0.8);
     border-radius: var(--border-radius);
-    border: 2px solid rgba(253, 126, 20, 0.1);
+    border: 2px solid rgba(232, 114, 12, 0.1);
     box-shadow: var(--shadow-light);
 }
 
@@ -948,7 +950,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
 }
 
 .logo-img:hover img {
@@ -1034,9 +1036,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('idol.jpg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, #1a0a0a 0%, #3d0c0c 50%, #1a0a0a 100%);
     z-index: 1;
 }
 
@@ -1093,7 +1093,7 @@ h1, h2, h3, h4, h5, h6 {
     left: -10px;
     right: -10px;
     bottom: -10px;
-    background: linear-gradient(45deg, rgba(255, 193, 7, 0.1), rgba(220, 53, 69, 0.1), rgba(255, 193, 7, 0.1));
+    background: linear-gradient(45deg, rgba(230, 168, 0, 0.1), rgba(192, 57, 43, 0.1), rgba(230, 168, 0, 0.1));
     border-radius: 20px;
     z-index: -1;
     animation: titlePulse 2s ease-in-out infinite;
@@ -1102,15 +1102,15 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes titleGlow {
     0% {
-        filter: drop-shadow(0 0 5px rgba(255, 193, 7, 0.3)) drop-shadow(0 0 10px rgba(220, 53, 69, 0.2));
+        filter: drop-shadow(0 0 5px rgba(230, 168, 0, 0.3)) drop-shadow(0 0 10px rgba(192, 57, 43, 0.2));
         transform: scale(1) translateY(0);
     }
     50% {
-        filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.6)) drop-shadow(0 0 20px rgba(220, 53, 69, 0.4)) drop-shadow(0 0 25px rgba(255, 193, 7, 0.3));
+        filter: drop-shadow(0 0 15px rgba(230, 168, 0, 0.6)) drop-shadow(0 0 20px rgba(192, 57, 43, 0.4)) drop-shadow(0 0 25px rgba(230, 168, 0, 0.3));
         transform: scale(1.02) translateY(-2px);
     }
     100% {
-        filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.4)) drop-shadow(0 0 15px rgba(220, 53, 69, 0.3));
+        filter: drop-shadow(0 0 8px rgba(230, 168, 0, 0.4)) drop-shadow(0 0 15px rgba(192, 57, 43, 0.3));
         transform: scale(1) translateY(0);
     }
 }
@@ -1173,7 +1173,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem;
     border: 2px solid rgba(255, 215, 0, 0.18);
     animation: float 6s ease-in-out infinite;
-    box-shadow: 0 8px 32px rgba(255, 68, 68, 0.12);
+    box-shadow: 0 8px 32px rgba(192, 57, 43, 0.12);
 }
 
 .card-content h3 {
@@ -1542,7 +1542,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
-    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.4);
+    box-shadow: 0 2px 8px rgba(192, 57, 43, 0.4);
 }
 
 .event-content {
@@ -1865,7 +1865,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
-    border: 2px solid rgba(253, 126, 20, 0.15);
+    border: 2px solid rgba(232, 114, 12, 0.15);
     transition: var(--transition);
 }
 
@@ -1901,7 +1901,7 @@ h1, h2, h3, h4, h5, h6 {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(253, 126, 20, 0.2);
+    box-shadow: 0 0 0 3px rgba(232, 114, 12, 0.2);
 }
 
 .checkbox-group {
@@ -2135,7 +2135,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--white);
     transform: translateY(-5px);
     border-color: var(--primary-color);
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+    box-shadow: 0 8px 25px rgba(232, 114, 12, 0.2);
 }
 
 /* Add alternating colors for variety */
@@ -2144,7 +2144,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team div:nth-child(3n+1):hover {
-    background: rgba(220, 53, 69, 0.1);
+    background: rgba(192, 57, 43, 0.1);
 }
 
 .team div:nth-child(3n+2) {
@@ -2152,7 +2152,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team div:nth-child(3n+2):hover {
-    background: rgba(220, 53, 69, 0.1);
+    background: rgba(192, 57, 43, 0.1);
 }
 
 .team div:nth-child(3n+3) {
@@ -2160,7 +2160,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team div:nth-child(3n+3):hover {
-    background: rgba(220, 53, 69, 0.1);
+    background: rgba(192, 57, 43, 0.1);
     color: var(--text-dark);
 }
 
@@ -2247,9 +2247,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Contact Section */
 .contact {
     padding: 6rem 0;
-    /* background: linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(253, 126, 20, 0.05) 100%); */
+    /* background: linear-gradient(135deg, rgba(230, 168, 0, 0.05) 0%, rgba(232, 114, 12, 0.05) 100%); */
     position: relative;
-    border: 2px solid rgba(253, 126, 20, 0.1);
+    border: 2px solid rgba(232, 114, 12, 0.1);
     border-radius: var(--border-radius);
     margin: 2rem 0;
 }
@@ -2284,7 +2284,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
     transition: var(--transition);
-    border: 2px solid rgba(253, 126, 20, 0.15);
+    border: 2px solid rgba(232, 114, 12, 0.15);
 }
 
 .contact-item:hover {
@@ -2336,7 +2336,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Footer */
 .footer {
-    background-color: rgba(220, 53, 69, 0.1) !important;
+    background-color: rgba(192, 57, 43, 0.1) !important;
     padding: 2rem 0 !important;
     margin-top: auto !important; /* Changed from 3rem to auto for sticky footer */
     text-align: center !important;
@@ -2391,7 +2391,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(220, 53, 69, 0.2) !important;
+    border-top: 1px solid rgba(192, 57, 43, 0.2) !important;
     padding-top: 1.5rem !important;
     margin-top: 1.5rem !important;
     width: 100% !important;
@@ -2582,7 +2582,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .nav-link:hover {
-        background: rgba(255, 107, 53, 0.08);
+        background: rgba(232, 114, 12, 0.08);
         transform: translateY(-1px);
     }
     
@@ -2682,7 +2682,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .nav-link:hover {
-        background: rgba(255, 107, 53, 0.08);
+        background: rgba(232, 114, 12, 0.08);
         transform: translateY(-1px);
     }
     
@@ -2800,12 +2800,12 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .nav-menu .nav-link:hover {
-        background-color: rgba(255, 107, 53, 0.1);
+        background-color: rgba(232, 114, 12, 0.1);
         color: var(--primary-color);
     }
     
     .nav-menu .nav-link.active {
-        background-color: rgba(255, 107, 53, 0.2);
+        background-color: rgba(232, 114, 12, 0.2);
         color: var(--primary-color);
     }
 
@@ -2866,12 +2866,12 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .nav-menu .nav-link:hover {
-        background-color: rgba(255, 107, 53, 0.1);
+        background-color: rgba(232, 114, 12, 0.1);
         color: var(--primary-color);
     }
     
     .nav-menu .nav-link.active {
-        background-color: rgba(255, 107, 53, 0.2);
+        background-color: rgba(232, 114, 12, 0.2);
         color: var(--primary-color);
     }
 
@@ -3360,22 +3360,6 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('idol.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.7) blur(0.5px);
-    z-index: 0;
-}
-
-
-
 .hero-content {
     position: relative;
     z-index: 2;
@@ -3471,7 +3455,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(255, 215, 0, 0.1));
+    background: linear-gradient(45deg, rgba(232, 114, 12, 0.1), rgba(255, 215, 0, 0.1));
     pointer-events: none;
 }
 
@@ -3803,7 +3787,7 @@ section + section {
 }
 
 .hero-features .feature-item:hover {
-    background: rgba(236, 95, 8, 0.05);
+    background: rgba(232, 114, 12, 0.05);
     transform: translateY(-2px);
     border-color: var(--primary-color);
 }
@@ -3855,7 +3839,7 @@ section + section {
 /* Touch-friendly interactions */
 @media (hover: none) and (pointer: coarse) {
     .hero-features .feature-item:active {
-        background: rgba(236, 95, 8, 0.1);
+        background: rgba(232, 114, 12, 0.1);
         transform: translateY(-1px);
         border-color: var(--primary-color);
     }
@@ -3873,7 +3857,7 @@ section + section {
 }
 
 .hero-features .feature-item:focus-visible {
-    background: rgba(236, 95, 8, 0.05);
+    background: rgba(232, 114, 12, 0.05);
     border-color: var(--primary-color);
 }
 
@@ -4207,7 +4191,7 @@ section + section {
     }
     
     .hero-features .feature-item:hover {
-        background: rgba(236, 95, 8, 0.05) !important;
+        background: rgba(232, 114, 12, 0.05) !important;
         border-color: var(--primary-color) !important;
         transform: translateY(-2px);
     }
@@ -4327,10 +4311,6 @@ section + section {
 
 /* High DPI displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .hero-background {
-        background-image: url('idol.jpg') !important;
-    }
-    
     .logo-img img {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
@@ -4602,7 +4582,7 @@ section + section {
     }
     
     .hero-features .feature-item:hover {
-        background: rgba(236, 95, 8, 0.05);
+        background: rgba(232, 114, 12, 0.05);
         transform: translateY(-5px);
         border-color: var(--primary-color);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
@@ -4658,7 +4638,7 @@ section + section {
     
     .btn-primary:hover {
         transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        box-shadow: 0 12px 35px rgba(232, 114, 12, 0.4);
     }
     
     /* Enhanced countdown for desktop */
@@ -5028,7 +5008,7 @@ section + section {
     border-radius: 15px;
     margin: 2rem 0;
     border-left: 4px solid var(--primary-color);
-    box-shadow: 0 4px 20px rgba(220, 53, 69, 0.1);
+    box-shadow: 0 4px 20px rgba(192, 57, 43, 0.1);
     position: relative;
 }
 
@@ -5070,8 +5050,8 @@ section + section {
     padding: 2rem;
     border-radius: 15px;
     margin: 2rem 0;
-    border: 2px solid rgba(220, 53, 69, 0.1);
-    box-shadow: 0 6px 25px rgba(220, 53, 69, 0.15);
+    border: 2px solid rgba(192, 57, 43, 0.1);
+    box-shadow: 0 6px 25px rgba(192, 57, 43, 0.15);
 }
 
 .features-section .feature-item {
@@ -5128,8 +5108,8 @@ section + section {
     padding: 2.5rem;
     border-radius: 20px;
     margin: 2rem 0 3rem 0;
-    border: 2px solid rgba(220, 53, 69, 0.15);
-    box-shadow: 0 8px 30px rgba(220, 53, 69, 0.2);
+    border: 2px solid rgba(192, 57, 43, 0.15);
+    box-shadow: 0 8px 30px rgba(192, 57, 43, 0.2);
     position: relative;
     z-index: 1;
 }
@@ -5165,8 +5145,8 @@ section + section {
     padding: 2.5rem;
     border-radius: 20px;
     margin: 2rem 0;
-    border: 2px solid rgba(220, 53, 69, 0.15);
-    box-shadow: 0 8px 30px rgba(220, 53, 69, 0.2);
+    border: 2px solid rgba(192, 57, 43, 0.15);
+    box-shadow: 0 8px 30px rgba(192, 57, 43, 0.2);
     position: relative;
     z-index: 1;
 }
@@ -5701,7 +5681,7 @@ section + section {
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--shadow-light);
-    border: 2px solid rgba(253, 126, 20, 0.15);
+    border: 2px solid rgba(232, 114, 12, 0.15);
     transition: all 0.3s ease;
 }
 
@@ -5734,7 +5714,7 @@ section + section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 45%, rgba(253, 126, 20, 0.1) 50%, transparent 55%);
+    background: linear-gradient(45deg, transparent 45%, rgba(232, 114, 12, 0.1) 50%, transparent 55%);
     pointer-events: none;
     z-index: 1;
     opacity: 0;
@@ -5834,10 +5814,10 @@ section + section {
 
 /* Locations Section (Contact Page) */  
 .locations-section {
-    /* background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(253, 126, 20, 0.1) 100%); */
+    /* background: linear-gradient(135deg, rgba(230, 168, 0, 0.1) 0%, rgba(232, 114, 12, 0.1) 100%); */
     padding: 4rem 0;
     position: relative;
-    /* border: 2px solid rgba(253, 126, 20, 0.15); */
+    /* border: 2px solid rgba(232, 114, 12, 0.15); */
     border-radius: var(--border-radius);
     margin: 2rem 0;
 }
@@ -5856,7 +5836,7 @@ section + section {
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    border: 2px solid rgba(253, 126, 20, 0.15);
+    border: 2px solid rgba(232, 114, 12, 0.15);
     border-left: 4px solid var(--primary-color);
     box-shadow: var(--shadow-light);
 }
@@ -6205,7 +6185,7 @@ section + section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 107, 53, 0.8);
+    background: rgba(232, 114, 12, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6217,7 +6197,7 @@ section + section {
     z-index: 3;
     cursor: pointer;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(255, 107, 53, 0.3);
+    -webkit-tap-highlight-color: rgba(232, 114, 12, 0.3);
 }
 
 .hero-features .feature-item:hover .play-overlay {
@@ -6367,7 +6347,7 @@ section + section {
     
     .play-overlay {
         opacity: 0.9;
-        background: rgba(255, 107, 53, 0.9);
+        background: rgba(232, 114, 12, 0.9);
         gap: 0.3rem;
     }
     
@@ -6423,7 +6403,7 @@ section + section {
         min-height: 90px;
         padding: 0.8rem 0.6rem;
         cursor: pointer;
-        -webkit-tap-highlight-color: rgba(255, 107, 53, 0.3);
+        -webkit-tap-highlight-color: rgba(232, 114, 12, 0.3);
         touch-action: manipulation;
     }
     
@@ -6434,7 +6414,7 @@ section + section {
     
     .hero-features .feature-item:active .play-overlay {
         opacity: 1;
-        background: rgba(255, 107, 53, 1);
+        background: rgba(232, 114, 12, 1);
         transform: scale(1.05);
     }
 }
@@ -6465,7 +6445,7 @@ section + section {
     
     .play-overlay {
         opacity: 0.95;
-        background: rgba(255, 107, 53, 0.95);
+        background: rgba(232, 114, 12, 0.95);
         gap: 0.2rem;
     }
     
@@ -6526,7 +6506,7 @@ section + section {
     
     .play-overlay {
         opacity: 1;
-        background: rgba(255, 107, 53, 1);
+        background: rgba(232, 114, 12, 1);
         gap: 0.2rem;
     }
     
@@ -6574,7 +6554,7 @@ section + section {
 @media (hover: none) and (pointer: coarse) {
     .hero-features .feature-item:active {
         transform: scale(0.98);
-        background: rgba(236, 95, 8, 0.1);
+        background: rgba(232, 114, 12, 0.1);
         border-color: var(--primary-color);
     }
     
@@ -6585,13 +6565,13 @@ section + section {
     
     .hero-features .feature-item:active .play-overlay {
         opacity: 1;
-        background: rgba(255, 107, 53, 1);
+        background: rgba(232, 114, 12, 1);
         transform: scale(1.02);
     }
     
     .play-overlay {
         opacity: 0.8;
-        background: rgba(255, 107, 53, 0.8);
+        background: rgba(232, 114, 12, 0.8);
     }
 }
 
@@ -6604,7 +6584,7 @@ section + section {
 .hero-features .feature-item:focus-visible {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 0 0 4px rgba(232, 114, 12, 0.3);
 }
 
 /* Reduced motion support */
@@ -6870,7 +6850,7 @@ section + section {
 /* Events Section Styles */
 .events-section {
     padding: 2.5rem 0;
-    /* background: linear-gradient(135deg, rgba(220, 53, 69, 0.05) 0%, rgba(255, 193, 7, 0.05) 100%); */
+    /* background: linear-gradient(135deg, rgba(192, 57, 43, 0.05) 0%, rgba(230, 168, 0, 0.05) 100%); */
 }
 
 .events-grid {
@@ -6970,7 +6950,7 @@ section + section {
 }
 
 .schedule-item:hover {
-    background: rgba(220, 53, 69, 0.05);
+    background: rgba(192, 57, 43, 0.05);
     padding-left: 0.5rem;
     border-radius: 5px;
 }
@@ -7024,7 +7004,7 @@ section + section {
     background: var(--red);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.3);
 }
 
 /* Animation Classes */
@@ -7356,7 +7336,7 @@ section + section {
 /* Durga Puja 2026 Schedule Section */
 .schedule-2026-section {
     padding: 4rem 0;
-    background: linear-gradient(135deg, rgba(220, 53, 69, 0.05) 0%, rgba(255, 193, 7, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(192, 57, 43, 0.05) 0%, rgba(230, 168, 0, 0.05) 100%);
     margin: 2rem 0;
     position: relative;
 }
@@ -7376,7 +7356,7 @@ section + section {
     border-radius: 20px;
     padding: 2.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 2px solid rgba(220, 53, 69, 0.1);
+    border: 2px solid rgba(192, 57, 43, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -7429,7 +7409,7 @@ section + section {
 }
 
 .schedule-table tbody tr:hover {
-    background: rgba(220, 53, 69, 0.05);
+    background: rgba(192, 57, 43, 0.05);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -7466,8 +7446,8 @@ section + section {
 }
 
 .schedule-note {
-    background: rgba(220, 53, 69, 0.08);
-    border: 1px solid rgba(220, 53, 69, 0.2);
+    background: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.2);
     border-radius: 12px;
     padding: 1rem 1.5rem;
     text-align: center;
