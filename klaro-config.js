@@ -5,7 +5,7 @@
   var klaroConfig = {
     version: 1,
     elementID: 'klaro',
-    styling: { theme: ['light', 'top', 'wide'] },
+    styling: { theme: ['light', 'bottom', 'wide'] },
     noAutoLoad: false,
     htmlTexts: true,
     embedded: false,
