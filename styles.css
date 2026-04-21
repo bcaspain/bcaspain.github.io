@@ -1065,6 +1065,38 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
+/* Typing / writing animation (e.g., "Coming Soon") */
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid currentColor;
+    width: 0;
+    will-change: width;
+    animation: typing-reveal 3.2s steps(var(--typing-steps, 11), end) infinite, typing-caret 0.8s step-end infinite;
+}
+
+@keyframes typing-reveal {
+    0% { width: 0; }
+    12% { width: 0; }
+    45% { width: calc(var(--typing-ch, 11) * 1ch); }
+    78% { width: calc(var(--typing-ch, 11) * 1ch); }
+    100% { width: 0; }
+}
+
+@keyframes typing-caret {
+    0%, 100% { border-right-color: transparent; }
+    50% { border-right-color: currentColor; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .typing-text {
+        animation: none;
+        border-right: none;
+        width: auto;
+    }
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
