@@ -1,8 +1,20 @@
 // DOM Elements
-const navbar = document.getElementById('navbar');
-const navMenu = document.getElementById('nav-menu');
-const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.querySelectorAll('.nav-link');
+let navbar = null;
+let navMenu = null;
+let navToggle = null;
+let navLinks = [];
+
+function refreshNavDomElements() {
+    navbar = document.getElementById('navbar');
+    navMenu = document.getElementById('nav-menu');
+    navToggle = document.getElementById('nav-toggle');
+    navLinks = document.querySelectorAll('.nav-link');
+}
+
+// Run once for non-injected pages, and again after navbar injection.
+refreshNavDomElements();
+document.addEventListener('DOMContentLoaded', refreshNavDomElements);
+document.addEventListener('navbar:loaded', refreshNavDomElements);
 const backToTopBtn = document.getElementById('backToTop');
 const loading = document.getElementById('loading');
 // Removed lightbox elements to prevent conflicts with gallery.html
@@ -369,19 +381,25 @@ function closeNavMenu() {
 }
 
 // Enhanced Mobile Navigation Initialization
-document.addEventListener('DOMContentLoaded', function() {
+let __mobileNavInitDone = false;
+function initMobileNavigation() {
+    if (__mobileNavInitDone) return;
+
     const toggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const navbar = document.getElementById('navbar');
-    
-    if (toggle) {
-        toggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleNavMenu();
-        });
-    }
-    
+
+    // Navbar may be injected dynamically (navbar.js); if not present yet, try again later.
+    if (!toggle || !navMenu || !navbar) return;
+
+    __mobileNavInitDone = true;
+
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleNavMenu();
+    });
+
     // Close menu when clicking on nav links (mobile/tablet)
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -399,82 +417,83 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Close menu when clicking outside (mobile/tablet) - with better handling
     let clickTimeout;
     document.addEventListener('click', (e) => {
-        if (window.innerWidth < 1280 && navMenu && navMenu.classList.contains('active')) {
+        if (window.innerWidth < 1280 && navMenu.classList.contains('active')) {
             // Clear any existing timeout
             if (clickTimeout) {
                 clearTimeout(clickTimeout);
             }
-            
+
             // Only close if clicking on the overlay, not on menu content
             if (!navMenu.contains(e.target) && !toggle.contains(e.target)) {
                 // Add a delay to prevent immediate closing and allow for proper event handling
                 clickTimeout = setTimeout(() => {
-                    if (navMenu && navMenu.classList.contains('active')) {
+                    if (navMenu.classList.contains('active')) {
                         closeNavMenu();
                     }
                 }, 100);
             }
         }
     }, { passive: true });
-    
+
     // Close menu on escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
             closeNavMenu();
         }
     });
-    
+
     // Close menu on window resize to desktop size
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 1280) {
             closeNavMenu();
         }
     });
-    
+
     // Add touch event handling for better mobile experience
-    if (navMenu) {
-        // Prevent menu from closing when interacting with menu content
-        navMenu.addEventListener('touchstart', (e) => {
-            e.stopPropagation();
-        }, { passive: true });
-        
-        navMenu.addEventListener('touchend', (e) => {
-            e.stopPropagation();
-        }, { passive: true });
-        
-        navMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-        
-        // Prevent menu from closing when scrolling
-        navMenu.addEventListener('scroll', (e) => {
-            e.stopPropagation();
-        }, { passive: true });
-    }
-    
+    // Prevent menu from closing when interacting with menu content
+    navMenu.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+    }, { passive: true });
+
+    navMenu.addEventListener('touchend', (e) => {
+        e.stopPropagation();
+    }, { passive: true });
+
+    navMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    // Prevent menu from closing when scrolling
+    navMenu.addEventListener('scroll', (e) => {
+        e.stopPropagation();
+    }, { passive: true });
+
     // Add a flag to prevent rapid opening/closing
     let isMenuTransitioning = false;
-    
+
     // Override the toggle function to prevent rapid transitions
     const originalToggleNavMenu = toggleNavMenu;
     window.toggleNavMenu = function() {
         if (isMenuTransitioning) return;
-        
+
         isMenuTransitioning = true;
         originalToggleNavMenu();
-        
+
         setTimeout(() => {
             isMenuTransitioning = false;
         }, 500);
     };
-    
+
     // Initialize last modified time
     updateLastModified();
-});
+}
+
+document.addEventListener('DOMContentLoaded', initMobileNavigation);
+document.addEventListener('navbar:loaded', initMobileNavigation);
 
 let isScrolling;
 function updateActiveNavLink() {

@@ -1000,6 +1000,71 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
+/* Nav dropdown (Attractions submenu) */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-toggle {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.nav-dropdown-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.nav-dropdown-icon {
+    font-size: 0.85em;
+    opacity: 0.7;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-dropdown[open] .nav-dropdown-icon {
+    transform: rotate(180deg);
+    opacity: 0.95;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    min-width: 240px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    box-shadow: var(--shadow-medium);
+    padding: 0.55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 1100;
+}
+
+.nav-dropdown:not([open]) .nav-dropdown-menu {
+    display: none;
+}
+
+.nav-dropdown-item {
+    font-size: 1.05rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 12px;
+    color: var(--text-dark);
+}
+
+.nav-dropdown-item::after {
+    display: none;
+}
+
+.nav-dropdown-item:hover {
+    background: rgba(198, 40, 40, 0.08);
+    color: var(--primary-color);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -2807,6 +2872,39 @@ h1, h2, h3, h4, h5, h6 {
     .nav-menu .nav-link.active {
         background-color: rgba(232, 114, 12, 0.2);
         color: var(--primary-color);
+    }
+
+    /* Dropdown inside mobile nav */
+    .nav-dropdown {
+        width: 100%;
+    }
+
+    .nav-dropdown-toggle {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-dropdown-menu {
+        position: static;
+        min-width: 0;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0.25rem 0 0.75rem 0;
+        background: transparent;
+        backdrop-filter: none;
+        gap: 0;
+    }
+
+    .nav-dropdown-item {
+        display: block;
+        padding: 0.9rem 2rem;
+        font-size: 1.15rem;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .nav-toggle {
