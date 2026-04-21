@@ -142,10 +142,19 @@
                             <span style="font-size: 1.15rem; opacity: 0.88;">— celebrating art, community, and giving back.</span>
                         </p>
 
-                        <!-- Event Details -->
-                        <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.4rem 1.8rem; margin-bottom: 1.6rem; display: flex; flex-direction: column; gap: 0.85rem;">
-                            <!-- Top row: date · time · price side by side -->
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 0; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 2.95rem; flex: 0 0 auto; margin-left: auto; padding-left: 1rem;">
+                            <span style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(255,213,79,0.18); border: 1px solid rgba(255,213,79,0.45); color: #ffd54f; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase;">
+                                <i class="fas fa-bell" style="opacity: 0.95;"></i>
+                                Coming Soon
+                            </span>
+                        </div>
+
+                        
+
+                        <!-- Event Details (date/time/price + venue) -->
+                        <!-- <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.4rem 1.8rem; margin-bottom: 1.6rem; display: flex; flex-direction: column; gap: 0.85rem;"> -->
+                            <!-- Event info: date · time · price + status -->
+                            <!-- <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 0; align-items: center;">
                                 <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; flex: 0 0 auto; padding-right: 1rem;">
                                     <i class="fas fa-calendar-day" style="opacity: 0.85; flex-shrink: 0;"></i>
                                     <span><strong>30 May 2026</strong> · Saturday</span>
@@ -160,27 +169,33 @@
                                     <i class="fas fa-ticket-alt" style="opacity: 0.85; flex-shrink: 0;"></i>
                                     <span><strong>€10</strong> per person</span>
                                 </div>
-                            </div>
-                            <div style="height: 1px; background: rgba(255,255,255,0.15);"></div>
-                            <!-- Venue row -->
-                            <div style="display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; flex: 0 0 auto; margin-left: auto; padding-left: 1rem;">
+                                    <span style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(255,213,79,0.18); border: 1px solid rgba(255,213,79,0.45); color: #ffd54f; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase;">
+                                        <i class="fas fa-bell" style="opacity: 0.95;"></i>
+                                        Coming Soon
+                                    </span>
+                                </div>
+                            </div> -->
+                            <!-- <div style="height: 1px; background: rgba(255,255,255,0.15);"></div> -->
+                            <!-- Event location / venue -->
+                            <!-- <div style="display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.1rem;">
                                 <i class="fas fa-map-marker-alt" style="color: #ffd54f; margin-top: 0.15rem; flex-shrink: 0;"></i>
                                 <a href="https://maps.app.goo.gl/sdLaHJ83Lr3Wde297" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);"
                                    onmouseover="this.style.borderBottomColor='rgba(255,255,255,0.9)'"
                                    onmouseout="this.style.borderBottomColor='rgba(255,255,255,0.4)'">
                                     <strong>Centre Cívic Cotxeres Borrell</strong> · Barcelona
                                 </a>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
 
                         <!-- CTA -->
-                        <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
+                        <!-- <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
                             <a href="https://wa.me/+34617537468?text=Hello!%20I%20want%20to%20know%20more%20about%20the%20show%20and%20buy%20tickets%3F" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: white; color: #c62828; padding: 17px 44px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1.25rem; letter-spacing: 0.5px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); transition: transform 0.2s, box-shadow 0.2s;"
                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 28px rgba(0,0,0,0.35)'"
                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.25)'">
                                 <i class="fas fa-heart"></i> &nbsp; Reserve Your Seat
                             </a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- RIGHT: Video + Countdown -->
@@ -230,7 +245,7 @@
 
         <script>
         (function() {
-            var targetDate = new Date('2026-05-30T18:00:00+02:00').getTime();
+            var targetDate = new Date('2026-10-29T18:00:00+02:00').getTime();
             var el = {
                 days: document.getElementById('prayaas-days'),
                 hours: document.getElementById('prayaas-hours'),
