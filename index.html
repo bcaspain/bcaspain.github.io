@@ -251,6 +251,157 @@
         </script>
     </section>
 
+    <!-- Rabindra Jayanti Announcement -->
+    <style>
+    .upcoming-badge {
+        position: relative;
+        overflow: hidden;
+        animation: upcomingPulse 1.7s ease-in-out infinite;
+        box-shadow: 0 10px 26px rgba(211, 47, 47, 0.18);
+    }
+    .upcoming-badge::after {
+        content: '';
+        position: absolute;
+        top: -30%;
+        left: -120%;
+        width: 70%;
+        height: 160%;
+        transform: rotate(18deg);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+        animation: upcomingShimmer 2.6s ease-in-out infinite;
+        pointer-events: none;
+        opacity: 0.9;
+    }
+    @keyframes upcomingPulse {
+        0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 0 rgba(255, 152, 0, 0)); }
+        50% { transform: translateY(-1px); filter: drop-shadow(0 0 12px rgba(255, 152, 0, 0.35)); }
+    }
+    @keyframes upcomingShimmer {
+        0% { left: -120%; opacity: 0.0; }
+        18% { opacity: 0.9; }
+        45% { left: 140%; opacity: 0.0; }
+        100% { left: 140%; opacity: 0.0; }
+    }
+    @media (max-width: 900px) {
+        .rabindra-inner { flex-direction: column !important; }
+        .rabindra-left { padding: 2rem 1.5rem !important; }
+        .rabindra-right { padding: 1.5rem 1.5rem !important; border-left: none !important; border-top: 1px solid rgba(0,0,0,0.08) !important; }
+    }
+    </style>
+    <section id="rabindra-jayanti-announcement" style="padding: 0 0 4.5rem; background: linear-gradient(135deg, #ffffff 0%, #fff7f0 100%);">
+        <div class="container">
+            <div style="background: rgba(255,255,255,0.95); border-radius: 24px; box-shadow: 0 18px 50px rgba(0,0,0,0.10); overflow: hidden; border: 2px solid rgba(232, 114, 12, 0.10);">
+                <div class="rabindra-inner" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 0;">
+                    <!-- LEFT: Info -->
+                    <div class="rabindra-left" style="flex: 1 1 520px; padding: 2.75rem 2.75rem 2.75rem 3.25rem;">
+                        <div class="upcoming-badge" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.95rem; border-radius: 999px; background: rgba(211, 47, 47, 0.10); border: 1px solid rgba(211, 47, 47, 0.22); color: var(--red); font-weight: 900; letter-spacing: 0.7px; text-transform: uppercase; font-size: 0.9rem;">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <span>Upcoming Event-2026</span>
+                        </div>
+
+                        <h2 style="margin: 1.1rem 0 0.35rem; font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4.2vw, 3.3rem); color: #333; line-height: 1.15;">
+                            Rabindra Jayanti
+                        </h2>
+                        <p style="margin: 0 0 1.2rem; color: #555; font-size: 1.12rem; line-height: 1.8; max-width: 720px;">
+                            Celebrate the anniversary of <strong>Rabindranath Tagore</strong> with an evening of music, dance, and poetry.
+                        </p>
+
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.85rem; margin: 1.25rem 0 1.6rem; max-width: 760px;">
+                            <div style="display: flex; gap: 0.8rem; align-items: flex-start;">
+                                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(245, 124, 0, 0.12); color: #f57c00; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;">
+                                    <i class="fas fa-calendar-day" aria-hidden="true"></i>
+                                </div>
+                                <div style="color: #666; line-height: 1.7;">
+                                    <div style="font-weight: 800; color: #333;">Saturday, 9 May, 2026</div>
+                                    <div>Entry from <strong>18:30</strong> · Event <strong>19:00</strong> – <strong>20:30</strong></div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 0.8rem; align-items: flex-start;">
+                                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(46, 125, 50, 0.12); color: #2e7d32; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                </div>
+                                <div style="color: #666; line-height: 1.7;">
+                                    <div style="font-weight: 800; color: #333;">Teatro Calabria</div>
+                                    <div>Calabria 66 · Barcelona · <strong>Free entry</strong></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a class="btn btn-primary" href="rabindra-jayanti-register.html" style="padding: 12px 32px; border-radius: 999px;">
+                                <i class="fas fa-pen-to-square" aria-hidden="true"></i> Register
+                            </a>
+                            <a class="btn btn-secondary" href="rabindra-jayanti.html" style="padding: 12px 32px; border-radius: 999px;">
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i> View more
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Poster (opens overlay) -->
+                    <div class="rabindra-right" style="flex: 0 1 420px; padding: 2.2rem 2.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-left: 1px solid rgba(0,0,0,0.08); background: linear-gradient(135deg, rgba(255, 245, 245, 0.6) 0%, rgba(255, 240, 230, 0.6) 100%);">
+                        <button type="button" class="rabindra-poster-trigger" aria-haspopup="dialog" aria-controls="rabindraPosterModal"
+                            style="display: block; width: 100%; max-width: 360px; padding: 0; border: none; background: transparent; cursor: pointer;">
+                            <img src="events/rabindra-jayanti.png" alt="Rabindra Jayanti poster" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 14px 34px rgba(0,0,0,0.14); display: block; margin: 0 auto;" loading="lazy" />
+                        </button>
+                        <div style="margin-top: 1rem; color: #666; font-size: 0.95rem; line-height: 1.6;">
+                            Click to view the poster.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Poster Overlay Modal -->
+        <div id="rabindraPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" style="display:none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.82); backdrop-filter: blur(6px); padding: 2rem 1rem;">
+            <button type="button" id="rabindraPosterClose" aria-label="Close poster" style="position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.45); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                <img src="events/rabindra-jayanti.png" alt="Rabindra Jayanti poster full size" style="max-width: min(920px, 96vw); max-height: 86vh; width: auto; height: auto; border-radius: 16px; box-shadow: 0 24px 70px rgba(0,0,0,0.45); background: #fff;" />
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            var modal = document.getElementById('rabindraPosterModal');
+            var openBtn = document.querySelector('#rabindra-jayanti-announcement .rabindra-poster-trigger');
+            var closeBtn = document.getElementById('rabindraPosterClose');
+
+            if (!modal || !openBtn || !closeBtn) return;
+
+            function open() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                closeBtn.focus();
+            }
+
+            function close() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                openBtn.focus();
+            }
+
+            openBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                open();
+            });
+
+            closeBtn.addEventListener('click', function() {
+                close();
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) close();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'block' && e.key === 'Escape') close();
+            });
+        })();
+        </script>
+    </section>
+
     <!-- About BCA Section -->
     <section id="about-brief" class="about-brief-section" style="padding: 5rem 0; background: #ffffff;">
         <div class="container">
@@ -286,6 +437,25 @@
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2.5rem auto 0 auto;">
+
+                <!-- Rabindra Jayanti Card -->
+                <a href="rabindra-jayanti.html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="event-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; height: 100%; border-top: 4px solid #f57c00;"
+                         onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)'">
+                        <div style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 3.5rem; color: #f57c00; margin-bottom: 1.2rem;">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3 style="font-size: 1.6rem; font-weight: 700; margin: 0 0 0.6rem 0; color: #333;">Rabindra Jayanti</h3>
+                            <div style="font-size: 0.85rem; color: #f57c00; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">9 May · Teatro Calabria</div>
+                            <p style="color: #666; font-size: 1.05rem; line-height: 1.65; margin: 0 0 1.3rem 0;">
+                                An evening of music, dance, and poetry celebrating Rabindranath Tagore.
+                            </p>
+                            <span style="color: #f57c00; font-weight: 600; font-size: 0.95rem;">View details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
 
                 <!-- Durga Puja Card -->
                 <a href="dp2026.html" style="text-decoration: none; color: inherit; display: block;">

@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Inject secrets into HTML
+        env:
+          RJ_GAS_URL: ${{ secrets.RJ_GAS_URL }}
+        run: |
+          sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" rabindra-jayanti-register.html
+          sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" rabindra-jayanti.html
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
