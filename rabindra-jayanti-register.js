@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var soldOutEl  = document.getElementById('rj-sold-out');
   var submitBtn  = document.getElementById('rj-submit');
   var successEl  = document.getElementById('rj-success');
+  var errorEl    = document.getElementById('rj-error');
+  var errorText  = document.getElementById('rj-error-text');
 
   window.rjShowSoldOut = function () {
     if (soldOutEl)  soldOutEl.style.display  = 'block';
@@ -52,6 +54,40 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (!form || !submitBtn) return;
+
+  // ── Inline error helpers ───────────────────────────────────────────────────
+  function showError(msg, fieldEl) {
+    if (errorText) errorText.textContent = msg;
+    if (errorEl)   errorEl.style.display = 'block';
+    if (fieldEl) {
+      fieldEl.style.borderColor = '#b71c1c';
+      fieldEl.focus();
+    }
+    if (errorEl) errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function clearError(fieldEl) {
+    if (errorEl)  errorEl.style.display = 'none';
+    if (errorText) errorText.textContent = '';
+    if (fieldEl)  fieldEl.style.borderColor = '';
+  }
+
+  function clearFieldError(fieldEl) {
+    if (fieldEl) fieldEl.style.borderColor = '';
+  }
+
+  // Clear banner + field highlight as the user edits
+  [
+    { id: 'rj-name' },
+    { id: 'rj-email' },
+    { id: 'rj-email-confirm' },
+    { id: 'rj-contact' },
+  ].forEach(function (item) {
+    var el = document.getElementById(item.id);
+    if (el) {
+      el.addEventListener('input', function () { clearFieldError(el); });
+    }
+  });
 
   // ── Helpers ────────────────────────────────────────────────────────────────
   function sanitize(str, maxLen) {
@@ -103,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    clearError();
     if (successEl) successEl.style.display = 'none';
 
     // Guard: check live seat count
@@ -112,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (!GAS_READY) {
-      alert('Registration is not yet available. Please contact the organizers.');
+      showError('Registration is not yet available. Please contact the organizers.');
       return;
     }
 
@@ -124,10 +161,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var attendees    = Math.max(1, Math.min(4, parseInt((attendeesEl ? attendeesEl.value : '1'), 10) || 1));
     var coupon       = sanitize((couponEl ? couponEl.value : '').toUpperCase(), 50);
 
-    if (!name || name.length < 2)      { alert('Please enter a valid name.');          return; }
-    if (!email || !email.includes('@')) { alert('Please enter a valid email.');         return; }
-    if (email !== emailConfirm)        { alert('Emails do not match.');                return; }
-    if (!contact || contact.length < 9){ alert('Please enter a valid phone number.');  return; }
+    if (!name || name.length < 2)      { showError('Please enter a valid name (at least 2 characters).', nameEl);         return; }
+    if (!email || !email.includes('@')) { showError('Please enter a valid email address.', emailEl);                       return; }
+    if (email !== emailConfirm)         { showError('Email addresses do not match. Please check and try again.', emailConfirmEl); return; }
+    if (!contact || contact.length < 9) { showError('Please enter a valid phone number (at least 9 digits).', contactEl); return; }
 
     var params = new URLSearchParams({
       action:    'register',
@@ -147,17 +184,20 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (data) {
         if (!data || data.ok !== true) {
           var msg = (data && data.error) ? data.error : 'Registration failed. Please try again.';
-          // If the API says it's full, switch to sold-out state instead of an alert
+
           if (data && (data.left === 0 || /fully booked/i.test(data.error || ''))) {
             updateSeatsAfterReg(0, window.rjSeatsCapacity || 110);
             window.rjShowSoldOut();
+          } else if (data && /already registered/i.test(data.error || '')) {
+            showError('This email address is already registered. If you need help, please contact the organizers.', emailEl);
           } else {
-            alert(msg);
+            showError(msg);
           }
           return;
         }
 
         form.reset();
+        clearError();
 
         if (typeof data.left === 'number') {
           updateSeatsAfterReg(data.left, data.capacity || 110);
@@ -165,17 +205,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (successEl) {
-          var msg = 'Registration confirmed!';
-          msg += ' A confirmation email has been sent. Thank you!';
-          successEl.textContent   = msg;
+          successEl.textContent   = 'Registration confirmed! A confirmation email has been sent. Thank you!';
           successEl.style.display = 'block';
           successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          alert('Registration confirmed! Thank you!');
         }
       })
       .catch(function () {
-        alert('Registration failed. Please check your connection or contact the organizers.');
+        showError('Could not reach the server. Please check your connection or contact the organizers.');
       })
       .finally(function () {
         submitBtn.innerHTML = originalHTML;
