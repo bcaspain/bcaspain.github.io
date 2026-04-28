@@ -1,0 +1,37 @@
+<!-- Shared Navigation Bar (loaded via navbar.js) -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 10px;">
+        <span class="logo-img" style="display: inline-block;">
+          <img src="BCA-logo.webp" alt="BCA Spain Logo" style="width:50px;height:50px;border-radius:50%;object-fit:cover;vertical-align:middle;" />
+        </span>
+        <span class="logo-text" style="font-size: 1.3rem; font-weight: 600; display: inline-block; vertical-align:middle;">BCA Spain</span>
+      </a>
+    </div>
+
+    <div class="nav-menu" id="nav-menu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <details class="nav-dropdown">
+        <summary class="nav-link nav-dropdown-toggle">
+          Attractions <i class="fas fa-chevron-down nav-dropdown-icon" aria-hidden="true"></i>
+        </summary>
+        <div class="nav-dropdown-menu" role="menu" aria-label="Attractions submenu">
+          <a href="attractions.html" class="nav-link nav-dropdown-item" role="menuitem">Events</a>
+          <a href="rabindra-jayanti.html" class="nav-link nav-dropdown-item" role="menuitem">Rabindra Jayanti</a>
+          <a href="dp2026.html" class="nav-link nav-dropdown-item" role="menuitem">Durga Puja 2026</a>
+        </div>
+      </details>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="news-media.html" class="nav-link">News & Media</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+
+    <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-controls="nav-menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional QR Ticket Verification System" />
+  <meta name="author" content="BCA Event Management" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>QR Ticket Verification - BCA Events</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎫</text></svg>">
+  
+  <!-- External Libraries -->
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" type="text/javascript"></script>
+  
+  <!-- Production Styles -->
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --success-color: #27ae60;
+      --error-color: #e74c3c;
+      --warning-color: #f39c12;
+      --text-color: #2c3e50;
+      --bg-color: #f9fafb;
+      --card-bg: #ffffff;
+      --border-radius: 12px;
+      --shadow: 0 8px 16px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-color);
+      margin: 0;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      margin-bottom: 1rem;
+      color: var(--text-color);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    /* Verification Screen Styles */
+    #verificationScreen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+    }
+
+    .verification-form {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 400px;
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .verification-form p {
+      margin-bottom: 1.5rem;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .verification-form input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: 2px;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .verification-form input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+
+    .verification-form button {
+      width: 100%;
+      background-color: var(--success-color);
+      transition: var(--transition);
+    }
+
+    .verification-form button:hover {
+      background-color: #229954;
+      transform: translateY(-2px);
+    }
+
+    .verification-form button:active {
+      transform: translateY(0);
+    }
+
+    /* QR Scanner Styles */
+    #qrScannerScreen {
+      display: none;
+      width: 100%;
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 280px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 0 auto 1rem auto;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .status-display {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .status-display p {
+      font-size: 1rem;
+      margin: 0.3rem 0;
+      min-height: 1.5em;
+    }
+
+    #scannedText strong {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    #result {
+      min-height: 1.5em;
+      font-weight: 600;
+    }
+
+    .status-valid {
+      color: var(--success-color);
+    }
+
+    .status-invalid {
+      color: var(--error-color);
+    }
+
+    .status-warning {
+      color: var(--warning-color);
+    }
+
+    button {
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      margin: 0.3rem 0.5rem;
+      min-width: 120px;
+      font-weight: 600;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    #buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      gap: 10px;
+      width: 100%;
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Center single button */
+    #buttons:has(button:only-child) {
+      justify-content: center;
+    }
+
+    /* Ensure button is centered when alone */
+    #actionBtn {
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Loading and Error States */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .error-message, .success-message {
+      margin-top: 1rem;
+      font-weight: 600;
+      padding: 0.75rem;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .error-message {
+      color: var(--error-color);
+      background: rgba(231, 76, 60, 0.1);
+      border: 1px solid rgba(231, 76, 60, 0.2);
+    }
+
+    .success-message {
+      color: var(--success-color);
+      background: rgba(39, 174, 96, 0.1);
+      border: 1px solid rgba(39, 174, 96, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .verification-form {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      #reader {
+        max-width: 250px;
+      }
+      
+      #buttons {
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .container {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #reader {
+        max-width: 220px;
+      }
+      
+      #buttons {
+        max-width: 220px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      button {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+        min-width: 100px;
+      }
+    }
+
+    /* Accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Print Styles */
+    @media print {
+      body { background: white; }
+      button, #reader { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Verification Screen -->
+    <div id="verificationScreen">
+      <h2>🔐 Access Verification</h2>
+      <div class="verification-form">
+        <p>Please enter the verification code to access the QR Scanner</p>
+        <input 
+          type="text" 
+          id="verificationCode" 
+          placeholder="Enter Code" 
+          maxlength="6"
+          autocomplete="off"
+          aria-label="Verification Code"
+        >
+        <button id="verifyBtn">
+          <span class="spinner" id="verifySpinner" style="display: none;"></span>
+          🔓 Unlock Scanner
+        </button>
+        <div id="verificationMessage"></div>
+      </div>
+    </div>
+
+    <!-- QR Scanner Screen (Hidden until verified) -->
+    <div id="qrScannerScreen">
+      <h1>🎫 BCA Bhoog QR Ticket Verification</h1>
+
+      <div id="reader"></div>
+
+      <div class="status-display">
+        <p id="scannedText">Scanned: <em>None</em></p>
+        <p id="result">Status: Ready to scan</p>
+      </div>
+
+      <div id="buttons">
+        <button id="actionBtn" disabled>🎫 Scan QR Code</button>
+      </div>
+
+      <div class="footer">
+        <p>BCA Event Management System v2.0</p>
+        <p>Secure QR Verification Platform</p>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;">
+          <a href="../aviso-legal.html" style="color: inherit;">Aviso Legal</a> ·
+          <a href="../privacidad.html" style="color: inherit;">Política de Privacidad</a> ·
+          <a href="../cookies.html" style="color: inherit;">Política de Cookies</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Production Configuration
+    const CONFIG = {
+      VERIFICATION_HASH: "8a42bf6c280b1fb622b6ad63e3aebbb300849e0d1fcb35de9dfe2eb39cee0a0f", // Update with actual hash
+      API_TIMEOUT: 8000, // Reduced from 15 seconds to 8 seconds for faster response
+      AUTO_RESTART_DELAY: 1000, // Reduced from 2 seconds to 1 second
+      MAX_RETRIES: 3,
+      DEBUG_MODE: false, // Set to false in production
+      CACHE_DURATION: 300000, // 5 minutes cache duration
+      MAX_CACHE_SIZE: 1000 // Maximum number of cached tickets
+    };
+
+    // Analytics and Monitoring
+    const Analytics = {
+      log: function(event, data = {}) {
+        if (CONFIG.DEBUG_MODE) {
+          console.log(`[Analytics] ${event}:`, data);
+        }
+        // In production, send to your analytics service
+        // Example: gtag('event', event, data);
+      },
+      
+      error: function(error, context = {}) {
+        console.error(`[Error] ${error.message}`, context);
+        // In production, send to error tracking service
+        // Example: Sentry.captureException(error, { extra: context });
+      }
+    };
+
+    // Smart Caching System
+    const TicketCache = {
+      cache: new Map(),
+      
+      // Generate cache key from QR text
+      getKey: function(qrText) {
+        return qrText.trim().toLowerCase();
+      },
+      
+      // Get cached result
+      get: function(qrText) {
+        const key = this.getKey(qrText);
+        const cached = this.cache.get(key);
+        
+        if (cached && Date.now() - cached.timestamp < CONFIG.CACHE_DURATION) {
+          if (CONFIG.DEBUG_MODE) {
+            console.log(`[Cache] Hit for: ${qrText.substring(0, 20)}...`);
+          }
+          Analytics.log('cache_hit', { qrText: qrText.substring(0, 20) + '...' });
+          return cached.result;
+        }
+        
+        if (cached && Date.now() - cached.timestamp >= CONFIG.CACHE_DURATION) {
+          this.cache.delete(key); // Remove expired cache
+          if (CONFIG.DEBUG_MODE) {
+            console.log(`[Cache] Expired for: ${qrText.substring(0, 20)}...`);
+          }
+        }
+        
+        return null;
+      },
+      
+      // Set cache result
+      set: function(qrText, result) {
+        const key = this.getKey(qrText);
+        
+        // Clean up old cache if we're at max size
+        if (this.cache.size >= CONFIG.MAX_CACHE_SIZE) {
+          this.cleanup();
+        }
+        
+        this.cache.set(key, {
+          result: result,
+          timestamp: Date.now(),
+          qrText: qrText
+        });
+        
+        if (CONFIG.DEBUG_MODE) {
+          console.log(`[Cache] Stored for: ${qrText.substring(0, 20)}...`);
+        }
+        Analytics.log('cache_set', { qrText: qrText.substring(0, 20) + '...', result: result });
+      },
+      
+      // Clear expired cache entries
+      cleanup: function() {
+        const now = Date.now();
+        let deletedCount = 0;
+        
+        for (const [key, value] of this.cache.entries()) {
+          if (now - value.timestamp >= CONFIG.CACHE_DURATION) {
+            this.cache.delete(key);
+            deletedCount++;
+          }
+        }
+        
+        if (CONFIG.DEBUG_MODE && deletedCount > 0) {
+          console.log(`[Cache] Cleaned up ${deletedCount} expired entries`);
+        }
+      },
+      
+      // Clear all cache
+      clear: function() {
+        this.cache.clear();
+        if (CONFIG.DEBUG_MODE) {
+          console.log('[Cache] All cache cleared');
+        }
+        Analytics.log('cache_cleared');
+      },
+      
+      // Get cache statistics
+      getStats: function() {
+        const now = Date.now();
+        let validEntries = 0;
+        let expiredEntries = 0;
+        
+        for (const [key, value] of this.cache.entries()) {
+          if (now - value.timestamp < CONFIG.CACHE_DURATION) {
+            validEntries++;
+          } else {
+            expiredEntries++;
+          }
+        }
+        
+        return {
+          total: this.cache.size,
+          valid: validEntries,
+          expired: expiredEntries,
+          maxSize: CONFIG.MAX_CACHE_SIZE
+        };
+      }
+    };
+
+    // DOM elements
+    const verificationScreen = document.getElementById("verificationScreen");
+    const qrScannerScreen = document.getElementById("qrScannerScreen");
+    const verificationCodeInput = document.getElementById("verificationCode");
+    const verifyBtn = document.getElementById("verifyBtn");
+    const verificationMessage = document.getElementById("verificationMessage");
+    const verifySpinner = document.getElementById("verifySpinner");
+
+    // State management
+    let appState = {
+      isVerified: false,
+      retryCount: 0,
+      lastScanTime: null,
+      totalScans: 0,
+      successfulScans: 0
+    };
+
+    // Generate SHA-256 hash of the input
+    async function generateHash(input) {
+      try {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(input);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+      } catch (error) {
+        Analytics.error(error, { context: 'hash_generation' });
+        throw new Error('Failed to generate hash');
+      }
+    }
+
+    // Check if already verified (stored in sessionStorage)
+    function checkAlreadyVerified() {
+      try {
+        const verified = sessionStorage.getItem('qrScannerVerified');
+        if (verified === 'true') {
+          appState.isVerified = true;
+          showQRScanner();
+          Analytics.log('session_restored');
+        }
+      } catch (error) {
+        Analytics.error(error, { context: 'session_check' });
+      }
+    }
+
+    // Show loading state
+    function showLoading(show = true) {
+      if (show) {
+        verifySpinner.style.display = 'inline-block';
+        verifyBtn.disabled = true;
+        verifyBtn.textContent = 'Verifying...';
+      } else {
+        verifySpinner.style.display = 'none';
+        verifyBtn.disabled = false;
+        verifyBtn.innerHTML = '<span class="spinner" id="verifySpinner" style="display: none;"></span>🔓 Unlock Scanner';
+      }
+    }
+
+    // Verify the access code using hash comparison
+    async function verifyAccess() {
+      const enteredCode = verificationCodeInput.value.trim();
+      
+      if (enteredCode === '') {
+        showMessage('❌ Please enter a verification code.', 'error');
+        return;
+      }
+
+      showLoading(true);
+      
+      try {
+        // Generate hash of entered code
+        const enteredHash = await generateHash(enteredCode);
+        
+        if (CONFIG.DEBUG_MODE) {
+          console.log('Entered hash:', enteredHash);
+        }
+        
+        // Compare with stored hash
+        if (enteredHash === CONFIG.VERIFICATION_HASH) {
+          // Store verification in session
+          try {
+            sessionStorage.setItem('qrScannerVerified', 'true');
+            appState.isVerified = true;
+            showQRScanner();
+            showMessage('✅ Access granted!', 'success');
+            Analytics.log('access_granted');
+          } catch (error) {
+            Analytics.error(error, { context: 'session_storage' });
+            // Continue without session storage
+            showQRScanner();
+            showMessage('✅ Access granted!', 'success');
+          }
+        } else {
+          showMessage('❌ Invalid verification code. Please try again.', 'error');
+          verificationCodeInput.value = '';
+          verificationCodeInput.focus();
+          Analytics.log('access_denied', { reason: 'invalid_code' });
+        }
+      } catch (error) {
+        Analytics.error(error, { context: 'verification' });
+        showMessage('❌ Verification error. Please try again.', 'error');
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    // Show success/error message
+    function showMessage(message, type) {
+      verificationMessage.textContent = message;
+      verificationMessage.className = type === 'success' ? 'success-message' : 'error-message';
+      
+      if (type === 'success') {
+        setTimeout(() => {
+          verificationMessage.textContent = '';
+        }, 3000);
+      }
+    }
+
+    // Show QR Scanner interface
+    function showQRScanner() {
+      verificationScreen.style.display = 'none';
+      qrScannerScreen.style.display = 'block';
+      
+      // Initialize QR scanner after showing
+      setTimeout(() => {
+        initializeQRScanner();
+      }, 100);
+    }
+
+    // Event listeners for verification
+    verifyBtn.addEventListener('click', verifyAccess);
+    verificationCodeInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        verifyAccess();
+      }
+    });
+
+    // Auto-focus on input when page loads
+    verificationCodeInput.focus();
+
+    // Check if already verified on page load
+    checkAlreadyVerified();
+
+    // QR Scanner functionality (only initialized after verification)
+    function initializeQRScanner() {
+      let lastScannedText = null;
+      let capturedText = null;
+      let currentStream = null;
+      let scanningActive = true;
+      let workflowStep = 'scanning';
+      
+      // Get the current script URL for API calls
+      const scriptUrl = "https://script.google.com/macros/s/AKfycbwtHDFMZDu8XYuwV0EzVauJ804SGcJhBHDSE7EXeoOZDQzvRLAjR4ziyE8pnVPhSAGEIQ/exec";
+
+      const qrScanner = new Html5Qrcode("reader");
+      const config = { 
+        fps: 30,
+        qrbox: { width: 200, height: 200 }, // Smaller QR box for mobile
+        aspectRatio: 1.0,
+        disableFlip: false,
+        experimentalFeatures: {
+          useBarCodeDetectorIfSupported: true
+        }
+      };
+
+      function updateUIAfterScan(text) {
+        const scannedEl = document.getElementById("scannedText");
+        scannedEl.textContent = "Scanned: ";
+        const strong = document.createElement("strong");
+        strong.textContent = text;
+        scannedEl.appendChild(strong);
+        document.getElementById("result").textContent = "Status: Ready to verify";
+        document.getElementById("actionBtn").disabled = false;
+        document.getElementById("actionBtn").textContent = "📸 Capture & Verify";
+        workflowStep = 'capturing';
+        
+        Analytics.log('qr_scanned', { text: text.substring(0, 20) + '...' });
+      }
+
+      function handleScan(qrText) {
+        if (!scanningActive) return;
+        if (qrText === lastScannedText) return;
+        lastScannedText = qrText;
+        updateUIAfterScan(qrText);
+      }
+
+      function executeWorkflow() {
+        if (workflowStep === 'capturing') {
+          capturedText = lastScannedText;
+          if (!capturedText) return;
+
+          scanningActive = false;
+          qrScanner.stop().then(() => {
+            document.getElementById("result").textContent = "🔍 Verifying ticket...";
+            document.getElementById("actionBtn").textContent = "⏳ Verifying...";
+            document.getElementById("actionBtn").disabled = true;
+            workflowStep = 'verifying';
+            
+            verifyTicket();
+          }).catch(err => {
+            Analytics.error(err, { context: 'scanner_stop' });
+            document.getElementById("result").textContent = "🔍 Verifying ticket...";
+            document.getElementById("actionBtn").textContent = "⏳ Verifying...";
+            document.getElementById("actionBtn").disabled = true;
+            workflowStep = 'verifying';
+            verifyTicket();
+          });
+        }
+      }
+
+      async function verifyTicket() {
+        if (!capturedText) return;
+        
+        // Check cache first for instant response
+        const cachedResult = TicketCache.get(capturedText);
+        if (cachedResult) {
+          // Use cached result for instant response
+          document.getElementById("result").textContent = "⚡ Instant verification from cache";
+          
+          // Process cached result
+          processVerificationResult(cachedResult, true);
+          return;
+        }
+        
+        // No cache hit, proceed with API call
+        document.getElementById("result").textContent = "🔍 Verifying ticket...";
+        appState.lastScanTime = Date.now();
+        
+        const apiUrl = `${scriptUrl}?qrText=${encodeURIComponent(capturedText)}`;
+        
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), CONFIG.API_TIMEOUT);
+        
+        try {
+          const response = await fetch(apiUrl, {
+            method: 'GET',
+            signal: controller.signal,
+            cache: 'no-cache'
+          });
+          
+          clearTimeout(timeoutId);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+          
+          const data = await response.json();
+          
+          if (CONFIG.DEBUG_MODE) {
+            console.log('API Response:', data);
+          }
+          
+          appState.totalScans++;
+          
+          // Cache the result for future use
+          TicketCache.set(capturedText, data);
+          
+          // Process the result
+          processVerificationResult(data, false);
+          
+        } catch (error) {
+          clearTimeout(timeoutId);
+          Analytics.error(error, { context: 'ticket_verification' });
+          
+          if (error.name === 'AbortError') {
+            document.getElementById("result").textContent = "⏰ Request timeout. Please try again.";
+          } else {
+            document.getElementById("result").textContent = "❌ Network error. Please try again.";
+          }
+          
+          document.getElementById("result").className = "status-invalid";
+          document.getElementById("actionBtn").textContent = "🔄 Scan Again";
+          document.getElementById("actionBtn").disabled = false;
+          workflowStep = 'scanning';
+        }
+      }
+
+      // Process verification result (cached or fresh)
+      function processVerificationResult(data, fromCache = false) {
+        const cacheIndicator = fromCache ? " ⚡" : "";
+        
+        if (data.ok && data.code === "CHECKED_IN") {
+          appState.successfulScans++;
+          document.getElementById("result").textContent = data.message + cacheIndicator;
+          document.getElementById("result").className = "status-valid";
+          document.getElementById("actionBtn").textContent = "✅ Success!";
+          document.getElementById("actionBtn").disabled = true;
+          workflowStep = 'completed';
+          
+          Analytics.log('ticket_verified', { 
+            success: true, 
+            responseTime: fromCache ? 0 : Date.now() - appState.lastScanTime,
+            fromCache: fromCache
+          });
+          
+          setTimeout(() => {
+            restartScanning();
+          }, CONFIG.AUTO_RESTART_DELAY);
+          
+        } else if (data.code === "ALREADY_USED") {
+          document.getElementById("result").textContent = data.message + cacheIndicator;
+          document.getElementById("result").className = "status-warning";
+          document.getElementById("actionBtn").textContent = "🔄 Scan Again";
+          document.getElementById("actionBtn").disabled = false;
+          workflowStep = 'scanning';
+          
+          Analytics.log('ticket_already_used', { fromCache: fromCache });
+          
+        } else if (data.code === "NOT_FOUND") {
+          document.getElementById("result").textContent = data.message + cacheIndicator;
+          document.getElementById("result").className = "status-invalid";
+          document.getElementById("actionBtn").textContent = "🔄 Scan Again";
+          document.getElementById("actionBtn").disabled = false;
+          workflowStep = 'scanning';
+          
+          Analytics.log('ticket_not_found', { fromCache: fromCache });
+          
+        } else {
+          document.getElementById("result").textContent = "❌ Unexpected response from server" + cacheIndicator;
+          document.getElementById("result").className = "status-invalid";
+          document.getElementById("actionBtn").textContent = "🔄 Scan Again";
+          document.getElementById("actionBtn").disabled = false;
+          workflowStep = 'scanning';
+          
+          Analytics.log('unexpected_response', { data, fromCache: fromCache });
+        }
+      }
+
+      document.getElementById("actionBtn").addEventListener("click", () => {
+        if (workflowStep === 'capturing') {
+          executeWorkflow();
+        } else if (workflowStep === 'scanning') {
+          restartScanning();
+        }
+      });
+
+      function restartScanning() {
+        lastScannedText = null;
+        capturedText = null;
+        scanningActive = true;
+        workflowStep = 'scanning';
+        const scannedEl = document.getElementById("scannedText");
+        scannedEl.textContent = "Scanned: ";
+        const em = document.createElement("em");
+        em.textContent = "None";
+        scannedEl.appendChild(em);
+        document.getElementById("result").textContent = 'Status: Ready to scan';
+        document.getElementById("result").className = "";
+        document.getElementById("actionBtn").disabled = true;
+        document.getElementById("actionBtn").textContent = "🎫 Scan QR Code";
+
+        qrScanner.start({ facingMode: "environment" }, config, handleScan)
+          .then(stream => {
+            currentStream = stream;
+          }).catch(err => {
+            Analytics.error(err, { context: 'scanner_start' });
+            document.getElementById("result").textContent = "❌ Camera error: " + err;
+          });
+      }
+
+      // Start scanning on load
+      Html5Qrcode.getCameras()
+        .then(cameras => {
+          if (cameras && cameras.length) {
+            qrScanner.start({ facingMode: "environment" }, config, handleScan)
+              .then(stream => {
+                currentStream = stream;
+                Analytics.log('scanner_started');
+              });
+          } else {
+            document.getElementById("result").textContent = "❌ No camera found.";
+            Analytics.log('no_camera_found');
+          }
+        }).catch(err => {
+          Analytics.error(err, { context: 'camera_detection' });
+          document.getElementById("result").textContent = "❌ Camera error: " + err;
+        });
+    }
+
+    // Production error handling
+    window.addEventListener('error', (event) => {
+      Analytics.error(event.error, { context: 'global_error' });
+    });
+
+    window.addEventListener('unhandledrejection', (event) => {
+      Analytics.error(new Error(event.reason), { context: 'unhandled_promise' });
+    });
+
+    // Performance monitoring
+    window.addEventListener('load', () => {
+      const loadTime = performance.now();
+      Analytics.log('page_load', { loadTime: Math.round(loadTime) });
+      
+      // Log cache stats on page load
+      if (CONFIG.DEBUG_MODE) {
+        const cacheStats = TicketCache.getStats();
+        console.log('[Cache] Initial stats:', cacheStats);
+      }
+    });
+
+    // Cache management functions (accessible from console for debugging)
+    window.TicketCache = TicketCache;
+    window.getCacheStats = function() {
+      const stats = TicketCache.getStats();
+      console.log('📊 Cache Statistics:', stats);
+      return stats;
+    };
+    
+    window.clearCache = function() {
+      TicketCache.clear();
+      console.log('🗑️ Cache cleared');
+    };
+    
+    window.showCachePerformance = function() {
+      const stats = TicketCache.getStats();
+      const hitRate = stats.total > 0 ? ((stats.valid / stats.total) * 100).toFixed(1) : 0;
+      
+      console.log(`
+🚀 Cache Performance Report:
+📊 Total Entries: ${stats.total}
+✅ Valid Entries: ${stats.valid}
+⏰ Expired Entries: ${stats.expired}
+🎯 Hit Rate: ${hitRate}%
+📏 Max Size: ${stats.maxSize}
+⏱️ Cache Duration: ${CONFIG.CACHE_DURATION / 1000}s
+      `);
+    };
+
+    // Auto-cleanup cache every 5 minutes
+    setInterval(() => {
+      TicketCache.cleanup();
+    }, 300000); // 5 minutes
+
+    // Service Worker registration (for offline support)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            if (CONFIG.DEBUG_MODE) {
+              console.log('SW registered: ', registration);
+            }
+          })
+          .catch(registrationError => {
+            if (CONFIG.DEBUG_MODE) {
+              console.log('SW registration failed: ', registrationError);
+            }
+          });
+      });
+    }
+  </script>
+</body>
+</html>

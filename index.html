@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Bengali Cultural Association Barcelona — Celebrating Bengali Culture in Spain</title>
+    <meta name="description" content="Bengali Cultural Association of India in Spain (BCA) — a non-profit founded in 2021, preserving and promoting Bengali culture in Barcelona through Durga Puja, Poila Boisakh, concerts, and community events.">
+    <meta name="author" content="Bengali Cultural Association Barcelona">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Bengali Cultural Association Barcelona">
+    <meta property="og:description" content="Celebrating Bengali culture in Spain — Durga Puja, Poila Boisakh, concerts, and community events by BCA Spain.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bcaspain.github.io/">
+
+    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
+    </script>
+
+    <!-- Klaro consent manager -->
+    <script defer src="klaro.min.js"></script>
+    <script defer src="klaro-config.js"></script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+
+    <!-- Shared navbar include -->
+    <script defer src="navbar.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body class="scroll-container">
+    <div id="navbar-placeholder"></div>
+
+    <!-- Prayaas Concert Featured Poster -->
+    <style>
+    @media (max-width: 768px) {
+        .prayaas-inner { flex-direction: column !important; }
+        .prayaas-left { padding: 2rem 1.5rem !important; }
+        .prayaas-right { border-left: none !important; border-top: 1px solid rgba(255,255,255,0.15) !important; padding: 1.5rem 1.5rem !important; }
+        #prayaas-countdown { grid-template-columns: repeat(4, 1fr) !important; min-width: 0; }
+        #prayaas-countdown > div { min-width: 0; padding: 0.7rem 0.4rem !important; }
+        .prayaas-tagline { font-size: 1.1rem !important; }
+        .prayaas-cta-note { font-size: 0.95rem !important; }
+    }
+    @media (max-width: 480px) {
+        .prayaas-left { padding: 1.5rem 1rem !important; }
+        #prayaas-countdown > div > div:first-child { font-size: 2.2rem !important; }
+        .prayaas-tagline { font-size: 1rem !important; }
+    }
+    </style>
+    <section id="prayaas" class="prayaas-section" style="padding: calc(var(--navbar-height, 70px) + 3.5rem) 0 3.5rem; background: linear-gradient(135deg, #fff5f5 0%, #fff0e6 100%);">
+        <div class="container">
+            <!-- Small upcoming event label -->
+            <!-- <div style="text-align: center; margin-bottom: 1.2rem;">
+                <span style="display: inline-block; background: #7b1e1e; color: white; padding: 7px 22px; border-radius: 50px; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">
+                    <i class="fas fa-star"></i> &nbsp; Upcoming Event
+                </span>
+            </div> -->
+
+            <div class="prayaas-poster" style="background: linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%); border-radius: 24px; box-shadow: 0 20px 60px rgba(198, 40, 40, 0.45); overflow: hidden; position: relative;">
+
+                <!-- Decorative pattern overlay -->
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.07) 0%, transparent 50%); pointer-events: none;"></div>
+
+                <!-- Desktop two-column layout -->
+                <div class="prayaas-inner" style="position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 0; color: white;">
+
+                    <!-- LEFT: Event Info -->
+                    <div class="prayaas-left" style="flex: 1 1 380px; padding: 3rem 2.5rem 3rem 3.5rem; text-align: left;">
+
+                        <!-- Org Name -->
+                        <div style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 600; opacity: 0.93; margin-bottom: 1rem; letter-spacing: 0.5px;">
+                            Bengali Cultural Association
+                        </div>
+
+                        <!-- Ribbon -->
+                        <div style="display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 10px 26px; border-radius: 50px; font-size: 1.15rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.25);">
+                            <i class="fas fa-music"></i> &nbsp; Fundraiser Concert
+                        </div>
+
+                        <!-- Title -->
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(3.8rem, 7.5vw, 6.5rem); font-weight: 700; margin: 0 0 0.4rem 0; text-shadow: 0 4px 20px rgba(0,0,0,0.3); letter-spacing: 1px; line-height: 1;">
+                            Prayaas
+                        </h2>
+                        <p style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300; font-style: italic; margin: 0 0 1.4rem 0; opacity: 0.95;">
+                            Rhythms of Hope
+                        </p>
+
+                        <!-- Tagline -->
+                        <p class="prayaas-tagline" style="font-size: 1.3rem; line-height: 1.75; opacity: 0.92; margin-bottom: 1.6rem; max-width: 600px;">
+                            - in collaboration with
+                            <br>
+                            <a href="https://www.semillaparaelcambio.org/" target="_blank" rel="noopener noreferrer"
+                               style="display: inline-block; margin-top: 0.5rem; color: #ffd54f; font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 700; font-style: italic; text-decoration: none; letter-spacing: 0.5px; border-bottom: 2px solid rgba(255,213,79,0.5); padding-bottom: 2px; transition: border-color 0.2s;"
+                               onmouseover="this.style.borderBottomColor='#ffd54f'"
+                               onmouseout="this.style.borderBottomColor='rgba(255,213,79,0.5)'">
+                                Semilla Para el Cambio
+                            </a>
+                            <br>
+                            <span style="font-size: 1.15rem; opacity: 0.88;">— celebrating art, community, and giving back.</span>
+                        </p>
+
+                        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.95rem; flex: 0 0 auto; margin-left: auto; padding-left: 1rem;">
+                            <span style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(255,213,79,0.18); border: 1px solid rgba(255,213,79,0.45); color: #ffd54f; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase;">
+                                <i class="fas fa-bell" style="opacity: 0.95;"></i>
+                                <span class="typing-text" style="--typing-ch: 16; --typing-steps: 10;">Coming Soon</span>
+                            </span>
+                        </div>
+
+                        
+
+                        <!-- Event Details (date/time/price + venue) -->
+                        <!-- <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.4rem 1.8rem; margin-bottom: 1.6rem; display: flex; flex-direction: column; gap: 0.85rem;"> -->
+                            <!-- Event info: date · time · price + status -->
+                            <!-- <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 0; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; flex: 0 0 auto; padding-right: 1rem;">
+                                    <i class="fas fa-calendar-day" style="opacity: 0.85; flex-shrink: 0;"></i>
+                                    <span><strong>30 May 2026</strong> · Saturday</span>
+                                </div>
+                                <div style="width: 1px; height: 1.2em; background: rgba(255,255,255,0.3); flex-shrink: 0;"></div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; flex: 0 0 auto; padding: 0 1rem;">
+                                    <i class="fas fa-clock" style="opacity: 0.85; flex-shrink: 0;"></i>
+                                    <span><strong>18:00 – 20:00</strong></span>
+                                </div>
+                                <div style="width: 1px; height: 1.2em; background: rgba(255,255,255,0.3); flex-shrink: 0;"></div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; flex: 0 0 auto; padding-left: 1rem;">
+                                    <i class="fas fa-ticket-alt" style="opacity: 0.85; flex-shrink: 0;"></i>
+                                    <span><strong>€10</strong> per person</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; flex: 0 0 auto; margin-left: auto; padding-left: 1rem;">
+                                    <span style="display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(255,213,79,0.18); border: 1px solid rgba(255,213,79,0.45); color: #ffd54f; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase;">
+                                        <i class="fas fa-bell" style="opacity: 0.95;"></i>
+                                        Coming Soon
+                                    </span>
+                                </div>
+                            </div> -->
+                            <!-- <div style="height: 1px; background: rgba(255,255,255,0.15);"></div> -->
+                            <!-- Event location / venue -->
+                            <!-- <div style="display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.1rem;">
+                                <i class="fas fa-map-marker-alt" style="color: #ffd54f; margin-top: 0.15rem; flex-shrink: 0;"></i>
+                                <a href="https://maps.app.goo.gl/sdLaHJ83Lr3Wde297" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);"
+                                   onmouseover="this.style.borderBottomColor='rgba(255,255,255,0.9)'"
+                                   onmouseout="this.style.borderBottomColor='rgba(255,255,255,0.4)'">
+                                    <strong>Centre Cívic Cotxeres Borrell</strong> · Barcelona
+                                </a>
+                            </div> -->
+                        <!-- </div> -->
+
+                        <!-- CTA -->
+                        <!-- <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
+                            <a href="https://wa.me/+34617537468?text=Hello!%20I%20want%20to%20know%20more%20about%20the%20show%20and%20buy%20tickets%3F" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: white; color: #c62828; padding: 17px 44px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1.25rem; letter-spacing: 0.5px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); transition: transform 0.2s, box-shadow 0.2s;"
+                               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 28px rgba(0,0,0,0.35)'"
+                               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.25)'">
+                                <i class="fas fa-heart"></i> &nbsp; Reserve Your Seat
+                            </a>
+                        </div> -->
+                    </div>
+
+                    <!-- RIGHT: Video + Countdown -->
+                    <div class="prayaas-right" style="flex: 0 1 460px; padding: 3rem 3rem 3rem 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-left: 1px solid rgba(255,255,255,0.15);">
+                        <!-- Semilla video -->
+                        <div style="font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85; margin-bottom: 0.8rem;">
+                            <i class="fas fa-play-circle"></i> &nbsp; About Semilla Para el Cambio
+                        </div>
+                        <div style="width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 2rem;">
+                            <iframe
+                                width="100%" height="230"
+                                src="https://www.youtube.com/embed/zB28ybL9O_8"
+                                title="About Semilla Para el Cambio"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                style="display: block;">
+                            </iframe>
+                        </div>
+
+                        <div style="font-size: 1.05rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.85; margin-bottom: 1.3rem;">
+                            <i class="fas fa-hourglass-half"></i> Countdown to Prayaas
+                        </div>
+                        <div id="prayaas-countdown" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; width: 100%;" aria-live="polite">
+                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
+                                <div id="prayaas-days" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Days</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
+                                <div id="prayaas-hours" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Hours</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
+                                <div id="prayaas-minutes" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Mins</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
+                                <div id="prayaas-seconds" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Secs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            var targetDate = new Date('2026-10-29T18:00:00+02:00').getTime();
+            var el = {
+                days: document.getElementById('prayaas-days'),
+                hours: document.getElementById('prayaas-hours'),
+                minutes: document.getElementById('prayaas-minutes'),
+                seconds: document.getElementById('prayaas-seconds')
+            };
+            var wrap = document.getElementById('prayaas-countdown');
+
+            function tick() {
+                var diff = targetDate - Date.now();
+                if (diff <= 0) {
+                    if (wrap) wrap.innerHTML = '<div style="font-size: 1.1rem; font-weight: 600; padding: 1rem; grid-column: 1/-1;"><i class="fas fa-star"></i> &nbsp; Happening now! &nbsp; <i class="fas fa-star"></i></div>';
+                    clearInterval(timer);
+                    return;
+                }
+                var d = Math.floor(diff / 86400000);
+                var h = Math.floor((diff % 86400000) / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
+                if (el.days) el.days.textContent = String(d).padStart(2, '0');
+                if (el.hours) el.hours.textContent = String(h).padStart(2, '0');
+                if (el.minutes) el.minutes.textContent = String(m).padStart(2, '0');
+                if (el.seconds) el.seconds.textContent = String(s).padStart(2, '0');
+            }
+            tick();
+            var timer = setInterval(tick, 1000);
+        })();
+        </script>
+    </section>
+
+    <!-- Rabindra Jayanti Announcement -->
+    <style>
+    .upcoming-badge {
+        position: relative;
+        overflow: hidden;
+        animation: upcomingPulse 1.7s ease-in-out infinite;
+        box-shadow: 0 10px 26px rgba(211, 47, 47, 0.18);
+    }
+    .upcoming-badge::after {
+        content: '';
+        position: absolute;
+        top: -30%;
+        left: -120%;
+        width: 70%;
+        height: 160%;
+        transform: rotate(18deg);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+        animation: upcomingShimmer 2.6s ease-in-out infinite;
+        pointer-events: none;
+        opacity: 0.9;
+    }
+    @keyframes upcomingPulse {
+        0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 0 rgba(255, 152, 0, 0)); }
+        50% { transform: translateY(-1px); filter: drop-shadow(0 0 12px rgba(255, 152, 0, 0.35)); }
+    }
+    @keyframes upcomingShimmer {
+        0% { left: -120%; opacity: 0.0; }
+        18% { opacity: 0.9; }
+        45% { left: 140%; opacity: 0.0; }
+        100% { left: 140%; opacity: 0.0; }
+    }
+    @media (max-width: 900px) {
+        .rabindra-inner { flex-direction: column !important; }
+        .rabindra-left { padding: 2rem 1.5rem !important; }
+        .rabindra-right { padding: 1.5rem 1.5rem !important; border-left: none !important; border-top: 1px solid rgba(0,0,0,0.08) !important; }
+    }
+    </style>
+    <section id="rabindra-jayanti-announcement" style="padding: 0 0 4.5rem; background: linear-gradient(135deg, #ffffff 0%, #fff7f0 100%);">
+        <div class="container">
+            <div style="background: rgba(255,255,255,0.95); border-radius: 24px; box-shadow: 0 18px 50px rgba(0,0,0,0.10); overflow: hidden; border: 2px solid rgba(232, 114, 12, 0.10);">
+                <div class="rabindra-inner" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 0;">
+                    <!-- LEFT: Info -->
+                    <div class="rabindra-left" style="flex: 1 1 520px; padding: 2.75rem 2.75rem 2.75rem 3.25rem;">
+                        <div class="upcoming-badge" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.95rem; border-radius: 999px; background: rgba(211, 47, 47, 0.10); border: 1px solid rgba(211, 47, 47, 0.22); color: var(--red); font-weight: 900; letter-spacing: 0.7px; text-transform: uppercase; font-size: 0.9rem;">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <span>Upcoming Event-2026</span>
+                        </div>
+
+                        <h2 style="margin: 1.1rem 0 0.35rem; font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4.2vw, 3.3rem); color: #333; line-height: 1.15;">
+                            Rabindra Jayanti
+                        </h2>
+                        <p style="margin: 0 0 1.2rem; color: #555; font-size: 1.12rem; line-height: 1.8; max-width: 720px;">
+                            Celebrate the anniversary of <strong>Rabindranath Tagore</strong> with an evening of music, dance, and poetry.
+                        </p>
+
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.85rem; margin: 1.25rem 0 1.6rem; max-width: 760px;">
+                            <div style="display: flex; gap: 0.8rem; align-items: flex-start;">
+                                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(245, 124, 0, 0.12); color: #f57c00; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;">
+                                    <i class="fas fa-calendar-day" aria-hidden="true"></i>
+                                </div>
+                                <div style="color: #666; line-height: 1.7;">
+                                    <div style="font-weight: 800; color: #333;">Saturday, 9 May, 2026</div>
+                                    <div>Entry from <strong>18:30</strong> · Event <strong>19:00</strong> – <strong>20:30</strong></div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 0.8rem; align-items: flex-start;">
+                                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(46, 125, 50, 0.12); color: #2e7d32; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                </div>
+                                <div style="color: #666; line-height: 1.7;">
+                                    <div style="font-weight: 800; color: #333;">Teatro Calabria</div>
+                                    <div>Calabria 66 · Barcelona · <strong>Free entry</strong></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a class="btn btn-primary" href="rabindra-jayanti-register.html" style="padding: 12px 32px; border-radius: 999px;">
+                                <i class="fas fa-pen-to-square" aria-hidden="true"></i> Register
+                            </a>
+                            <a class="btn btn-secondary" href="rabindra-jayanti.html" style="padding: 12px 32px; border-radius: 999px;">
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i> View more
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Poster (opens overlay) -->
+                    <div class="rabindra-right" style="flex: 0 1 420px; padding: 2.2rem 2.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-left: 1px solid rgba(0,0,0,0.08); background: linear-gradient(135deg, rgba(255, 245, 245, 0.6) 0%, rgba(255, 240, 230, 0.6) 100%);">
+                        <button type="button" class="rabindra-poster-trigger" aria-haspopup="dialog" aria-controls="rabindraPosterModal"
+                            style="display: block; width: 100%; max-width: 360px; padding: 0; border: none; background: transparent; cursor: pointer;">
+                            <img src="events/rabindra-jayanti.png" alt="Rabindra Jayanti poster" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 14px 34px rgba(0,0,0,0.14); display: block; margin: 0 auto;" loading="lazy" />
+                        </button>
+                        <div style="margin-top: 1rem; color: #666; font-size: 0.95rem; line-height: 1.6;">
+                            Click to view the poster.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Poster Overlay Modal -->
+        <div id="rabindraPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" style="display:none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.82); backdrop-filter: blur(6px); padding: 2rem 1rem;">
+            <button type="button" id="rabindraPosterClose" aria-label="Close poster" style="position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.45); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                <img src="events/rabindra-jayanti.png" alt="Rabindra Jayanti poster full size" style="max-width: min(920px, 96vw); max-height: 86vh; width: auto; height: auto; border-radius: 16px; box-shadow: 0 24px 70px rgba(0,0,0,0.45); background: #fff;" />
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            var modal = document.getElementById('rabindraPosterModal');
+            var openBtn = document.querySelector('#rabindra-jayanti-announcement .rabindra-poster-trigger');
+            var closeBtn = document.getElementById('rabindraPosterClose');
+
+            if (!modal || !openBtn || !closeBtn) return;
+
+            function open() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                closeBtn.focus();
+            }
+
+            function close() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                openBtn.focus();
+            }
+
+            openBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                open();
+            });
+
+            closeBtn.addEventListener('click', function() {
+                close();
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) close();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (modal.style.display === 'block' && e.key === 'Escape') close();
+            });
+        })();
+        </script>
+    </section>
+
+    <!-- About BCA Section -->
+    <section id="about-brief" class="about-brief-section" style="padding: 5rem 0; background: #ffffff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Who We Are</h2>
+                <p class="section-subtitle">Bringing Bengal closer to Barcelona, one celebration at a time.</p>
+            </div>
+            <div style="max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.15rem; line-height: 1.85; color: #444;">
+                <p>
+                    The <strong>Bengali Cultural Association of India in Spain</strong> is a registered non-profit organisation founded in 2021. We are a community of Bengalis and well-wishers who have made Spain our home, united by a shared love for our heritage, language, and traditions.
+                </p>
+                <p>
+                    Our mission is to preserve and promote Bengali culture across Spain — through festivals, music, dance, literature, food, and service to the community. We welcome everyone who wishes to experience the warmth and colour of Bengal.
+                </p>
+                <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#events" class="btn btn-primary" style="padding: 12px 32px; border-radius: 50px;">
+                        <i class="fas fa-calendar-alt"></i> Explore Our Events
+                    </a>
+                    <a href="about.html" class="btn btn-secondary" style="padding: 12px 32px; border-radius: 50px;">
+                        <i class="fas fa-info-circle"></i> About BCA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Events Section -->
+    <section id="events" class="events-section" style="padding: 5rem 0; background: #f8f9fa;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Events</h2>
+                <p class="section-subtitle">Throughout the year, we bring the community together to celebrate Bengal's rich cultural calendar.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2.5rem auto 0 auto;">
+
+                <!-- Rabindra Jayanti Card -->
+                <a href="rabindra-jayanti.html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="event-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; height: 100%; border-top: 4px solid #f57c00;"
+                         onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)'">
+                        <div style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 3.5rem; color: #f57c00; margin-bottom: 1.2rem;">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3 style="font-size: 1.6rem; font-weight: 700; margin: 0 0 0.6rem 0; color: #333;">Rabindra Jayanti</h3>
+                            <div style="font-size: 0.85rem; color: #f57c00; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">9 May · Teatro Calabria</div>
+                            <p style="color: #666; font-size: 1.05rem; line-height: 1.65; margin: 0 0 1.3rem 0;">
+                                An evening of music, dance, and poetry celebrating Rabindranath Tagore.
+                            </p>
+                            <span style="color: #f57c00; font-weight: 600; font-size: 0.95rem;">View details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Durga Puja Card -->
+                <a href="dp2026.html" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="event-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; height: 100%; border-top: 4px solid var(--red, #d32f2f);"
+                         onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)'">
+                        <div style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 3.5rem; color: var(--red, #d32f2f); margin-bottom: 1.2rem;">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <h3 style="font-size: 1.6rem; font-weight: 700; margin: 0 0 0.6rem 0; color: #333;">Durga Puja 2026</h3>
+                            <div style="font-size: 0.85rem; color: var(--red, #d32f2f); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">17 – 21 October 2026</div>
+                            <p style="color: #666; font-size: 1.05rem; line-height: 1.65; margin: 0 0 1.3rem 0;">
+                                Our flagship festival — five days of cultural performances, authentic Bengali cuisine, music, and community celebration.
+                            </p>
+                            <span style="color: var(--red, #d32f2f); font-weight: 600; font-size: 0.95rem;">Explore Durga Puja <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Poila Boisakh Card -->
+                <div class="event-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); height: 100%; border-top: 4px solid #f57c00;">
+                    <div style="padding: 2rem; text-align: center;">
+                        <div style="font-size: 3.5rem; color: #f57c00; margin-bottom: 1.2rem;">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin: 0 0 0.6rem 0; color: #333;">Poila Boisakh</h3>
+                        <div style="font-size: 0.85rem; color: #f57c00; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">Bengali New Year</div>
+                        <p style="color: #666; font-size: 1.05rem; line-height: 1.65; margin: 0;">
+                            Ringing in the Bengali New Year with traditional attire, music, dance, and a grand feast — a day filled with hope and new beginnings.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Prayaas Concert Card -->
+                <a href="#prayaas" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="event-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; height: 100%; border-top: 4px solid #7b1e1e;"
+                         onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)'">
+                        <div style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 3.5rem; color: #7b1e1e; margin-bottom: 1.2rem;">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <h3 style="font-size: 1.6rem; font-weight: 700; margin: 0 0 0.6rem 0; color: #333;">Concerts</h3>
+                            <div style="font-size: 0.85rem; color: #7b1e1e; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">Prayaas · 30 May 2026</div>
+                            <p style="color: #666; font-size: 1.05rem; line-height: 1.65; margin: 0 0 1.3rem 0;">
+                                Live music evenings that celebrate Bengali artistry — classical, folk, and contemporary — often in support of meaningful causes.
+                            </p>
+                            <span style="color: #7b1e1e; font-weight: 600; font-size: 0.95rem;">See Upcoming Concert <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Cultural Programs Card -->
+                <div class="event-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); height: 100%; border-top: 4px solid #2e7d32;">
+                    <div style="padding: 2rem; text-align: center;">
+                        <div style="font-size: 3.5rem; color: #2e7d32; margin-bottom: 1.2rem;">
+                            <i class="fas fa-theater-masks"></i>
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin: 0 0 0.6rem 0; color: #333;">Cultural Programs</h3>
+                        <div style="font-size: 0.85rem; color: #2e7d32; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">Year-round</div>
+                        <p style="color: #666; font-size: 1.05rem; line-height: 1.65; margin: 0;">
+                            Dance performances, recitations, theatre, and workshops — nurturing Bengali arts among children and adults alike.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Teaser -->
+    <section id="gallery-teaser" class="gallery-teaser-section" style="padding: 5rem 0; background: #ffffff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Moments from Our Community</h2>
+                <p class="section-subtitle">A glimpse into our celebrations, performances, and gatherings.</p>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="gallery.html" class="btn btn-primary" style="padding: 12px 32px; border-radius: 50px;">
+                    <i class="fas fa-images"></i> View Full Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Teaser -->
+    <section id="sponsors-teaser" class="sponsors-teaser-section" style="padding: 3rem 0; background: #f8f9fa;">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h3 style="color: var(--red, #d32f2f); font-size: 1.9rem; font-weight: 700; margin-bottom: 0.9rem;">
+                    <i class="fas fa-handshake"></i> &nbsp; With Gratitude to Our Sponsors
+                </h3>
+                <p style="color: #666; font-size: 1.1rem; line-height: 1.65; margin-bottom: 1.6rem;">
+                    Our events are made possible thanks to the generous support of our sponsors and partners. See the full list on our Durga Puja 2026 page.
+                </p>
+                <a href="dp2026.html#sponsors" class="btn btn-secondary" style="padding: 10px 28px; border-radius: 50px;">
+                    View Sponsors
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Links Section -->
+    <section id="contact" class="social-media-section" style="background: #f8f9fa; padding: 3rem 0; margin: 2rem 0;">
+        <div class="container">
+            <div class="social-media-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h3 class="social-title" style="color: var(--red); font-size: 2rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    Follow Us
+                </h3>
+                <p class="social-subtitle" style="color: #666; font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.6;">
+                    Stay connected with our community and get the latest updates on events and celebrations
+                </p>
+
+                <div class="social-icons-container" style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                    <a href="https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/" target="_blank" rel="noopener noreferrer"
+                       class="social-icon-link"
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #1877F2; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(24, 119, 242, 0.4)'"
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(24, 119, 242, 0.3)'"
+                       title="Follow us on Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/spain_bca" target="_blank" rel="noopener noreferrer"
+                       class="social-icon-link"
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: linear-gradient(45deg, #E4405F, #C13584); color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(228, 64, 95, 0.4)'"
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(228, 64, 95, 0.3)'"
+                       title="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="https://youtube.com/@bengaliculturalassociation?si=NB5TkAc9gZsgX11i" target="_blank" rel="noopener noreferrer"
+                       class="social-icon-link"
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #FF0000; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(255, 0, 0, 0.4)'"
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 0, 0, 0.3)'"
+                       title="Subscribe to our YouTube channel">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                    <a href="https://wa.me/34693005986" target="_blank" rel="noopener noreferrer"
+                       class="social-icon-link"
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(37, 211, 102, 0.4)'"
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(37, 211, 102, 0.3)'"
+                       title="Contact us on WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                    <a href="mailto: info@bcaspain.org"
+                       class="social-icon-link"
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #EA4335; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(234, 67, 53, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(234, 67, 53, 0.4)'"
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(234, 67, 53, 0.3)'"
+                       title="Send us an email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="BCA-logo.webp" alt="BCA Spain Logo" />
+                    <span>Bengali Cultural Association Barcelona (A registered non-profit organization in Spain)</span>
+                </div>
+                <p>
+                    Preserving and promoting Bengali culture in Barcelona through community events and traditional celebrations.
+                </p>
+                <div class="footer-bottom">
+                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
+                        <a href="aviso-legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal</a> ·
+                        <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a> ·
+                        <a href="cookies.html" style="color: inherit; text-decoration: underline;">Política de Cookies</a>
+                    </p>
+                    <!-- <p style="margin: 0.25rem 0 0.75rem; font-size: 0.85rem; opacity: 0.85;">
+                        #Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
+                    </p> -->
+                    <p>
+                        &copy; 2026 Bengali Cultural Association Barcelona (A registered non-profit organization in Spain). All rights reserved.
+                    </p>
+                    <!-- Newsletter Signup -->
+                    <div class="newsletter-signup" style="margin: 1.5rem 0; text-align: center;">
+                        <form action="#" method="post" style="display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center;">
+                            <label for="newsletter-email" style="font-weight: 500; margin-right: 8px;">Join our newsletter:</label>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required style="padding: 6px 12px; border-radius: 4px; border: 1px solid #ccc; min-width: 220px;">
+                            <button type="submit" class="btn btn-primary" style="padding: 6px 18px; border-radius: 4px; font-weight: 500; background: var(--red); color: #fff; border: none; cursor: pointer;">Subscribe</button>
+                        </form>
+                        <script>
+                        document.querySelector('.newsletter-signup form').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            var email = document.getElementById('newsletter-email').value;
+                            var form = e.target;
+                            fetch(`https://script.google.com/macros/s/AKfycbzeD51Us6rwvdLCOG6eF_1nYUY6KEbldXXOlnsZO2nGhlKkAiM1sVCnY5_k2SsLYAVc/exec?email=${encodeURIComponent(email)}`)
+                                .then(response => response.text())
+                                .then(data => {
+                                    form.reset();
+                                    alert(data);
+                                })
+                                .catch(error => {
+                                    alert('Subscription failed. Try again.');
+                                });
+                        });
+                        </script>
+                        <div style="font-size: 0.95rem; color: #666; margin-top: 6px;">Stay updated with event news and cultural highlights!</div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 4px; max-width: 520px; margin-left: auto; margin-right: auto;">
+                            Al suscribirte consientes el tratamiento de tu correo por Bengali Cultural Association Barcelona para el envío del boletín. Puedes darte de baja cuando quieras. Más información: <a href="privacidad.html" style="color: #888;">Política de Privacidad</a>. /
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

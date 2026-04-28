@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>News & Media - Durga Puja 2K25 Barcelona</title>
+    <meta name="description" content="Latest news, media coverage, and updates from Bengali Cultural Association Barcelona. Stay informed about our events and community activities.">
+    <meta name="author" content="Bengali Cultural Association Barcelona">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="News & Media - Durga Puja 2K25 Barcelona">
+    <meta property="og:description" content="Latest news, media coverage, and updates from Bengali Cultural Association Barcelona">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bcaspain.github.io/news-media.html">
+    
+    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
+    </script>
+
+    <!-- Klaro consent manager -->
+    <script defer src="klaro.min.js"></script>
+    <script defer src="klaro-config.js"></script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+
+    <!-- Shared navbar include -->
+    <script defer src="navbar.js"></script>
+    
+    <!-- News & Media Page Specific Styles -->
+    <style>
+        /* Mixed Content Layout Heights */
+        .newspaper-card {
+            min-height: 600px !important;
+        }
+        
+        .video-card {
+            min-height: 350px !important;
+        }
+        
+        .social-card {
+            min-height: 300px !important;
+        }
+        
+        .press-item {
+            min-height: 300px !important;
+        }
+
+        /* Responsive Mixed Content Layout */
+        @media (max-width: 768px) {
+            .mixed-content-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .newspaper-card,
+            .video-card,
+            .social-card,
+            .press-item {
+                margin: 0 !important;
+                min-height: auto !important;
+            }
+            
+            .video-container {
+                padding-bottom: 56.25% !important;
+            }
+            
+            .newspaper-header,
+            .video-header,
+            .social-header {
+                padding: 0.8rem 1rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 0.5rem !important;
+            }
+            
+            .newspaper-body,
+            .video-card > div:last-child,
+            .social-card > div:last-child,
+            .press-item {
+                padding: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mixed-content-grid {
+                gap: 1rem !important;
+            }
+            
+            .newspaper-header h3,
+            .video-header h3,
+            .social-header h3 {
+                font-size: 1rem !important;
+            }
+            
+            .newspaper-body h4,
+            .video-card h4,
+            .social-card h4 {
+                font-size: 1.1rem !important;
+            }
+        }
+        
+        /* Enhanced hover effects for better UX */
+        .newspaper-card:hover,
+        .video-card:hover,
+        .social-card:hover,
+        .press-item:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        .newspaper-card,
+        .video-card,
+        .social-card,
+        .press-item,
+        .social-links a,
+        .social-card a {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        
+        /* Focus states for accessibility */
+        .newspaper-card:focus,
+        .video-card:focus,
+        .social-card:focus,
+        .press-item:focus {
+            outline: 2px solid var(--red) !important;
+            outline-offset: 2px !important;
+        }
+
+        /* Video card hover effects */
+        .video-card:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1) !important;
+            background: rgba(255,0,0,1) !important;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            filter: brightness(0.8) !important;
+        }
+
+        /* Video modal animations */
+        .video-modal {
+            animation: fadeIn 0.3s ease !important;
+        }
+
+        .video-modal-content {
+            animation: slideIn 0.3s ease !important;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .video-close:hover {
+            color: #ff0000 !important;
+        }
+
+        /* Image hover effects */
+        .newspaper-card .image-overlay:hover {
+            opacity: 1 !important;
+        }
+
+        .newspaper-card img:hover {
+            transform: scale(1.02) !important;
+        }
+
+        /* Dynamic image overlay */
+        .image-container {
+            position: relative !important;
+            overflow: hidden !important;
+            border-radius: 8px !important;
+        }
+
+        .image-container:hover .image-overlay {
+            opacity: 1 !important;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05) !important;
+        }
+
+        .newspaper-card .image-overlay {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4)) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            opacity: 0 !important;
+            transition: all 0.3s ease !important;
+            border-radius: 8px !important;
+        }
+
+        .newspaper-card .image-overlay i {
+            color: white !important;
+            font-size: clamp(1.5rem, 4vw, 3rem) !important;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7) !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .image-container:hover .image-overlay i {
+            transform: scale(1.1) !important;
+        }
+
+        /* Responsive image overlay */
+        @media (max-width: 768px) {
+            .newspaper-card .image-overlay i {
+                font-size: 2rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .newspaper-card .image-overlay i {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        /* Image modal animations */
+        .image-modal {
+            animation: fadeIn 0.3s ease !important;
+        }
+
+        .image-modal-content {
+            animation: slideIn 0.3s ease !important;
+        }
+
+        .image-close:hover {
+            background: rgba(255,0,0,0.7) !important;
+            transform: scale(1.1) !important;
+        }
+
+        /* Image modal responsive sizing - Desktop */
+        #modalImage {
+            max-width: 95vw !important;
+            max-height: 90vh !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+        }
+
+        /* Tablet image modal adjustments */
+        @media (max-width: 768px) {
+            .image-modal-content {
+                padding: 50px 15px 15px 15px !important;
+            }
+            
+            #modalImage {
+                max-width: 95vw !important;
+                max-height: 85vh !important;
+            }
+        }
+
+        /* Mobile image modal adjustments */
+        @media (max-width: 480px) {
+            .image-modal-content {
+                padding: 50px 10px 10px 10px !important;
+            }
+            
+            #modalImage {
+                max-width: 95vw !important;
+                max-height: 80vh !important;
+            }
+        }
+
+        /* Small mobile adjustments */
+        @media (max-width: 360px) {
+            .image-modal-content {
+                padding: 50px 8px 8px 8px !important;
+            }
+            
+            #modalImage {
+                max-width: 95vw !important;
+                max-height: 75vh !important;
+            }
+        }
+
+        /* Animated Photo Frame CSS Animations */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes photoFramePulse {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 15px 40px rgba(255,107,53,0.4);
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+        }
+
+        @keyframes frameGlow {
+            0% { 
+                border-color: rgba(255,255,255,0.3);
+                box-shadow: 0 0 10px rgba(255,107,53,0.3);
+            }
+            100% { 
+                border-color: rgba(255,255,255,0.8);
+                box-shadow: 0 0 20px rgba(255,107,53,0.6);
+            }
+        }
+
+        /* Enhanced hover effects for animated photo frame */
+        .animated-photo-frame:hover .photo-frame {
+            animation-play-state: paused !important;
+            transform: scale(1.05) !important;
+            box-shadow: 0 20px 50px rgba(255,107,53,0.5) !important;
+        }
+
+        .animated-photo-frame:hover .animated-image-container {
+            animation-play-state: paused !important;
+        }
+
+        .animated-photo-frame:hover .frame-decoration {
+            animation-play-state: paused !important;
+            border-color: rgba(255,255,255,1) !important;
+            box-shadow: 0 0 30px rgba(255,107,53,0.8) !important;
+        }
+
+        .animated-photo-frame:hover .image-overlay {
+            opacity: 1 !important;
+        }
+
+        .animated-photo-frame:hover .image-overlay i {
+            transform: scale(1.2) !important;
+        }
+
+        /* Responsive adjustments for animated photo frame */
+        @media (max-width: 768px) {
+            .animated-image-container {
+                padding: 15px !important;
+            }
+            
+            .photo-frame {
+                border-width: 6px !important;
+            }
+            
+            .frame-decoration {
+                top: 8px !important;
+                left: 8px !important;
+                right: 8px !important;
+                bottom: 8px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .animated-image-container {
+                padding: 10px !important;
+            }
+            
+            .photo-frame {
+                border-width: 4px !important;
+            }
+            
+            .frame-decoration {
+                top: 6px !important;
+                left: 6px !important;
+                right: 6px !important;
+                bottom: 6px !important;
+            }
+        }
+
+        /* Attractions Grid Styling - Copied from attractions.html */
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+        
+        .attraction-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .attraction-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        
+        .attraction-card-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .card-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .attraction-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Click to zoom overlay */
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: none;
+        }
+
+        .card-image::before {
+            content: '\f00e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            pointer-events: none;
+        }
+
+        .attraction-card:hover .card-image::after {
+            opacity: 1;
+        }
+
+        .attraction-card:hover .card-image::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content h3 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.3;
+        }
+        
+        .card-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        /* Responsive Design for Attractions */
+        @media (max-width: 1200px) {
+            .attractions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .attractions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+                max-width: 500px;
+                margin: 2rem auto;
+            }
+            
+            .attraction-card {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+            }
+            
+            .card-image {
+                height: 180px;
+            }
+            
+            .card-content {
+                padding: 1.25rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .card-content p {
+                font-size: 0.9rem;
+            }
+
+            /* Mobile zoom icon adjustments */
+            .card-image::before {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .attractions-grid {
+                padding: 0 0.5rem;
+                gap: 1rem;
+                max-width: 100%;
+                margin: 1.5rem auto;
+            }
+            
+            .attraction-card {
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+                margin: 0;
+            }
+            
+            .card-image {
+                height: 160px;
+            }
+            
+            .card-content {
+                padding: 1rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .card-content p {
+                font-size: 0.85rem;
+            }
+
+            /* Extra small mobile zoom icon */
+            .card-image::before {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="scroll-container">
+    <div class="main-content">
+        <div id="navbar-placeholder"></div>
+
+
+        <!-- News Board Section -->
+        <section id="news-board" class="news-section" style="padding: 6rem 0; background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Media and Community Outreach</h2>
+                    <p class="section-subtitle">Media coverage and press mentions of our community events</p>
+                </div>
+
+
+                <!-- News Articles Grid -->
+                <div class="attractions-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; padding: 0 1rem;">
+                
+                <!-- 2025 -->
+                <!-- Rabindra Jayanti Celebration -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/rabindra-jayanti.jpg" alt="Rabindra Jayanti Celebration with Indian Council General Mr. Inbasekar Sundarmurthi, 2025" onclick="openImageModal('news-media/rabindra-jayanti.jpg', 'Rabindra Jayanti Celebration with Indian Council General Mr. Inbasekar Sundarmurthi, 2025')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Rabindra Jayanti Celebration with Indian Council General</h3>
+                        <p>Cultural Celebration - Official Event</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">25 Jan 2025</p>
+                    </div>
+                </div>
+
+                <!-- Farewell Ceremony -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/farewell.png" alt="Farewell ceremony of Indian Ambassador in Spain Mr. Dinesh Patnaik, 2025" onclick="openImageModal('news-media/farewell.png', 'Farewell ceremony of Indian Ambassador in Spain Mr. Dinesh Patnaik, 2025')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Farewell ceremony of Indian Ambassador in Spain</h3>
+                        <p>Diplomatic Event - Official Ceremony</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">15 Jan 2025</p>
+                    </div>
+                </div>
+
+                <!-- SA Studio Conversation - Bimal Roy Legacy -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/SA-studio.png" alt="Celebrating Bimal Roy’s cinema legacy and historic screening of restored classic -“Do Bigha Zameen” at 82nd Venice Film Festival In conversation with Rinki Roy Bhattacharya, SA studio @Nupura, 2025" onclick="openImageModal('news-media/SA-studio.png', 'Celebrating Bimal Roy’s cinema legacy and historic screening of restored classic -“Do Bigha Zameen” at 82nd Venice Film Festival In conversation with Rinki Roy Bhattacharya, SA studio @Nupura, 2025')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Celebrating Bimal Roy’s cinema legacy and historic screening of restored classic -“Do Bigha Zameen” at 82nd Venice Film Festival In conversation with Rinki Roy Bhattacharya, SA studio @Nupura, 2025</h3>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">2025</p>
+                    </div>
+                </div>
+
+                <!-- Sangbad Pratidin Newspaper Coverage -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/bca-durga.jpg" alt="Sangbad Pratidin newspaper coverage on BCA Barcelona Durga Puja" onclick="openImageModal('news-media/bca-durga.jpg', 'Sangbad Pratidin newspaper coverage on BCA Barcelona Durga Puja')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Sangbad Pratidin coverage of BCA Barcelona Durga Puja</h3>
+                        <p>Newspaper Feature - Sangbad Pratidin</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">2025</p>
+                        <p style="margin-top: 0.75rem;">
+                            <a href="https://www.facebook.com/photo/?fbid=1133524865535937&set=a.563794272509002" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #1877F2; color: #fff; padding: 0.55rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 18px rgba(24,119,242,0.45)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(24,119,242,0.3)';">Read on Facebook</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <!-- Additional News Article - Maa Durga News -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/maa-durga-news.jpg" alt="Maa Durga News" onclick="openImageModal('news-media/maa-durga-news.jpg', 'Maa Durga News')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Maa Durga's Divine Presence in Barcelona</h3>
+                        <p>Bengali Cultural Association - Community News</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">25 Dec 2024</p>
+                    </div>
+                </div>
+
+                <!-- Fund Raising Event -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/fund-raising.jpg" alt="Fund Raising for Sonarisas De Mumbai NGO 2024" onclick="openImageModal('news-media/fund-raising.jpg', 'Fund Raising for Sonarisas De Mumbai NGO 2024')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Fund raising for "Sonarisas De Mumbai NGO 2024"</h3>
+                        <p>Community Fundraising - Special Event</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">15 Dec 2024</p>
+                    </div>
+                </div>
+
+                <!-- Maa Durga Fiber Glass Idol -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/maa-durga-fiber-glass.jpg" alt="Maa Durga Fiber Glass Idol Installation, 2024" onclick="openImageModal('news-media/maa-durga-fiber-glass.jpg', 'Maa Durga Fiber Glass Idol Installation, 2024')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Maa Durga Fiber Glass Idol Installation, 2024</h3>
+                        <p>Religious Installation - Sacred Event</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">20 Oct 2024</p>
+                    </div>
+                </div>
+
+                <!-- News Article - Durga Idol Journey -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/maa-durga-from-india.jpg" alt="Durga Idol Journey from India" onclick="openImageModal('news-media/maa-durga-from-india.jpg', 'Durga Idol Journey from India')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Sacred Journey: Durga Idol's Epic Voyage</h3>
+                        <p>Anandabazar Patrika - International News</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">22 Sep 2024</p>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <!-- Pravasi Diwas 2023 - Shreyasree Nag -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/Pravasi Diwas 2023.png" alt="Shreyasree Nag - Sammanita at the Pravasi Diwas 2023 for her contribution in promoting Indian cultural in Spain" onclick="openImageModal('news-media/Pravasi Diwas 2023.png', 'Shreyasree Nag - Sammanita at the Pravasi Diwas 2023 for her contribution in promoting Indian cultural in Spain')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>Shreyasree Nag - Sammanita at the Pravasi Diwas 2023  for her contribution in promoting Indian cultural in Spain</h3>
+                        <p>Award & Recognition - Pravasi Bharatiya Diwas</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">2023</p>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <!-- Bengal Business Summit 2022 - ETV Bharat -->
+                <div class="attraction-card">
+                    <div class="card-image">
+                        <img src="news-media/Bengal Business Summit 2022.png" alt="BCA at Bengal Business Summit 2022 with West Bengal CM Mamata Banerjee in Barcelona" onclick="openImageModal('news-media/Bengal Business Summit 2022.png', 'BCA at Bengal Business Summit 2022 with West Bengal CM Mamata Banerjee in Barcelona')" />
+                    </div>
+                    <div class="card-content">
+                        <h3>BCA at Bengal Business Summit 2022 in with West Bengal CM Mamata Banerjee in Barcelona</h3>
+                        <p>Business Summit - Community Representation</p>
+                        <p style="font-size: 0.9rem; color: var(--red); margin-top: 0.5rem;">2022</p>
+                        <p style="margin-top: 0.75rem;">
+                            <a href="https://www.etvbharat.com/english/state/west-bengal/barcelona-based-bengalis-to-celebrate-durga-puja-in-spain/na20230919195739030030927" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #bd0f28; color: #fff; padding: 0.55rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(189, 15, 40, 0.3); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 18px rgba(189,15,40,0.45)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(189, 15, 40, 0.3)';">Read Article</a>
+                        </p>
+                    </div>
+                </div>
+
+                </div> <!-- End News Articles Grid -->
+
+                <!-- Mixed Content Layout -->
+                <div class="mixed-content-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    
+                    <div class="video-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+                        <div class="video-header" style="background: #bd0f28; color: white; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
+                            <i class="fab fa-youtube" style="font-size: 1.5rem;"></i>
+                            <div>
+                                <h3 style="margin: 0; font-size: 1.1rem; font-weight: 600;">Sacred Journey: Durga Maa's Arrival in Barcelona</h3>
+                                <p style="margin: 0.3rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">Published: 20 Sep 2024</p>
+                            </div>
+                        </div>
+                        <div style="padding: 0; position: relative; width: 100%;">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/EoNN0PeN3Aw?si=xhBGARdr7C8I375p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 250px; border-radius: 0; display: block;"></iframe>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <p style="color: #666; line-height: 1.6; margin: 0;">Special moments and behind-the-scenes footage from our community events and celebrations.</p>
+                        </div>
+                    </div>
+
+                        <!-- YouTube Video 1 - Direct Iframe -->
+                        <div class="video-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+                            <div class="video-header" style="background: #bd0f28; color: white; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
+                                <i class="fab fa-youtube" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 600;">Durga Puja 2024 Highlights</h3>
+                                    <p style="margin: 0.3rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">Published: 30 Sep 2024</p>
+                                </div>
+                            </div>
+                            <div style="padding: 0; position: relative; width: 100%;">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/AeI1sE1HWKA?si=SUwFsTQHO47fKu70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 250px; border-radius: 0; display: block;"></iframe>
+                            </div>
+                            <div style="padding: 1.5rem;">
+                                <p style="color: #666; line-height: 1.6; margin: 0;">Watch the complete highlights from our Durga Puja 2024 celebrations, featuring traditional ceremonies, cultural performances, and community moments.</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="video-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+                            <div class="video-header" style="background: #bd0f28; color: white; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
+                                <i class="fab fa-youtube" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h3 style="margin: 0; font-size: 1.1rem; font-weight: 600;">Durga Maa Idol</h3>
+                                    <p style="margin: 0.3rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">Published: 20 Sep 2024</p>
+                                </div>
+                            </div>
+                            <div style="padding: 0; position: relative; width: 100%;">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/hgJvs38e28A?si=CumOMn-PrUK7WRR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 250px; border-radius: 0; display: block;"></iframe>
+                            </div>
+                            <div style="padding: 1.5rem;">
+                                <p style="color: #666; line-height: 1.6; margin: 0;">Quick glimpses of our vibrant community culture, featuring traditional performances and joyful celebrations in Barcelona.</p>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+
+
+        <!-- Media Contact Section -->
+        <section id="media-contact" class="contact-section" style="padding: 6rem 0; background: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Media Contact</h2>
+                    <p class="section-subtitle">For media inquiries and press information</p>
+                </div>
+
+                <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="contact-card" style="background: #f8f9fa; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div class="contact-icon" style="width: 80px; height: 80px; background: var(--red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 style="color: var(--red); margin-bottom: 1rem;">Email</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">For press inquiries and media requests</p>
+                        <a href="mailto: info@bcaspain.org" style="color: var(--red); text-decoration: none; font-weight: 500;"> info@bcaspain.org</a>
+                    </div>
+
+                    <div class="contact-card" style="background: #f8f9fa; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <div class="contact-icon" style="width: 80px; height: 80px; background: var(--red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 style="color: var(--red); margin-bottom: 1rem;">Phone</h3>
+                        <p style="color: #666; margin-bottom: 1rem;">Direct contact for urgent media matters</p>
+                        <a href="tel:+34693005986" style="color: var(--red); text-decoration: none; font-weight: 500;">+34 693 005 986</a>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section id="social-media" class="social-section" style="padding: 4rem 0; color: white;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="color: white;">Follow Our Journey</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Stay connected with us on social media for real-time updates</p>
+                </div>
+                
+                <div class="social-icons-container" style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                    <a href="https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon-link" 
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #1877F2; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(24, 119, 242, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(24, 119, 242, 0.3)'"
+                       title="Follow us on Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/spain_bca" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon-link" 
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: linear-gradient(45deg, #E4405F, #C13584); color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(228, 64, 95, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(228, 64, 95, 0.3)'"
+                       title="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <a href="https://youtube.com/@bengaliculturalassociation?si=NB5TkAc9gZsgX11i" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon-link" 
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #FF0000; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(255, 0, 0, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 0, 0, 0.3)'"
+                       title="Subscribe to our YouTube channel">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    
+                    <a href="https://wa.me/34693005986" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon-link" 
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(37, 211, 102, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(37, 211, 102, 0.3)'"
+                       title="Contact us on WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    
+                    <a href="mailto: info@bcaspain.org" 
+                       class="social-icon-link" 
+                       style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #EA4335; color: white; border-radius: 50%; font-size: 1.5rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(234, 67, 53, 0.3);"
+                       onmouseover="this.style.transform='translateY(-5px) scale(1.1)'; this.style.boxShadow='0 8px 25px rgba(234, 67, 53, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(234, 67, 53, 0.3)'"
+                       title="Send us an email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div> <!-- End main-content -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
+                        <a href="aviso-legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal</a> ·
+                        <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a> ·
+                        <a href="cookies.html" style="color: inherit; text-decoration: underline;">Política de Cookies</a>
+                    </p>
+                   <!-- <p style="margin: 0.25rem 0 0.75rem; font-size: 0.85rem; opacity: 0.85;">
+                        #Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
+                    </p>-->
+                    <p>
+                        &copy; 2025 Bengali Cultural Association Barcelona. All rights reserved.
+                    </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Popup Modal -->
+    <div id="videoModal" class="video-modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);">
+        <div class="video-modal-content" style="position: relative; margin: 2% auto; padding: 20px; width: 90%; max-width: 800px; background: #000; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <span class="video-close" onclick="closeVideoPopup()" style="position: absolute; top: 15px; right: 20px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 1001; transition: color 0.3s ease;">&times;</span>
+            <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+                <iframe id="videoFrame" src="" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                        allowfullscreen
+                        title="YouTube Video"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="image-modal" style="display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px);">
+        <div class="image-modal-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 60px 20px 20px 20px; display: flex; align-items: center; justify-content: center;">
+            <span class="image-close" onclick="closeImageModal()" style="position: absolute; top: 15px; right: 20px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 1002; transition: color 0.3s ease; background: rgba(0,0,0,0.5); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">&times;</span>
+            <img id="modalImage" src="" alt="" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <!-- News & Media Page Scripts -->
+    <script>
+        // Video Popup Functions
+        function openVideoPopup(videoId) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoFrame');
+            
+            // Set the video source
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            
+            // Show the modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeVideoPopup() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoFrame');
+            
+            // Hide the modal
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            
+            // Stop the video by clearing the src
+            iframe.src = '';
+        }
+
+        // Image Modal Functions
+        function openImageModal(imageSrc, imageAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            // Set the image source and alt text
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            
+            // Show the modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            
+            // Hide the modal
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside the video or image
+        window.onclick = function(event) {
+            const videoModal = document.getElementById('videoModal');
+            const imageModal = document.getElementById('imageModal');
+            
+            if (event.target === videoModal) {
+                closeVideoPopup();
+            }
+            if (event.target === imageModal) {
+                closeImageModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeVideoPopup();
+                closeImageModal();
+            }
+        });
+
+        // News Board Interactive Elements
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Newspaper card hover effects
+            const newspaperCards = document.querySelectorAll('.newspaper-card');
+            newspaperCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+                });
+            });
+
+            // Video card hover effects
+            const videoCards = document.querySelectorAll('.video-card');
+            videoCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+                });
+            });
+
+            // Social card hover effects
+            const socialCards = document.querySelectorAll('.social-card');
+            socialCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+                });
+            });
+
+            // Press item hover effects
+            const pressItems = document.querySelectorAll('.press-item');
+            pressItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 35px rgba(0,0,0,0.15)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
+                });
+            });
+
+            // Social links hover effects
+            const socialLinks = document.querySelectorAll('.social-links a');
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.background = 'rgba(255,255,255,0.2)';
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.background = 'rgba(255,255,255,0.1)';
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Social media button hover effects
+            const socialButtons = document.querySelectorAll('.social-card a');
+            socialButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

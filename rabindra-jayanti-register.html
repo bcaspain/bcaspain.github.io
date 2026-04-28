@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Register — Rabindra Jayanti | BCA Barcelona</title>
+    <meta name="description" content="Register your attendance for Rabindra Jayanti in Barcelona.">
+    <meta name="author" content="Bengali Cultural Association Barcelona">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Register — Rabindra Jayanti | BCA Barcelona">
+    <meta property="og:description" content="Register your attendance for Rabindra Jayanti in Barcelona.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bcaspain.github.io/rabindra-jayanti-register.html">
+    <meta property="og:image" content="https://bcaspain.github.io/events/rabindra-jayanti.png">
+
+    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
+    </script>
+
+    <!-- Klaro consent manager -->
+    <script defer src="klaro.min.js"></script>
+    <script defer src="klaro-config.js"></script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+
+    <!-- Shared navbar include -->
+    <script defer src="navbar.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body class="scroll-container">
+    <div class="main-content">
+        <div id="navbar-placeholder"></div>
+
+        <section id="rabindra-register" style="padding: calc(var(--navbar-height, 70px) + 3.5rem) 0 4.5rem; background: linear-gradient(135deg, #fff5f5 0%, #fff0e6 100%);">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 2.25rem;">
+                    <h1 class="section-title" style="margin-bottom: 0.75rem;">Rabindra Jayanti Registration</h1>
+                    <p class="section-subtitle" style="margin-bottom: 0;">
+                        Register your attendance for <strong>Saturday, 9 May</strong> at <strong>Teatro Calabria</strong>. Entry is free.
+                    </p>
+                    <div style="margin-top: 1.1rem;">
+                        <span data-rj-seats style="display: inline-flex; align-items: center; gap: 0.55rem; padding: 10px 16px; border-radius: 999px; background: rgba(245, 124, 0, 0.10); border: 1px solid rgba(245, 124, 0, 0.25); color: #8a4b00; font-weight: 800; letter-spacing: 0.4px;">
+                            <i class="fas fa-chair" aria-hidden="true"></i>
+                            Seats status loading…
+                        </span>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
+                    <div style="background: rgba(255,255,255,0.92); border-radius: 18px; border: 2px solid rgba(232, 114, 12, 0.12); box-shadow: var(--shadow-light); padding: 1.5rem;">
+                        <button type="button" class="rabindra-poster-trigger" aria-haspopup="dialog" aria-controls="rabindraRegisterPosterModal"
+                            style="display: block; width: 100%; padding: 0; border: none; background: transparent; cursor: pointer;">
+                            <img
+                                src="events/rabindra-jayanti.png"
+                                alt="Rabindra Jayanti poster"
+                                style="width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.12);"
+                                loading="lazy"
+                            />
+                        </button>
+                        <div style="margin-top: 0.9rem; font-size: 0.95rem; color: #666; text-align: center; line-height: 1.6;">
+                            Click the poster to view full size. You can also <a href="rabindra-jayanti.html" style="color: inherit; text-decoration: underline;">view event details</a>.
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.92); border-radius: 18px; border: 2px solid rgba(232, 114, 12, 0.12); box-shadow: var(--shadow-light); padding: 2rem;">
+
+                        <!-- Sold-out banner — hidden until JS reveals it -->
+                        <div id="rj-sold-out" style="display:none; text-align:center; padding: 2.5rem 1.5rem;">
+                            <div style="font-size: 3.5rem; margin-bottom: 0.75rem;">🎟️</div>
+                            <div style="font-size: 1.7rem; font-weight: 900; color: #b71c1c; letter-spacing: 0.5px; margin-bottom: 0.6rem;">SOLD OUT</div>
+                            <p style="color: #555; font-size: 1rem; line-height: 1.6; margin: 0 0 1.25rem;">
+                                All <strong>110 seats</strong> for Rabindra Jayanti have been reserved.<br>
+                                Thank you for your interest — we hope to see you at the event!
+                            </p>
+                            <a href="rabindra-jayanti.html" class="btn btn-secondary" style="border-radius: 999px; padding: 11px 28px;">
+                                <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to event
+                            </a>
+                        </div>
+
+                        <form id="rabindraRegistrationForm" style="display: grid; gap: 1.15rem;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div>
+                                    <label for="rj-name" style="display:block; margin-bottom: 0.45rem; font-weight: 700; color: #333;">Name *</label>
+                                    <input id="rj-name" name="name" type="text" required minlength="2" maxlength="100"
+                                        style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;">
+                                </div>
+                                <div>
+                                    <label for="rj-attendees" style="display:block; margin-bottom: 0.45rem; font-weight: 700; color: #333;">Number of attendees *</label>
+                                    <select id="rj-attendees" name="attendees" required
+                                        style="width: 100%; padding: 12px 38px 12px 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; background: #fff; cursor: pointer;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div>
+                                    <label for="rj-email" style="display:block; margin-bottom: 0.45rem; font-weight: 700; color: #333;">Email *</label>
+                                    <input id="rj-email" name="email" type="email" required maxlength="254"
+                                        style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;">
+                                </div>
+                                <div>
+                                    <label for="rj-email-confirm" style="display:block; margin-bottom: 0.45rem; font-weight: 700; color: #333;">Re-enter Email *</label>
+                                    <input id="rj-email-confirm" name="emailConfirm" type="email" required maxlength="254"
+                                        style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="rj-contact" style="display:block; margin-bottom: 0.45rem; font-weight: 700; color: #333;">Contact / WhatsApp *</label>
+                                <div style="display:flex; gap: 8px; align-items: stretch;">
+                                    <select id="rj-country-code" name="countryCode" required style="width: 90px; padding: 12px 28px 12px 10px; border: 2px solid #ddd; border-radius: 10px; font-size: 0.95rem; background: #fff; cursor: pointer;">
+                                        <option value="+34">+34</option>
+                                        <option value="+91">+91</option>
+                                        <option value="+44">+44</option>
+                                        <option value="+1">+1</option>
+                                        <option value="+33">+33</option>
+                                        <option value="+49">+49</option>
+                                        <option value="+39">+39</option>
+                                        <option value="+31">+31</option>
+                                        <option value="+32">+32</option>
+                                        <option value="+351">+351</option>
+                                    </select>
+                                    <input id="rj-contact" name="contact" type="tel" required pattern="[0-9]{9,15}" inputmode="numeric" minlength="9" maxlength="15"
+                                        placeholder="Enter number without country code"
+                                        style="flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="rj-coupon" style="display:block; margin-bottom: 0.45rem; font-weight: 700; color: #333;">Coupon code (optional)</label>
+                                <input id="rj-coupon" name="coupon" type="text" maxlength="50" autocapitalize="characters" autocomplete="off"
+                                    placeholder="Enter coupon code"
+                                    style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; text-transform: uppercase;">
+                            </div>
+
+                            <label style="display:flex; gap: 10px; align-items:flex-start; color:#555; line-height:1.55;">
+                                <input id="rj-privacy" type="checkbox" required style="margin-top: 0.2rem;">
+                                <span>
+                                    I consent to the processing of my details for event coordination. More info: <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a>.
+                                </span>
+                            </label>
+
+                            <div style="display:flex; gap: 0.9rem; flex-wrap: wrap; align-items:center; margin-top: 0.25rem;">
+                                <button id="rj-submit" type="submit" class="btn btn-primary" style="border-radius: 999px; padding: 12px 34px;">
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Registration
+                                </button>
+                                <a class="btn btn-secondary" href="rabindra-jayanti.html" style="border-radius: 999px; padding: 12px 28px;">
+                                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to event
+                                </a>
+                            </div>
+
+                            <div id="rj-success" style="display:none; margin-top: 0.5rem; padding: 12px 14px; border-radius: 12px; background: rgba(46, 125, 50, 0.10); border: 1px solid rgba(46, 125, 50, 0.25); color: #2e7d32; font-weight: 700;">
+                                Registration submitted. Thank you!
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Poster Overlay Modal -->
+                <div id="rabindraRegisterPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" style="display:none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.82); backdrop-filter: blur(6px); padding: 2rem 1rem;">
+                    <button type="button" id="rabindraRegisterPosterClose" aria-label="Close poster" style="position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.45); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                    <div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                        <img src="events/rabindra-jayanti.png" alt="Rabindra Jayanti poster full size" style="max-width: min(920px, 96vw); max-height: 86vh; width: auto; height: auto; border-radius: 16px; box-shadow: 0 24px 70px rgba(0,0,0,0.45); background: #fff;" />
+                    </div>
+                </div>
+
+                <style>
+                    @media (max-width: 900px) {
+                        #rabindra-register .container > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+                    }
+                </style>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="BCA-logo.webp" alt="BCA Spain Logo" />
+                    <span>Bengali Cultural Association Barcelona (A registered non-profit organization in Spain)</span>
+                </div>
+                <p>
+                    Preserving and promoting Bengali culture in Barcelona through community events and traditional celebrations.
+                </p>
+                <div class="footer-bottom">
+                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
+                        <a href="aviso-legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal</a> ·
+                        <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a> ·
+                        <a href="cookies.html" style="color: inherit; text-decoration: underline;">Política de Cookies</a>
+                    </p>
+                    <p>
+                        &copy; 2026 Bengali Cultural Association Barcelona (A registered non-profit organization in Spain). All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>window.RJ_GAS_URL = 'https://script.google.com/macros/s/AKfycbwfdbjErkTf2hzrzZ6q-eOVX58GoG8DN6uf9TDS__pX0D9GdUjceu1eFjKz2kaNDSVSDA/exec';</script>
+    <script src="rabindra-jayanti-seats.js"></script>
+    <script src="rabindra-jayanti-register.js"></script>
+</body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Events - Durga Puja 2K25 Barcelona</title>
+    <meta name="description" content="Cultural Events for Durga Puja 2K25 Barcelona.">
+    <meta name="author" content="Bengali Cultural Association Barcelona">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Events - Durga Puja 2K25 Barcelona">
+    <meta property="og:description" content="Join us for festival events and cultural celebrations during Durga Puja 2K25 in Barcelona">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bcaspain.github.io/events.html">
+    
+    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
+    </script>
+
+    <!-- Klaro consent manager -->
+    <script defer src="klaro.min.js"></script>
+    <script defer src="klaro-config.js"></script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-fixes.css">
+
+    <!-- Shared navbar include -->
+    <script defer src="navbar.js"></script>
+    
+    <!-- Community Program Popup Styles -->
+    <style>
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            display: block;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+                margin: 10px;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 15px;
+                font-size: 24px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .modal-image {
+                max-height: 70vh;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modal-content {
+                max-width: 98%;
+                margin: 5px;
+            }
+            
+            .modal-close {
+                top: 8px;
+                right: 12px;
+                font-size: 20px;
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="scroll-container">
+    <div class="main-content">
+        <div id="navbar-placeholder"></div>
+
+        <section class="attractions-list" style="padding:4rem 0;background:#faf9f6;min-height:80vh;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Events and Attractions</h2>
+                    <p class="section-subtitle">Join us for a week of cultural celebration and community festivities</p>
+                </div>
+                <div class="attractions-grid">
+                    <!-- Durga Idol Card -->
+                    <div class="attraction-card">
+                        <div class="card-image">
+                            <img src="gallery/2024/p9.jpg" alt="Durga Idol" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Durga Idol</h3>
+                            <p>Beautifully crafted idol of Goddess Durga</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cultural Show Card -->
+                    
+                    <div class="attraction-card">
+                        <div class="card-image">
+                            <img src="gallery/extra/cl.png" alt="Cultural Show" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Community Cultural Show</h3>
+                            <p>Traditional performances and cultural programs</p>
+                            <button onclick="openCommunityProgramPopup()" class="btn btn-primary" style="margin-top: 1rem; align-self: center;">
+                                <i class="fas fa-calendar-alt"></i>
+                                View Events
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Food Stall Card -->
+                    <div class="attraction-card">
+                        <div class="card-image">
+                            <img src="gallery/extra/phuchka.webp" alt="Food Stall" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Indian Food Stall</h3>
+                            <p>Authentic Bengali and Indian delicacies</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Sindur Khela Card -->
+                    <div class="attraction-card">
+                        <div class="card-image">
+                            <img src="gallery/2024/p18.webp" alt="Sindur Khela" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Sindur Khela</h3>
+                            <p>Traditional vermillion play ceremony</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Decoration Card -->
+                    <div class="attraction-card">
+                        <div class="card-image">
+                            <img src="gallery/extra/decor.jpg" alt="Decoration" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Decoration</h3>
+                            <p>Beautiful traditional decorations and pandal</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dhunuchi Dance Card -->
+                    <div class="attraction-card">
+                        <div class="card-image">
+                            <img src="gallery/extra/dhunuchi.png" alt="Dhunuchi Dance" />
+                        </div>
+                        <div class="card-content">
+                            <h3>Dhunuchi Dance</h3>
+                            <p>Traditional dance with earthen incense burners</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                
+                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
+                        <a href="aviso-legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal</a> ·
+                        <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a> ·
+                        <a href="cookies.html" style="color: inherit; text-decoration: underline;">Política de Cookies</a>
+                    </p>
+                   <!-- <p style="margin: 0.25rem 0 0.75rem; font-size: 0.85rem; opacity: 0.85;">
+                        #Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
+                    </p>-->
+                    <p>
+                        &copy; 2025 Bengali Cultural Association Barcelona. All rights reserved.
+                    </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Community Program Popup Modal -->
+    <div id="communityProgramModal" class="modal-overlay" onclick="closeCommunityProgramPopup()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeCommunityProgramPopup()">&times;</span>
+            <img src="community-program.jpeg" alt="Bengali Cultural Program" class="modal-image">
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Loading Screen -->
+    <!-- <div id="loading" class="loading">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading Durga Puja 2K25...</p>
+        </div>
+    </div> -->
+
+    <!-- Smooth Scroll Polyfill -->
+    <script>
+        // Check if smoothscroll polyfill is needed
+        if (!('scrollBehavior' in document.documentElement.style)) {
+            // Load polyfill only if needed
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js';
+            script.onload = function() {
+      smoothscroll.polyfill();
+            };
+            document.head.appendChild(script);
+        }
+    </script>
+
+    <!-- Community Program Popup Scripts -->
+    <script>
+        function openCommunityProgramPopup() {
+            document.getElementById('communityProgramModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        
+        function closeCommunityProgramPopup() {
+            document.getElementById('communityProgramModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCommunityProgramPopup();
+            }
+        });
+    </script>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+        <style>
+            .loading { display: none !important; }
+        </style>
+    </noscript>
+    
+    <style>
+        /* Venue Table Styling */
+        .venue-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.1);
+        }
+        
+        .venue-table th {
+            background: var(--red);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .venue-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .venue-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .venue-table tr:hover {
+            background: #FFF8F0;
+        }
+        
+        .venue-links {
+            margin: 1.5rem 0;
+        }
+        
+        .venue-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--red);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .venue-link:hover {
+            background: var(--red);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+        
+        .maps-section {
+            margin: 2rem 0;
+        }
+        
+        .maps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .map-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.1);
+        }
+        
+        .map-container h4 {
+            color: var(--red);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .map-wrapper {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .map-address {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .map-address i {
+            color: var(--red);
+            margin-right: 0.5rem;
+        }
+        
+        /* Compact Tabular Format Events Grid */
+        .events-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.1);
+            overflow: hidden;
+        }
+        
+        /* Event Cards - Tabular Row Style */
+        .event-card {
+            display: grid;
+            grid-template-columns: 80px 1fr 160px;
+            align-items: center;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 70px;
+        }
+        
+        .event-card:last-child {
+            border-bottom: none;
+        }
+        
+        .event-card:hover {
+            background: #FFF8F0;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.1);
+        }
+        
+        /* Featured Cards */
+        .event-card.featured {
+            background: white;
+            border-left: 4px solid var(--red);
+        }
+        
+        .event-card.featured:hover {
+            background: rgba(220, 53, 69, 0.05);
+        }
+        
+        /* Event Image - Icon Style */
+        .event-image {
+            position: relative;
+            width: 60px;
+            height: 40px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--red), var(--orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-self: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+        }
+        
+        .event-image i {
+            font-size: 1.1rem;
+        }
+        
+
+        
+
+        
+        /* Event Content - Tabular Layout */
+        .event-content {
+            display: contents;
+        }
+        
+        .event-content h3 {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.3;
+            grid-column: 2;
+        }
+        
+        .event-time {
+            color: var(--red);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            grid-column: 5;
+        }
+        
+        .event-time i {
+            font-size: 0.9rem;
+        }
+        
+
+        
+
+        
+        /* Events Grid Header */
+        .events-grid-header {
+            display: grid;
+            grid-template-columns: 80px 1fr 160px;
+            align-items: center;
+            background: var(--red);
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .events-grid-header span {
+            text-align: center;
+        }
+        
+        .events-grid-header span:first-child {
+            text-align: center;
+        }
+        
+        .events-grid-header span:nth-child(2) {
+            text-align: left;
+        }
+        
+        /* Mobile Responsive - Stack Layout */
+        @media (max-width: 768px) {
+            .events-grid {
+                gap: 0.2rem;
+                border-radius: 10px;
+            }
+            
+            .event-card {
+                grid-template-columns: 50px 1fr 110px;
+                gap: 0.4rem;
+                padding: 0.7rem;
+                min-height: 55px;
+            }
+            
+            .event-image {
+                width: 45px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .event-image i {
+                font-size: 0.8rem;
+            }
+            
+            .event-content h3 {
+                font-size: 1rem;
+                grid-column: 2;
+            }
+            
+            .event-time {
+                font-size: 0.85rem;
+                grid-column: 2;
+            }
+            
+            /* Mobile Events Grid Header */
+            .events-grid-header {
+                grid-template-columns: 50px 1fr 110px;
+                font-size: 0.8rem;
+                padding: 0.6rem;
+            }
+        }
+        
+        /* Extra Small Screens */
+        @media (max-width: 480px) {
+            .event-card {
+                grid-template-columns: 45px 1fr 95px;
+                gap: 0.3rem;
+                padding: 0.5rem;
+            }
+            
+            .event-image {
+                width: 40px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+            
+            .event-image i {
+                font-size: 0.7rem;
+            }
+            
+            .event-content h3 {
+                font-size: 0.9rem;
+                grid-column: 2;
+            }
+            
+            .event-time {
+                font-size: 0.75rem;
+                grid-column: 3;
+            }
+            
+            /* Extra Small Events Grid Header */
+            .events-grid-header {
+                grid-template-columns: 45px 1fr 95px;
+                font-size: 0.7rem;
+                padding: 0.5rem;
+            }
+        }
+        
+        /* Animation for rows */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .event-card {
+            animation: slideInLeft 0.4s ease-out;
+        }
+        
+        .event-card:nth-child(1) { animation-delay: 0.1s; }
+        .event-card:nth-child(2) { animation-delay: 0.2s; }
+        .event-card:nth-child(3) { animation-delay: 0.3s; }
+        .event-card:nth-child(4) { animation-delay: 0.4s; }
+        .event-card:nth-child(5) { animation-delay: 0.5s; }
+        .event-card:nth-child(6) { animation-delay: 0.6s; }
+        .event-card:nth-child(7) { animation-delay: 0.7s; }
+        .event-card:nth-child(8) { animation-delay: 0.8s; }
+        .event-card:nth-child(9) { animation-delay: 0.9s; }
+        .event-card:nth-child(10) { animation-delay: 1.0s; }
+        .event-card:nth-child(11) { animation-delay: 1.1s; }
+        .event-card:nth-child(12) { animation-delay: 1.2s; }
+        
+        /* Attractions Grid Styling */
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+        
+        .attraction-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .attraction-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        
+        .attraction-card-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .card-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .attraction-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content h3 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.3;
+        }
+        
+        .card-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        /* Section styling */
+        .events {
+            background: white;
+            padding: 2rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-top: 5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+        }
+        
+        /* Responsive section header */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Responsive Design for Attractions */
+        @media (max-width: 1200px) {
+            .attractions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .attractions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+                max-width: 500px;
+                margin: 2rem auto;
+            }
+            
+            .attraction-card {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+            }
+            
+            .card-image {
+                height: 180px;
+            }
+            
+            .card-content {
+                padding: 1.25rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .card-content p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .attractions-grid {
+                padding: 0 0.5rem;
+                gap: 1rem;
+                max-width: 100%;
+                margin: 1.5rem auto;
+            }
+            
+            .attraction-card {
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+                margin: 0;
+            }
+            
+            .card-image {
+                height: 160px;
+            }
+            
+            .card-content {
+                padding: 1rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .card-content p {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Compact spacing */
+        .container {
+            padding: 0 1rem;
+        }
+        
+        /* Responsive Venue Table */
+        @media (max-width: 768px) {
+            .venue-table {
+                font-size: 0.8rem;
+            }
+            
+            .venue-table th,
+            .venue-table td {
+                padding: 0.8rem 0.6rem;
+            }
+            
+            .maps-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .map-container {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .venue-table {
+                font-size: 0.75rem;
+            }
+            
+            .venue-table th,
+            .venue-table td {
+                padding: 0.6rem 0.4rem;
+            }
+            
+            .venue-link {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</body>
+</html>
