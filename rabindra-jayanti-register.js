@@ -166,9 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (successEl) {
           var msg = 'Registration confirmed!';
-          if (typeof data.left === 'number') {
-            msg += ' Seats remaining: ' + data.left + ' / ' + data.capacity + '.';
-          }
           msg += ' A confirmation email has been sent. Thank you!';
           successEl.textContent   = msg;
           successEl.style.display = 'block';
