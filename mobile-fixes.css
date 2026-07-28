@@ -2609,7 +2609,7 @@ body {
 /* Inline styles on index sections use 5rem padding which overrides the section rule above.
    These !important overrides restore compact vertical spacing on mobile. */
 @media (max-width: 768px) {
-    #prayaas {
+    #durga-puja {
         padding-top: calc(var(--navbar-height, 70px) + 1.5rem) !important;
         padding-bottom: 2rem !important;
     }
@@ -2648,7 +2648,7 @@ body {
 }
 
 @media (max-width: 480px) {
-    #prayaas {
+    #durga-puja {
         padding-top: calc(var(--navbar-height, 70px) + 1rem) !important;
         padding-bottom: 1.5rem !important;
     }
@@ -2675,128 +2675,115 @@ body {
 
 }
 
-/* ===== Index Page: Prayaas Section — Compact & Centred ===== */
+/* ===== Index Page: Durga Puja Banner — Compact & Centred ===== */
 @media (max-width: 768px) {
     /* Centre all text in the left panel */
-    .prayaas-left {
+    .dp-banner-left {
         text-align: center !important;
     }
 
     /* Ribbon badge — smaller */
-    .prayaas-left > div[style*="inline-block"][style*="backdrop-filter"] {
+    .dp-banner-left > div[style*="inline-block"][style*="backdrop-filter"] {
         font-size: 0.95rem !important;
         padding: 7px 18px !important;
         margin-bottom: 0.8rem !important;
     }
 
     /* Org name */
-    .prayaas-left > div:first-child {
+    .dp-banner-left > div:first-child {
         font-size: 1.1rem !important;
         margin-bottom: 0.4rem !important;
     }
 
-    /* "Prayaas" title */
-    .prayaas-left h2 {
-        font-size: clamp(2.4rem, 9vw, 3rem) !important;
+    /* Title */
+    .dp-banner-left h2 {
+        font-size: clamp(2.2rem, 8vw, 2.8rem) !important;
         margin-bottom: 0.2rem !important;
     }
 
-    /* "Rhythms of Hope" */
-    .prayaas-left h2 + p {
+    /* Subtitle */
+    .dp-banner-left h2 + p {
         font-size: 1rem !important;
         margin-bottom: 0.8rem !important;
     }
 
     /* Tagline */
-    .prayaas-tagline {
+    .dp-banner-tagline {
         font-size: 0.95rem !important;
         line-height: 1.6 !important;
         margin-bottom: 1rem !important;
     }
 
     /* Event detail box */
-    .prayaas-left > div[style*="backdrop-filter"][style*="border-radius: 16px"] {
+    .dp-banner-left > div[style*="backdrop-filter"][style*="border-radius: 16px"] {
         padding: 0.85rem 1rem !important;
         margin-bottom: 1rem !important;
     }
 
-    /* Date / time / price flex row — centre items */
-    .prayaas-left div[style*="flex-wrap: wrap"][style*="gap: 0.6rem"] {
+    /* Date / free-entry row — centre items */
+    .dp-banner-left div[style*="flex-wrap: wrap"][style*="gap: 0.6rem"] {
         justify-content: center !important;
         font-size: 0.9rem !important;
     }
 
-    /* Vertical dividers between date/time/price — hide on mobile, save width */
-    .prayaas-left div[style*="width: 1px"][style*="height: 1.2em"] {
-        display: none !important;
-    }
-
-    /* Date, time, price items — remove side padding now dividers are gone */
-    .prayaas-left div[style*="flex-wrap: wrap"] > div[style*="padding-right"],
-    .prayaas-left div[style*="flex-wrap: wrap"] > div[style*="padding: 0 1rem"],
-    .prayaas-left div[style*="flex-wrap: wrap"] > div[style*="padding-left"] {
-        padding: 0 0.4rem !important;
-    }
-
     /* Venue row — centre */
-    .prayaas-left div[style*="align-items: flex-start"][style*="font-size: 1.1rem"] {
+    .dp-banner-left div[style*="align-items: flex-start"][style*="font-size: 1.05rem"] {
         justify-content: center !important;
         font-size: 0.9rem !important;
         text-align: center !important;
     }
 
     /* CTA row — centre button */
-    .prayaas-left > div[style*="display: flex"][style*="gap: 1.2rem"] {
+    .dp-banner-left > div[style*="display: flex"][style*="gap: 1.2rem"] {
         justify-content: center !important;
     }
 
     /* CTA button — slightly smaller */
-    .prayaas-left a[href="contact.html"] {
+    .dp-banner-left a[href="dp2026.html"] {
         padding: 12px 30px !important;
         font-size: 1rem !important;
         min-height: 46px !important;
     }
 
-    /* Right panel — reduce video height */
-    .prayaas-right iframe {
+    /* Right panel image — reduce height */
+    .dp-banner-right img {
         height: 170px !important;
     }
 
     /* Right panel label text — smaller */
-    .prayaas-right > div:first-child,
-    .prayaas-right > div[style*="text-transform: uppercase"] {
+    .dp-banner-right > div[style*="text-transform: uppercase"] {
         font-size: 0.8rem !important;
         margin-bottom: 0.5rem !important;
     }
 
     /* Countdown number font */
-    #prayaas-countdown > div > div:first-child {
+    #dp-countdown > div > div:first-child {
         font-size: 2rem !important;
     }
 
     /* Countdown label font */
-    #prayaas-countdown > div > div:last-child {
+    #dp-countdown > div > div:last-child {
         font-size: 0.75rem !important;
     }
 }
 
 @media (max-width: 480px) {
-    .prayaas-left h2 {
-        font-size: clamp(2rem, 9vw, 2.4rem) !important;
+    .dp-banner-left h2 {
+        font-size: clamp(1.9rem, 8vw, 2.3rem) !important;
     }
 
-    .prayaas-right iframe {
+    .dp-banner-right img {
         height: 150px !important;
     }
 
-    /* CTA row stays centred (override the old left-align rule) */
-    .prayaas-left > div[style*="display: flex"][style*="gap: 1.2rem"] {
+    /* CTA row stays centred */
+    .dp-banner-left > div[style*="display: flex"][style*="gap: 1.2rem"] {
         flex-direction: column !important;
         align-items: center !important;
         gap: 0.6rem !important;
     }
 
-    #prayaas-countdown > div > div:first-child {
+    #dp-countdown > div > div:first-child {
         font-size: 1.7rem !important;
     }
 }
