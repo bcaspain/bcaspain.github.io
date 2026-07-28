@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         children: 35,
         students: 55,
         'children-under-5': 0,
-        'day-pass': 25
+        'day-pass': 35
     });
     
     // Security: Form integrity tracking

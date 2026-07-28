@@ -26,6 +26,13 @@
     <link rel="stylesheet" href="mobile-fixes.css">
     <script defer src="navbar.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>
+        (function () {
+            if (new URLSearchParams(window.location.search).get('embed') === '1') {
+                document.documentElement.classList.add('legal-embed');
+            }
+        })();
+    </script>
     <style>
         .legal-page { max-width: 860px; margin: 0 auto; padding: calc(var(--navbar-height, 70px) + 2rem) 1.25rem 3rem; }
         .legal-page h1 { margin-bottom: 0.75rem; }
@@ -41,6 +48,13 @@
         .legal-page table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
         .legal-page th, .legal-page td { border: 1px solid #ddd; padding: 0.6rem 0.8rem; text-align: left; font-size: 0.95rem; }
         .legal-page th { background: #f7f7f7; }
+        html.legal-embed #navbar-placeholder,
+        html.legal-embed .footer { display: none !important; }
+        html.legal-embed .legal-page {
+            max-width: none;
+            padding: 1.25rem 1.25rem 2rem;
+        }
+        html.legal-embed body { background: #fff; }
     </style>
 </head>
 <body class="scroll-container">
