@@ -50,6 +50,65 @@
 
     <!-- Durga Puja 2026 Featured Banner -->
     <style>
+    @media (min-width: 992px) {
+        .dp-banner-inner {
+            flex-wrap: nowrap !important;
+        }
+
+        .dp-banner-left {
+            flex: 1 1 42% !important;
+            max-width: 46% !important;
+        }
+
+        .dp-banner-right {
+            flex: 1 1 54% !important;
+            max-width: 54% !important;
+            min-width: 520px !important;
+            padding: 3.25rem 3.5rem 3.25rem 3rem !important;
+        }
+
+        .dp-banner-right .dp-banner-image-wrap img {
+            height: 300px !important;
+        }
+
+        .dp-banner-right .dp-countdown-label {
+            font-size: 1.15rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        #dp-countdown {
+            gap: 1rem !important;
+        }
+
+        #dp-countdown > div {
+            padding: 1.6rem 0.75rem !important;
+        }
+
+        #dp-countdown .dp-countdown-value {
+            font-size: 3.75rem !important;
+        }
+
+        #dp-countdown .dp-countdown-unit {
+            font-size: 1rem !important;
+            margin-top: 0.65rem !important;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .dp-banner-right {
+            min-width: 580px !important;
+            padding: 3.5rem 4rem 3.5rem 3.25rem !important;
+        }
+
+        .dp-banner-right .dp-banner-image-wrap img {
+            height: 320px !important;
+        }
+
+        #dp-countdown .dp-countdown-value {
+            font-size: 4.25rem !important;
+        }
+    }
+
     @media (max-width: 768px) {
         .dp-banner-inner { flex-direction: column !important; }
         .dp-banner-left { padding: 2rem 1.5rem !important; }
@@ -60,7 +119,7 @@
     }
     @media (max-width: 480px) {
         .dp-banner-left { padding: 1.5rem 1rem !important; }
-        #dp-countdown > div > div:first-child { font-size: 2.2rem !important; }
+        #dp-countdown .dp-countdown-value { font-size: 2.2rem !important; }
         .dp-banner-tagline { font-size: 1rem !important; }
     }
     </style>
@@ -122,30 +181,30 @@
                     </div>
 
                     <!-- RIGHT: Image + Countdown -->
-                    <div class="dp-banner-right" style="flex: 0 1 460px; padding: 3rem 3rem 3rem 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-left: 1px solid rgba(255,255,255,0.15);">
-                        <div style="width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 2rem; border: 2px solid rgba(255,255,255,0.25);">
-                            <img src="slider/a11.webp" alt="Durga Puja celebrations in Barcelona" style="width: 100%; height: 220px; object-fit: cover; display: block;" loading="eager" />
+                    <div class="dp-banner-right" style="flex: 1 1 520px; padding: 3rem 3rem 3rem 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-left: 1px solid rgba(255,255,255,0.15);">
+                        <div class="dp-banner-image-wrap" style="width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 2rem; border: 2px solid rgba(255,255,255,0.25);">
+                            <img src="slider/a11.webp" alt="Durga Puja celebrations in Barcelona" style="width: 100%; height: 260px; object-fit: cover; display: block;" loading="eager" />
                         </div>
 
-                        <div style="font-size: 1.05rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.85; margin-bottom: 1.3rem;">
+                        <div class="dp-countdown-label" style="font-size: 1.05rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.85; margin-bottom: 1.3rem;">
                             <i class="fas fa-hourglass-half"></i> Countdown to Durga Puja 2026
                         </div>
                         <div id="dp-countdown" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; width: 100%;" aria-live="polite">
                             <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-days" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Days</div>
+                                <div id="dp-days" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Days</div>
                             </div>
                             <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-hours" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Hours</div>
+                                <div id="dp-hours" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Hours</div>
                             </div>
                             <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-minutes" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Mins</div>
+                                <div id="dp-minutes" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Mins</div>
                             </div>
                             <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-seconds" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Secs</div>
+                                <div id="dp-seconds" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
+                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Secs</div>
                             </div>
                         </div>
                     </div>

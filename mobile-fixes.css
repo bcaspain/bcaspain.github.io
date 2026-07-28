@@ -2746,23 +2746,23 @@ body {
     }
 
     /* Right panel image — reduce height */
-    .dp-banner-right img {
+    .dp-banner-right .dp-banner-image-wrap img {
         height: 170px !important;
     }
 
     /* Right panel label text — smaller */
-    .dp-banner-right > div[style*="text-transform: uppercase"] {
+    .dp-banner-right .dp-countdown-label {
         font-size: 0.8rem !important;
         margin-bottom: 0.5rem !important;
     }
 
     /* Countdown number font */
-    #dp-countdown > div > div:first-child {
+    #dp-countdown .dp-countdown-value {
         font-size: 2rem !important;
     }
 
     /* Countdown label font */
-    #dp-countdown > div > div:last-child {
+    #dp-countdown .dp-countdown-unit {
         font-size: 0.75rem !important;
     }
 }
@@ -2772,7 +2772,7 @@ body {
         font-size: clamp(1.9rem, 8vw, 2.3rem) !important;
     }
 
-    .dp-banner-right img {
+    .dp-banner-right .dp-banner-image-wrap img {
         height: 150px !important;
     }
 
@@ -2783,7 +2783,7 @@ body {
         gap: 0.6rem !important;
     }
 
-    #dp-countdown > div > div:first-child {
+    #dp-countdown .dp-countdown-value {
         font-size: 1.7rem !important;
     }
 }
