@@ -1747,30 +1747,29 @@
         ];
 
         function adjustSliderSize() {
-            const slider = document.querySelector('.slideshow-container');
-            if (!slider) return;
-            if (window.innerWidth <= 768) {
-                slider.style.maxWidth = '100%';
-                slider.style.height = '250px';
-            } else if (window.innerWidth <= 1024) {
-                slider.style.maxWidth = '500px';
-                slider.style.height = '300px';
-            } else {
-                slider.style.maxWidth = '600px';
-                slider.style.height = '350px';
-            }
+            document.querySelectorAll('.dp2026-hero .slideshow-container').forEach(function(slider) {
+                if (window.innerWidth <= 768) {
+                    slider.style.maxWidth = '100%';
+                    slider.style.height = '220px';
+                } else if (window.innerWidth <= 1024) {
+                    slider.style.maxWidth = '500px';
+                    slider.style.height = '300px';
+                } else {
+                    slider.style.maxWidth = '600px';
+                    slider.style.height = '350px';
+                }
+            });
         }
         window.addEventListener('load', adjustSliderSize);
         window.addEventListener('resize', adjustSliderSize);
 
         let currentSlide = 0;
-        const slideshowImg = document.getElementById('slideshow-image');
-        const leftArrow = document.querySelector('.slideshow-arrow.left');
-        const rightArrow = document.querySelector('.slideshow-arrow.right');
 
         function showSlide(index) {
             currentSlide = index;
-            if (slideshowImg) slideshowImg.src = galleryImages[index];
+            document.querySelectorAll('.dp2026-hero .slideshow-container img').forEach(function(img) {
+                img.src = galleryImages[index];
+            });
         }
 
         function nextSlide() {
@@ -1783,9 +1782,23 @@
             showSlide(currentSlide);
         }
 
-        // Attach event listeners only if arrows exist
-        if (leftArrow) leftArrow.addEventListener('click', prevSlide);
-        if (rightArrow) rightArrow.addEventListener('click', nextSlide);
+        var heroSection = document.querySelector('.dp2026-hero');
+        if (heroSection) {
+            heroSection.addEventListener('click', function(e) {
+                if (e.target.closest('.slideshow-arrow.left')) {
+                    e.preventDefault();
+                    prevSlide();
+                } else if (e.target.closest('.slideshow-arrow.right')) {
+                    e.preventDefault();
+                    nextSlide();
+                }
+            });
+        }
+
+        window.refreshDp2026Slideshow = function() {
+            showSlide(currentSlide);
+            adjustSliderSize();
+        };
 
         // Auto slideshow disabled - manual navigation only
         // setInterval(nextSlide, 1900);

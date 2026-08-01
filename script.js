@@ -105,17 +105,16 @@ function initMobileSlideshowReorder() {
         });
         
         if (heroTitle && slideshow && heroText) {
-            // Clone the slideshow for mobile
+            // Clone the slideshow for mobile — placed after the hero title
             const mobileSlideshow = slideshow.cloneNode(true);
             mobileSlideshow.classList.add('mobile-slideshow');
             
-            // Insert the slideshow after the title
             heroTitle.insertAdjacentElement('afterend', mobileSlideshow);
-            
-            // Hide the original slideshow on mobile by adding a class
             slideshow.classList.add('hidden-on-mobile');
             
             console.log('Mobile slideshow created and positioned');
+        } else if (slideshow) {
+            slideshow.classList.remove('hidden-on-mobile');
         }
         
         if (countdown && heroText) {
@@ -134,6 +133,16 @@ function initMobileSlideshowReorder() {
 
             if (insertAfter) {
                 insertAfter.insertAdjacentElement('afterend', mobileCountdown);
+            }
+
+            if (typeof window.refreshIndexDpCountdown === 'function') {
+                window.refreshIndexDpCountdown();
+            } else if (typeof updateCountdown === 'function') {
+                updateCountdown();
+            }
+
+            if (typeof window.refreshDp2026Slideshow === 'function') {
+                window.refreshDp2026Slideshow();
             }
             
             // Hide the original countdown on mobile by adding a class
@@ -195,8 +204,6 @@ function updateCountdown() {
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
     if (timeLeft <= 0) {
-        const countdownElement = document.getElementById('countdown');
-        
         const countdownMessage = `
             <div class="countdown-message">
                 <i class="fas fa-star"></i>
@@ -204,9 +211,11 @@ function updateCountdown() {
                 <i class="fas fa-star"></i>
             </div>
         `;
-        
-        if (countdownElement) countdownElement.innerHTML = countdownMessage;
-        
+
+        document.querySelectorAll('.countdown-section .countdown').forEach((wrap) => {
+            wrap.innerHTML = countdownMessage;
+        });
+
         if (window.countdownInterval) {
             clearInterval(window.countdownInterval);
             window.countdownInterval = null;
@@ -214,43 +223,34 @@ function updateCountdown() {
         return;
     }
 
-    // Update countdown display
-    const elements = {
-        days: document.getElementById('days'),
-        hours: document.getElementById('hours'),
-        minutes: document.getElementById('minutes'),
-        seconds: document.getElementById('seconds')
-    };
-
-    // Update numbers
-    Object.entries(elements).forEach(([unit, element]) => {
-        if (element) {
-            const value = eval(unit);
-            element.textContent = String(value).padStart(2, '0');
+    document.querySelectorAll('.countdown-section .countdown').forEach((wrap) => {
+        const nums = wrap.querySelectorAll('.countdown-number');
+        if (nums.length >= 4) {
+            nums[0].textContent = String(days).padStart(2, '0');
+            nums[1].textContent = String(hours).padStart(2, '0');
+            nums[2].textContent = String(minutes).padStart(2, '0');
+            nums[3].textContent = String(seconds).padStart(2, '0');
         }
-    });
 
-    // Update labels
-    const labels = {
-        days: document.querySelector('.days-label'),
-        hours: document.querySelector('.hours-label'),
-        minutes: document.querySelector('.minutes-label'),
-        seconds: document.querySelector('.seconds-label')
-    };
+        const labels = {
+            days: wrap.querySelector('.days-label'),
+            hours: wrap.querySelector('.hours-label'),
+            minutes: wrap.querySelector('.minutes-label'),
+            seconds: wrap.querySelector('.seconds-label')
+        };
 
-    // Update labels
-    Object.entries(labels).forEach(([unit, label]) => {
-        if (label) {
-            const value = eval(unit);
-            label.textContent = value === 1 ? unit.slice(0, -1) : unit;
-        }
+        Object.entries(labels).forEach(([unit, label]) => {
+            if (label) {
+                const value = { days, hours, minutes, seconds }[unit];
+                label.textContent = value === 1 ? unit.slice(0, -1) : unit;
+            }
+        });
     });
 }
 
 // Initialize countdown timer with proper interval cleanup
 function initCountdown() {
-    // If the countdown element is not present on the page, skip initializing
-    const countdownElement = document.getElementById('countdown');
+    const countdownElement = document.querySelector('.countdown-section .countdown');
     if (!countdownElement) {
         if (window.countdownInterval) {
             clearInterval(window.countdownInterval);
@@ -314,7 +314,6 @@ function openNavMenu() {
     const body = document.body;
     
     if (menu && toggle) {
-        // Store current scroll position
         const scrollY = window.scrollY;
         body.style.position = 'fixed';
         body.style.top = `-${scrollY}px`;
@@ -325,20 +324,7 @@ function openNavMenu() {
         
         menu.classList.add('active');
         toggle.classList.add('active');
-        
-        // Add smooth entrance animation
-        setTimeout(() => {
-            const navLinks = menu.querySelectorAll('.nav-link');
-            navLinks.forEach((link, index) => {
-                link.style.opacity = '0';
-                link.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    link.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-                    link.style.opacity = '1';
-                    link.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        }, 50);
+        toggle.setAttribute('aria-expanded', 'true');
     }
 }
 
@@ -348,42 +334,24 @@ function closeNavMenu() {
     const body = document.body;
     
     if (menu && toggle) {
-        // Add smooth exit animation
-        const navLinks = menu.querySelectorAll('.nav-link');
-        navLinks.forEach((link, index) => {
-            link.style.transition = 'all 0.2s ease';
-            link.style.opacity = '0';
-            link.style.transform = 'translateY(-10px)';
-        });
-        
-        setTimeout(() => {
-            menu.classList.remove('active');
-            toggle.classList.remove('active');
-            
-            // Restore scroll position - FIXED to prevent unwanted scrolling
-            const scrollY = body.style.top;
-            body.style.position = '';
-            body.style.top = '';
-            body.style.width = '';
-            body.style.overflow = '';
-            body.style.touchAction = '';
-            body.style.overscrollBehavior = '';
-            
-            // Only restore scroll position if we have a valid stored position
-            if (scrollY && scrollY !== '0px' && scrollY !== '') {
-                const scrollPosition = parseInt(scrollY.replace('px', '')) * -1;
-                if (scrollPosition > 0) {
-                    window.scrollTo(0, scrollPosition);
-                }
+        menu.classList.remove('active');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+
+        const scrollY = body.style.top;
+        body.style.position = '';
+        body.style.top = '';
+        body.style.width = '';
+        body.style.overflow = '';
+        body.style.touchAction = '';
+        body.style.overscrollBehavior = '';
+
+        if (scrollY && scrollY !== '0px' && scrollY !== '') {
+            const scrollPosition = parseInt(scrollY.replace('px', ''), 10) * -1;
+            if (scrollPosition > 0) {
+                window.scrollTo(0, scrollPosition);
             }
-            
-            // Reset link styles
-            navLinks.forEach(link => {
-                link.style.transition = '';
-                link.style.opacity = '';
-                link.style.transform = '';
-            });
-        }, 200);
+        }
     }
 }
 
@@ -407,20 +375,18 @@ function initMobileNavigation() {
         toggleNavMenu();
     });
 
-    // Close menu when clicking on nav links (mobile/tablet)
+    // Close menu when navigating (not when expanding Attractions dropdown)
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            if (window.innerWidth >= 1280) return;
+            if (link.classList.contains('nav-dropdown-toggle')) return;
+
             e.stopPropagation();
-            if (window.innerWidth < 1280) {
-                // Add a small delay for page navigation to allow menu close animation
-                const href = link.getAttribute('href');
-                if (href && !href.startsWith('#')) {
-                    setTimeout(() => {
-                        closeNavMenu();
-                    }, 150);
-                } else {
-                    closeNavMenu();
-                }
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('#')) {
+                setTimeout(() => closeNavMenu(), 150);
+            } else {
+                closeNavMenu();
             }
         });
     });
@@ -637,6 +603,7 @@ function initSmoothScrolling() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
+            if (!href || link.classList.contains('nav-dropdown-toggle')) return;
             
             // Handle hash links (internal page sections)
             if (href.startsWith('#')) {
@@ -1193,9 +1160,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize other features
     hideLoading();
-    if (navToggle) {
-        navToggle.addEventListener('click', toggleNavMenu);
-    }
     initSmoothScrolling();
     initFormValidation();
     // Removed initLightboxKeyboard() to prevent conflicts with gallery.html
@@ -1209,17 +1173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add resize event listener for slideshow reordering
     window.addEventListener('resize', handleSlideshowResize);
-    
-    // Close mobile menu when clicking outside - FIXED to prevent unwanted scrolling
-    document.addEventListener('click', (e) => {
-        if (navbar && !navbar.contains(e.target)) {
-            // Only close menu if it's actually open to prevent unnecessary scroll restoration
-            const menu = document.getElementById('nav-menu');
-            if (menu && menu.classList.contains('active')) {
-                closeNavMenu();
-            }
-        }
-    }, { passive: true });
     
     // Set initial active navigation link based on current page
     setInitialActiveNavLink();

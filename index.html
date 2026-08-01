@@ -141,32 +141,44 @@
         <script>
         (function() {
             var targetDate = new Date('2026-10-17T08:00:00+02:00').getTime();
-            var el = {
-                days: document.getElementById('dp-days'),
-                hours: document.getElementById('dp-hours'),
-                minutes: document.getElementById('dp-minutes'),
-                seconds: document.getElementById('dp-seconds')
-            };
-            var wrap = document.getElementById('dp-countdown');
+            var endedHtml = '<div class="countdown-item" style="grid-column: 1/-1; padding: 1rem;"><span class="countdown-number" style="font-size: 1.1rem;"><i class="fas fa-star"></i> Durga Puja 2026 has begun! <i class="fas fa-star"></i></span></div>';
+
+            function getWraps() {
+                return document.querySelectorAll('#durga-puja .countdown-section .countdown');
+            }
 
             function tick() {
+                var wraps = getWraps();
+                if (!wraps.length) return;
+
                 var diff = targetDate - Date.now();
                 if (diff <= 0) {
-                    if (wrap) wrap.innerHTML = '<div class="countdown-item" style="grid-column: 1/-1; padding: 1rem;"><span class="countdown-number" style="font-size: 1.1rem;"><i class="fas fa-star"></i> Durga Puja 2026 has begun! <i class="fas fa-star"></i></span></div>';
+                    wraps.forEach(function(wrap) {
+                        wrap.innerHTML = endedHtml;
+                    });
                     clearInterval(timer);
                     return;
                 }
+
                 var d = Math.floor(diff / 86400000);
                 var h = Math.floor((diff % 86400000) / 3600000);
                 var m = Math.floor((diff % 3600000) / 60000);
                 var s = Math.floor((diff % 60000) / 1000);
-                if (el.days) el.days.textContent = String(d).padStart(2, '0');
-                if (el.hours) el.hours.textContent = String(h).padStart(2, '0');
-                if (el.minutes) el.minutes.textContent = String(m).padStart(2, '0');
-                if (el.seconds) el.seconds.textContent = String(s).padStart(2, '0');
+
+                wraps.forEach(function(wrap) {
+                    var nums = wrap.querySelectorAll('.countdown-number');
+                    if (nums.length < 4) return;
+                    nums[0].textContent = String(d).padStart(2, '0');
+                    nums[1].textContent = String(h).padStart(2, '0');
+                    nums[2].textContent = String(m).padStart(2, '0');
+                    nums[3].textContent = String(s).padStart(2, '0');
+                });
             }
+
             tick();
             var timer = setInterval(tick, 1000);
+            window.refreshIndexDpCountdown = tick;
+            window.addEventListener('resize', tick);
         })();
         </script>
     </section>

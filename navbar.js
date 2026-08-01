@@ -59,6 +59,19 @@
     }
   }
 
+  function loadNavbarMobileStyles() {
+    if (document.querySelector('link[data-navbar-mobile-css]')) return;
+    const navScript = document.querySelector('script[src*="navbar.js"]');
+    const href = navScript
+      ? navScript.getAttribute('src').replace(/navbar\.js(?:\?.*)?$/, 'navbar-mobile.css')
+      : 'navbar-mobile.css';
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.setAttribute('data-navbar-mobile-css', '');
+    document.head.appendChild(link);
+  }
+
   function loadDhaakPlayer() {
     if (document.querySelector('script[data-dhaak-player]')) return;
     const navScript = document.querySelector('script[src*="navbar.js"]');
@@ -73,6 +86,7 @@
   }
 
   function boot() {
+    loadNavbarMobileStyles();
     loadNavbar();
     loadDhaakPlayer();
   }
