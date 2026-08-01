@@ -31,12 +31,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile-fixes.css">
+    <link rel="stylesheet" href="dp-hero.css">
 
     <!-- Shared navbar include -->
     <script defer src="navbar.js"></script>
@@ -49,166 +50,90 @@
     <div id="navbar-placeholder"></div>
 
     <!-- Durga Puja 2026 Featured Banner -->
-    <style>
-    @media (min-width: 992px) {
-        .dp-banner-inner {
-            flex-wrap: nowrap !important;
-        }
-
-        .dp-banner-left {
-            flex: 1 1 42% !important;
-            max-width: 46% !important;
-        }
-
-        .dp-banner-right {
-            flex: 1 1 54% !important;
-            max-width: 54% !important;
-            min-width: 520px !important;
-            padding: 3.25rem 3.5rem 3.25rem 3rem !important;
-        }
-
-        .dp-banner-right .dp-banner-image-wrap img {
-            height: 300px !important;
-        }
-
-        .dp-banner-right .dp-countdown-label {
-            font-size: 1.15rem !important;
-            margin-bottom: 1.5rem !important;
-        }
-
-        #dp-countdown {
-            gap: 1rem !important;
-        }
-
-        #dp-countdown > div {
-            padding: 1.6rem 0.75rem !important;
-        }
-
-        #dp-countdown .dp-countdown-value {
-            font-size: 3.75rem !important;
-        }
-
-        #dp-countdown .dp-countdown-unit {
-            font-size: 1rem !important;
-            margin-top: 0.65rem !important;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .dp-banner-right {
-            min-width: 580px !important;
-            padding: 3.5rem 4rem 3.5rem 3.25rem !important;
-        }
-
-        .dp-banner-right .dp-banner-image-wrap img {
-            height: 320px !important;
-        }
-
-        #dp-countdown .dp-countdown-value {
-            font-size: 4.25rem !important;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .dp-banner-inner { flex-direction: column !important; }
-        .dp-banner-left { padding: 2rem 1.5rem !important; }
-        .dp-banner-right { border-left: none !important; border-top: 1px solid rgba(255,255,255,0.15) !important; padding: 1.5rem 1.5rem !important; }
-        #dp-countdown { grid-template-columns: repeat(4, 1fr) !important; min-width: 0; }
-        #dp-countdown > div { min-width: 0; padding: 0.7rem 0.4rem !important; }
-        .dp-banner-tagline { font-size: 1.1rem !important; }
-    }
-    @media (max-width: 480px) {
-        .dp-banner-left { padding: 1.5rem 1rem !important; }
-        #dp-countdown .dp-countdown-value { font-size: 2.2rem !important; }
-        .dp-banner-tagline { font-size: 1rem !important; }
-    }
-    </style>
-    <section id="durga-puja" class="dp-banner-section" style="padding: calc(var(--navbar-height, 70px) + 3.5rem) 0 3.5rem; background: linear-gradient(135deg, #fff5f5 0%, #fff0e6 100%);">
+    <section id="durga-puja" class="hero dp2026-hero">
         <div class="container">
-            <div class="dp-banner-poster" style="background: linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%); border-radius: 24px; box-shadow: 0 20px 60px rgba(198, 40, 40, 0.45); overflow: hidden; position: relative;">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-association">Bengali Cultural Association</span>
+                    <span class="title-event">Durga Puja 2026</span>
+                    <span class="title-location">Barcelona</span>
+                </h1>
 
-                <!-- Decorative pattern overlay -->
-                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.07) 0%, transparent 50%); pointer-events: none;"></div>
-
-                <div class="dp-banner-inner" style="position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 0; color: white;">
-
-                    <!-- LEFT: Event Info -->
-                    <div class="dp-banner-left" style="flex: 1 1 380px; padding: 3rem 2.5rem 3rem 3.5rem; text-align: left;">
-
-                        <div style="font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 600; opacity: 0.93; margin-bottom: 1rem; letter-spacing: 0.5px;">
-                            Bengali Cultural Association
+                <div class="hero-text">
+                
+                    <blockquote class="hero-kobita" lang="bn">
+                        <div class="hero-kobita-body">
+                            <p>শিউলি ফোটা সকালগুলো<br>করছে যে হাঁকডাক<br>কাশবনেতে উঠছে যে ঢেউ<br>বাজবে কবে ঢাক।</p>
+                            <p>বছর হল পার<br>নিয়ে পরিবার<br>আসছে উমা বাপের বাড়ি<br>আনন্দের জোয়ার।</p>
                         </div>
+                        <footer class="hero-kobita-attribution">
+                            <span>— Poem: শারদীয়া by Ms. Tanwi Manna</span> 
+                        </footer>
+                    </blockquote>
 
-                        
-
-                        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; margin: 0 0 0.4rem 0; text-shadow: 0 4px 20px rgba(0,0,0,0.3); letter-spacing: 1px; line-height: 1.1;">
-                            Durga Puja 2026
-                        </h2>
-                        <p style="font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 300; font-style: italic; margin: 0 0 1.4rem 0; opacity: 0.95;">
-                            Barcelona · Maha Shashthi to Vijaya Dashami
+                    <div class="hero-subtitle-group">
+                        <p class="hero-subtitle hero-subtitle-about">
+                            <strong>Barcelona Durga Puja 2026</strong> is presented by the
+                            <strong>Bengali Cultural Association of India in Spain (BCA)</strong> —
+                            a registered non-profit founded in 2021, passionately committed to enriching
+                            our vibrant subcontinent community in Spain.
                         </p>
-
-                        <p class="dp-banner-tagline" style="font-size: 1.2rem; line-height: 1.75; opacity: 0.92; margin-bottom: 1.4rem; max-width: 600px;">
-                            Five days of traditional puja ceremonies, cultural performances, authentic Bengali cuisine, and community celebration. Experiencing Durga Puja 2026 is free!
+                        <p class="hero-subtitle hero-subtitle-about">
+                            Join us for five days of traditional puja ceremonies, cultural performances,
+                            authentic Bengali cuisine, and community celebration — from Maha Shashthi to
+                            Vijaya Dashami. <strong>Experiencing Durga Puja 2026 is free!</strong>
                         </p>
+                    </div>
 
-                        <!-- Event details -->
-                        <div style="background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem 1.6rem; margin-bottom: 1.6rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
-                                    <i class="fas fa-calendar-day" style="opacity: 0.85; flex-shrink: 0;"></i>
-                                    <span><strong>17 – 21 October 2026</strong></span>
-                                </div>
-                                <!-- <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
-                                    <i class="fas fa-ticket-alt" style="opacity: 0.85; flex-shrink: 0;"></i>
-                                    <span><strong>Free entry</strong></span>
-                                </div> -->
-                            </div>
-                            <div style="height: 1px; background: rgba(255,255,255,0.15);"></div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.7rem; font-size: 1.05rem;">
-                                <i class="fas fa-map-marker-alt" style="color: #ffd54f; margin-top: 0.15rem; flex-shrink: 0;"></i>
-                                <span><strong>Barcelona</strong> · Venue to be announced</span>
-                            </div>
+                    <div class="dp-hero-details">
+                        <div class="dp-hero-details-row">
+                            <i class="fas fa-calendar-day"></i>
+                            <span><strong>17 – 21 October 2026</strong></span>
                         </div>
-
-                        <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
-                            <a href="dp2026.html" style="display: inline-block; background: white; color: #c62828; padding: 15px 40px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1.15rem; letter-spacing: 0.5px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); transition: transform 0.2s, box-shadow 0.2s;"
-                               onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 28px rgba(0,0,0,0.35)'"
-                               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.25)'">
-                                <i class="fas fa-arrow-right"></i> &nbsp; View more
-                            </a>
+                        <div class="dp-hero-details-divider"></div>
+                        <div class="dp-hero-details-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Barcelona</strong> · Venue to be announced</span>
                         </div>
                     </div>
 
-                    <!-- RIGHT: Image + Countdown -->
-                    <div class="dp-banner-right" style="flex: 1 1 520px; padding: 3rem 3rem 3rem 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-left: 1px solid rgba(255,255,255,0.15);">
-                        <div class="dp-banner-image-wrap" style="width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom: 2rem; border: 2px solid rgba(255,255,255,0.25);">
-                            <img src="slider/a11.webp" alt="Durga Puja celebrations in Barcelona" style="width: 100%; height: 260px; object-fit: cover; display: block;" loading="eager" />
-                        </div>
+                    <div class="hero-buttons">
+                        <a href="dp2026.html" class="btn btn-primary btn-large">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>View more</span>
+                        </a>
+                    </div>
+                </div>
 
-                        <div class="dp-countdown-label" style="font-size: 1.05rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.85; margin-bottom: 1.3rem;">
-                            <i class="fas fa-hourglass-half"></i> Countdown to Durga Puja 2026
-                        </div>
-                        <div id="dp-countdown" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; width: 100%;" aria-live="polite">
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-days" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Days</div>
+                <div class="hero-right-section">
+                    <div class="slideshow-container">
+                        <img src="slider/a11.webp" alt="Durga Puja celebrations in Barcelona" loading="eager" />
+                    </div>
+
+                    <div class="countdown-section">
+                        <h3 class="countdown-title">
+                            <i class="fas fa-bell"></i>
+                            Countdown to Durga Puja 2026
+                        </h3>
+                        <div id="dp-countdown" class="countdown" aria-live="polite">
+                            <div class="countdown-item" role="group" aria-label="Days">
+                                <div id="dp-days" class="countdown-number">00</div>
+                                <div class="countdown-label">days</div>
                             </div>
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-hours" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Hours</div>
+                            <div class="countdown-item" role="group" aria-label="Hours">
+                                <div id="dp-hours" class="countdown-number">00</div>
+                                <div class="countdown-label">hours</div>
                             </div>
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-minutes" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Mins</div>
+                            <div class="countdown-item" role="group" aria-label="Minutes">
+                                <div id="dp-minutes" class="countdown-number">00</div>
+                                <div class="countdown-label">minutes</div>
                             </div>
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 1.3rem 0.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);">
-                                <div id="dp-seconds" class="dp-countdown-value" style="font-size: 3rem; font-weight: 700; line-height: 1;">00</div>
-                                <div class="dp-countdown-unit" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.85; margin-top: 0.5rem;">Secs</div>
+                            <div class="countdown-item" role="group" aria-label="Seconds">
+                                <div id="dp-seconds" class="countdown-number">00</div>
+                                <div class="countdown-label">seconds</div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -227,7 +152,7 @@
             function tick() {
                 var diff = targetDate - Date.now();
                 if (diff <= 0) {
-                    if (wrap) wrap.innerHTML = '<div style="font-size: 1.1rem; font-weight: 600; padding: 1rem; grid-column: 1/-1;"><i class="fas fa-star"></i> &nbsp; Durga Puja 2026 has begun! &nbsp; <i class="fas fa-star"></i></div>';
+                    if (wrap) wrap.innerHTML = '<div class="countdown-item" style="grid-column: 1/-1; padding: 1rem;"><span class="countdown-number" style="font-size: 1.1rem;"><i class="fas fa-star"></i> Durga Puja 2026 has begun! <i class="fas fa-star"></i></span></div>';
                     clearInterval(timer);
                     return;
                 }

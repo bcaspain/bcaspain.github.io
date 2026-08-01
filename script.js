@@ -92,7 +92,7 @@ function initMobileSlideshowReorder() {
     }
     
     if (isMobile) {
-        const heroTitle = document.querySelector('.hero-text .hero-title');
+        const heroTitle = document.querySelector('.hero-content > .hero-title') || document.querySelector('.hero-text .hero-title');
         const slideshow = document.querySelector('.hero-right-section .slideshow-container');
         const countdown = document.querySelector('.hero-right-section .countdown-section');
         const heroText = document.querySelector('.hero-text');
@@ -122,11 +122,18 @@ function initMobileSlideshowReorder() {
             // Clone the countdown for mobile
             const mobileCountdown = countdown.cloneNode(true);
             mobileCountdown.classList.add('mobile-countdown');
-            
-            // Insert the countdown after the subtitle (since features are hidden on mobile)
-            const heroSubtitle = heroText.querySelector('.hero-subtitle');
-            if (heroSubtitle) {
-                heroSubtitle.insertAdjacentElement('afterend', mobileCountdown);
+
+            // Insert after subtitle group / anchor / last subtitle (not first)
+            const countdownAnchor = heroText.querySelector('[data-mobile-countdown-after]');
+            const subtitleGroup = heroText.querySelector('.hero-subtitle-group');
+            const subtitles = heroText.querySelectorAll('.hero-subtitle');
+            const insertAfter = countdownAnchor
+                || subtitleGroup
+                || (subtitles.length ? subtitles[subtitles.length - 1] : null)
+                || heroText.querySelector('.hero-subtitle');
+
+            if (insertAfter) {
+                insertAfter.insertAdjacentElement('afterend', mobileCountdown);
             }
             
             // Hide the original countdown on mobile by adding a class

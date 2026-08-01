@@ -59,10 +59,28 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadNavbar);
-  } else {
+  function loadDhaakPlayer() {
+    if (document.querySelector('script[data-dhaak-player]')) return;
+    const navScript = document.querySelector('script[src*="navbar.js"]');
+    const src = navScript
+      ? navScript.getAttribute('src').replace(/navbar\.js(?:\?.*)?$/, 'dhaak-player.js')
+      : 'dhaak-player.js';
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.setAttribute('data-dhaak-player', '');
+    document.head.appendChild(script);
+  }
+
+  function boot() {
     loadNavbar();
+    loadDhaakPlayer();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
   }
 })();
 
