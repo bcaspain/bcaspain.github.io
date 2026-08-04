@@ -1,10 +1,10 @@
 /* Shared Durga Puja hero — index.html & dp2026.html */
 .dp2026-hero,
 .dp2026-page {
-    --red: #c62828;
-    --dp-red-dark: #7b1e1e;
-    --dp-orange: #ef6c00;
-    --dp-accent: #ffd54f;
+    --red: #c1623d;
+    --dp-red-dark: #8a3f28;
+    --dp-orange: #d3a24a;
+    --dp-accent: #e0a15a;
 }
 
 .dp2026-hero {
@@ -20,9 +20,9 @@
 }
 
 .dp2026-hero .hero-content {
-    background: linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%);
+    background: linear-gradient(135deg, #8a3f28 0%, #c1623d 55%, #d3a24a 100%);
     border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(198, 40, 40, 0.45);
+    box-shadow: 0 20px 60px rgba(193, 98, 61, 0.4);
     padding: 3rem 2.5rem;
     position: relative;
     overflow: visible;
@@ -271,10 +271,10 @@
 .dp2026-hero .btn-large,
 .dp2026-hero .hero-buttons .btn {
     background: #fff !important;
-    color: #c62828 !important;
+    color: #c1623d !important;
     border: 2px solid #fff !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    -webkit-text-fill-color: #c62828 !important;
+    -webkit-text-fill-color: #c1623d !important;
 }
 
 .dp2026-hero .btn:hover,
@@ -283,10 +283,10 @@
 .dp2026-hero .btn-large:hover,
 .dp2026-hero .hero-buttons .btn:hover {
     background: #fff !important;
-    color: #7b1e1e !important;
+    color: #8a3f28 !important;
     border-color: #fff !important;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-    -webkit-text-fill-color: #7b1e1e !important;
+    -webkit-text-fill-color: #8a3f28 !important;
 }
 
 .dp2026-hero .btn span,
@@ -443,7 +443,7 @@
         flex-direction: column !important;
         align-items: stretch !important;
         gap: 0 !important;
-        background: linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%) !important;
+        background: linear-gradient(135deg, #8a3f28 0%, #c1623d 55%, #d3a24a 100%) !important;
         padding: 1.35rem 1rem 1.5rem !important;
         border-radius: 18px;
         border: none !important;

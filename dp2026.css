@@ -1,0 +1,166 @@
+/* ============================================================
+   Durga Puja 2026 — narrative scenes. Loaded after dp-hero.css
+   and landing.css. Reuses .scene / .scene-a-d / .slugline /
+   .script-lede / .script-prose / .reveal-up.
+   ============================================================ */
+
+.fact-box {
+  margin-top: 1.8rem;
+  max-width: 38rem;
+  border-left: 2px solid var(--gold);
+  padding: 1.1rem 1.5rem;
+  background: rgba(211,162,74,0.05);
+}
+.fact-box .fact-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.fact-box p {
+  color: var(--paper-dim);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ---------- schedule: occasion cards ---------- */
+.occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 1rem;
+}
+.occasion-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 6px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+.occasion-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.occasion-card:hover img { transform: scale(1.06); }
+.occasion-card .scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16,16,24,0.15) 0%, rgba(16,16,24,0.35) 45%, rgba(16,16,24,0.96) 100%);
+}
+.occasion-card .content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1.3rem 1.2rem 1.1rem;
+  color: var(--paper);
+}
+.occasion-date {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--terracotta-glow);
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.7rem;
+}
+.occasion-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  text-wrap: balance;
+}
+.occasion-card p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--paper-dim);
+  margin: 0;
+}
+.occasion-credit {
+  position: absolute;
+  top: 0.7rem; right: 0.7rem;
+  font-size: 0.62rem;
+  color: rgba(244,236,221,0.55);
+  background: rgba(16,16,24,0.45);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.occasion-card:hover .occasion-credit,
+.occasion-card:focus-within .occasion-credit { opacity: 1; }
+
+@media (max-width: 980px) {
+  .occasion-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .occasion-grid { grid-template-columns: 1fr; }
+  .occasion-card { aspect-ratio: 16 / 10; }
+}
+
+.dp2026-page .schedule-note {
+  background: rgba(244,236,221,0.04);
+  border-color: var(--line-dark);
+  margin-top: 2rem;
+}
+.dp2026-page .schedule-note p { color: var(--paper-dim); }
+.dp2026-page .schedule-note i { color: var(--terracotta-glow); }
+
+/* ---------- dhaak ambient toggle ---------- */
+.dhaak-ambient-toggle {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-dark);
+  background: rgba(16,16,24,0.85);
+  backdrop-filter: blur(10px);
+  color: var(--paper-dim);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .3s ease, color .3s ease;
+}
+.dhaak-ambient-toggle:hover { border-color: var(--terracotta-glow); color: var(--paper); }
+.dhaak-ambient-toggle .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--paper-faint);
+  transition: background .3s ease, box-shadow .3s ease;
+}
+.dhaak-ambient-toggle.is-on .dot {
+  background: var(--terracotta-glow);
+  box-shadow: 0 0 0 4px rgba(224,138,88,0.18);
+  animation: dhaak-pulse 1.4s ease-in-out infinite;
+}
+@keyframes dhaak-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dhaak-ambient-toggle.is-on .dot { animation: none; }
+}
+@media (max-width: 700px) {
+  .dhaak-ambient-toggle { right: 1rem; bottom: 1rem; padding: 0.55rem 0.9rem; font-size: 0.78rem; }
+}

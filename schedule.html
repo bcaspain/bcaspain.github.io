@@ -38,6 +38,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile-fixes.css">
+    <link rel="stylesheet" href="theme.css">
 
     <!-- Shared navbar include -->
     <script defer src="navbar.js"></script>
@@ -54,46 +55,29 @@
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
                 <h2 class="section-title" style="font-size: 3.5rem; color: var(--red); margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Durga Puja Schedule</h2>
-                <p class="section-subtitle" style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">Complete timeline of Durga Puja 2K25 celebrations in Barcelona</p>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">Durga Puja 2026 in Barcelona</p>
             </div>
-            
+
             <!-- Schedule Overview -->
                             <div class="schedule-overview" style="background: var(--red); padding: 2rem; border-radius: 20px; margin-bottom: 3rem; text-align: center; color: white; box-shadow: 0 10px 30px rgba(220,53,69,0.3);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">📅 Festival Duration: September 28-October 2, 2025</h3>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">📅 Festival Duration: 17 – 21 October 2026</h3>
                 <p style="font-size: 1.1rem; opacity: 0.9;">Join us for 5 days of cultural celebration, performances, and community bonding</p>
             </div>
-            
+
             <!-- Schedule Images -->
             <div class="schedule-images-container" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 3rem;">
-                <div class="schedule-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
-                    <!-- Bengali Schedule -->
-                    <div class="schedule-image-card" style="text-align: center; background: #f8f9fa; border-radius: 15px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <h3 style="color: var(--red); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">বাংলা সময়সূচী</h3>
-                        <div class="schedule-image-wrapper" style="position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;" onclick="openImageModal('schedule/durgapuja-benglai.jpeg', 'Bengali Schedule')">
-                            <img src="schedule/durgapuja-benglai.jpeg" alt="Durga Puja Schedule in Bengali" style="width: 100%; height: auto; display: block; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        </div>
-                        <p style="color: #666; font-size: 0.9rem; margin-top: 1rem; font-style: italic;">Click to view full size</p>
-                    </div>
-                    
-                    <!-- English Schedule -->
-                    <div class="schedule-image-card" style="text-align: center; background: #f8f9fa; border-radius: 15px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <h3 style="color: var(--red); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600;">English Schedule</h3>
-                        <div class="schedule-image-wrapper" style="position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;" onclick="openImageModal('schedule/durgapuja-english.jpeg', 'English Schedule')">
-                            <img src="schedule/durgapuja-english.jpeg" alt="Durga Puja Schedule in English" style="width: 100%; height: auto; display: block; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        </div>
-                        <p style="color: #666; font-size: 0.9rem; margin-top: 1rem; font-style: italic;">Click to view full size</p>
-                    </div>
-                </div>
-                
-                <!-- Download/View Options -->
-                <div class="schedule-actions" style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #eee;">
-                    <h4 style="color: #333; font-size: 1.2rem; margin-bottom: 1rem;">Download Schedule</h4>
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="schedule/durgapuja-benglai.jpeg" download="durgapuja-schedule-bengali.jpeg" class="btn btn-download" style="background: var(--red); color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;">
-                            <i class="fas fa-download"></i> বাংলা PDF
+                <div class="schedule-coming-soon" style="text-align: center; padding: 3rem 1.5rem; background: #f8f9fa; border-radius: 15px; border: 2px dashed rgba(193,98,61,0.35);">
+                    <i class="fas fa-calendar-day" style="font-size: 2.4rem; color: var(--red); opacity: 0.8;"></i>
+                    <h3 style="color: var(--red); font-size: 1.6rem; margin: 1rem 0 0.6rem; font-weight: 600;">The day-by-day schedule is coming soon</h3>
+                    <p style="color: #666; font-size: 1.05rem; max-width: 480px; margin: 0 auto; line-height: 1.7;">
+                        We're finalising the hour-by-hour timing for each day of Durga Puja 2026 — Bengali and English versions will be posted here as soon as they're ready.
+                    </p>
+                    <div style="margin-top: 1.75rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="dp2026.html#schedule-2026" class="btn btn-download" style="background: var(--red); color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                            <i class="fas fa-list"></i> View the daily occasions
                         </a>
-                        <a href="schedule/durgapuja-english.jpeg" download="durgapuja-schedule-english.jpeg" class="btn btn-download" style="background: #ff6b35; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;">
-                            <i class="fas fa-download"></i> English PDF
+                        <a href="https://wa.me/34693005986" target="_blank" rel="noopener noreferrer" class="btn btn-download" style="background: transparent; color: var(--red); border: 2px solid var(--red); padding: 8px 20px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                            <i class="fab fa-whatsapp"></i> Get notified
                         </a>
                     </div>
                 </div>
@@ -130,7 +114,7 @@
                         #Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
                     </p>-->
                     <p>
-                        &copy; 2025 Bengali Cultural Association Barcelona. All rights reserved.
+                        &copy; 2026 Bengali Cultural Association Barcelona. All rights reserved.
                     </p>
             </div>
         </div>

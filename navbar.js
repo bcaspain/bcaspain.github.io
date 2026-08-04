@@ -33,10 +33,6 @@
     const active = exact || byFilename;
     if (active) {
       active.classList.add('active');
-
-      // If the active link is inside a dropdown, keep it open.
-      const dropdown = active.closest('details.nav-dropdown');
-      if (dropdown) dropdown.open = true;
     }
   }
 
@@ -72,23 +68,9 @@
     document.head.appendChild(link);
   }
 
-  function loadDhaakPlayer() {
-    if (document.querySelector('script[data-dhaak-player]')) return;
-    const navScript = document.querySelector('script[src*="navbar.js"]');
-    const src = navScript
-      ? navScript.getAttribute('src').replace(/navbar\.js(?:\?.*)?$/, 'dhaak-player.js')
-      : 'dhaak-player.js';
-    const script = document.createElement('script');
-    script.src = src;
-    script.defer = true;
-    script.setAttribute('data-dhaak-player', '');
-    document.head.appendChild(script);
-  }
-
   function boot() {
     loadNavbarMobileStyles();
     loadNavbar();
-    loadDhaakPlayer();
   }
 
   if (document.readyState === 'loading') {
