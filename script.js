@@ -1599,12 +1599,11 @@ function initVideoModal() {
     // Add click event listeners to feature items
     const featureItems = document.querySelectorAll('.feature-item[data-video]');
     console.log('Found feature items with videos:', featureItems.length);
-    
+
     if (featureItems.length === 0) {
-        console.warn('No feature items with data-video attribute found!');
-        return;
+        console.warn('No feature items with data-video attribute found! Still wiring up modal close handlers below, since pages like index.html open the modal via their own inline script.');
     }
-    
+
     featureItems.forEach((item, index) => {
         const videoSrc = item.getAttribute('data-video');
         const title = item.getAttribute('data-title');

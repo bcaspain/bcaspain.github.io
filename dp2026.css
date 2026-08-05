@@ -4,6 +4,34 @@
    .script-lede / .script-prose / .reveal-up.
    ============================================================ */
 
+/* Idol portrait: shown in full above the copy, at every screen size — same
+   treatment as About's family portrait. aspect-ratio matches this photo's
+   actual 1600x1066 dimensions exactly, so object-fit:cover never needs to
+   crop it. Replaces the absolute full-bleed overlay at all widths. */
+.dp2026-hero {
+  min-height: auto;
+  flex-direction: column;
+  align-items: stretch;
+}
+.dp2026-hero .hero-portrait {
+  position: static;
+  inset: auto;
+  aspect-ratio: 1600 / 1066;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.dp2026-hero .hero-portrait img {
+  position: static;
+  left: auto; top: auto; right: auto;
+  transform: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.dp2026-hero .hero-portrait .tint { display: none; }
+.dp2026-hero .scroll-cue { position: static; margin-top: 2rem; }
+
 .fact-box {
   margin-top: 1.8rem;
   max-width: 38rem;
