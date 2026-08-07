@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <script src="../js/theme-pref.js"></script>
     <title>About — Bengali Cultural Association Barcelona</title>
     <meta name="description" content="Why BCA exists: a non-profit founded in 2022 keeping Bengali culture — its food, music, language and people — alive in Barcelona.">
     <meta name="author" content="Bengali Cultural Association Barcelona">
@@ -11,8 +12,8 @@
     <meta property="og:title" content="About — Bengali Cultural Association Barcelona">
     <meta property="og:description" content="Eleven days, four friends, and a growing home for Bengali culture in Barcelona.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bcaspain.org/about.html">
-    <link rel="canonical" href="https://bcaspain.org/about.html">
+    <meta property="og:url" content="https://bcaspain.org/html/about.html">
+    <link rel="canonical" href="https://bcaspain.org/html/about.html">
 
     <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
     <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
@@ -24,29 +25,27 @@
     </script>
 
     <!-- Klaro consent manager -->
-    <script defer src="klaro.min.js"></script>
-    <script defer src="klaro-config.js"></script>
+    <script defer src="../js/klaro.min.js"></script>
+    <script defer src="../js/klaro-config.js"></script>
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Bengali script fallback (Latin type is self-hosted via theme.css) -->
+    <!-- Bengali script fallback (Latin type loaded via design-system.css) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="mobile-fixes.css">
-    <link rel="stylesheet" href="theme.css">
-    <link rel="stylesheet" href="landing.css">
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/landing.css">
+    <link rel="stylesheet" href="../css/design-system.css">
 
     <!-- Shared navbar include -->
-    <script defer src="navbar.js"></script>
+    <script defer src="../js/navbar.js"></script>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
 <body class="scroll-container landing">
     <div id="navbar-placeholder"></div>
@@ -54,13 +53,13 @@
     <div class="chrome-progress"><div class="chrome-progress-fill" id="progressFill"></div></div>
 
     <!-- ============ COLD OPEN ============ -->
-    <section class="scene scene-hero" id="hero" style="min-height: 92vh;">
+    <section class="scene scene-hero" id="hero" >
         <div class="hero-portrait">
-            <img src="gallery/2024/p27.jpg" alt="" loading="eager" />
+            <img src="../gallery/2024/p27.jpg" alt="" loading="eager" />
             <div class="tint"></div>
         </div>
         <div class="scene-inner">
-            <div class="dusk-hero-copy" style="max-width: 40rem;">
+            <div class="dusk-hero-copy" >
                 <p class="slugline reveal-up">EXT. BARCELONA — OCTOBER, 2022</p>
                 <p class="script-lede reveal-up">Four friends. Eleven days. An idea that had no business working.</p>
                 <p class="script-prose reveal-up">That's not a slogan — it's the actual timeline. What started as a scramble to bring Durga Puja to a city with no pandal, no priest on standby, and no idea if anyone would show up, is now a non-profit with a founding date, a growing family, and a fibreglass Durga who made her own journey from Kolkata to Catalunya.</p>
@@ -84,7 +83,7 @@
     <section class="scene scene-b" id="bangaliyana">
         <div class="scene-inner">
             <p class="slugline reveal-up">MONTAGE — WHAT MAKES A BONG A BONG</p>
-            <h2 class="reveal-up" style="max-width: 32rem;">You'll know it when you feel it.</h2>
+            <h2 class="reveal-up" >You'll know it when you feel it.</h2>
             <div class="montage-grid">
                 <div class="montage-shot reveal-up">
                     <span class="tag">Ilish, always</span>
@@ -118,7 +117,7 @@
     <section class="scene scene-c" id="history">
         <div class="scene-inner">
             <p class="slugline reveal-up">OUR HISTORY</p>
-            <h2 class="reveal-up" style="max-width: 34rem;">Maa Durga aschhen, Kumartuli theke.</h2>
+            <h2 class="reveal-up" >Maa Durga aschhen, Kumartuli theke.</h2>
             <div class="bca-timeline">
                 <div class="bca-timeline-item reveal-up">
                     <p class="bca-timeline-year">2022</p>
@@ -144,13 +143,13 @@
     <section class="scene scene-d" id="people">
         <div class="scene-inner">
             <p class="slugline reveal-up">WHO'S ACTUALLY BEHIND THIS</p>
-            <h2 class="reveal-up" style="max-width: 34rem;">Not a committee. A rotating cast of people who show up.</h2>
+            <h2 class="reveal-up" >Not a committee. A rotating cast of people who show up.</h2>
             <div class="involved-card reveal-up">
-                <p class="script-prose" style="max-width: 44rem;">Sanjay, Anindya, Siddharth and Shreyashree started it. Since then, it's been kept alive by whoever's free that weekend to haul speakers, translate a form into three languages at once, or pour the twentieth cup of tea of the evening. There's no fixed roster — just people who care enough to be useful.</p>
-                <p class="script-prose" style="max-width: 44rem;">If that sounds like your kind of people, you don't need an invitation. Come to an event, say hello, and you're already halfway in.</p>
-                <div class="hero-actions" style="margin-top: 1.6rem;">
+                <p class="script-prose" >Sanjay, Anindya, Siddharth and Shreyashree started it. Since then, it's been kept alive by whoever's free that weekend to haul speakers, translate a form into three languages at once, or pour the twentieth cup of tea of the evening. There's no fixed roster — just people who care enough to be useful.</p>
+                <p class="script-prose" >If that sounds like your kind of people, you don't need an invitation. Come to an event, say hello, and you're already halfway in.</p>
+                <div class="hero-actions" >
                     <a href="contact.html" class="btn btn-primary"><i class="fas fa-hands-helping"></i> Get in touch</a>
-                    <a href="index.html#chapters" class="btn btn-secondary"><span>See what we do</span></a>
+                    <a href="/#chapters" class="btn btn-secondary"><span>See what we do</span></a>
                 </div>
                 <p class="involved-credit">With year-round support from Ritwik Chakraborty, Nibir Das, Vaishali Das Gupta, Arik Dutta, Arnab Sarkar, Abeera Chatterjee, Surya Banerjee, Sabyasachi Bose, Bhagyashree Pachisia, Rupam Saha, Minakshi Gupta, Debmalya Roy, Arijit Manna, Lipsa Parida, Suprio Ghosh, Gautam Roy and Rituparna Chakraborty — and everyone else who's ever stayed late to fold a hundred programme sheets.</p>
             </div>
@@ -161,10 +160,10 @@
     <section class="scene scene-a" id="brochure">
         <div class="scene-inner">
             <p class="slugline reveal-up">READ MORE</p>
-            <h2 class="reveal-up" style="max-width: 30rem;">Take BCA with you.</h2>
+            <h2 class="reveal-up" >Take BCA with you.</h2>
             <p class="script-prose reveal-up">Our annual brochure, Sharodiya, is a longer look at the year in photos, essays and community writing.</p>
             <div class="brochure-row reveal-up">
-                <a href="brochures/BCA_Sharodiya_2025.pdf" target="_blank" rel="noopener noreferrer" class="brochure-card is-ready">
+                <a href="../brochures/BCA_Sharodiya_2025.pdf" target="_blank" rel="noopener noreferrer" class="brochure-card is-ready">
                     <span class="badge">Available now</span>
                     <h4><i class="fas fa-book-open"></i> Sharodiya 2025</h4>
                     <p>The 2025 edition — photos, essays and community writing from last year.</p>
@@ -182,7 +181,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
+                <p class="footer-legal">
                     <a href="aviso-legal.html">Aviso Legal</a> ·
                     <a href="privacidad.html">Política de Privacidad</a> ·
                     <a href="cookies.html">Política de Cookies</a>
@@ -198,8 +197,8 @@
     </button>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="theme.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/theme.js"></script>
     <script>
     (function() {
         var fill = document.getElementById('progressFill');

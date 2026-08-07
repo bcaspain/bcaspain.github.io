@@ -26,12 +26,12 @@
         consentModal: {
           title: 'Privacy settings',
           description:
-            'We use cookies and similar technologies to understand how you use our site and to improve it. You can accept all, reject all, or choose which services to allow. See our <a href="cookies.html">Cookie Policy</a> and <a href="privacidad.html">Privacy Policy</a> for details.'
+            'We use cookies and similar technologies to understand how you use our site and to improve it. You can accept all, reject all, or choose which services to allow. See our <a href="/html/cookies.html">Cookie Policy</a> and <a href="/html/privacidad.html">Privacy Policy</a> for details.'
         },
         consentNotice: {
           title: 'Your privacy matters',
           description:
-            'We use cookies to understand how this site is used. <br/>You can accept, reject, or configure at any time. See our <a href="cookies.html">Cookie Policy</a>.',
+            'We use cookies to understand how this site is used. <br/>You can accept, reject, or configure at any time. See our <a href="/html/cookies.html">Cookie Policy</a>.',
           learnMore: 'Configure',
           testing: 'Testing'
         },
@@ -60,12 +60,12 @@
         consentModal: {
           title: 'Preferencias de privacidad',
           description:
-            'Utilizamos cookies y tecnologías similares para entender cómo usas el sitio y mejorarlo. Puedes aceptar todas, rechazar todas o elegir qué servicios permitir. Consulta nuestra <a href="cookies.html">Política de Cookies</a> y <a href="privacidad.html">Política de Privacidad</a>.'
+            'Utilizamos cookies y tecnologías similares para entender cómo usas el sitio y mejorarlo. Puedes aceptar todas, rechazar todas o elegir qué servicios permitir. Consulta nuestra <a href="/html/cookies.html">Política de Cookies</a> y <a href="/html/privacidad.html">Política de Privacidad</a>.'
         },
         consentNotice: {
           title: 'Tu privacidad importa',
           description:
-            'Usamos cookies para entender cómo se usa este sitio. <br/>Puedes aceptar, rechazar o configurar en cualquier momento. Consulta nuestra <a href="cookies.html">Política de Cookies</a>.',
+            'Usamos cookies para entender cómo se usa este sitio. <br/>Puedes aceptar, rechazar o configurar en cualquier momento. Consulta nuestra <a href="/html/cookies.html">Política de Cookies</a>.',
           learnMore: 'Configurar'
         },
         ok: 'Aceptar todo',

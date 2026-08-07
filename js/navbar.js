@@ -3,7 +3,7 @@
 
   function normalizePath(pathname) {
     // GitHub Pages may serve / and /index.html interchangeably.
-    if (!pathname || pathname === '/') return '/index.html';
+    if (!pathname || pathname === '/' || pathname === '/index.html') return '/';
     return pathname;
   }
 
@@ -41,7 +41,7 @@
     if (!placeholder) return;
 
     try {
-      const res = await fetch('navbar.html', { cache: 'no-cache' });
+      const res = await fetch('/html/navbar.html', { cache: 'no-cache' });
       if (!res.ok) throw new Error(`Failed to load navbar.html (${res.status})`);
       const html = await res.text();
       placeholder.innerHTML = html;
@@ -55,21 +55,22 @@
     }
   }
 
-  function loadNavbarMobileStyles() {
-    if (document.querySelector('link[data-navbar-mobile-css]')) return;
+
+  function loadColorThemeScript() {
+    if (document.querySelector('script[data-color-theme-js]')) return;
     const navScript = document.querySelector('script[src*="navbar.js"]');
     const href = navScript
-      ? navScript.getAttribute('src').replace(/navbar\.js(?:\?.*)?$/, 'navbar-mobile.css')
-      : 'navbar-mobile.css';
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    link.setAttribute('data-navbar-mobile-css', '');
-    document.head.appendChild(link);
+      ? navScript.getAttribute('src').replace(/navbar\.js(?:\?.*)?$/, 'color-theme.js')
+      : '/js/color-theme.js';
+    const script = document.createElement('script');
+    script.src = href;
+    script.defer = true;
+    script.setAttribute('data-color-theme-js', '');
+    document.head.appendChild(script);
   }
 
   function boot() {
-    loadNavbarMobileStyles();
+    loadColorThemeScript();
     loadNavbar();
   }
 

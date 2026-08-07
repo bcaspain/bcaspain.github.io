@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var PRIVACY_URL = 'privacidad.html?embed=1';
+    var PRIVACY_URL = '/html/privacidad.html?embed=1';
     var modal = null;
     var iframe = null;
     var lastFocus = null;

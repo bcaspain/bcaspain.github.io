@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <title>Bengali Cultural Association Barcelona — Celebrating Bengali Culture in Spain</title>
-    <meta name="description" content="Bengali Cultural Association of India in Spain (BCA) — a non-profit founded in 2022, preserving and promoting Bengali culture in Barcelona through Durga Puja, Poila Boisakh, concerts, and community events.">
+    <script src="js/theme-pref.js"></script>
+    <title>Welcome — Bengali Cultural Association Barcelona (Demo)</title>
+    <meta name="description" content="Welcome to the Bengali Cultural Association of India in Spain — a Barcelona home for Bengali culture, community, and belonging, all year round.">
     <meta name="author" content="Bengali Cultural Association Barcelona">
+    <meta name="robots" content="noindex, nofollow">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Bengali Cultural Association Barcelona">
-    <meta property="og:description" content="Celebrating Bengali culture in Spain — Durga Puja, Poila Boisakh, concerts, and community events by BCA Spain.">
+    <meta property="og:title" content="Welcome — Bengali Cultural Association Barcelona">
+    <meta property="og:description" content="A warm welcome to BCA Spain — culture, community, and belonging in Barcelona.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bcaspain.org/">
-    <link rel="canonical" href="https://bcaspain.org/">
+    <meta property="og:url" content="https://bcaspain.org/demo-index.html">
 
-    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
     <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
     <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
       window.dataLayer = window.dataLayer || [];
@@ -23,64 +22,146 @@
       gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
     </script>
 
-    <!-- Klaro consent manager -->
-    <script defer src="klaro.min.js"></script>
-    <script defer src="klaro-config.js"></script>
+    <script defer src="js/klaro.min.js"></script>
+    <script defer src="js/klaro-config.js"></script>
 
-    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Bengali script fallback (Latin type is self-hosted via theme.css) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="mobile-fixes.css">
-    <link rel="stylesheet" href="theme.css">
-    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/demo-index.css">
+    <link rel="stylesheet" href="css/design-system.css">
 
-    <!-- Shared navbar include -->
-    <script defer src="navbar.js"></script>
-
-    <!-- Favicon -->
+    <script defer src="js/navbar.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
-<body class="scroll-container landing">
+<body class="scroll-container landing demo-welcome">
     <div id="navbar-placeholder"></div>
 
     <div class="chrome-progress"><div class="chrome-progress-fill" id="progressFill"></div></div>
     <nav class="chapter-dots" aria-label="Page chapters">
-        <a href="#hero" data-label="Arrival" class="active"></a>
-        <a href="#chapters" data-label="Beyond the Puja"></a>
-        <a href="#feel-it" data-label="Feel it"></a>
-        <a href="#durga-puja" data-label="Durga Puja 2026"></a>
-        <a href="#bridge" data-label="Bengal ⟷ Catalunya"></a>
-        <a href="#contact" data-label="Join us"></a>
+        <a href="#welcome" data-label="Welcome" class="active"></a>
+        <a href="#who" data-label="Who we are"></a>
+        <a href="#hero" data-label="Durga Puja"></a>
+        <a href="#chapters" data-label="All year"></a>
+        <a href="#rabindra-jayanti-announcement" data-label="Rabindra"></a>
+        <a href="#bridge" data-label="Barcelona"></a>
+        <a href="#invite" data-label="Invitation"></a>
+        <a href="#gallery-teaser" data-label="Gallery"></a>
+        <a href="#sponsors-teaser" data-label="Sponsors"></a>
+        <a href="#contact" data-label="Follow us"></a>
     </nav>
 
-    <!-- ============ HERO ============ -->
+    <!-- ============ WELCOME HERO ============ -->
+    <section class="scene demo-welcome-hero" id="welcome">
+        <div class="demo-welcome-visual">
+            <img src="gallery/2024/p27.jpg" alt="Members of the Bengali Cultural Association gathered together in Barcelona" loading="eager" width="1400" height="1600">
+            <div class="demo-veil"></div>
+            <div class="demo-seal" aria-hidden="true">
+                <strong>Since<br>2022</strong>
+                <span>Barcelona</span>
+            </div>
+        </div>
+        <div class="demo-welcome-copy">
+            <p class="scene-eyebrow reveal-up">Bengali Cultural Association · Spain</p>
+            <p class="brand-mark reveal-up">BCA Barcelona</p>
+            <h1 class="demo-swagat reveal-up" lang="bn">স্বাগতম</h1>
+            <p class="demo-swagat-en reveal-up">Welcome home.</p>
+            <p class="demo-welcome-lead reveal-up">
+                You have arrived at a small, stubborn piece of Bengal living in Barcelona —
+                a registered non-profit where language, food, music, and friendship
+                keep finding each other, season after season.
+            </p>
+            <div class="demo-welcome-actions reveal-up">
+                <a href="#who" class="btn btn-primary btn-large">
+                    <i class="fas fa-heart"></i>
+                    <span>Meet BCA</span>
+                </a>
+                <a href="html/about.html" class="btn btn-secondary btn-large">
+                    <span>Our story</span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-cue"><span class="stem"></span>Scroll</div>
+    </section>
+
+    <!-- ============ WHO WE ARE ============ -->
+    <section class="scene scene-a demo-who-section" id="who">
+        <div class="scene-inner demo-who demo-who--text">
+            <div class="demo-who-body">
+                <p class="scene-eyebrow reveal-up">What is BCA?</p>
+                <h2 class="reveal-up">A cultural home for Bengalis — and anyone who feels welcome in the circle.</h2>
+                <p class="lede reveal-up">
+                    The Bengali Cultural Association of India in Spain is a non-profit founded in 2022.
+                    We exist to preserve and share Bengali culture in Barcelona: the festivals, yes —
+                    but also the quieter things that make a place feel like home.
+                </p>
+                <p class="script-prose reveal-up">
+                    Think of us as a living-room for the diaspora: a place to sing, cook, argue about football,
+                    teach children a few lines of Bangla, and meet neighbours who understand why mustard oil matters.
+                </p>
+                <div class="demo-pillars">
+                    <div class="demo-pillar reveal-up">
+                        <span class="n">01</span>
+                        <h3>Community</h3>
+                        <p>People first — gatherings that feel personal, not performative.</p>
+                    </div>
+                    <div class="demo-pillar reveal-up">
+                        <span class="n">02</span>
+                        <h3>Culture</h3>
+                        <p>Language, arts, food, and ritual kept alive with care.</p>
+                    </div>
+                    <div class="demo-pillar reveal-up">
+                        <span class="n">03</span>
+                        <h3>Belonging</h3>
+                        <p>Open doors for Bengalis, friends, and curious Catalans alike.</p>
+                    </div>
+                </div>
+
+                <div class="demo-invite-actions">
+                    <a href="html/contact.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Get in touch</span>
+                    </a>
+                    <a href="html/registration.html" class="btn btn-secondary btn-large">
+                        <span>Join as a member</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DURGA PUJA HERO (from index.html) ============ -->
     <section class="scene scene-hero home-hero" id="hero">
         <div class="hero-portrait">
-            <img src="idol.jpg" alt="" loading="eager" />
+            <img src="idol.jpg" alt="" loading="lazy" />
             <div class="tint"></div>
         </div>
         <div class="scene-inner">
             <div class="dusk-hero-copy">
                 <p class="scene-eyebrow reveal-up">Bengali Cultural Association · Barcelona</p>
                 <p class="hero-poem" lang="bn">
-                    <span style="animation-delay:.5s">শিউলি ফোটা সকালগুলো</span>
-                    <span style="animation-delay:.75s">করছে যে হাঁকডাক</span>
-                    <span style="animation-delay:1s">কাশবনেতে উঠছে যে ঢেউ</span>
-                    <span style="animation-delay:1.25s">বাজবে কবে ঢাক।</span>
+                    <span>শিউলি ফোটা সকালগুলো</span>
+                    <span>করছে যে হাঁকডাক</span>
+                    <span>কাশবনেতে উঠছে যে ঢেউ</span>
+                    <span>বাজবে কবে ঢাক।</span>
                 </p>
                 <p class="hero-attrib reveal-up">— শারদীয়া, a poem by a BCA member</p>
                 <p class="hero-companion reveal-up">Somewhere, the dhak is about to sound.</p>
                 <p class="hero-sub reveal-up">For generations, Bengal has turned autumn into devotion. In 2022, a handful of friends brought that devotion to Barcelona. This is where it lives now — not for five days a year, but all year round.</p>
+                
+                <div id="dp-countdown" class="dp-countdown" aria-live="polite">
+                    <div class="dp-countdown-item" role="group" aria-label="Days"><div id="dp-days" class="dp-countdown-number">00</div><div class="dp-countdown-label">days</div></div>
+                    <div class="dp-countdown-item" role="group" aria-label="Hours"><div id="dp-hours" class="dp-countdown-number">00</div><div class="dp-countdown-label">hours</div></div>
+                    <div class="dp-countdown-item" role="group" aria-label="Minutes"><div id="dp-minutes" class="dp-countdown-number">00</div><div class="dp-countdown-label">minutes</div></div>
+                    <div class="dp-countdown-item" role="group" aria-label="Seconds"><div id="dp-seconds" class="dp-countdown-number">00</div><div class="dp-countdown-label">seconds</div></div>
+                </div>
                 <div class="hero-actions reveal-up">
-                    <a href="dp2026.html" class="btn btn-primary btn-large">
+                    <a href="html/dp2026.html" class="btn btn-primary btn-large">
                         <i class="fas fa-arrow-right"></i>
                         <span>Durga Puja 2026</span>
                     </a>
@@ -91,47 +172,88 @@
             </div>
         </div>
         <div class="scroll-cue"><span class="stem"></span>Scroll</div>
+
+        <script>
+            (function() {
+                var targetDate = new Date('2026-10-17T08:00:00+02:00').getTime();
+                var endedHtml = '<div class="dp-countdown-item countdown-full"><span class="dp-countdown-number"><i class="fas fa-star"></i> Durga Puja 2026 has begun! <i class="fas fa-star"></i></span></div>';
+
+                function getWraps() {
+                    return document.querySelectorAll('#hero .dp-countdown');
+                }
+
+                function tick() {
+                    var wraps = getWraps();
+                    if (!wraps.length) return;
+
+                    var diff = targetDate - Date.now();
+                    if (diff <= 0) {
+                        wraps.forEach(function(wrap) { wrap.innerHTML = endedHtml; });
+                        clearInterval(timer);
+                        return;
+                    }
+
+                    var d = Math.floor(diff / 86400000);
+                    var h = Math.floor((diff % 86400000) / 3600000);
+                    var m = Math.floor((diff % 3600000) / 60000);
+                    var s = Math.floor((diff % 60000) / 1000);
+
+                    wraps.forEach(function(wrap) {
+                        var nums = wrap.querySelectorAll('.dp-countdown-number');
+                        if (nums.length < 4) return;
+                        nums[0].textContent = String(d).padStart(2, '0');
+                        nums[1].textContent = String(h).padStart(2, '0');
+                        nums[2].textContent = String(m).padStart(2, '0');
+                        nums[3].textContent = String(s).padStart(2, '0');
+                    });
+                }
+
+                tick();
+                var timer = setInterval(tick, 1000);
+                window.addEventListener('resize', tick);
+            })();
+        </script>
     </section>
 
-    <!-- ============ BEYOND THE PUJA ============ -->
+    <!-- ============ BEYOND THE PUJA (from index) ============ -->
     <section class="scene scene-a" id="chapters">
         <div class="scene-inner">
             <div class="chapters-head reveal-up">
                 <p class="scene-eyebrow">More than five days in October</p>
                 <h2>Durga Puja is our loudest celebration.<br>It isn't our only one.</h2>
                 <p class="lede">The Bengali Cultural Association of India in Spain is a registered non-profit founded in 2022, dedicated to keeping Bengali culture alive in Barcelona in every season — the harvest festival is simply where the drum is loudest.</p>
-                <div class="hero-actions" style="margin-top:1.6rem;">
-                    <a href="about.html" class="btn btn-secondary">
+                <div class="hero-actions mt-md">
+                    <a href="html/about.html" class="btn btn-secondary">
                         <i class="fas fa-info-circle"></i> About BCA
                     </a>
-                    <a href="about.html#brochure" class="btn btn-secondary">
+                    <a href="html/about.html#brochure" class="btn btn-secondary">
                         <i class="fas fa-book-open"></i> Our Brochure
                     </a>
                 </div>
             </div>
             <div class="chapter-grid">
-                <div class="chapter-card reveal-up" style="--card-accent:var(--terracotta)">
+                <div class="chapter-card chapter-card--terracotta reveal-up">
                     <span class="chapter-tag">April</span>
                     <h3>Poila Boisakh</h3>
                     <p>Bengali New Year — a fresh calendar, a shared table, and the same songs Bengalis have opened the year with for generations.</p>
                 </div>
-                <a href="rabindra-jayanti.html" class="chapter-card reveal-up" style="--card-accent:var(--gold)">
+                <a href="html/rabindra-jayanti.html" class="chapter-card chapter-card--gold reveal-up">
                     <span class="chapter-tag">May</span>
                     <h3>Rabindra Jayanti</h3>
                     <p>A tribute to Rabindranath Tagore, the poet whose songs became the national anthems of two countries — and still open every Bengali gathering.</p>
                     <span class="go">View details <i class="fas fa-arrow-right"></i></span>
                 </a>
-                <div class="chapter-card reveal-up" style="--card-accent:var(--terracotta-glow)">
+                <div class="chapter-card chapter-card--glow reveal-up">
                     <span class="chapter-tag">All Year</span>
                     <h3>Adda &amp; Letters</h3>
                     <p>Evenings of conversation and poetry, carrying forward a print culture that made Bengali one of the first South Asian languages set in movable type, in the 1770s.</p>
                 </div>
-                <div class="chapter-card reveal-up" style="--card-accent:var(--alta, #b23a3a)">
+                <div class="chapter-card chapter-card--alta reveal-up">
                     <span class="chapter-tag">Every Gathering</span>
                     <h3>Table &amp; Kitchen</h3>
                     <p>Fish, rice and mishti, shared the way they've always been shared — Bengali cooking as its own quiet form of storytelling.</p>
                 </div>
-                <a href="about.html" class="chapter-card reveal-up" style="--card-accent:var(--terracotta)">
+                <a href="html/about.html" class="chapter-card chapter-card--terracotta reveal-up">
                     <span class="chapter-tag">Since 2024</span>
                     <h3>Kumartuli, Here</h3>
                     <p>Our idol is hand-built in Kolkata's centuries-old potters' quarter and shipped to Barcelona — one family's skill, passed to the next, a season at a time.</p>
@@ -141,112 +263,7 @@
         </div>
     </section>
 
-    <!-- ============ FEEL IT (sensory video scene — tap to play) ============ -->
-    <section class="scene scene-b" id="feel-it">
-        <div class="scene-inner">
-            <div class="sensory-head reveal-up">
-                <p class="scene-eyebrow">A season, in four scenes</p>
-                <h2>You can read about Durga Puja.<br>Or you can feel it.</h2>
-                <p class="lede">Tap any scene for a closer look — the rituals, the rhythm, the table, the crowd.</p>
-            </div>
-            <div class="sensory-grid">
-                <div class="sensory-item reveal-up" data-video="index-attraction/maadurgamurti.mp4" data-title="Traditional Puja Celebrations" tabindex="0" role="button" aria-label="Play video: Traditional Puja Celebrations">
-                    <video src="index-attraction/maadurgamurti.mp4" preload="metadata" muted playsinline></video>
-                    <div class="tint"></div>
-                    <div class="meta"><span>Ritual</span><span class="play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="sensory-item reveal-up" data-video="index-attraction/dance.mp4" data-title="Cultural Performances" tabindex="0" role="button" aria-label="Play video: Cultural Performances">
-                    <video src="index-attraction/dance.mp4" preload="metadata" muted playsinline></video>
-                    <div class="tint"></div>
-                    <div class="meta"><span>Performance</span><span class="play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="sensory-item reveal-up" data-video="index-attraction/bhog.mp4" data-title="Authentic Bengali Cuisine" tabindex="0" role="button" aria-label="Play video: Authentic Bengali Cuisine">
-                    <video src="index-attraction/bhog.mp4" preload="metadata" muted playsinline></video>
-                    <div class="tint"></div>
-                    <div class="meta"><span>Table</span><span class="play"><i class="fas fa-play"></i></span></div>
-                </div>
-                <div class="sensory-item reveal-up" data-video="index-attraction/dhunuchinaach.mp4" data-title="Community Bonding" tabindex="0" role="button" aria-label="Play video: Community Bonding">
-                    <video src="index-attraction/dhunuchinaach.mp4" preload="metadata" muted playsinline></video>
-                    <div class="tint"></div>
-                    <div class="meta"><span>Community</span><span class="play"><i class="fas fa-play"></i></span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ DURGA PUJA 2026 ============ -->
-    <section class="scene scene-c" id="durga-puja">
-        <div class="scene-inner">
-            <div class="dp-scene-grid">
-                <div class="dp-scene-copy reveal-up">
-                    <p class="scene-eyebrow">17 – 21 October 2026 · Barcelona</p>
-                    <h2>Come for the drums.<br>Stay for everything else.</h2>
-                    <p class="lede">Barcelona Durga Puja 2026 is presented by BCA — five days of traditional puja ceremonies, cultural performances, authentic Bengali cuisine, and community celebration, from Maha Shashthi to Vijaya Dashami. Experiencing Durga Puja 2026 is free.</p>
-                    <div class="dp-details">
-                        <span><i class="fas fa-calendar-day"></i> 17 – 21 October 2026</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Barcelona · Venue to be announced</span>
-                    </div>
-                    <div id="dp-countdown" class="dp-countdown" aria-live="polite">
-                        <div class="dp-countdown-item" role="group" aria-label="Days"><div id="dp-days" class="dp-countdown-number">00</div><div class="dp-countdown-label">days</div></div>
-                        <div class="dp-countdown-item" role="group" aria-label="Hours"><div id="dp-hours" class="dp-countdown-number">00</div><div class="dp-countdown-label">hours</div></div>
-                        <div class="dp-countdown-item" role="group" aria-label="Minutes"><div id="dp-minutes" class="dp-countdown-number">00</div><div class="dp-countdown-label">minutes</div></div>
-                        <div class="dp-countdown-item" role="group" aria-label="Seconds"><div id="dp-seconds" class="dp-countdown-number">00</div><div class="dp-countdown-label">seconds</div></div>
-                    </div>
-                    <div class="cta-actions">
-                        <a href="registration.html" class="btn btn-primary btn-large"><i class="fas fa-ticket-alt"></i><span>Register for 2026</span></a>
-                        <a href="dp2026.html" class="btn btn-secondary btn-large"><span>View more</span></a>
-                    </div>
-                </div>
-                <div class="dp-scene-media reveal-up">
-                    <img src="slider/a11.webp" alt="Durga Puja celebrations in Barcelona" loading="lazy" />
-                </div>
-            </div>
-        </div>
-
-        <script>
-        (function() {
-            var targetDate = new Date('2026-10-17T08:00:00+02:00').getTime();
-            var endedHtml = '<div class="dp-countdown-item" style="grid-column: 1/-1; padding: 1rem;"><span class="dp-countdown-number" style="font-size: 1.1rem;"><i class="fas fa-star"></i> Durga Puja 2026 has begun! <i class="fas fa-star"></i></span></div>';
-
-            function getWraps() {
-                return document.querySelectorAll('#durga-puja .dp-countdown');
-            }
-
-            function tick() {
-                var wraps = getWraps();
-                if (!wraps.length) return;
-
-                var diff = targetDate - Date.now();
-                if (diff <= 0) {
-                    wraps.forEach(function(wrap) { wrap.innerHTML = endedHtml; });
-                    clearInterval(timer);
-                    return;
-                }
-
-                var d = Math.floor(diff / 86400000);
-                var h = Math.floor((diff % 86400000) / 3600000);
-                var m = Math.floor((diff % 3600000) / 60000);
-                var s = Math.floor((diff % 60000) / 1000);
-
-                wraps.forEach(function(wrap) {
-                    var nums = wrap.querySelectorAll('.dp-countdown-number');
-                    if (nums.length < 4) return;
-                    nums[0].textContent = String(d).padStart(2, '0');
-                    nums[1].textContent = String(h).padStart(2, '0');
-                    nums[2].textContent = String(m).padStart(2, '0');
-                    nums[3].textContent = String(s).padStart(2, '0');
-                });
-            }
-
-            tick();
-            var timer = setInterval(tick, 1000);
-            window.refreshIndexDpCountdown = tick;
-            window.addEventListener('resize', tick);
-        })();
-        </script>
-    </section>
-
-    <!-- ============ RABINDRA JAYANTI RECAP ============ -->
+    <!-- ============ RABINDRA JAYANTI RECAP (from index) ============ -->
     <section class="scene scene-b" id="rabindra-jayanti-announcement">
         <div class="scene-inner">
             <div class="rj-card reveal-up">
@@ -254,20 +271,20 @@
                     <span class="rj-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Completed Event</span>
                     <h3>Rabindra Jayanti</h3>
                     <p>Thank you for joining us to celebrate the anniversary of Rabindranath Tagore with an evening of music, dance, and poetry — Saturday 9 May 2026, at Teatro Calabria.</p>
-                    <a class="btn btn-secondary" href="rabindra-jayanti.html"><i class="fas fa-arrow-right" aria-hidden="true"></i> View more</a>
+                    <a class="btn btn-secondary" href="html/rabindra-jayanti.html"><i class="fas fa-arrow-right" aria-hidden="true"></i> View more</a>
                 </div>
-                <button type="button" class="rabindra-poster-trigger" aria-haspopup="dialog" aria-controls="rabindraPosterModal" style="border:none; background:transparent; padding:0; cursor:pointer;">
+                <button type="button" class="rabindra-poster-trigger" aria-haspopup="dialog" aria-controls="rabindraPosterModal">
                     <img src="events/rabindra-jayanti.webp" alt="Rabindra Jayanti poster" class="rj-poster" loading="lazy" />
                 </button>
             </div>
         </div>
 
-        <div id="rabindraPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" style="display:none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.82); backdrop-filter: blur(6px); padding: 2rem 1rem;">
-            <button type="button" id="rabindraPosterClose" aria-label="Close poster" style="position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.45); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
+        <div id="rabindraPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" class="poster-modal">
+            <button type="button" id="rabindraPosterClose" class="poster-modal-close" aria-label="Close poster">
                 <i class="fas fa-times" aria-hidden="true"></i>
             </button>
-            <div style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
-                <img src="events/rabindra-jayanti.webp" alt="Rabindra Jayanti poster full size" style="max-width: min(920px, 96vw); max-height: 86vh; width: auto; height: auto; border-radius: 16px; box-shadow: 0 24px 70px rgba(0,0,0,0.45); background: #fff;" />
+            <div class="poster-modal-body">
+                <img src="events/rabindra-jayanti.webp" alt="Rabindra Jayanti poster full size" />
             </div>
         </div>
 
@@ -289,7 +306,7 @@
         </script>
     </section>
 
-    <!-- ============ BENGAL <-> CATALUNYA BRIDGE ============ -->
+    <!-- ============ BENGAL <-> CATALUNYA BRIDGE (from index) ============ -->
     <section class="scene scene-c" id="bridge">
         <div class="scene-inner">
             <div class="bridge-head reveal-up">
@@ -358,63 +375,154 @@
         </div>
     </section>
 
-    <!-- ============ GALLERY TEASER ============ -->
-    <section class="scene scene-a teaser-strip" id="gallery-teaser">
+    <!-- ============ INVITATION ============ -->
+    <section class="scene scene-b demo-invite" id="invite">
         <div class="scene-inner reveal-up">
-            <h2>Moments from our community</h2>
-            <p>A glimpse into our celebrations, performances, and gatherings.</p>
-            <a href="gallery.html" class="btn btn-primary"><i class="fas fa-images"></i> View full gallery</a>
+            <p class="scene-eyebrow">An open invitation</p>
+            <h2>Come as you are.<br>Stay as family.</h2>
+            <p class="lede">
+                Whether you grew up with Rabindrasangeet in the next room, or you are discovering Bengal for the first time,
+                BCA is a place to belong — briefly for an evening, or for years.
+            </p>
+            <div class="demo-invite-actions">
+                <a href="html/contact.html" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Say hello
+                </a>
+                <a href="html/registration.html" class="btn btn-secondary">
+                    Become a member
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- ============ SPONSORS TEASER ============ -->
-    <section class="scene scene-b teaser-strip" id="sponsors-teaser">
+    <!-- ============ COMMUNITY ============ -->
+
+    <section class="scene scene-a teaser-strip moments-teaser" id="gallery-teaser">
         <div class="scene-inner reveal-up">
-            <h2 style="font-size:clamp(1.6rem,1.3rem+1vw,2.2rem);"><i class="fas fa-handshake"></i> With gratitude to our sponsors</h2>
-            <p>Our events are made possible thanks to the generous support of our sponsors and partners. See the full list on our Durga Puja 2026 page.</p>
-            <a href="dp2026.html#sponsors" class="btn btn-secondary">View sponsors</a>
+            <div class="moments-collage" aria-label="Community photo highlights">
+                <a href="html/gallery.html" class="moments-shot moments-shot--wide" data-caption="Together">
+                    <img src="gallery/2024/p27.jpg" alt="BCA community gathered together during a festival celebration" loading="lazy" decoding="async" width="1200" height="800">
+                </a>
+                <a href="html/gallery.html" class="moments-shot moments-shot--tall" data-caption="Rhythm">
+                    <img src="gallery/2024/p32.jpeg" alt="Cultural performance during Durga Puja" loading="lazy" decoding="async" width="800" height="1200">
+                </a>
+                <a href="html/gallery.html" class="moments-shot moments-shot--sq" data-caption="Maa">
+                    <img src="gallery/2024/p4.jpg" alt="Durga idol with chalchitra backdrop at Barcelona Durga Puja" loading="lazy" decoding="async" width="900" height="900">
+                </a>
+                <a href="html/gallery.html" class="moments-shot moments-shot--sq" data-caption="Offering">
+                    <img src="gallery/2023/File 1.jpg" alt="Devotee offering at the decorated puja altar" loading="lazy" decoding="async" width="900" height="900">
+                </a>
+                <a href="html/gallery.html" class="moments-shot moments-shot--wide-sm" data-caption="Prasad">
+                    <img src="gallery/2024/p7.jpg" alt="Puja offerings with flowers, diya, and fruits" loading="lazy" decoding="async" width="1100" height="700">
+                </a>
+                <a href="html/gallery.html" class="moments-shot moments-shot--portrait" data-caption="Hands">
+                    <img src="gallery/2024/p9.jpg" alt="Community members preparing the Durga idol" loading="lazy" decoding="async" width="800" height="1000">
+                </a>
+            </div>
+
+            <div class="moments-copy">
+                <p class="scene-eyebrow">From the gallery</p>
+                <h2>Moments from our community</h2>
+                <p class="moments-lede">A glimpse into our celebrations, performances, and gatherings.</p>
+                <a href="html/gallery.html" class="btn btn-primary moments-cta"><i class="fas fa-images"></i> View full gallery</a>
+            </div>
         </div>
     </section>
 
-    <!-- ============ SOCIAL + NEWSLETTER ============ -->
+    
+    <!-- ============ SPONSORS RIBBON ============ -->
+    <section class="scene scene-b demo-sponsors" id="sponsors-teaser" aria-labelledby="sponsors-heading">
+        <div class="demo-sponsors-intro scene-inner reveal-up">
+            <h2 class="heading-md" id="sponsors-heading"><i class="fas fa-handshake" aria-hidden="true"></i> With gratitude to our sponsors</h2>
+            <p>Our events are made possible thanks to the generous support of our sponsors and partners.</p>
+        </div>
+
+        <div class="demo-sponsor-ribbon" role="region" aria-label="Sponsor logos scrolling from right to left">
+            <div class="demo-sponsor-ribbon-track">
+                <div class="demo-sponsor-ribbon-group">
+                    <!-- Executive first, then others, then support -->
+                    <a href="https://www.yuptel.com" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="YuPTel">
+                        <img src="sponsor-logos/yuptel.png" alt="YuPTel" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.rustomjee.com/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Rustomjee">
+                        <img src="sponsor-logos/rustomjee-logo.png" alt="Rustomjee" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.voiptechsolutions.com/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="VoIP Tech">
+                        <img src="sponsor-logos/voip-tech-logo.png" alt="VoIP Tech" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://sogo.es/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="SOGO">
+                        <img src="sponsor-logos/sogo-logotipo-1x.png" alt="SOGO" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://nipponglobal.es/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Nippon Global">
+                        <img src="sponsor-logos/nippon-logo.jpg" alt="Nippon Global" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.orbislinks.com/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Orbis Links">
+                        <img src="sponsor-logos/orbis-links-logo.jpg" alt="Orbis Links" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.vegworld.es/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Veg World India">
+                        <img src="sponsor-logos/veg-world-logo.webp" alt="Veg World India" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://chainoptima.com/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Chain Optimia">
+                        <img src="sponsor-logos/Chain-Optimia-solution-logo.webp" alt="Chain Optimia" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://shorturl.at/Fdfr2" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="ESCAC">
+                        <img src="sponsor-logos/ESCAC-AB-Logo.png" alt="ESCAC" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="html/dp2026.html#sponsors" class="demo-sponsor-logo" title="GFT">
+                        <img src="sponsor-logos/gft-logo.jpg" alt="GFT" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.virsabcn.com/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Virsha">
+                        <img src="sponsor-logos/virsha.webp" alt="Virsha" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.bembi-barcelona.com/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Bembi">
+                        <img src="sponsor-logos/logo_Bembi_2016.jpg" alt="Bembi" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.nupura.es/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Nupura Barcelona">
+                        <img src="sponsor-logos/nupura-logo.png" alt="Nupura Barcelona" loading="lazy" width="160" height="80">
+                    </a>
+                    <a href="https://www.facebook.com/iaobhr/" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo" title="Indian Association Of Barcelona">
+                        <img src="sponsor-logos/IOAB.jpg" alt="Indian Association Of Barcelona - IAOB" loading="lazy" width="160" height="80">
+                    </a>
+                </div>
+                <!-- Duplicate for seamless loop (decorative for SR) -->
+                <div class="demo-sponsor-ribbon-group" aria-hidden="true">
+                    <a href="https://www.yuptel.com" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/yuptel.png" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.rustomjee.com/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/rustomjee-logo.png" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.voiptechsolutions.com/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/voip-tech-logo.png" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://sogo.es/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/sogo-logotipo-1x.png" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://nipponglobal.es/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/nippon-logo.jpg" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.orbislinks.com/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/orbis-links-logo.jpg" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.vegworld.es/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/veg-world-logo.webp" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://chainoptima.com/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/Chain-Optimia-solution-logo.webp" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://shorturl.at/Fdfr2" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/ESCAC-AB-Logo.png" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="html/dp2026.html#sponsors" tabindex="-1" class="demo-sponsor-logo"><img src="sponsor-logos/gft-logo.jpg" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.virsabcn.com/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/virsha.webp" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.bembi-barcelona.com/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/logo_Bembi_2016.jpg" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.nupura.es/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/nupura-logo.png" alt="" loading="lazy" width="160" height="80"></a>
+                    <a href="https://www.facebook.com/iaobhr/" tabindex="-1" target="_blank" rel="noopener noreferrer" class="demo-sponsor-logo"><img src="sponsor-logos/IOAB.jpg" alt="" loading="lazy" width="160" height="80"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-sponsors-cta scene-inner reveal-up">
+            <a href="html/dp2026.html#sponsors" class="btn btn-secondary">View full sponsors list</a>
+        </div>
+    </section>
+    <!-- ============ FOLLOW ============ -->
     <section class="scene scene-c teaser-strip" id="contact">
         <div class="scene-inner reveal-up">
-            <h2 style="font-size:clamp(1.6rem,1.3rem+1vw,2.2rem);">Follow us</h2>
+            <h2 class="heading-md">Follow us</h2>
             <p>Stay connected with our community and get the latest updates on events and celebrations.</p>
-
             <div class="social-row">
                 <a href="https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/spain_bca" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://youtube.com/@bengaliculturalassociation?si=NB5TkAc9gZsgX11i" target="_blank" rel="noopener noreferrer" title="Subscribe to our YouTube channel"><i class="fab fa-youtube"></i></a>
                 <a href="https://wa.me/34693005986" target="_blank" rel="noopener noreferrer" title="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto: info@bcaspain.org" title="Send us an email"><i class="fas fa-envelope"></i></a>
-            </div>
-
-            <div class="newsletter-signup" style="margin: 2.4rem 0 0;">
-                <form action="#" method="post" style="display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center;">
-                    <label for="newsletter-email">Join our newsletter:</label>
-                    <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required style="padding: 8px 14px; border-radius: 4px; min-width: 220px;">
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-                <script>
-                document.querySelector('#contact .newsletter-signup form').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    var email = document.getElementById('newsletter-email').value;
-                    var form = e.target;
-                    fetch(`https://script.google.com/macros/s/AKfycbzeD51Us6rwvdLCOG6eF_1nYUY6KEbldXXOlnsZO2nGhlKkAiM1sVCnY5_k2SsLYAVc/exec?email=${encodeURIComponent(email)}`)
-                        .then(response => response.text())
-                        .then(data => { form.reset(); alert(data); })
-                        .catch(function() { alert('Subscription failed. Try again.'); });
-                });
-                </script>
-                <div style="font-size: 0.85rem; color: var(--paper-faint); margin-top: 10px; max-width: 420px; margin-left: auto; margin-right: auto;">
-                    Al suscribirte consientes el tratamiento de tu correo por Bengali Cultural Association Barcelona para el envío del boletín. Puedes darte de baja cuando quieras. Más información: <a href="privacidad.html">Política de Privacidad</a>.
-                </div>
+                <a href="mailto:info@bcaspain.org" title="Send us an email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -426,10 +534,10 @@
                     Preserving and promoting Bengali culture in Barcelona through community events and traditional celebrations.
                 </p>
                 <div class="footer-bottom">
-                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
-                        <a href="aviso-legal.html">Aviso Legal</a> ·
-                        <a href="privacidad.html">Política de Privacidad</a> ·
-                        <a href="cookies.html">Política de Cookies</a>
+                    <p class="footer-legal">
+                        <a href="html/aviso-legal.html">Aviso Legal</a> ·
+                        <a href="html/privacidad.html">Política de Privacidad</a> ·
+                        <a href="html/cookies.html">Política de Cookies</a>
                     </p>
                     <p>
                         &copy; 2026 Bengali Cultural Association Barcelona (A registered non-profit organization in Spain). All rights reserved.
@@ -439,94 +547,48 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
-    <!-- Page modals (outside main content so they are not clipped) -->
-    <div id="videoModal" class="video-modal" aria-hidden="true">
-        <div class="video-modal-content">
-            <div class="video-modal-header">
-                <h3 id="videoModalTitle">Video Title</h3>
-                <button class="video-modal-close" id="videoModalClose" type="button" aria-label="Close video">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="video-modal-body">
-                <video id="videoModalPlayer" controls>
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="theme.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/color-theme.js"></script>
     <script>
-    (function() {
-        // sensory scene: open the shared video modal directly (openVideoModal is exposed globally by script.js)
-        document.querySelectorAll('.sensory-item[data-video]').forEach(function(item) {
-            function play() {
-                var src = item.getAttribute('data-video');
-                var title = item.getAttribute('data-title');
-                if (window.openVideoModal) window.openVideoModal(src, title);
-            }
-            item.addEventListener('click', play);
-            item.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
-            });
-        });
-
-        // scroll progress bar
+      (function () {
         var fill = document.getElementById('progressFill');
+        var dots = document.querySelectorAll('.chapter-dots a');
         function onScroll() {
-            var h = document.documentElement;
-            var max = h.scrollHeight - h.clientHeight;
-            var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-            if (fill) fill.style.width = pct + '%';
+          var doc = document.documentElement;
+          var max = doc.scrollHeight - doc.clientHeight;
+          var p = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+          if (fill) fill.style.width = p + '%';
+          var sections = ['welcome', 'who', 'hero', 'chapters', 'rabindra-jayanti-announcement', 'bridge', 'invite', 'gallery-teaser', 'sponsors-teaser', 'contact'];
+          var active = sections[0];
+          sections.forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.35) active = id;
+          });
+          dots.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+          });
         }
-        document.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
 
-        // chapter-dots active state
-        var sections = document.querySelectorAll('.scene[id]');
-        var dots = document.querySelectorAll('.chapter-dots a');
-        if ('IntersectionObserver' in window && dots.length) {
-            var io = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        var id = entry.target.getAttribute('id');
-                        dots.forEach(function(d) { d.classList.toggle('active', d.getAttribute('href') === '#' + id); });
-                    }
-                });
-            }, { threshold: 0.5 });
-            sections.forEach(function(s) { io.observe(s); });
-        }
-
-        // bridge rows: mark in-view for the connector-dot animation (separate from theme.js reveal-up)
         var bridgeRows = document.querySelectorAll('.bridge-row');
         if ('IntersectionObserver' in window && bridgeRows.length) {
-            var io2 = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('in-view'); io2.unobserve(entry.target); }
-                });
-            }, { threshold: 0.3 });
-            bridgeRows.forEach(function(r) { io2.observe(r); });
+          var io2 = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) entry.target.classList.add('in-view');
+            });
+          }, { threshold: 0.2 });
+          bridgeRows.forEach(function (r) { io2.observe(r); });
         }
-
-        // chapter cards: same in-view trigger for the top accent-bar reveal
-        var chapterCards = document.querySelectorAll('.chapter-card');
-        if ('IntersectionObserver' in window && chapterCards.length) {
-            var io3 = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('in-view'); io3.unobserve(entry.target); }
-                });
-            }, { threshold: 0.2 });
-            chapterCards.forEach(function(c) { io3.observe(c); });
-        }
-    })();
+      })();
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     </script>
 </body>
 </html>

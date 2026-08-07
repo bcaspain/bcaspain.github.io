@@ -1,197 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <title>Schedule - Durga Puja 2K26 Barcelona</title>
-    <meta name="description" content="Durga Puja Schedule for Durga Puja 2K26 Barcelona.">
-    <meta name="author" content="Bengali Cultural Association Barcelona">
+/* ==== RECOVERED INLINE LAYOUT ==== */
+/* Do not remove — base layout previously lived as HTML style="" attrs */
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Schedule - Durga Puja 2K26 Barcelona">
-    <meta property="og:description" content="View the complete schedule of Durga Puja 2K26 celebrations in Barcelona">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bcaspain.org/schedule.html">
-    <link rel="canonical" href="https://bcaspain.org/schedule.html">
-    
-    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
-    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
-    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
-    </script>
+/* Auto-recovered base layout from original inline styles */
 
-    <!-- Klaro consent manager -->
-    <script defer src="klaro.min.js"></script>
-    <script defer src="klaro-config.js"></script>
+#modalImage {
+  max-width: 100%; max-height: calc(100vh - 120px); width: auto; height: auto; border-radius: 10px; object-fit: contain;
+}
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="mobile-fixes.css">
-    <link rel="stylesheet" href="theme.css">
+#schedule {
+  margin-top: 80px; background: white;
+}
 
-    <!-- Shared navbar include -->
-    <script defer src="navbar.js"></script>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body class="scroll-container">
-    <div class="main-content">
-        <div id="navbar-placeholder"></div>
+.btn-download {
+  background: transparent; color: var(--red); padding: 8px 20px; text-decoration: none; border-radius: 8px; font-weight: 600; border: 2px solid var(--red);
+}
 
-    <!-- Schedule Section -->
-    <section id="schedule" class="schedule" style="margin-top:80px; background: white;">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-                <h2 class="section-title" style="font-size: 3.5rem; color: var(--red); margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Durga Puja Schedule</h2>
-                <p class="section-subtitle" style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">Durga Puja 2026 in Barcelona</p>
-            </div>
+.schedule-coming-soon {
+  text-align: center; padding: 3rem 1.5rem; background: #f8f9fa; border-radius: 15px; border: 2px dashed rgba(193,98,61,0.35);
+}
 
-            <!-- Schedule Overview -->
-                            <div class="schedule-overview" style="background: var(--red); padding: 2rem; border-radius: 20px; margin-bottom: 3rem; text-align: center; color: white; box-shadow: 0 10px 30px rgba(220,53,69,0.3);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">📅 Festival Duration: 17 – 21 October 2026</h3>
-                <p style="font-size: 1.1rem; opacity: 0.9;">Join us for 5 days of cultural celebration, performances, and community bonding</p>
-            </div>
+.schedule-cta {
+  text-align: center; margin-top: 4rem; padding: 3rem; background: var(--red); border-radius: 20px; color: white; box-shadow: 0 10px 30px rgba(220,53,69,0.3);
+}
 
-            <!-- Schedule Images -->
-            <div class="schedule-images-container" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 3rem;">
-                <div class="schedule-coming-soon" style="text-align: center; padding: 3rem 1.5rem; background: #f8f9fa; border-radius: 15px; border: 2px dashed rgba(193,98,61,0.35);">
-                    <i class="fas fa-calendar-day" style="font-size: 2.4rem; color: var(--red); opacity: 0.8;"></i>
-                    <h3 style="color: var(--red); font-size: 1.6rem; margin: 1rem 0 0.6rem; font-weight: 600;">The day-by-day schedule is coming soon</h3>
-                    <p style="color: #666; font-size: 1.05rem; max-width: 480px; margin: 0 auto; line-height: 1.7;">
-                        We're finalising the hour-by-hour timing for each day of Durga Puja 2026 — Bengali and English versions will be posted here as soon as they're ready.
-                    </p>
-                    <div style="margin-top: 1.75rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="dp2026.html#schedule-2026" class="btn btn-download" style="background: var(--red); color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                            <i class="fas fa-list"></i> View the daily occasions
-                        </a>
-                        <a href="https://wa.me/34693005986" target="_blank" rel="noopener noreferrer" class="btn btn-download" style="background: transparent; color: var(--red); border: 2px solid var(--red); padding: 8px 20px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                            <i class="fab fa-whatsapp"></i> Get notified
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Call to Action -->
-            <div class="schedule-cta" style="text-align: center; margin-top: 4rem; padding: 3rem; background: var(--red); border-radius: 20px; color: white; box-shadow: 0 10px 30px rgba(220,53,69,0.3);">
-                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Join the Celebration?</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Don't miss out on this incredible cultural experience</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="registration.html" class="btn btn-primary" style="background: white; color: var(--red); font-size: 1.1rem; padding: 15px 30px; text-decoration: none; border-radius: 10px; font-weight: 600;">
-                        <i class="fas fa-ticket-alt"></i> Register Now
-                    </a>
-                    <a href="contact.html" class="btn btn-secondary" style="border: 2px solid white; color: white; font-size: 1.1rem; padding: 15px 30px; text-decoration: none; border-radius: 10px; font-weight: 600;">
-                        <i class="fas fa-info-circle"></i> Get More Info
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    </div> <!-- End main-content -->
+.schedule-images-container {
+  background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 3rem;
+}
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                
-                    <p style="margin: 0.75rem 0 0.5rem; font-size: 0.9rem;">
-                        <a href="aviso-legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal</a> ·
-                        <a href="privacidad.html" style="color: inherit; text-decoration: underline;">Política de Privacidad</a> ·
-                        <a href="cookies.html" style="color: inherit; text-decoration: underline;">Política de Cookies</a>
-                    </p>
-                   <!-- <p style="margin: 0.25rem 0 0.75rem; font-size: 0.85rem; opacity: 0.85;">
-                        #Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
-                    </p>-->
-                    <p>
-                        &copy; 2026 Bengali Cultural Association Barcelona. All rights reserved.
-                    </p>
-            </div>
-        </div>
-    </footer>
+.schedule-overview {
+  background: var(--red); padding: 2rem; border-radius: 20px; margin-bottom: 3rem; text-align: center; color: white; box-shadow: 0 10px 30px rgba(220,53,69,0.3);
+}
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </button>
+#schedule .section-header {
+  text-align: center; margin-bottom: 4rem;
+}
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="modal-close" onclick="closeImageModal()">&times;</span>
-            <div class="modal-image-container">
-                <img id="modalImage" src="" alt="" style="max-width: 100%; max-height: calc(100vh - 120px); width: auto; height: auto; border-radius: 10px; object-fit: contain;">
-            </div>
-            <div class="modal-title" id="modalTitle"></div>
-        </div>
-    </div>
+#schedule .section-subtitle {
+  font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;
+}
+
+#schedule .section-title {
+  font-size: 3.5rem; color: var(--red); margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
 
+#schedule .schedule-coming-soon .btn-download {
+  background: transparent !important;
+  color: var(--red) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid var(--red) !important;
+  font-weight: 600;
+}
+#schedule .schedule-coming-soon h3 {
+  color: var(--secondary);
+  font-size: 1.6rem;
+  margin: 1rem 0 0.6rem;
+  font-weight: 600;
+}
+#schedule .schedule-coming-soon p {
+  color: #666;
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+#schedule .schedule-coming-soon > div {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-    <!-- Smooth Scroll Polyfill -->
-    <script>
-        // Check if smoothscroll polyfill is needed
-        if (!('scrollBehavior' in document.documentElement.style)) {
-            // Load polyfill only if needed
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js';
-            script.onload = function() {
-      smoothscroll.polyfill();
-            };
-            document.head.appendChild(script);
-        }
-    </script>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    
-    <!-- Image Modal Script -->
-    <script>
-        function openImageModal(imageSrc, title) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalTitle = document.getElementById('modalTitle');
-            
-            modalImage.src = imageSrc;
-            modalImage.alt = title;
-            modalTitle.textContent = title;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-        
-        function closeImageModal() {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeImageModal();
-            }
-        });
-    </script>
-    
-    <!-- Fallback for users with JavaScript disabled -->
-    <noscript>
-        <style>
-            .loading { display: none !important; }
-        </style>
-    </noscript>
-    
-    <style>
-        /* Enhanced Image Styling */
+/* css/schedule.css — page styles */
+
+/* ---- extracted from html/schedule.html ---- */
+/* Enhanced Image Styling */
         .schedule-images-container {
             overflow-x: visible;
             border-radius: 20px;
@@ -758,6 +648,56 @@
             align-items: center !important;
             justify-content: center !important;
         }
-    </style>
-</body>
-</html>
+
+
+.schedule-coming-soon .fa-calendar-day {
+  font-size: 2.4rem;
+  color: var(--red);
+  opacity: 0.8;
+}
+
+.schedule-coming-soon .btn-download {
+  background: transparent !important;
+  color: var(--red) !important;
+  padding: 8px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid var(--red) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.schedule-coming-soon > div {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.schedule-overview h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.schedule-overview p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  color: #fff;
+}
+
+.schedule-cta h3 { color: #fff; margin-bottom: 1rem; }
+.schedule-cta p { color: #fff; opacity: 0.95; }
+.schedule-cta .btn-primary {
+  background: #fff !important;
+  color: var(--red) !important;
+  border: none !important;
+}
+.schedule-cta .btn-secondary {
+  background: transparent !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}

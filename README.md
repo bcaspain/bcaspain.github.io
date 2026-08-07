@@ -49,8 +49,12 @@ bcaspain.github.io/
 ├── news-media.html         # News and media coverage page (1,061 lines)
 ├── registration.html       # Registration form with payment options (1,954 lines)
 ├── contact.html            # Contact information and form (251 lines)
-├── styles.css              # Main stylesheet (7,354 lines)
-├── mobile-fixes.css        # Mobile-specific optimizations (2,596 lines)
+├── css/
+│   ├── design-system.css   # Tokens, navbar, footer, shared UI
+│   ├── site.css            # Legacy layout (former styles + mobile-fixes)
+│   ├── landing.css         # Home + About scenes
+│   ├── dp2026.css          # Durga Puja 2026 page
+│   └── …                   # Other page CSS as needed
 ├── script.js               # Main JavaScript functionality (1,858 lines)
 ├── registration-form.js    # Registration form logic (1,597 lines)
 ├── README.md               # Project documentation
@@ -128,16 +132,15 @@ If you want to run this locally for development:
 ## 🎨 Customization
 
 ### Colors
-The website uses CSS custom properties (variables) for easy color customization. Edit the `:root` section in `styles.css`:
+The website uses CSS custom properties (variables) for easy color customization. Edit the `:root` section in `css/design-system.css`:
 
 ```css
 :root {
-    --primary-color: #FF6B35;      /* Main orange color */
-    --secondary-color: #F7931E;    /* Secondary orange */
-    --accent-color: #FFD23F;       /* Accent yellow */
-    --text-dark: #2C3E50;          /* Dark text */
-    --text-light: #7F8C8D;         /* Light text */
-    /* ... other variables */
+    --primary: #835500;
+    --primary-container: #F5A623;
+    --secondary: #B02D21;
+    --tertiary: #35618E;
+    --background: #FAF9F9;
 }
 ```
 
@@ -149,9 +152,9 @@ The website uses CSS custom properties (variables) for easy color customization.
 - **Videos**: Update video files in the `index-attraction/` directory
 
 ### Styling
-- **Typography**: Change fonts by updating the Google Fonts link in `index.html`
-- **Layout**: Modify grid layouts and spacing in `styles.css`
-- **Animations**: Adjust animation timing and effects in `styles.css`
+- **Tokens / brand**: Edit `css/design-system.css`
+- **Legacy layout**: Edit `css/site.css`
+- **Page-specific**: Edit the matching file under `css/` (e.g. `landing.css`, `dp2026.css`)
 
 ## 📱 Responsive Design
 
@@ -163,7 +166,7 @@ The website is fully responsive and optimized for:
 
 ### Mobile Optimizations
 - Touch-friendly interface with 44px minimum touch targets
-- Mobile-specific CSS fixes in `mobile-fixes.css`
+- Responsive rules live in `css/site.css` and `css/design-system.css`
 - Optimized viewport settings
 - Swipe gestures and touch interactions
 - Reduced animations on mobile for better performance

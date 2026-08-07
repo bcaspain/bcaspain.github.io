@@ -22,7 +22,7 @@
     if (document.querySelector('link[data-dhaak-player-css]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = asset('dhaak-player.css');
+    link.href = asset('css/dhaak-player.css');
     link.setAttribute('data-dhaak-player-css', '');
     document.head.appendChild(link);
   }
