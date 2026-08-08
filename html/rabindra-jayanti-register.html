@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <script src="../js/theme-pref.js"></script>
+    <title>Register — Rabindra Jayanti | BCA Barcelona</title>
+    <meta name="description" content="Register your attendance for Rabindra Jayanti in Barcelona.">
+    <meta name="author" content="Bengali Cultural Association Barcelona">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Register — Rabindra Jayanti | BCA Barcelona">
+    <meta property="og:description" content="Register your attendance for Rabindra Jayanti in Barcelona.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bcaspain.org/html/rabindra-jayanti-register.html">
+    <link rel="canonical" href="https://bcaspain.org/html/rabindra-jayanti-register.html">
+    <meta property="og:image" content="https://bcaspain.org/events/rabindra-jayanti.webp">
+
+    <!-- Google tag (gtag.js) — gated by Klaro consent (LSSI-CE Art. 22) -->
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
+    </script>
+
+    <!-- Klaro consent manager -->
+    <script defer src="../js/klaro.min.js"></script>
+    <script defer src="../js/klaro-config.js"></script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/rabindra.css">
+    <link rel="stylesheet" href="../css/design-system.css">
+
+    <!-- Shared navbar include -->
+    <script defer src="../js/navbar.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+
+<body class="scroll-container">
+    <div class="main-content">
+        <div id="navbar-placeholder"></div>
+
+        <section id="rabindra-register" class="page-section page-section-warm">
+            <div class="container">
+                <div class="section-header mb-md">
+                    <h1 class="section-title mb-sm">Rabindra Jayanti Registration</h1>
+                    <p class="section-subtitle mb-0">
+                        Register your attendance for <strong>Saturday, 9 May</strong> at <strong>Teatro Calabria</strong>. Entry is free.
+                    </p>
+                </div>
+
+                <div class="split-2">
+                    <div class="paper-card">
+                        <button type="button" class="rabindra-poster-trigger poster-trigger" aria-haspopup="dialog" aria-controls="rabindraRegisterPosterModal">
+                            <img
+                                src="../events/rabindra-jayanti.webp"
+                                alt="Rabindra Jayanti poster"
+                                loading="lazy"
+                            />
+                        </button>
+                        <div class="poster-caption">
+                            Click the poster to view full size. You can also <a href="rabindra-jayanti.html" class="link-underline">view event details</a>.
+                        </div>
+                    </div>
+
+                    <div class="paper-card paper-card-lg">
+                        <div id="rj-sold-out" class="sold-out">
+                            <div class="sold-out-emoji">🎟️</div>
+                            <div class="sold-out-title">SOLD OUT</div>
+                            <p>
+                                All <strong>110 seats</strong> for Rabindra Jayanti have been reserved.<br>
+                                Thank you for your interest — we hope to see you at the event!
+                            </p>
+                            <a href="rabindra-jayanti.html" class="btn btn-secondary btn-pill">
+                                <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to event
+                            </a>
+                        </div>
+
+                        <form id="rabindraRegistrationForm" class="form-stack">
+                            <div class="form-row">
+                                <div>
+                                    <label for="rj-name" class="form-label">Name *</label>
+                                    <input id="rj-name" name="name" type="text" required minlength="2" maxlength="100" class="form-control">
+                                </div>
+                                <div>
+                                    <label for="rj-attendees" class="form-label">Number of attendees *</label>
+                                    <select id="rj-attendees" name="attendees" required class="form-control form-control-select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div>
+                                    <label for="rj-email" class="form-label">Email *</label>
+                                    <input id="rj-email" name="email" type="email" required maxlength="254" class="form-control">
+                                </div>
+                                <div>
+                                    <label for="rj-email-confirm" class="form-label">Re-enter Email *</label>
+                                    <input id="rj-email-confirm" name="emailConfirm" type="email" required maxlength="254" class="form-control">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="rj-contact" class="form-label">Contact / WhatsApp *</label>
+                                <div class="form-phone-row">
+                                    <select id="rj-country-code" name="countryCode" required class="form-control-code">
+                                        <option value="+34">+34</option>
+                                        <option value="+91">+91</option>
+                                        <option value="+44">+44</option>
+                                        <option value="+1">+1</option>
+                                        <option value="+33">+33</option>
+                                        <option value="+49">+49</option>
+                                        <option value="+39">+39</option>
+                                        <option value="+31">+31</option>
+                                        <option value="+32">+32</option>
+                                        <option value="+351">+351</option>
+                                    </select>
+                                    <input id="rj-contact" name="contact" type="tel" required pattern="[0-9]{9,15}" inputmode="numeric" minlength="9" maxlength="15"
+                                        placeholder="Enter number without country code"
+                                        class="form-control-grow"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="rj-coupon" class="form-label">Coupon code (optional)</label>
+                                <input id="rj-coupon" name="coupon" type="text" maxlength="50" autocapitalize="characters" autocomplete="off"
+                                    placeholder="Enter coupon code"
+                                    class="form-control form-control-upper">
+                            </div>
+
+                            <label class="form-consent">
+                                <input id="rj-privacy" type="checkbox" required>
+                                <span>
+                                    I consent to the processing of my details for event coordination. More info: <a href="privacidad.html" class="link-underline">Política de Privacidad</a>.
+                                </span>
+                            </label>
+
+                            <div id="rj-error" role="alert" aria-live="assertive" class="form-alert is-error">
+                                <i class="fas fa-exclamation-circle" aria-hidden="true"></i> <span id="rj-error-text"></span>
+                            </div>
+
+                            <div class="form-actions">
+                                <button id="rj-submit" type="submit" class="btn btn-primary btn-pill">
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Registration
+                                </button>
+                                <a class="btn btn-secondary btn-pill" href="rabindra-jayanti.html">
+                                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to event
+                                </a>
+                            </div>
+
+                            <div id="rj-success" class="form-alert is-success">
+                                Registration submitted. Thank you!
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="rabindraRegisterPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" class="poster-modal">
+                    <button type="button" id="rabindraRegisterPosterClose" class="poster-modal-close" aria-label="Close poster">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                    <div class="poster-modal-body">
+                        <img src="../events/rabindra-jayanti.webp" alt="Rabindra Jayanti poster full size" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../BCA-logo.webp" alt="BCA Spain Logo" />
+                    <span>Bengali Cultural Association Barcelona (A registered non-profit organization in Spain)</span>
+                </div>
+                <p>
+                    Preserving and promoting Bengali culture in Barcelona through community events and traditional celebrations.
+                </p>
+                <div class="footer-bottom">
+                    <p class="footer-legal">
+                        <a href="aviso-legal.html" class="link-underline">Aviso Legal</a> ·
+                        <a href="privacidad.html" class="link-underline">Política de Privacidad</a> ·
+                        <a href="cookies.html" class="link-underline">Política de Cookies</a>
+                    </p>
+                    <p>
+                        &copy; 2026 Bengali Cultural Association Barcelona (A registered non-profit organization in Spain). All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+    <script>window.RJ_GAS_URL = '__RJ_GAS_URL__';</script>
+    <script src="../js/rabindra-jayanti-seats.js"></script>
+    <script src="../js/rabindra-jayanti-register.js"></script>
+</body>
+</html>
