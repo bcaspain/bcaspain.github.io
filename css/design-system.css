@@ -1121,8 +1121,8 @@ html.legal-embed body { background: var(--surface-container-lowest); }
 
 /* Follow us section chrome — centered copy + icons */
 .social-media-section .social-media-content,
-.social-section .section-header,
-.teaser-strip#contact .scene-inner {
+.teaser-strip#contact .scene-inner,
+.teaser-strip#social-media .scene-inner {
   text-align: center;
   margin-inline: auto;
 }
@@ -1132,18 +1132,8 @@ html.legal-embed body { background: var(--surface-container-lowest); }
 }
 
 .social-media-section .social-icons-container,
-.social-section .social-icons-container {
+.teaser-strip .social-icons-container {
   justify-content: center;
-}
-
-.social-section .section-header,
-#social-media .section-header {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  max-width: 40rem;
-  margin-inline: auto;
-  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 780px) {
@@ -1558,7 +1548,6 @@ body.landing .main-content {
   -webkit-text-fill-color: var(--on-primary);
 }
 
-[data-theme="dark"] .schedule-cta .btn-primary,
 [data-theme="dark"] .registration-cta .btn-primary {
   background: #fff !important;
   color: var(--secondary) !important;
@@ -1566,7 +1555,6 @@ body.landing .main-content {
   -webkit-text-fill-color: var(--secondary);
 }
 
-[data-theme="dark"] .schedule-cta .btn-primary:hover,
 [data-theme="dark"] .registration-cta .btn-primary:hover {
   background: var(--secondary) !important;
   color: #fff !important;
