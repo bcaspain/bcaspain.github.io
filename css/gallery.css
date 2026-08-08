@@ -326,13 +326,69 @@
         /* Gallery Grid Layout */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.25rem;
+            padding: 1.5rem 0 2rem;
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            justify-items: center;
+            justify-items: stretch;
+            content-visibility: auto;
+            contain-intrinsic-size: 800px;
+        }
+
+        .gallery-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.55rem;
+            margin: 0 auto 0.5rem;
+            max-width: 1400px;
+            padding: 0 0.5rem;
+        }
+
+        .gallery-filter {
+            appearance: none;
+            border: 1px solid rgba(225, 21, 41, 0.28);
+            background: #fff;
+            color: #7a1c24;
+            font-family: inherit;
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .gallery-filter:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .gallery-filter.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .gallery-filter-empty {
+            text-align: center;
+            color: #666;
+            margin: 1rem 0 2rem;
+        }
+
+        [data-theme="dark"] .gallery-filter {
+            background: rgba(255, 255, 255, 0.04);
+            color: #f1f1f0;
+            border-color: rgba(241, 241, 240, 0.18);
+        }
+
+        [data-theme="dark"] .gallery-filter.active {
+            background: var(--primary-container, #f5a623);
+            border-color: var(--primary-container, #f5a623);
+            color: #643f00;
         }
         
         /* Year Tabs Styling */
@@ -464,28 +520,31 @@
         /* Enhanced Gallery Items for Year Organization */
         .gallery-item[data-year] {
             position: relative;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            aspect-ratio: 4/3;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            aspect-ratio: 4 / 3;
             width: 100%;
-            max-width: 400px;
-            background: white;
-            cursor: pointer; /* Always show pointer cursor */
+            max-width: none;
+            background: #e8e8e8;
+            cursor: pointer;
+            content-visibility: auto;
+            contain-intrinsic-size: 240px 180px;
         }
         
         .gallery-item[data-year]:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
         }
         
         .gallery-item[data-year] img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none; /* Prevent image from interfering with click */
+            transition: transform 0.3s ease;
+            pointer-events: none;
+            background: #ddd;
         }
         
         .gallery-item[data-year]:hover img {
@@ -527,6 +586,12 @@
         }
         
         /* Year-specific color themes */
+        .year-section[id="year-2026"] .gallery-item[data-year="2026"] {
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, var(--primary-color), var(--secondary-color)) border-box;
+        }
+
         .year-section[id="year-2025"] .gallery-item[data-year="2025"] {
             border: 3px solid transparent;
             background: linear-gradient(white, white) padding-box,
@@ -552,6 +617,10 @@
         }
         
         /* Year-specific overlay colors */
+        .year-section[id="year-2026"] .gallery-item[data-year="2026"] .gallery-overlay {
+            background: linear-gradient(135deg, rgba(225, 21, 41, 0.9), rgba(176, 45, 33, 0.9));
+        }
+
         .year-section[id="year-2025"] .gallery-item[data-year="2025"] .gallery-overlay {
             background: linear-gradient(135deg, rgba(225, 21, 41, 0.9), rgba(253, 126, 20, 0.9));
         }
