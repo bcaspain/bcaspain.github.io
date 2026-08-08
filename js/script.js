@@ -1233,6 +1233,17 @@ window.scrollToTop = scrollToTop;
 // window.closeLightbox = closeLightbox;
 
 // Video Modal Functions
+function resolveFeatureVideoSrc(item, fallbackSrc) {
+    if (item && item.querySelector) {
+        var nested = item.querySelector('video[src]');
+        if (nested) {
+            var nestedSrc = nested.getAttribute('src');
+            if (nestedSrc) return nestedSrc;
+        }
+    }
+    return fallbackSrc || '';
+}
+
 function openVideoModal(videoSrc, title) {
     console.log('Opening video modal:', videoSrc, title);
     if (videoModal && videoModalPlayer && videoModalTitle) {
@@ -1240,12 +1251,14 @@ function openVideoModal(videoSrc, title) {
         const sessionId = Date.now() + Math.random();
         currentVideoModalSession = sessionId;
         
-        // Store current scroll position
-        const scrollY = window.scrollY;
-        videoModal.setAttribute('data-scroll-position', scrollY);
+        // Remember scroll + opener so close can restore without jumping
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+        videoModal.setAttribute('data-scroll-position', String(Math.round(scrollY)));
         videoModal.setAttribute('data-session-id', sessionId);
-        
-        videoModalTitle.textContent = title;
+        videoModal.setAttribute('aria-hidden', 'false');
+        videoModal._openerEl = document.activeElement;
+
+        videoModalTitle.textContent = title || 'Video';
         
         // iOS Safari Video Fixes
         videoModalPlayer.setAttribute('webkit-playsinline', 'true');
@@ -1281,11 +1294,11 @@ function openVideoModal(videoSrc, title) {
             videoModalPlayer.load();
         });
         
-        // Prevent body scroll while maintaining position
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.width = '100%';
-        document.body.style.overflowY = 'scroll'; // Prevent layout shift
+        // Lock scroll without position:fixed (that pattern jumps on unlock)
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        document.body.style.touchAction = 'none';
+        document.body.style.overscrollBehavior = 'none';
         
         // Handle video metadata loaded to set proper dimensions
         const handleMetadataLoaded = function() {
@@ -1298,6 +1311,7 @@ function openVideoModal(videoSrc, title) {
             console.log('Video metadata loaded successfully');
             const videoWidth = this.videoWidth;
             const videoHeight = this.videoHeight;
+            if (!videoWidth || !videoHeight) return;
             const aspectRatio = videoWidth / videoHeight;
             
             // Calculate dimensions to fit screen while maintaining aspect ratio
@@ -1348,8 +1362,13 @@ function openVideoModal(videoSrc, title) {
         
         const errorHandler = function(e) {
             // Check if this session is still current (use currentVideoModalSession directly)
-            if (!currentVideoModalSession) {
+            if (!currentVideoModalSession || currentVideoModalSession !== sessionId) {
                 console.log('No active session, ignoring error');
+                return;
+            }
+
+            // Ignore empty-src cleanup errors after close
+            if (!videoModalPlayer.getAttribute('src') && !videoModalPlayer.src) {
                 return;
             }
             
@@ -1368,17 +1387,23 @@ function openVideoModal(videoSrc, title) {
                 
                 // Close modal after error (but give user time to see the message)
                 setTimeout(() => {
-                    closeVideoModal();
+                    if (currentVideoModalSession === sessionId) {
+                        closeVideoModal();
+                    }
                 }, 3000);
             }
         };
         
         videoModalPlayer.addEventListener('error', errorHandler);
         
-        // Focus on close button for accessibility
+        // Focus on close button for accessibility (preventScroll avoids jump)
         if (videoModalClose) {
             setTimeout(() => {
-                videoModalClose.focus();
+                try {
+                    videoModalClose.focus({ preventScroll: true });
+                } catch (e) {
+                    videoModalClose.focus();
+                }
             }, 100);
         }
         
@@ -1487,69 +1512,65 @@ function openVideoModal(videoSrc, title) {
 function closeVideoModal() {
     if (videoModal && videoModalPlayer) {
         console.log('Closing video modal...');
-        
-        // Clear the current session
+
+        const scrollY = parseInt(videoModal.getAttribute('data-scroll-position') || '0', 10) || 0;
+        const openerEl = videoModal._openerEl;
+
+        // Clear the current session so leftover media errors are ignored
         currentVideoModalSession = null;
-        
-        // Start closing animation
+
+        // Pause without forcing an empty-src reload (that looked like a page refresh)
+        try {
+            videoModalPlayer.pause();
+        } catch (e) {}
+        videoModalPlayer.removeAttribute('src');
+        while (videoModalPlayer.firstChild) {
+            videoModalPlayer.removeChild(videoModalPlayer.firstChild);
+        }
+
+        // Remove any play buttons that might have been added
+        const playButtons = videoModal.querySelectorAll('[style*="position: absolute"]');
+        playButtons.forEach(btn => {
+            try { btn.remove(); } catch (e) {}
+        });
+
         videoModal.classList.remove('active');
-        
-        // Wait for animation to complete
-        setTimeout(() => {
+        videoModal.style.display = 'none';
+        videoModal.setAttribute('aria-hidden', 'true');
+        videoModal.removeAttribute('data-scroll-position');
+        videoModal.removeAttribute('data-session-id');
+        videoModal._openerEl = null;
+
+        // Unlock scroll — position was never rewritten, so stay put
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.body.style.overflowY = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        document.body.style.touchAction = '';
+        document.body.style.overscrollBehavior = '';
+
+        // Keep exact place if anything still nudged scroll (focus, layout)
+        window.scrollTo(0, scrollY);
+
+        if (openerEl && typeof openerEl.focus === 'function') {
             try {
-                // Pause video first
-                if (videoModalPlayer.readyState >= 1) {
-                    videoModalPlayer.pause();
-                }
-                
-                // Clear video source
-                videoModalPlayer.src = '';
-                videoModalPlayer.load(); // Force reload to clear any cached data
-                
-                // Remove any play buttons that might have been added
-                const playButtons = videoModal.querySelectorAll('[style*="position: absolute"]');
-                playButtons.forEach(btn => {
-                    try {
-                        btn.remove();
-                    } catch (e) {
-                        console.log('Error removing play button:', e);
-                    }
-                });
-                
-                // Restore body scroll and position
-                const scrollY = parseInt(videoModal.getAttribute('data-scroll-position') || '0');
-                document.body.style.position = '';
-                document.body.style.width = '';
-                document.body.style.top = '';
-                document.body.style.overflowY = '';
-                
-                // Use requestAnimationFrame for smooth scroll restoration
-                requestAnimationFrame(() => {
-                    try {
-                        window.scrollTo(0, scrollY);
-                    } catch (e) {
-                        console.log('Error restoring scroll position:', e);
-                    }
-                });
-                
-                // Clean up modal
-                videoModal.style.display = 'none';
-                videoModal.removeAttribute('data-scroll-position');
-                videoModal.removeAttribute('data-session-id'); // Clear session ID on close
-                
-                // Reset video player styles
-                videoModalPlayer.style.width = '';
-                videoModalPlayer.style.height = '';
-                
-                console.log('Video modal closed successfully');
-                
-            } catch (error) {
-                console.error('Error during modal close:', error);
-                // Fallback: just hide the modal
-                videoModal.style.display = 'none';
-                videoModal.classList.remove('active');
+                openerEl.focus({ preventScroll: true });
+            } catch (e) {
+                try { openerEl.focus(); } catch (e2) {}
             }
-        }, 300); // Match this with CSS transition duration
+            window.scrollTo(0, scrollY);
+        }
+
+        videoModalPlayer.style.width = '';
+        videoModalPlayer.style.height = '';
+        const modalContent = videoModalPlayer.closest('.video-modal-content');
+        if (modalContent) {
+            modalContent.style.width = '';
+        }
+
+        console.log('Video modal closed successfully at scroll', scrollY);
     } else {
         console.warn('Video modal elements not found for closing');
     }
@@ -1611,33 +1632,22 @@ function initVideoModal() {
         
         // Add click event listener to the entire feature item
         const clickHandler = function(e) {
-            console.log('Feature item clicked:', this.getAttribute('data-video'));
             e.preventDefault();
             e.stopPropagation();
-            const videoSrc = this.getAttribute('data-video');
+            const videoSrc = resolveFeatureVideoSrc(this, this.getAttribute('data-video'));
             const title = this.getAttribute('data-title');
+            console.log('Feature item clicked:', videoSrc);
             openVideoModal(videoSrc, title);
         };
         
         addVideoModalEventListener(item, 'click', clickHandler);
         
-        // Add touch event listener for mobile devices
-        const touchHandler = function(e) {
-            console.log('Feature item touched:', this.getAttribute('data-video'));
-            e.preventDefault();
-            e.stopPropagation();
-            const videoSrc = this.getAttribute('data-video');
-            const title = this.getAttribute('data-title');
-            openVideoModal(videoSrc, title);
-        };
-        
-        addVideoModalEventListener(item, 'touchstart', touchHandler, { passive: false });
-        
+        // Mobile: use click only — touchstart+click was double-firing the modal
         // Add keyboard support for accessibility
         const keyHandler = function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const videoSrc = this.getAttribute('data-video');
+                const videoSrc = resolveFeatureVideoSrc(this, this.getAttribute('data-video'));
                 const title = this.getAttribute('data-title');
                 openVideoModal(videoSrc, title);
             }
@@ -1668,7 +1678,6 @@ function initVideoModal() {
         };
         
         addVideoModalEventListener(videoModalClose, 'click', closeButtonHandler);
-        addVideoModalEventListener(videoModalClose, 'touchstart', closeButtonHandler, { passive: false });
         
         // Add keyboard support for close button
         const closeKeyHandler = function(e) {

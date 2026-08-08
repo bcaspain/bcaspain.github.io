@@ -8,33 +8,253 @@
    .script-lede / .script-prose / .reveal-up.
    ============================================================ */
 
-/* Idol portrait: shown in full above the copy, at every screen size — same
-   treatment as About's family portrait. aspect-ratio matches this photo's
-   actual 1600x1066 dimensions exactly, so object-fit:cover never needs to
-   crop it. Replaces the absolute full-bleed overlay at all widths. */
+/* Idol stacked above copy — same treatment as About's top image.
+   Below: text + buttons left, timer right. */
 .dp2026-hero {
-  min-height: auto;
+  min-height: auto !important;
   flex-direction: column;
   align-items: stretch;
+  padding-top: calc(var(--navbar-height, 70px) + 1rem);
+  padding-bottom: 2.5rem;
+  scroll-margin-top: var(--navbar-height, 70px);
 }
-.dp2026-hero .hero-portrait {
+
+.dp2026-hero > .hero-portrait {
   position: static;
   inset: auto;
-  aspect-ratio: 1600 / 1066;
+  aspect-ratio: 16 / 9;
+  max-height: min(52vh, 560px);
+  width: 100%;
   margin-bottom: 2rem;
   border-radius: 4px;
   overflow: hidden;
 }
-.dp2026-hero .hero-portrait img {
+
+.dp2026-hero > .hero-portrait img {
   position: static;
-  left: auto; top: auto; right: auto;
+  left: auto;
+  top: auto;
+  right: auto;
   transform: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Bias to Maa's face / upper idol */
+  object-position: center 22%;
 }
-.dp2026-hero .hero-portrait .tint { display: none; }
+
+.dp2026-hero > .hero-portrait .tint { display: none; }
+
+/* Hero layout: copy + buttons left, timer right */
+.dp2026-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 26rem);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
+  width: 100%;
+}
+
+.dp2026-hero-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  align-self: start;
+}
+
+.dp2026-hero .dusk-hero-copy {
+  max-width: 42rem;
+  min-width: 0;
+}
+
+.dp2026-hero .dusk-hero-copy .script-prose {
+  max-width: 40rem;
+}
+
+.dp2026-hero .hero-buttons,
+.dp2026-hero .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 0;
+  padding-top: 0;
+  justify-content: flex-start !important;
+  align-items: center;
+  width: auto;
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.dp2026-hero-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: start;
+  padding-top: 0.15rem;
+}
+
+.dp2026-hero .countdown-section {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 100%;
+  max-width: 26rem;
+  margin: 0 0 0 auto;
+  padding: 0 !important;
+  flex-shrink: 0;
+}
+.dp2026-hero .countdown-section::before { display: none !important; }
+
+/* Exact same cell language as index .dp-countdown */
+.dp2026-hero .countdown.dp-countdown,
+.dp2026-hero .dp-countdown {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0.9rem !important;
+  max-width: 26rem;
+  width: 100%;
+  margin: 0;
+}
+
+.dp2026-hero .dp-countdown-item,
+.dp2026-hero .countdown-item.dp-countdown-item {
+  text-align: center;
+  padding: 0.9rem 0.4rem !important;
+  border: 1px solid var(--line-dark) !important;
+  border-radius: 4px !important;
+  background: var(--scene-card-bg) !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.dp2026-hero .dp-countdown-number,
+.dp2026-hero .countdown-number.dp-countdown-number {
+  font-family: var(--font-display) !important;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem) !important;
+  color: var(--paper) !important;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  text-shadow: none !important;
+}
+
+.dp2026-hero .dp-countdown-label,
+.dp2026-hero .countdown-label.dp-countdown-label {
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-faint) !important;
+  margin-top: 0.2rem;
+}
+
 .dp2026-hero .scroll-cue { position: static; margin-top: 2rem; }
+
+@media (max-width: 900px) {
+  .dp2026-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  /* Mobile: timer sits directly under the About-style portrait */
+  .dp2026-hero-side {
+    order: 1;
+  }
+
+  .dp2026-hero-main {
+    order: 2;
+  }
+
+  .dp2026-hero .countdown-section {
+    margin: 0;
+    max-width: 26rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .dp2026-hero {
+    padding-top: calc(var(--navbar-height, 70px) + 0.85rem) !important;
+    padding-inline: 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .dp2026-hero > .hero-portrait {
+    aspect-ratio: 16 / 10;
+    max-height: min(36vh, 280px);
+    margin-bottom: 1.5rem;
+  }
+
+  .dp2026-hero > .hero-portrait img {
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    object-fit: cover;
+    object-position: center 18%;
+  }
+
+  .dp2026-hero .scene-inner.dp2026-hero-layout {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dp2026-hero .dusk-hero-copy,
+  .dp2026-hero .script-prose,
+  .dp2026-hero .script-lede {
+    max-width: 100%;
+  }
+
+  .dp2026-hero .script-prose {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 560px) {
+  .dp2026-hero > .hero-portrait {
+    aspect-ratio: 16 / 11;
+    max-height: min(34vh, 240px);
+  }
+
+  .dp2026-hero > .hero-portrait img {
+    object-position: center 16%;
+  }
+
+  .dp2026-hero .countdown.dp-countdown,
+  .dp2026-hero .dp-countdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    max-width: 100%;
+  }
+
+  .dp2026-hero .countdown-section {
+    max-width: 100%;
+  }
+
+  .dp2026-hero .hero-buttons,
+  .dp2026-hero .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .dp2026-hero .hero-buttons .btn,
+  .dp2026-hero .hero-actions .btn {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .dp2026-hero .slugline {
+    font-size: clamp(1.35rem, 7vw, 1.85rem);
+  }
+}
 
 .fact-box {
   margin-top: 1.8rem;
@@ -58,6 +278,154 @@
   font-size: 0.98rem;
   line-height: 1.75;
   margin: 0;
+}
+
+/* ---------- more-than-religion: copy left, media right ---------- */
+.culture-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 24rem);
+  gap: clamp(1.75rem, 4vw, 3.25rem);
+  align-items: stretch;
+}
+
+.culture-copy {
+  min-width: 0;
+}
+
+.culture-copy .script-lede,
+.culture-copy .script-prose {
+  max-width: 40rem;
+}
+
+.culture-copy .fact-box {
+  max-width: none;
+}
+
+.culture-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  height: 100%;
+  align-self: stretch;
+}
+
+.culture-media-card {
+  position: relative !important;
+  display: block !important;
+  flex: 1 1 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: 12rem !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid var(--line-dark) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  background: var(--scene-card-bg) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.culture-media-card video {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 1 !important;
+  border-radius: 0 !important;
+  z-index: 0 !important;
+  filter: saturate(0.92) contrast(1.04);
+  transition: transform 0.55s ease, filter 0.35s ease;
+  pointer-events: none; /* open modal via card click, not inline video controls */
+}
+
+.culture-media-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(16, 16, 24, 0.08) 0%, rgba(16, 16, 24, 0.72) 100%);
+  pointer-events: none;
+}
+
+.culture-media-meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1rem;
+  color: #f1f1f0;
+  pointer-events: none;
+}
+
+.culture-media-meta i {
+  color: var(--primary-container) !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+.culture-media-meta span {
+  color: #f1f1f0 !important;
+  text-shadow: none !important;
+  font-family: var(--font-body);
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-align: left !important;
+}
+
+.culture-media-card:hover video,
+.culture-media-card:focus-visible video {
+  transform: scale(1.04);
+  filter: saturate(1) contrast(1.06);
+}
+
+.culture-media-card:focus-visible {
+  outline: 2px solid var(--primary-container);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .culture-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .culture-media {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    height: auto;
+  }
+
+  .culture-media-card,
+  .dp2026-page .culture-media-card.feature-item {
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+    flex: none !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .culture-media {
+    grid-template-columns: 1fr;
+  }
+
+  .culture-media-card,
+  .dp2026-page .culture-media-card.feature-item {
+    aspect-ratio: 16 / 10 !important;
+  }
 }
 
 /* ---------- schedule: occasion cards ---------- */
@@ -94,7 +462,8 @@
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 1.3rem 1.2rem 1.1rem;
-  color: var(--paper);
+  /* Always light — sits on photo scrim in both themes */
+  color: #f1f1f0;
 }
 .occasion-date {
   display: inline-block;
@@ -103,10 +472,10 @@
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--ink);
-  background: var(--terracotta-glow);
+  color: #141a22;
+  background: var(--primary-container);
   padding: 0.28rem 0.7rem;
-  border-radius: 999px;
+  border-radius: 4px;
   margin-bottom: 0.7rem;
 }
 .occasion-card h3 {
@@ -115,11 +484,12 @@
   font-weight: 600;
   margin: 0 0 0.4rem;
   text-wrap: balance;
+  color: #f1f1f0;
 }
 .occasion-card p {
   font-size: 0.88rem;
   line-height: 1.55;
-  color: var(--paper-dim);
+  color: rgba(241, 241, 240, 0.88);
   margin: 0;
 }
 .occasion-credit {
@@ -165,7 +535,7 @@
   padding: 0.6rem 1.1rem;
   border-radius: 999px;
   border: 1px solid var(--line-dark);
-  background: rgba(16,16,24,0.85);
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
   backdrop-filter: blur(10px);
   color: var(--paper-dim);
   font-family: var(--font-body);
@@ -337,42 +707,50 @@
     }
 
     .dp2026-page .btn-primary,
-    .dp2026-page .btn-primary.btn-large {
-        background: #fff !important;
-        color: #c1623d !important;
-        border: 2px solid #fff !important;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        -webkit-text-fill-color: #c1623d !important;
+    .dp2026-page .btn-primary.btn-large,
+    .dp2026-page .hero-buttons .btn-primary,
+    .dp2026-page .dp2026-hero .btn-primary {
+        background: var(--primary-container) !important;
+        color: var(--on-primary-container) !important;
+        border: none !important;
+        box-shadow: var(--shadow-light);
+        -webkit-text-fill-color: var(--on-primary-container) !important;
     }
 
-    .dp2026-page .btn-primary:hover {
-        background: #fff !important;
-        color: #8a3f28 !important;
-        border-color: #fff !important;
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-        -webkit-text-fill-color: #8a3f28 !important;
+    .dp2026-page .btn-primary:hover,
+    .dp2026-page .hero-buttons .btn-primary:hover,
+    .dp2026-page .dp2026-hero .btn-primary:hover {
+        background: var(--primary) !important;
+        color: var(--on-primary) !important;
+        border-color: transparent !important;
+        box-shadow: var(--shadow-hover);
+        -webkit-text-fill-color: var(--on-primary) !important;
     }
 
     .dp2026-page .btn-primary span,
-    .dp2026-page .btn-primary i {
+    .dp2026-page .btn-primary i,
+    .dp2026-page .btn-secondary span,
+    .dp2026-page .btn-secondary i {
         color: inherit !important;
         -webkit-text-fill-color: inherit !important;
     }
 
     .dp2026-page .schedule-link,
     .dp2026-page button.schedule-link {
-        background: #fff !important;
-        color: #c1623d !important;
-        border: 2px solid #c1623d !important;
+        background: transparent !important;
+        color: var(--primary-container) !important;
+        border: 1px solid var(--primary-container) !important;
         font-weight: 600;
+        -webkit-text-fill-color: var(--primary-container) !important;
     }
 
     .dp2026-page .schedule-link:hover,
     .dp2026-page button.schedule-link:hover {
-        background: #fff !important;
-        color: #8a3f28 !important;
-        border-color: #8a3f28 !important;
-        box-shadow: 0 5px 15px rgba(193, 98, 61, 0.2);
+        background: rgba(245, 166, 35, 0.12) !important;
+        color: var(--paper) !important;
+        border-color: var(--primary) !important;
+        box-shadow: none;
+        -webkit-text-fill-color: var(--paper) !important;
     }
 
     .dp2026-page .schedule-link i,
@@ -395,106 +773,129 @@
     }
 
     .dp2026-page .schedule-2026-section {
-        background: linear-gradient(180deg, var(--dusk-3) 0%, var(--ink) 100%);
+        background: var(--dusk-3);
         margin: 0;
         padding: 5rem 0;
+        color: var(--paper);
     }
 
     .dp2026-page .schedule-2026-section .section-title,
     .dp2026-page .events-section .section-title,
-    .dp2026-page .sponsors-showcase .section-title {
+    .dp2026-page .sponsors-showcase .section-title,
+    .dp2026-page .social-media-section .section-title {
         color: var(--paper) !important;
     }
 
     .dp2026-page .schedule-2026-section .section-subtitle,
     .dp2026-page .events-section .section-subtitle,
-    .dp2026-page .sponsors-showcase .section-subtitle {
+    .dp2026-page .sponsors-showcase .section-subtitle,
+    .dp2026-page .social-media-section .section-subtitle {
         color: var(--paper-dim) !important;
     }
 
     .dp2026-page .schedule-2026-section::before {
-        background: linear-gradient(90deg, #8a3f28, #c1623d, #d3a24a);
+        background: linear-gradient(90deg, var(--secondary), var(--secondary-container), var(--primary-container));
     }
 
     .dp2026-page .schedule-2026-content {
-        border-color: rgba(193, 98, 61, 0.12);
+        border-color: var(--line-dark);
+        background: var(--scene-card-bg);
+        color: var(--paper);
     }
 
     .dp2026-page .schedule-2026-content::before {
-        background: linear-gradient(90deg, #8a3f28, #c1623d, #d3a24a);
+        background: linear-gradient(90deg, var(--secondary), var(--secondary-container), var(--primary-container));
     }
 
     .dp2026-page .schedule-table thead {
-        background: linear-gradient(135deg, #8a3f28, #c1623d);
+        background: linear-gradient(135deg, var(--secondary), var(--secondary-container));
+        color: var(--on-secondary);
     }
 
     .dp2026-page .schedule-table tbody tr:hover {
-        background: rgba(193, 98, 61, 0.05);
+        background: color-mix(in srgb, var(--secondary) 8%, transparent);
     }
 
     .dp2026-page .schedule-note {
-        background: rgba(193, 98, 61, 0.08);
-        border-color: rgba(193, 98, 61, 0.2);
+        background: color-mix(in srgb, var(--primary-container) 12%, transparent);
+        border-color: var(--line-dark);
     }
 
     .dp2026-page .events-section {
-        background: var(--ink);
+        background: var(--scene-c-bg);
         padding: 5rem 0;
+        color: var(--paper);
     }
 
     .dp2026-page .events-section .event-card {
-        border-radius: 15px;
-        border-top: 4px solid #c1623d;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 0.75rem;
+        border: 1px solid var(--line-dark);
+        border-top: 3px solid var(--secondary);
+        background: var(--scene-card-bg) !important;
+        color: var(--paper) !important;
+        box-shadow: none;
         padding: 1.5rem;
     }
 
     .dp2026-page .events-section .event-card:hover {
-        border-color: #c1623d;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-container);
+        background: var(--scene-card-hover) !important;
+        box-shadow: var(--shadow-medium);
+    }
+
+    .dp2026-page .events-section .event-card h3,
+    .dp2026-page .events-section .event-time {
+        color: var(--primary-container) !important;
+    }
+
+    .dp2026-page .events-section .event-card p,
+    .dp2026-page .events-section .event-description {
+        color: var(--paper-dim) !important;
     }
 
     .dp2026-page .events-section .event-icon {
-        background: linear-gradient(135deg, #8a3f28, #c1623d);
+        background: linear-gradient(135deg, var(--secondary), var(--primary-container));
+        color: #fff;
     }
 
     .dp2026-page .sponsors-showcase {
         background: linear-gradient(180deg, var(--ink) 0%, var(--dusk-3) 100%);
+        color: var(--paper);
     }
 
-    /* Sponsor & event cards stay light "paper" islands on the dark backdrop */
+    /* Transparent section shell; white tiles only behind logos */
     .dp2026-page .sponsor-section {
-        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.35) !important;
+        background: transparent !important;
+        box-shadow: none !important;
     }
 
 /* ---- extracted from html/dp2026.html ---- */
 /* Sponsor Sections */
                 .sponsor-section {
                     margin: 2rem 0;
-                    padding: 2rem;
-                    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-                    border-radius: 15px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                    padding: 1.5rem 0;
+                    background: transparent;
+                    border-radius: 0;
+                    box-shadow: none;
                     text-align: center;
                     position: relative;
                 }
                 
                 .sponsor-category-title {
-                    font-size: 1.5rem;
+                    font-size: 1.15rem;
                     font-weight: 600;
-                    color: #c1623d;
+                    color: var(--paper);
                     margin: 2rem auto 1.5rem auto;
                     text-transform: uppercase;
-                    letter-spacing: 1px;
+                    letter-spacing: 0.08em;
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 0.5rem 1.5rem;
-                    background: #ffffff;
-                    border-radius: 25px;
-                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                    border: 2px solid #c1623d;
+                    padding: 0.5rem 1.35rem;
+                    background: var(--scene-card-bg);
+                    border-radius: 999px;
+                    box-shadow: none;
+                    border: 1px solid var(--line-dark);
                     position: relative;
                     overflow: visible;
                     text-align: center;
@@ -508,7 +909,7 @@
                     top: 50%;
                     width: 60px;
                     height: 2px;
-                    background: #c1623d;
+                    background: var(--primary-container);
                     transform: translateY(-50%);
                     z-index: 1;
                 }
@@ -833,9 +1234,10 @@
                     margin: 2rem 0;
                     padding: 1rem 0;
                     position: relative;
-                    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                    border-radius: 15px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                    background: var(--scene-card-bg);
+                    border: 1px solid var(--line-dark);
+                    border-radius: 0.75rem;
+                    box-shadow: none;
                 }
                 
                 .photo-slider {
@@ -1306,19 +1708,18 @@
 
 /* ---- former dp-hero.css ---- */
 
-/* Shared Durga Puja hero — index.html & dp2026.html */
+/* Shared Durga Puja hero — legacy skin neutralized; use site scene tokens */
 .dp2026-hero,
 .dp2026-page {
-    --red: #c1623d;
-    --dp-red-dark: #8a3f28;
-    --dp-orange: #d3a24a;
-    --dp-accent: #e0a15a;
+    --red: var(--secondary);
+    --dp-red-dark: var(--secondary);
+    --dp-orange: var(--primary-container);
+    --dp-accent: var(--primary-container);
 }
 
 .dp2026-hero {
-    background: linear-gradient(135deg, #fff5f5 0%, #fff0e6 100%);
+    background: var(--scene-hero-bg) !important;
     min-height: auto;
-    padding: calc(var(--navbar-height, 70px) + 3.5rem) 0 3.5rem;
     overflow: visible;
 }
 
@@ -1573,80 +1974,49 @@
     color: #fff;
 }
 
-.dp2026-hero .btn,
-.dp2026-hero .btn-primary,
-.dp2026-hero .btn-secondary,
-.dp2026-hero .btn-large,
-.dp2026-hero .hero-buttons .btn {
-    background: #fff !important;
-    color: #c1623d !important;
-    border: 2px solid #fff !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    -webkit-text-fill-color: #c1623d !important;
-}
-
-.dp2026-hero .btn:hover,
-.dp2026-hero .btn-primary:hover,
-.dp2026-hero .btn-secondary:hover,
-.dp2026-hero .btn-large:hover,
-.dp2026-hero .hero-buttons .btn:hover {
-    background: #fff !important;
-    color: #8a3f28 !important;
-    border-color: #fff !important;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-    -webkit-text-fill-color: #8a3f28 !important;
-}
-
-.dp2026-hero .btn span,
-.dp2026-hero .btn i,
-.dp2026-hero .btn-large span,
-.dp2026-hero .btn-large i,
-.dp2026-hero .hero-buttons .btn span,
-.dp2026-hero .hero-buttons .btn i {
-    color: inherit !important;
-    -webkit-text-fill-color: inherit !important;
-}
-
+/* Legacy glass-timer skins disabled for scene hero */
 .dp2026-hero .countdown-section {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: none;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     width: 100%;
-    max-width: 500px;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0;
 }
 
 .dp2026-hero .countdown-section:hover {
     transform: none;
     box-shadow: none;
-    border-color: rgba(255, 255, 255, 0.35);
+    border-color: transparent;
 }
 
 .dp2026-hero .countdown-title {
-    color: #fff;
+    color: var(--paper-faint) !important;
     text-shadow: none;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 1rem;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem !important;
 }
 
 .dp2026-hero .countdown-title i {
-    color: var(--dp-accent);
+    color: var(--primary-container) !important;
     filter: none;
     animation: none;
 }
 
 .dp2026-hero .countdown-item {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: var(--scene-card-bg) !important;
+    border: 1px solid var(--line-dark) !important;
 }
 
 .dp2026-hero .countdown-number {
-    color: #fff;
+    color: var(--paper) !important;
     text-shadow: none;
 }
 
 .dp2026-hero .countdown-label {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--paper-faint) !important;
 }
 
 .dp2026-hero .hero-right-section {
@@ -1876,16 +2246,17 @@
 
     .dp2026-hero .hero-buttons {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         gap: 0.75rem;
         width: 100%;
         margin-bottom: 0;
+        justify-content: flex-start !important;
     }
 
     .dp2026-hero .hero-buttons .btn {
         width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
+        max-width: none;
+        margin: 0;
     }
 
     .dp2026-hero .hero-right-section {
@@ -1930,36 +2301,39 @@
     }
 
     .dp2026-hero .countdown-section {
-        max-width: 100% !important;
-        padding: 1.25rem 0.85rem !important;
-        margin-top: 1rem !important;
+        max-width: 26rem !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        background: transparent !important;
+        border: none !important;
     }
 
     .dp2026-hero .countdown-title,
     .dp2026-hero .mobile-countdown .countdown-title {
-        font-size: 0.82rem !important;
-        letter-spacing: 1.5px !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.12em !important;
         margin-bottom: 1rem !important;
-        color: #fff !important;
+        color: var(--paper-faint) !important;
         text-shadow: none !important;
     }
 
     .dp2026-hero .countdown-title i,
     .dp2026-hero .mobile-countdown .countdown-title i {
-        color: var(--dp-accent) !important;
+        color: var(--primary-container) !important;
         filter: none !important;
         animation: none !important;
     }
 
     .dp2026-hero .mobile-countdown {
-        background: rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        background: transparent !important;
+        border: none !important;
         box-shadow: none !important;
     }
 
     .dp2026-hero .mobile-countdown .countdown-item {
-        background: rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        background: var(--scene-card-bg) !important;
+        border: 1px solid var(--line-dark) !important;
     }
 
     .dp2026-hero .mobile-countdown .countdown-number {
@@ -1971,20 +2345,22 @@
     }
 
     .dp2026-hero .countdown {
-        gap: 0.45rem !important;
+        gap: 0.9rem !important;
     }
 
     .dp2026-hero .countdown-item {
-        padding: 0.75rem 0.35rem !important;
+        padding: 0.9rem 0.4rem !important;
+        min-height: 0 !important;
+        height: auto !important;
     }
 
     .dp2026-hero .countdown-number {
-        font-size: 1.55rem !important;
+        font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem) !important;
     }
 
     .dp2026-hero .countdown-label {
-        font-size: 0.62rem !important;
-        letter-spacing: 0.5px;
+        font-size: 0.68rem !important;
+        letter-spacing: 0.1em;
     }
 }
 
@@ -2023,4 +2399,573 @@
         font-size: 1.35rem !important;
     }
 }
+
+/* ============================================================
+   DP2026 — force site design-system coherence
+   Legacy site.css / old dp-hero skins used light pink, white cards,
+   and dark text that breaks on dusk scenes. These rules win last.
+   ============================================================ */
+
+.dp2026-page {
+  color: var(--paper) !important;
+  background: var(--ink) !important;
+}
+
+.dp2026-page .main-content {
+  background: transparent !important;
+}
+
+/* Hero: no more #fff5f5 cream strip */
+.dp2026-page .dp2026-hero.scene-hero,
+.dp2026-page .dp2026-hero {
+  background: var(--scene-hero-bg) !important;
+  color: var(--paper) !important;
+  padding-top: calc(var(--navbar-height, 70px) + 1rem);
+}
+
+/* Narrative + converted sections follow landing scene washes */
+.dp2026-page .scene.scene-a {
+  background: linear-gradient(180deg, var(--ink) 0%, var(--dusk-3) 100%) !important;
+}
+.dp2026-page .scene.scene-b {
+  background: var(--dusk-3) !important;
+}
+.dp2026-page .scene.scene-c {
+  background: var(--scene-c-bg) !important;
+}
+
+/* Kill the floating “card” header boxes from design-system */
+.dp2026-page .section-header {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.dp2026-page .section-title,
+.dp2026-page .social-title,
+.dp2026-page h2,
+.dp2026-page .script-lede,
+.dp2026-page .slugline,
+.dp2026-page .scene-eyebrow {
+  color: var(--paper) !important;
+}
+
+.dp2026-page .section-subtitle,
+.dp2026-page .social-subtitle,
+.dp2026-page .script-prose,
+.dp2026-page .fact-box p,
+.dp2026-page .lede,
+.dp2026-page p {
+  color: var(--paper-dim) !important;
+}
+
+.dp2026-page .slugline {
+  color: var(--paper-faint) !important;
+  border-bottom-color: var(--line-dark) !important;
+}
+
+.dp2026-page .scene-eyebrow {
+  color: var(--terracotta-glow) !important;
+}
+
+.dp2026-page .fact-box {
+  background: color-mix(in srgb, var(--primary-container) 10%, transparent) !important;
+  border-left-color: var(--primary-container) !important;
+}
+
+.dp2026-page .fact-box .fact-label {
+  color: var(--primary-container) !important;
+}
+
+/* Schedule / events / sponsors / contact — no old pink tint or white shells */
+.dp2026-page .schedule-2026-section,
+.dp2026-page .events-section,
+.dp2026-page .sponsors-showcase,
+.dp2026-page .social-media-section {
+  margin: 0 !important;
+  color: var(--paper) !important;
+}
+
+.dp2026-page .schedule-2026-section::before,
+.dp2026-page .schedule-2026-content::before {
+  background: linear-gradient(90deg, var(--secondary), var(--primary-container)) !important;
+}
+
+.dp2026-page .schedule-2026-content,
+.dp2026-page .schedule-table,
+.dp2026-page .schedule-note {
+  background: var(--scene-card-bg) !important;
+  color: var(--paper) !important;
+  border-color: var(--line-dark) !important;
+  box-shadow: none !important;
+}
+
+.dp2026-page .schedule-note p,
+.dp2026-page .schedule-note {
+  color: var(--paper-dim) !important;
+}
+
+.dp2026-page .schedule-note i {
+  color: var(--primary-container) !important;
+}
+
+/* Event cards: readable on dusk, not white-with-dark-text leftovers */
+.dp2026-page .event-card {
+  background: var(--scene-card-bg) !important;
+  color: var(--paper) !important;
+  border: 1px solid var(--line-dark) !important;
+  border-top: 3px solid var(--secondary) !important;
+  box-shadow: none !important;
+}
+
+.dp2026-page .event-card:hover {
+  background: var(--scene-card-hover) !important;
+  border-color: var(--primary-container) !important;
+}
+
+.dp2026-page .event-card h3,
+.dp2026-page .event-card h4,
+.dp2026-page .event-card .event-time {
+  color: var(--primary-container) !important;
+}
+
+.dp2026-page .event-card p,
+.dp2026-page .event-card li,
+.dp2026-page .event-card span,
+.dp2026-page .event-card .event-description,
+.dp2026-page .event-card .event-location,
+.dp2026-page .event-card .location {
+  color: var(--paper-dim) !important;
+}
+
+.dp2026-page .event-card a {
+  color: var(--terracotta-glow) !important;
+}
+
+.dp2026-page .event-icon {
+  background: linear-gradient(135deg, var(--secondary), var(--primary-container)) !important;
+  color: #fff !important;
+}
+
+/* Sponsors */
+.dp2026-page .sponsor-section {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.dp2026-page .sponsor-category-title {
+  color: var(--paper) !important;
+  background: var(--scene-card-bg) !important;
+  border: 1px solid var(--line-dark) !important;
+  box-shadow: none !important;
+}
+
+.dp2026-page .sponsor-category-title::before,
+.dp2026-page .sponsor-category-title::after {
+  background: var(--primary-container) !important;
+}
+
+.dp2026-page .sponsor-link {
+  background: #ffffff !important;
+  border: 1px solid rgba(26, 28, 28, 0.1);
+  box-shadow: none !important;
+}
+
+.dp2026-page .photo-slider-container {
+  background: var(--scene-card-bg) !important;
+  border: 1px solid var(--line-dark) !important;
+  box-shadow: none !important;
+}
+
+.dp2026-page .countdown-item {
+  background: var(--scene-card-bg) !important;
+  border: 1px solid var(--line-dark) !important;
+}
+
+.dp2026-page .countdown-title,
+.dp2026-page .countdown-number {
+  color: var(--paper) !important;
+}
+
+.dp2026-page .countdown-label {
+  color: var(--paper-faint) !important;
+}
+
+@media (max-width: 780px) {
+  .dp2026-page .dp2026-hero {
+    padding-top: calc(var(--navbar-height, 70px) + 0.85rem) !important;
+    padding-inline: 1.25rem;
+  }
+
+  .dp2026-page .dp2026-hero > .hero-portrait img {
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Body sections — same scene language as hero / narrative blocks
+   ============================================================ */
+
+.dp2026-page .scene {
+  scroll-margin-top: calc(var(--navbar-height, 70px) + 0.5rem);
+}
+
+.dp2026-page .schedule-2026-section,
+.dp2026-page .events-section,
+.dp2026-page .sponsors-showcase,
+.dp2026-page .social-media-section {
+  padding-block: clamp(3.5rem, 8vh, 5.5rem);
+}
+
+.dp2026-page .schedule-2026-section .script-lede,
+.dp2026-page .events-section .script-lede,
+.dp2026-page .sponsors-showcase .script-lede,
+.dp2026-page .social-media-section .script-lede {
+  max-width: 40rem;
+}
+
+.dp2026-page .schedule-2026-section .script-prose,
+.dp2026-page .events-section .script-prose,
+.dp2026-page .sponsors-showcase .script-prose,
+.dp2026-page .social-media-section .script-prose {
+  max-width: 40rem;
+  margin-bottom: 2rem;
+}
+
+/* Feature video chips — left row, scene cards, readable type */
+.dp2026-page .hero-features {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.dp2026-page .feature-group-block {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: flex-start !important;
+  align-items: stretch;
+  gap: 0.9rem !important;
+  width: 100% !important;
+  max-width: 40rem;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.dp2026-page .feature-group-block:hover {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dp2026-page .hero-features .feature-item,
+.dp2026-page .feature-item {
+  flex: 1 1 10rem !important;
+  min-width: 9.5rem !important;
+  max-width: 14rem !important;
+  min-height: 6.5rem !important;
+  padding: 1.1rem 0.9rem !important;
+  background: var(--scene-card-bg) !important;
+  border: 1px solid var(--line-dark) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  color: var(--paper) !important;
+}
+
+.dp2026-page .culture-media-card.feature-item,
+.dp2026-page .culture-media .feature-item {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  aspect-ratio: auto;
+}
+
+.dp2026-page .hero-features .feature-item:hover,
+.dp2026-page .feature-item:hover {
+  background: var(--scene-card-hover) !important;
+  border-color: var(--primary-container) !important;
+  transform: translateY(-2px);
+}
+
+.dp2026-page .hero-features .feature-item i,
+.dp2026-page .feature-item i {
+  color: var(--primary-container) !important;
+  font-size: 1.35rem !important;
+  margin-bottom: 0.35rem;
+}
+
+.dp2026-page .hero-features .feature-item span,
+.dp2026-page .feature-item span {
+  color: var(--paper) !important;
+  text-shadow: none !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+}
+
+/* Events */
+.dp2026-page .events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.dp2026-page .event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.6rem 1.5rem !important;
+  border-radius: 6px !important;
+  text-align: left !important;
+}
+
+.dp2026-page .event-card .event-when {
+  font-family: var(--font-body);
+  font-size: 0.78rem !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta-glow) !important;
+  margin: 0;
+}
+
+.dp2026-page .event-card .venue-info {
+  margin-top: 0.35rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line-dark);
+}
+
+.dp2026-page .event-card .venue-info h4 {
+  color: var(--paper) !important;
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+}
+
+.dp2026-page .event-card .free-badge {
+  align-self: flex-start;
+  display: inline-block;
+  margin: 0;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  background: rgba(245, 166, 35, 0.14);
+  color: var(--primary-container) !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-dark);
+}
+
+.dp2026-page .event-card .schedule-link,
+.dp2026-page .event-card button.schedule-link {
+  margin-top: auto;
+  align-self: flex-start;
+  background: transparent !important;
+  color: var(--primary-container) !important;
+  border: 1px solid var(--primary-container) !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+  font-weight: 600;
+  -webkit-text-fill-color: var(--primary-container) !important;
+}
+
+.dp2026-page .event-card .schedule-link:hover,
+.dp2026-page .event-card button.schedule-link:hover {
+  background: rgba(245, 166, 35, 0.12) !important;
+  color: var(--paper) !important;
+  border-color: var(--primary) !important;
+  -webkit-text-fill-color: var(--paper) !important;
+}
+
+.dp2026-page .event-card .schedule-link span,
+.dp2026-page .event-card .schedule-link i {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Sponsors — eyebrow-style category labels, left logo rows */
+.dp2026-page .sponsor-category-title {
+  display: flex !important;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  margin: 2.25rem 0 1.1rem !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--terracotta-glow) !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+.dp2026-page .sponsor-category-title::before,
+.dp2026-page .sponsor-category-title::after {
+  content: '' !important;
+  height: 1px !important;
+  background: var(--line-dark) !important;
+  flex: 1 1 auto;
+  max-width: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  position: static !important;
+  display: block !important;
+}
+
+.dp2026-page .sponsor-category-title::before {
+  flex: 0 0 1.6em !important;
+  max-width: 1.6em !important;
+  background: var(--terracotta-glow) !important;
+}
+
+.dp2026-page .sponsor-category-title:first-child {
+  margin-top: 0.5rem !important;
+}
+
+.dp2026-page .sponsor-logos {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: flex-start !important;
+  gap: 1rem !important;
+}
+
+.dp2026-page .sponsor-link {
+  background: #ffffff !important;
+  border: 1px solid rgba(26, 28, 28, 0.12) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+.dp2026-page .photo-slider-container {
+  margin-top: 2.5rem;
+  border-radius: 6px !important;
+}
+
+/* Contact / social */
+.dp2026-page .social-media-content {
+  text-align: left !important;
+  max-width: 40rem;
+}
+
+.dp2026-page .social-icons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start !important;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.dp2026-page .social-icon-link {
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 4px !important;
+  border: 1px solid var(--line-dark);
+  background: var(--scene-card-bg);
+  color: var(--paper) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.dp2026-page .social-icon-link:hover {
+  border-color: var(--primary-container);
+  color: var(--primary-container) !important;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 780px) {
+  .dp2026-page .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dp2026-page .feature-group-block {
+    max-width: 100%;
+  }
+
+  .dp2026-page .hero-features .feature-item,
+  .dp2026-page .feature-item {
+    max-width: none !important;
+    flex: 1 1 calc(50% - 0.5rem) !important;
+  }
+
+  .dp2026-page .schedule-2026-section,
+  .dp2026-page .events-section,
+  .dp2026-page .sponsors-showcase,
+  .dp2026-page .social-media-section,
+  .dp2026-page #more-than-religion,
+  .dp2026-page #what-it-means {
+    padding-block: 3rem;
+  }
+
+  .dp2026-page .occasion-grid {
+    gap: 1rem;
+  }
+
+  .dp2026-page .sponsor-logos {
+    gap: 0.75rem !important;
+  }
+
+  .dp2026-page .sponsor-link {
+    flex: 1 1 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.4rem);
+    min-width: 0;
+  }
+
+  .dp2026-page .sponsor-link img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .dp2026-page .social-media-content {
+    max-width: 100%;
+  }
+
+  .dp2026-page .event-card .schedule-link,
+  .dp2026-page .event-card button.schedule-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dp2026-page .photo-slider-container {
+    margin-top: 1.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .dp2026-page .hero-features .feature-item,
+  .dp2026-page .feature-item {
+    flex: 1 1 100% !important;
+  }
+
+  .dp2026-page .sponsor-link {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+
+  .dp2026-page .occasion-card {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+
 
