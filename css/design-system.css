@@ -68,19 +68,19 @@
   --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-bengali: 'Noto Sans Bengali', sans-serif;
 
-  /* Type scale */
-  --text-display-lg: clamp(2.5rem, 1.5rem + 3vw, 3.5rem);
-  --text-display-lg-lh: 1.14;
-  --text-headline-lg: 2rem;
-  --text-headline-lg-lh: 1.25;
-  --text-headline-md: 1.5rem;
-  --text-headline-md-lh: 1.33;
-  --text-body-lg: 1.125rem;
-  --text-body-lg-lh: 1.56;
-  --text-body-md: 1rem;
-  --text-body-md-lh: 1.5;
-  --text-label-md: 0.875rem;
-  --text-caption: 0.75rem;
+  /* Type scale — bold readable size (utilises viewport space) */
+  --text-display-lg: clamp(2.85rem, 1.7rem + 3.4vw, 4rem);
+  --text-display-lg-lh: 1.12;
+  --text-headline-lg: 2.35rem;
+  --text-headline-lg-lh: 1.22;
+  --text-headline-md: 1.7rem;
+  --text-headline-md-lh: 1.3;
+  --text-body-lg: 1.25rem;
+  --text-body-lg-lh: 1.55;
+  --text-body-md: 1.125rem;
+  --text-body-md-lh: 1.55;
+  --text-label-md: 0.9375rem;
+  --text-caption: 0.8125rem;
 
   /* Spacing (8px base) */
   --space-xs: 4px;
@@ -312,6 +312,8 @@ h1, h2, h3, h4, h5, h6,
 
 .section-subtitle {
   color: var(--on-surface-variant);
+  font-size: 1.1rem;
+  line-height: 1.55;
 }
 
 ::selection {
@@ -359,9 +361,9 @@ a.btn:hover,
   gap: 0.55rem;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.2;
-  padding: 0.75rem 1.25rem;
+  padding: 0.8rem 1.35rem;
   border-radius: var(--radius);
   transition: var(--transition);
   text-decoration: none;
@@ -1197,7 +1199,7 @@ html.legal-embed body { background: var(--surface-container-lowest); }
 /* ── Heading size helpers ──────────────────────────────────── */
 
 .heading-md {
-  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem);
+  font-size: clamp(1.85rem, 1.45rem + 1.2vw, 2.55rem);
 }
 .countdown-full {
   grid-column: 1 / -1;
