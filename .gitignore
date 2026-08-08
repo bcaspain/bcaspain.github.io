@@ -216,3 +216,9 @@ dmypy.json
 apps-script/
 
 .env
+
+.cursor/
+
+design/
+OLD_index.html 
+.claude/
