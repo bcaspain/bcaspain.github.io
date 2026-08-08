@@ -4,7 +4,7 @@
    ============================================================ */
 
 body.demo-welcome {
-  --demo-warm: rgba(245, 166, 35, 0.16);
+  --demo-warm: rgba(198, 40, 40, 0.12);
 }
 
 /* Wider welcome canvas */
@@ -45,8 +45,14 @@ body.demo-welcome {
   inset: 0;
   background:
     linear-gradient(90deg, transparent 40%, var(--ink) 98%),
-    linear-gradient(180deg, transparent 50%, rgba(20, 26, 34, 0.45) 100%);
+    linear-gradient(180deg, transparent 55%, rgba(250, 249, 249, 0.55) 100%);
   pointer-events: none;
+}
+
+[data-theme="dark"] .demo-welcome-visual .demo-veil {
+  background:
+    linear-gradient(90deg, transparent 40%, var(--ink) 98%),
+    linear-gradient(180deg, transparent 50%, rgba(20, 26, 34, 0.45) 100%);
 }
 
 .demo-welcome-copy {
@@ -105,7 +111,7 @@ body.demo-welcome {
   left: clamp(1.25rem, 5vw, 4rem);
 }
 
-/* Floating seal */
+/* Floating seal — bright theme: cream glass + red→saffron */
 .demo-seal {
   position: absolute;
   right: clamp(1rem, 3vw, 2.5rem);
@@ -113,11 +119,14 @@ body.demo-welcome {
   width: min(7.5rem, 28vw);
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 1px solid rgba(245, 166, 35, 0.45);
+  border: 1.5px solid transparent;
   background:
-    radial-gradient(circle at 40% 35%, rgba(245, 166, 35, 0.2), transparent 55%),
-    rgba(20, 26, 34, 0.55);
-  backdrop-filter: blur(6px);
+    linear-gradient(rgba(255, 248, 239, 0.94), rgba(255, 248, 239, 0.94)) padding-box,
+    linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%) border-box;
+  box-shadow:
+    0 8px 24px rgba(123, 30, 30, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
   display: grid;
   place-items: center;
   text-align: center;
@@ -129,9 +138,13 @@ body.demo-welcome {
 .demo-seal strong {
   font-family: var(--font-display);
   font-size: 0.95rem;
-  color: var(--primary-container);
   display: block;
   line-height: 1.2;
+  background: linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .demo-seal span {
@@ -139,6 +152,27 @@ body.demo-welcome {
   font-size: 0.62rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+/* Night seal — dusk glass + amber */
+[data-theme="dark"] .demo-seal {
+  border: 1px solid rgba(245, 166, 35, 0.45);
+  background:
+    radial-gradient(circle at 40% 35%, rgba(245, 166, 35, 0.2), transparent 55%),
+    rgba(20, 26, 34, 0.55);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .demo-seal strong {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--primary-container);
+  -webkit-text-fill-color: var(--primary-container);
+}
+
+[data-theme="dark"] .demo-seal span {
   color: var(--paper-dim);
 }
 
@@ -464,10 +498,13 @@ body.demo-welcome {
 
 .demo-sponsor-ribbon-track {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
   width: max-content;
   gap: 0;
   animation: demo-sponsor-marquee 55s linear infinite;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .demo-sponsor-ribbon:hover .demo-sponsor-ribbon-track,
@@ -477,20 +514,26 @@ body.demo-welcome {
 
 .demo-sponsor-ribbon-group {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 1.25rem;
   padding-inline: 0.65rem;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  min-width: max-content;
 }
 
 .demo-sponsor-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 auto;
+  flex: 0 0 9.5rem;
   width: 9.5rem;
+  min-width: 9.5rem;
+  max-width: 9.5rem;
   height: 4.75rem;
   padding: 0.65rem 0.9rem;
+  box-sizing: border-box;
+  overflow: hidden;
   background: #ffffff;
   border: 1px solid rgba(26, 28, 28, 0.1);
   border-radius: 0.5rem;
@@ -501,21 +544,23 @@ body.demo-welcome {
 .demo-sponsor-logo:hover,
 .demo-sponsor-logo:focus-visible {
   transform: translateY(-2px);
-  border-color: rgba(245, 166, 35, 0.55);
+  border-color: rgba(198, 40, 40, 0.45);
 }
 
 .demo-sponsor-logo img {
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
   object-fit: contain;
+  object-position: center;
   display: block;
+  pointer-events: none;
 }
 
 @keyframes demo-sponsor-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -559,6 +604,11 @@ body.demo-welcome {
   }
 
   .demo-welcome-visual .demo-veil {
+    background:
+      linear-gradient(180deg, transparent 35%, var(--ink) 100%);
+  }
+
+  [data-theme="dark"] .demo-welcome-visual .demo-veil {
     background:
       linear-gradient(180deg, transparent 35%, var(--ink) 100%);
   }
@@ -759,23 +809,23 @@ body.demo-welcome {
   }
 
   .demo-sponsor-ribbon-group {
-    gap: 0.85rem;
+    gap: 1rem;
+    padding-inline: 0.5rem;
   }
 
   .demo-sponsor-logo {
+    flex: 0 0 7.75rem;
     width: 7.75rem;
+    min-width: 7.75rem;
+    max-width: 7.75rem;
     height: 4rem;
     padding: 0.5rem 0.65rem;
   }
 
+  .demo-welcome .social-icons-container,
   .demo-welcome .social-row {
-    gap: 0.85rem;
-  }
-
-  .demo-welcome .social-row a {
-    width: 46px;
-    height: 46px;
-    font-size: 1.15rem;
+    gap: 0.9rem;
+    justify-content: center;
   }
 
   .demo-welcome .moments-teaser.teaser-strip .scene-inner {

@@ -64,7 +64,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Photo Gallery</h2>
-                <p class="section-subtitle">Relive the magical moments from previous celebrations</p>
+                <p class="section-subtitle">A chapter for every year — scroll the reel, then step into the full story</p>
             </div>
             
                     <!-- Year Navigation Tabs -->
@@ -75,9 +75,11 @@
             <button class="year-tab" data-year="2023">2023</button>
             <button class="year-tab" data-year="2022">2022</button>
         </div>
+
+        <div class="year-panels">
         
         <!-- 2026 Gallery Section -->
-        <div class="year-section" id="year-2026">
+        <div class="year-section" id="year-2026" aria-hidden="true">
                 <div class="year-header">
                     <h3 class="year-title">2026 - Durga Puja Celebrations</h3>
                     <p class="year-description">Photos from this year's celebrations will appear here soon</p>
@@ -98,7 +100,7 @@
             </div>
 
         <!-- 2025 Gallery Section -->
-        <div class="year-section active" id="year-2025">
+        <div class="year-section active" id="year-2025" aria-hidden="false">
                 <div class="year-header">
                     <h3 class="year-title">2025 - Durga Puja Celebrations</h3>
                     <p class="year-description">Memories from last year's celebrations</p>
@@ -316,7 +318,7 @@
             </div>
             
         <!-- 2024 Gallery Section -->
-        <div class="year-section" id="year-2024">
+        <div class="year-section" id="year-2024" aria-hidden="true">
                 <div class="year-header">
                     <h3 class="year-title">2024 - Cultural Heritage</h3>
                     <p class="year-description">Memories from last year's celebrations</p>
@@ -454,7 +456,7 @@
             </div>
 
         <!-- 2023 Gallery Section -->
-            <div class="year-section" id="year-2023">
+            <div class="year-section" id="year-2023" aria-hidden="true">
                 <div class="year-header">
                     <h3 class="year-title">2023 - Community Bonding</h3>
                     <p class="year-description">Special moments from community celebrations</p>
@@ -556,7 +558,7 @@
             </div>
 
         <!-- 2022 Gallery Section -->
-        <div class="year-section" id="year-2022">
+        <div class="year-section" id="year-2022" aria-hidden="true">
                 <div class="year-header">
                     <h3 class="year-title">2022 - Foundation Years</h3>
                     <p class="year-description">Early memories from our community's journey</p>
@@ -612,6 +614,10 @@
                 </div>
                 <p class="gallery-filter-empty" hidden>No photos in this category yet.</p>
             </div>
+
+        </div><!-- /.year-panels -->
+        </div><!-- /.container -->
+    </section><!-- /#gallery -->
 
             
     <div id="lightbox" class="lightbox">
@@ -730,31 +736,20 @@
             }
           });
 
-          // Update active section
+          // Update active section (stacked panels keep document height stable)
           yearSections.forEach(section => {
-            section.classList.remove('active');
-            if (section.id === 'year-' + year) {
-              section.classList.add('active');
-            }
+            const isActive = section.id === 'year-' + year;
+            section.classList.toggle('active', isActive);
+            section.setAttribute('aria-hidden', isActive ? 'false' : 'true');
           });
 
           currentYear = year;
           const section = document.getElementById('year-' + year);
           if (section) {
-            const bar = section.querySelector('.gallery-filters');
-            if (bar) {
-              bar.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
-              const allBtn = bar.querySelector('[data-filter="all"]');
-              if (allBtn) allBtn.classList.add('active');
-            }
-            section.querySelectorAll('.gallery-item[data-year]').forEach(item => {
-              item.hidden = false;
-              item.style.display = '';
-            });
-            const empty = section.querySelector('.gallery-filter-empty');
-            if (empty) empty.hidden = true;
+            applyCategoryFilter(section, 'all');
+          } else {
+            updateGalleryItems();
           }
-          updateGalleryItems();
           
         }
 
@@ -987,34 +982,154 @@
         }
 
 
+        const REEL_ORDER = ['all', 'puja', 'performances', 'gatherings', 'food'];
+        const REEL_LABELS = {
+          all: 'Full chapter',
+          puja: 'Puja & idol',
+          performances: 'Performances',
+          gatherings: 'Gatherings',
+          food: 'Food'
+        };
+
+        function applyCategoryFilter(section, filter, opts) {
+          opts = opts || {};
+          if (!section) return;
+
+          const bar = section.querySelector('.gallery-filters');
+          if (bar) {
+            bar.querySelectorAll('.gallery-filter').forEach(b => {
+              b.classList.toggle('active', (b.getAttribute('data-filter') || 'all') === filter);
+            });
+          }
+
+          const reel = section.querySelector('.gallery-reel');
+          if (reel) {
+            reel.querySelectorAll('.gallery-reel-frame').forEach(frame => {
+              frame.classList.toggle('is-active', (frame.getAttribute('data-filter') || 'all') === filter);
+            });
+          }
+
+          let visible = 0;
+          section.querySelectorAll('.gallery-item[data-year]').forEach(item => {
+            const cat = item.getAttribute('data-category') || '';
+            const show = filter === 'all' || cat === filter;
+            item.hidden = !show;
+            item.style.display = show ? '' : 'none';
+            if (show) visible += 1;
+          });
+
+          const empty = section.querySelector('.gallery-filter-empty');
+          if (empty) empty.hidden = visible > 0;
+
+          if (section.classList.contains('active')) {
+            updateGalleryItems();
+          }
+
+          if (opts.scrollToGrid) {
+            const grid = section.querySelector('.gallery');
+            if (grid) {
+              grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        }
+
+        function buildChapterReels() {
+          document.querySelectorAll('.year-section').forEach(section => {
+            const items = Array.from(section.querySelectorAll('.gallery-item[data-year]'));
+            if (!items.length || section.querySelector('.gallery-reel')) return;
+
+            const byCat = {};
+            items.forEach(item => {
+              const cat = item.getAttribute('data-category') || 'gatherings';
+              if (!byCat[cat]) byCat[cat] = item;
+            });
+
+            const header = section.querySelector('.year-header');
+            if (!header) return;
+
+            const reel = document.createElement('div');
+            reel.className = 'gallery-reel';
+            reel.setAttribute('aria-label', 'Chapter reel');
+
+            const intro = document.createElement('p');
+            intro.className = 'gallery-reel-kicker';
+            intro.textContent = 'Chapter reel — pick a scene';
+            reel.appendChild(intro);
+
+            const track = document.createElement('div');
+            track.className = 'gallery-reel-track';
+            track.setAttribute('role', 'list');
+
+            REEL_ORDER.forEach((filter, idx) => {
+              let source = null;
+              if (filter === 'all') {
+                source = items[0];
+              } else {
+                source = byCat[filter];
+              }
+              if (!source) return;
+
+              const img = source.querySelector('img');
+              if (!img) return;
+
+              const frame = document.createElement('button');
+              frame.type = 'button';
+              frame.className = 'gallery-reel-frame' + (filter === 'all' ? ' is-active' : '');
+              frame.setAttribute('data-filter', filter);
+              frame.setAttribute('role', 'listitem');
+              frame.setAttribute('aria-label', 'Show ' + (REEL_LABELS[filter] || filter));
+
+              const mark = document.createElement('span');
+              mark.className = 'gallery-reel-index';
+              mark.textContent = String(idx + 1).padStart(2, '0');
+
+              const media = document.createElement('span');
+              media.className = 'gallery-reel-media';
+              const thumb = document.createElement('img');
+              thumb.src = img.currentSrc || img.src;
+              thumb.alt = '';
+              thumb.loading = 'lazy';
+              thumb.decoding = 'async';
+              media.appendChild(thumb);
+
+              const caption = document.createElement('span');
+              caption.className = 'gallery-reel-caption';
+              caption.innerHTML = '<strong>' + (REEL_LABELS[filter] || filter) + '</strong><em>View chapter</em>';
+
+              frame.appendChild(mark);
+              frame.appendChild(media);
+              frame.appendChild(caption);
+              track.appendChild(frame);
+            });
+
+            if (!track.children.length) return;
+            reel.appendChild(track);
+            header.insertAdjacentElement('afterend', reel);
+          });
+        }
+
+        function initializeChapterReels() {
+          buildChapterReels();
+          document.querySelectorAll('.gallery-reel').forEach(reel => {
+            reel.addEventListener('click', function(e) {
+              const frame = e.target.closest('.gallery-reel-frame');
+              if (!frame) return;
+              const section = reel.closest('.year-section');
+              if (!section) return;
+              applyCategoryFilter(section, frame.getAttribute('data-filter') || 'all', { scrollToGrid: true });
+            });
+          });
+        }
+
         // Category filters (within a year section)
         function initializeCategoryFilters() {
           document.querySelectorAll('.gallery-filters').forEach(bar => {
             bar.addEventListener('click', function(e) {
               const btn = e.target.closest('.gallery-filter');
               if (!btn) return;
-              const filter = btn.getAttribute('data-filter') || 'all';
               const section = bar.closest('.year-section');
               if (!section) return;
-
-              bar.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
-              btn.classList.add('active');
-
-              let visible = 0;
-              section.querySelectorAll('.gallery-item[data-year]').forEach(item => {
-                const cat = item.getAttribute('data-category') || '';
-                const show = filter === 'all' || cat === filter;
-                item.hidden = !show;
-                item.style.display = show ? '' : 'none';
-                if (show) visible += 1;
-              });
-
-              const empty = section.querySelector('.gallery-filter-empty');
-              if (empty) empty.hidden = visible > 0;
-
-              if (section.classList.contains('active')) {
-                updateGalleryItems();
-              }
+              applyCategoryFilter(section, btn.getAttribute('data-filter') || 'all');
             });
           });
         }
@@ -1033,7 +1148,8 @@
           // Initialize gallery items
           initializeGalleryItems();
 
-          // Category filters
+          // Cinematic chapter reels + category filters
+          initializeChapterReels();
           initializeCategoryFilters();
           
           // Initialize lightbox event listeners

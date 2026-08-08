@@ -33,12 +33,12 @@
   --inverse-surface: #2f3131;
   --inverse-on-surface: #f1f1f0;
 
-  /* Brand colors */
-  --primary: #835500;
+  /* Brand colors — bright theme: deep red → vermillion → saffron (no amber/gold) */
+  --primary: #7b1e1e;
   --on-primary: #ffffff;
-  --primary-container: #f5a623;
-  --on-primary-container: #644000;
-  --inverse-primary: #ffb955;
+  --primary-container: #c62828;
+  --on-primary-container: #ffffff;
+  --inverse-primary: #ef6c00;
 
   --secondary: #b02d21;
   --on-secondary: #ffffff;
@@ -50,7 +50,7 @@
   --tertiary-container: #8fb9ec;
   --on-tertiary-container: #184975;
 
-  --prestige: #d4af37;
+  --prestige: #ef6c00;
 
   /* Outlines & borders */
   --outline: #857462;
@@ -107,9 +107,9 @@
   --shadow-hover: 0 6px 20px rgba(176, 45, 33, 0.12);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary-container) 0%, var(--primary) 100%);
+  --gradient-primary: linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%);
   --gradient-secondary: linear-gradient(135deg, var(--secondary-container) 0%, var(--secondary) 100%);
-  --gradient-hero: linear-gradient(135deg, var(--primary-container) 0%, var(--secondary-container) 50%, var(--secondary) 100%);
+  --gradient-hero: linear-gradient(135deg, #7b1e1e 0%, #c62828 55%, #ef6c00 100%);
 
   /* Layout */
   --navbar-height: 70px;
@@ -167,10 +167,10 @@
   --paper-faint: #857462;
   --line-dark: rgba(26, 28, 28, 0.12);
   --scene-hero-bg:
-    radial-gradient(ellipse 60% 50% at 50% 4%, rgba(245, 166, 35, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 4%, rgba(198, 40, 40, 0.14), transparent 60%),
     linear-gradient(180deg, #fff8ef 0%, var(--background) 80%);
   --scene-c-bg:
-    radial-gradient(ellipse 70% 40% at 15% 0%, rgba(245, 166, 35, 0.12), transparent 60%),
+    radial-gradient(ellipse 70% 40% at 15% 0%, rgba(239, 108, 0, 0.10), transparent 60%),
     radial-gradient(ellipse 70% 40% at 85% 100%, rgba(176, 45, 33, 0.08), transparent 60%),
     var(--surface-container-low);
   --hero-tint: linear-gradient(90deg, rgba(250,249,249,0.92) 0%, rgba(250,249,249,0.5) 40%, transparent 70%);
@@ -180,7 +180,7 @@
 
   /* Shared page canvas — same atmosphere as index */
   --page-canvas:
-    radial-gradient(ellipse 70% 45% at 50% -8%, rgba(245, 166, 35, 0.16), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 50% -8%, rgba(198, 40, 40, 0.12), transparent 55%),
     linear-gradient(180deg, #fff8ef 0%, var(--background) 42%, var(--background) 100%);
 }
 
@@ -206,6 +206,21 @@
   --text-light: #cabfa9;
   --stone: rgba(241, 241, 240, 0.18);
   --outline-variant: rgba(215, 195, 174, 0.28);
+
+  /* Night keeps amber / gold accents (day uses red→saffron) */
+  --primary: #835500;
+  --on-primary: #ffffff;
+  --primary-container: #f5a623;
+  --on-primary-container: #644000;
+  --inverse-primary: #ffb955;
+  --prestige: #d4af37;
+  --gold: var(--prestige);
+  --orange: var(--primary-container);
+  --yellow: var(--inverse-primary);
+  --primary-color: var(--primary-container);
+  --accent-color: var(--prestige);
+  --gradient-primary: linear-gradient(135deg, var(--primary-container) 0%, var(--primary) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--primary-container) 0%, var(--secondary-container) 50%, var(--secondary) 100%);
 
   --ink: #141a22;
   --dusk-1: #1a2e42;
@@ -1023,26 +1038,128 @@ html.legal-embed body { background: var(--surface-container-lowest); }
   color: var(--on-surface);
 }
 
-/* ── Social brand icons ────────────────────────────────────── */
+/* ── Social brand icons (shared Follow us pattern) ─────────── */
 
-.social-icon {
-  width: 52px;
-  height: 52px;
+.social-icons-container,
+.social-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+  margin-top: 1.75rem;
+  width: 100%;
+}
+
+.social-icon,
+.social-icon-link,
+.social-row a {
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 1.3rem;
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: #fff !important;
+  font-size: 1.35rem;
+  line-height: 1;
+  text-decoration: none !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(26, 28, 28, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  flex: 0 0 auto;
 }
-.social-icon:hover { transform: translateY(-4px); }
-.social-icon--facebook { background: #1877F2; }
-.social-icon--instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.social-icon--youtube { background: #FF0000; }
-.social-icon--whatsapp { background: #25D366; }
-.social-icon--gmail { background: #EA4335; }
+
+.social-icon i,
+.social-icon-link i,
+.social-row a i {
+  display: block;
+  line-height: 1;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.social-icon:hover,
+.social-icon-link:hover,
+.social-row a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(26, 28, 28, 0.2);
+  filter: brightness(1.05);
+  color: #fff !important;
+}
+
+.social-icon--facebook,
+.social-icon-link--facebook,
+.social-row a[title*="Facebook"] { background: #1877F2; }
+
+.social-icon--instagram,
+.social-icon-link--instagram,
+.social-row a[title*="Instagram"] {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-icon--youtube,
+.social-icon-link--youtube,
+.social-row a[title*="YouTube"] { background: #FF0000; }
+
+.social-icon--whatsapp,
+.social-icon-link--whatsapp,
+.social-row a[title*="WhatsApp"] { background: #25D366; }
+
+.social-icon--gmail,
+.social-icon-link--gmail,
+.social-row a[title*="email"] { background: #EA4335; }
+
+/* Follow us section chrome — centered copy + icons */
+.social-media-section .social-media-content,
+.social-section .section-header,
+.teaser-strip#contact .scene-inner {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.social-media-section .social-media-content {
+  max-width: 40rem;
+}
+
+.social-media-section .social-icons-container,
+.social-section .social-icons-container {
+  justify-content: center;
+}
+
+.social-section .section-header,
+#social-media .section-header {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-width: 40rem;
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 780px) {
+  .social-icon,
+  .social-icon-link,
+  .social-row a {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .social-icons-container,
+  .social-row {
+    gap: 0.9rem;
+  }
+}
 
 /* ── Status / sold-out ─────────────────────────────────────── */
 
@@ -1421,7 +1538,7 @@ body.landing .main-content {
   -webkit-text-fill-color: #f5a623;
 }
 
-/* Primary CTAs: amber fill + dark ink (token pair). Keep inverse CTAs on branded banners. */
+/* Primary CTAs: token fill + on-primary ink. Keep inverse CTAs on branded banners. */
 [data-theme="dark"] .btn-primary,
 [data-theme="dark"] button.btn-primary,
 [data-theme="dark"] a.btn-primary,
