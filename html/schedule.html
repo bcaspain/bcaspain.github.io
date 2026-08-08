@@ -65,34 +65,73 @@
             </div>
 
             <!-- Schedule Images -->
-            <div class="schedule-images-container" >
-                <div class="schedule-coming-soon" >
-                    <i class="fas fa-calendar-day" ></i>
-                    <h3 >The day-by-day schedule is coming soon</h3>
-                    <p >
-                        We're finalising the hour-by-hour timing for each day of Durga Puja 2026 — Bengali and English versions will be posted here as soon as they're ready.
-                    </p>
-                    <div >
-                        <a href="dp2026.html#schedule-2026" class="btn btn-download" >
-                            <i class="fas fa-list"></i> View the daily occasions
+            <div class="schedule-images-container">
+                <div class="schedule-actions">
+                    <h4>Download Schedule</h4>
+                    <div class="schedule-download-actions">
+                        <a href="../schedule/durgapuja-2026-bengali.jpeg" download="durgapuja-2026-schedule-bengali.jpeg" class="btn btn-download">
+                            <i class="fas fa-download" aria-hidden="true"></i> বাংলা
                         </a>
-                        <a href="https://wa.me/34693005986" target="_blank" rel="noopener noreferrer" class="btn btn-download" >
-                            <i class="fab fa-whatsapp"></i> Get notified
+                        <a href="../schedule/durgapuja-2026-english.jpeg" download="durgapuja-2026-schedule-english.jpeg" class="btn btn-download">
+                            <i class="fas fa-download" aria-hidden="true"></i> English
                         </a>
+                        <a href="../schedule/durgapuja-2026-spanish.jpeg" download="durgapuja-2026-schedule-spanish.jpeg" class="btn btn-download">
+                            <i class="fas fa-download" aria-hidden="true"></i> Español
+                        </a>
+                        <a href="../schedule/durgapuja-2026-catalan.jpeg" download="durgapuja-2026-schedule-catalan.jpeg" class="btn btn-download">
+                            <i class="fas fa-download" aria-hidden="true"></i> Català
+                        </a>
+                    </div>
+                </div>
+
+                <div class="schedule-images-grid">
+                    <div class="schedule-image-card">
+                        <h3>বাংলা সময়সূচী</h3>
+                        <div class="schedule-image-wrapper" role="button" tabindex="0" aria-label="View Bengali schedule full size" onclick="openImageModal('../schedule/durgapuja-2026-bengali.jpeg', 'Durga Puja 2026 Schedule — Bengali')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openImageModal('../schedule/durgapuja-2026-bengali.jpeg', 'Durga Puja 2026 Schedule — Bengali')}">
+                            <img src="../schedule/durgapuja-2026-bengali.jpeg" alt="Durga Puja 2026 schedule in Bengali" loading="lazy">
+                        </div>
+                        <p class="schedule-image-hint">Click to view full size</p>
+                    </div>
+
+                    <div class="schedule-image-card">
+                        <h3>English Schedule</h3>
+                        <div class="schedule-image-wrapper" role="button" tabindex="0" aria-label="View English schedule full size" onclick="openImageModal('../schedule/durgapuja-2026-english.jpeg', 'Durga Puja 2026 Schedule — English')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openImageModal('../schedule/durgapuja-2026-english.jpeg', 'Durga Puja 2026 Schedule — English')}">
+                            <img src="../schedule/durgapuja-2026-english.jpeg" alt="Durga Puja 2026 schedule in English" loading="lazy">
+                        </div>
+                        <p class="schedule-image-hint">Click to view full size</p>
+                    </div>
+
+                    <div class="schedule-image-card">
+                        <h3>Horario en Español</h3>
+                        <div class="schedule-image-wrapper" role="button" tabindex="0" aria-label="View Spanish schedule full size" onclick="openImageModal('../schedule/durgapuja-2026-spanish.jpeg', 'Durga Puja 2026 Schedule — Spanish')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openImageModal('../schedule/durgapuja-2026-spanish.jpeg', 'Durga Puja 2026 Schedule — Spanish')}">
+                            <img src="../schedule/durgapuja-2026-spanish.jpeg" alt="Durga Puja 2026 schedule in Spanish" loading="lazy">
+                        </div>
+                        <p class="schedule-image-hint">Click to view full size</p>
+                    </div>
+
+                    <div class="schedule-image-card">
+                        <h3>Horari en Català</h3>
+                        <div class="schedule-image-wrapper" role="button" tabindex="0" aria-label="View Catalan schedule full size" onclick="openImageModal('../schedule/durgapuja-2026-catalan.jpeg', 'Durga Puja 2026 Schedule — Catalan')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openImageModal('../schedule/durgapuja-2026-catalan.jpeg', 'Durga Puja 2026 Schedule — Catalan')}">
+                            <img src="../schedule/durgapuja-2026-catalan.jpeg" alt="Durga Puja 2026 schedule in Catalan" loading="lazy">
+                        </div>
+                        <p class="schedule-image-hint">Click to view full size</p>
                     </div>
                 </div>
             </div>
             
             <!-- Call to Action -->
-            <div class="schedule-cta" >
-                <h3 >Ready to Join the Celebration?</h3>
-                <p >Don't miss out on this incredible cultural experience</p>
-                <div >
-                    <a href="registration.html" class="btn btn-primary" >
-                        <i class="fas fa-ticket-alt"></i> Register Now
+            <div class="schedule-cta">
+                <p class="schedule-cta-kicker">Durga Puja 2026 · Barcelona</p>
+                <h3>Ready to Join the Celebration?</h3>
+                <p>Don't miss out on this incredible cultural experience</p>
+                <div class="schedule-cta-actions">
+                    <a href="registration.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-ticket-alt"></i>
+                        <span>Register Now</span>
                     </a>
-                    <a href="contact.html" class="btn btn-secondary" >
-                        <i class="fas fa-info-circle"></i> Get More Info
+                    <a href="contact.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Get More Info</span>
                     </a>
                 </div>
             </div>

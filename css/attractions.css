@@ -686,3 +686,119 @@
                 padding: 0.4rem 0.8rem;
             }
         }
+
+/* ── Events page: schedule download bar ───────────────────── */
+
+.events-schedule-bar {
+  text-align: center;
+  margin: 0 auto 2.5rem;
+  max-width: 52rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse 80% 100% at 50% 0%, rgba(198, 40, 40, 0.08), transparent 60%),
+    var(--scene-card-bg);
+  box-shadow: var(--shadow-light);
+}
+
+[data-theme="dark"] .events-schedule-bar {
+  background:
+    radial-gradient(ellipse 80% 100% at 50% 0%, rgba(245, 166, 35, 0.1), transparent 60%),
+    var(--scene-card-bg);
+  box-shadow: none;
+}
+
+.events-schedule-title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.55rem);
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.events-schedule-meta {
+  margin: 0 0 1.25rem;
+  color: var(--paper-dim);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.events-schedule-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.events-schedule-actions .btn-download {
+  background: transparent !important;
+  color: var(--secondary) !important;
+  border: 2px solid var(--secondary) !important;
+  border-radius: var(--radius, 8px);
+  padding: 0.65rem 1.1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.events-schedule-actions .btn-download:hover {
+  background: var(--nav-hover-bg) !important;
+  color: var(--secondary) !important;
+  border-color: var(--secondary) !important;
+}
+
+[data-theme="dark"] .events-schedule-actions .btn-download {
+  color: var(--inverse-primary) !important;
+  border-color: var(--inverse-primary) !important;
+}
+
+[data-theme="dark"] .events-schedule-actions .btn-download:hover {
+  background: rgba(255, 185, 85, 0.14) !important;
+  color: var(--primary-container) !important;
+  border-color: var(--primary-container) !important;
+}
+
+.events-schedule-actions .btn-secondary {
+  background: transparent !important;
+  color: var(--secondary) !important;
+  border: 2px solid var(--secondary) !important;
+  border-radius: var(--radius, 8px);
+  padding: 0.65rem 1.1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.events-schedule-actions .btn-secondary:hover {
+  background: var(--nav-hover-bg) !important;
+}
+
+[data-theme="dark"] .events-schedule-actions .btn-secondary {
+  color: var(--inverse-primary) !important;
+  border-color: var(--inverse-primary) !important;
+}
+
+[data-theme="dark"] .events-schedule-actions .btn-secondary:hover {
+  background: rgba(255, 185, 85, 0.14) !important;
+  color: var(--primary-container) !important;
+  border-color: var(--primary-container) !important;
+}
+
+@media (max-width: 560px) {
+  .events-schedule-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .events-schedule-actions .btn-download,
+  .events-schedule-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
