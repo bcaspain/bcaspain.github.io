@@ -890,13 +890,22 @@ body.landing { background: var(--ink); }
 }
 
 /* ---------- get involved ---------- */
+.involved-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.85fr);
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+  align-items: start;
+  margin-top: 2rem;
+}
+
 .involved-card {
   border: 1px solid var(--line-dark);
   border-radius: 4px;
   padding: clamp(1.8rem, 4vw, 2.8rem);
   background: var(--scene-card-bg);
-  margin-top: 2rem;
+  margin-top: 0;
 }
+
 .involved-credit {
   color: var(--paper-faint);
   font-size: 0.85rem;
@@ -904,6 +913,93 @@ body.landing { background: var(--ink); }
   margin-top: 1.4rem;
   border-top: 1px solid var(--line-dark);
   padding-top: 1.2rem;
+}
+
+.members-roster {
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  padding: clamp(1.2rem, 2.5vw, 1.6rem);
+  background: var(--scene-card-bg);
+}
+
+.members-roster-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracotta-glow);
+  margin: 0 0 1rem;
+}
+
+.members-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.member-card {
+  display: grid;
+  grid-template-columns: 4.25rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  background: var(--ink);
+}
+
+.member-card img {
+  width: 4.25rem;
+  height: 4.25rem;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  display: block;
+}
+
+.member-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.member-role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+
+.member-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--paper);
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .involved-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .members-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .members-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- brochure row ---------- */
