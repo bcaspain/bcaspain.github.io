@@ -338,22 +338,71 @@ a.btn:hover,
 /* ── Buttons ───────────────────────────────────────────────── */
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
   font-family: var(--font-body);
   font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding: 0.75rem 1.25rem;
   border-radius: var(--radius);
   transition: var(--transition);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn i,
+.btn span {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit;
+}
+
+.btn i {
+  font-size: 1rem !important;
+  margin: 0 !important;
+  line-height: 1;
+}
+
+.btn-large {
+  padding: 0.75rem 1.25rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.btn-large:hover {
+  /* color variants own hover; neutralize legacy site.css gradient hover */
+  background: inherit;
+}
+
+.btn-large i,
+.btn-large span {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit;
+  font-weight: inherit !important;
+  font-size: inherit;
+}
+
+.btn-large i {
+  font-size: 1rem !important;
 }
 
 .btn-primary {
   background: var(--primary-container) !important;
   color: var(--on-primary-container) !important;
-  border: none;
+  border: none !important;
   box-shadow: var(--shadow-light);
+  -webkit-text-fill-color: var(--on-primary-container);
 }
 
 .btn-primary:hover {
   background: var(--primary) !important;
   color: var(--on-primary) !important;
+  -webkit-text-fill-color: var(--on-primary);
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
@@ -361,12 +410,15 @@ a.btn:hover,
 .btn-secondary {
   color: var(--secondary) !important;
   border: 2px solid var(--secondary) !important;
-  background: transparent;
+  background: transparent !important;
+  box-shadow: none;
+  -webkit-text-fill-color: var(--secondary);
 }
 
 .btn-secondary:hover {
   background: var(--secondary) !important;
   color: var(--on-secondary) !important;
+  -webkit-text-fill-color: var(--on-secondary);
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
@@ -1356,6 +1408,7 @@ body.landing .main-content {
   color: #ffb955 !important;
   border-color: #ffb955 !important;
   background: transparent !important;
+  -webkit-text-fill-color: #ffb955;
 }
 
 [data-theme="dark"] .btn-secondary:hover,
@@ -1365,6 +1418,7 @@ body.landing .main-content {
   background: rgba(255, 185, 85, 0.14) !important;
   color: #f5a623 !important;
   border-color: #f5a623 !important;
+  -webkit-text-fill-color: #f5a623;
 }
 
 /* Primary CTAs: amber fill + dark ink (token pair). Keep inverse CTAs on branded banners. */
@@ -1386,10 +1440,7 @@ body.landing .main-content {
 }
 
 [data-theme="dark"] .schedule-cta .btn-primary,
-[data-theme="dark"] .registration-cta .btn-primary,
-[data-theme="dark"] .dp2026-hero .btn-primary,
-[data-theme="dark"] .dp2026-hero .btn-large,
-[data-theme="dark"] .dp2026-page .newsletter-signup .btn-primary {
+[data-theme="dark"] .registration-cta .btn-primary {
   background: #fff !important;
   color: var(--secondary) !important;
   border-color: #fff !important;
