@@ -1540,25 +1540,68 @@ body.landing .main-content {
   -webkit-text-fill-color: var(--on-primary-container);
 }
 
+[data-theme="dark"] .contribution-option--donation h4,
+[data-theme="dark"] .contribution-option--donation p {
+  color: var(--on-surface) !important;
+}
+
+/* Contact page — locations / maps */
+[data-theme="dark"] .locations-section .section-title,
+[data-theme="dark"] .locations-section .section-subtitle {
+  color: var(--on-surface);
+}
+
+[data-theme="dark"] .locations-section .section-subtitle {
+  color: var(--on-surface-variant) !important;
+}
+
+[data-theme="dark"] .locations-section .map-container,
+[data-theme="dark"] .venue-locations .map-container {
+  background: var(--surface-container-lowest) !important;
+  border-color: var(--stone) !important;
+  color: var(--on-surface);
+}
+
+[data-theme="dark"] .locations-section .map-container h4,
+[data-theme="dark"] .venue-locations .map-container h4 {
+  color: var(--inverse-primary) !important;
+}
+
+[data-theme="dark"] .location-details {
+  background: var(--surface-container) !important;
+  border-color: var(--stone) !important;
+  border-left-color: var(--inverse-primary) !important;
+}
+
+[data-theme="dark"] .location-details .map-address,
+[data-theme="dark"] .locations-section .map-address {
+  color: var(--on-surface-variant) !important;
+}
+
+[data-theme="dark"] .location-details .map-address strong {
+  color: var(--on-surface) !important;
+}
+
+[data-theme="dark"] .map-address i,
+[data-theme="dark"] .location-details .map-address i {
+  color: var(--inverse-primary) !important;
+}
+
+[data-theme="dark"] .map-address i.fa-train {
+  color: #81c784 !important;
+}
+
+[data-theme="dark"] .map-address i.fa-calendar,
+[data-theme="dark"] .map-address i.fa-music {
+  color: #ffb955 !important;
+}
+
 [data-theme="dark"] .btn-primary:hover,
 [data-theme="dark"] button.btn-primary:hover,
 [data-theme="dark"] a.btn-primary:hover {
   background: var(--primary) !important;
   color: var(--on-primary) !important;
   -webkit-text-fill-color: var(--on-primary);
-}
-
-[data-theme="dark"] .registration-cta .btn-primary {
-  background: #fff !important;
-  color: var(--secondary) !important;
-  border-color: #fff !important;
-  -webkit-text-fill-color: var(--secondary);
-}
-
-[data-theme="dark"] .registration-cta .btn-primary:hover {
-  background: var(--secondary) !important;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff;
 }
 
 /* ========== navbar-mobile (merged) ========== */

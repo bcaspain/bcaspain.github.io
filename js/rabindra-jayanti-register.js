@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
-  // ── Sold-out state ─────────────────────────────────────────────────────────
+  // ── Event has ended ────────────────────────────────────────────────────────
   var form       = document.getElementById('rabindraRegistrationForm');
   var soldOutEl  = document.getElementById('rj-sold-out');
   var submitBtn  = document.getElementById('rj-submit');
@@ -47,11 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (form)       form.style.display       = 'none';
   };
 
-  // Check if seats.js already resolved the count before this script ran
-  if (typeof window.rjSeatsLeft === 'number' && window.rjSeatsLeft === 0) {
-    window.rjShowSoldOut();
-    return;
-  }
+  window.rjShowSoldOut();
+  return;
 
   if (!form || !submitBtn) return;
 

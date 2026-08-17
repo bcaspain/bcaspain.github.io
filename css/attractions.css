@@ -19,7 +19,7 @@
             position: relative;
             max-width: 90%;
             max-height: 90%;
-            background: white;
+            background: var(--surface-container-lowest);
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
@@ -110,10 +110,10 @@
             width: 100%;
             border-collapse: collapse;
             margin: 2rem 0;
-            background: white;
+            background: var(--surface-container-lowest);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.1);
+            box-shadow: 0 4px 20px rgba(176, 45, 33, 0.12);
         }
         
         .venue-table th {
@@ -129,7 +129,7 @@
         
         .venue-table td {
             padding: 1rem;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid var(--outline-variant);
             font-size: 0.9rem;
             line-height: 1.4;
         }
@@ -139,7 +139,7 @@
         }
         
         .venue-table tr:hover {
-            background: #FFF8F0;
+            background: var(--surface-container-low);
         }
         
         .venue-links {
@@ -179,10 +179,10 @@
         }
         
         .map-container {
-            background: white;
+            background: var(--surface-container-lowest);
             border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.1);
+            box-shadow: 0 4px 20px rgba(176, 45, 33, 0.12);
         }
         
         .map-container h4 {
@@ -198,7 +198,7 @@
         }
         
         .map-address {
-            color: #666;
+            color: var(--on-surface-variant);
             font-size: 0.9rem;
             line-height: 1.5;
         }
@@ -215,9 +215,9 @@
             gap: 0.4rem;
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
+            background: var(--surface-container-lowest);
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.1);
+            box-shadow: 0 4px 20px rgba(176, 45, 33, 0.12);
             overflow: hidden;
         }
         
@@ -226,8 +226,8 @@
             display: grid;
             grid-template-columns: 80px 1fr 160px;
             align-items: center;
-            background: white;
-            border-bottom: 1px solid #f0f0f0;
+            background: var(--surface-container-lowest);
+            border-bottom: 1px solid var(--outline-variant);
             padding: 1rem 1.5rem;
             transition: all 0.3s ease;
             position: relative;
@@ -239,14 +239,14 @@
         }
         
         .event-card:hover {
-            background: #FFF8F0;
+            background: var(--surface-container-low);
             transform: translateX(5px);
-            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.1);
+            box-shadow: 0 2px 10px rgba(176, 45, 33, 0.12);
         }
         
         /* Featured Cards */
         .event-card.featured {
-            background: white;
+            background: var(--surface-container-lowest);
             border-left: 4px solid var(--red);
         }
         
@@ -284,7 +284,7 @@
         }
         
         .event-content h3 {
-            color: #333;
+            color: var(--on-surface);
             font-size: 1.3rem;
             font-weight: 600;
             margin: 0;
@@ -455,7 +455,7 @@
         }
         
         .attraction-card {
-            background: white;
+            background: var(--surface-container-lowest);
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             overflow: hidden;
@@ -510,13 +510,13 @@
             margin: 0 0 0.75rem 0;
             font-size: 1.4rem;
             font-weight: 600;
-            color: #333;
+            color: var(--on-surface);
             line-height: 1.3;
         }
         
         .card-content p {
             margin: 0;
-            color: #666;
+            color: var(--on-surface-variant);
             font-size: 0.95rem;
             line-height: 1.5;
             flex-grow: 1;
@@ -524,7 +524,7 @@
         
         /* Section styling */
         .events {
-            background: white;
+            background: var(--surface-container-lowest);
             padding: 2rem 0;
         }
         
@@ -544,7 +544,7 @@
         
         .section-subtitle {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--on-surface-variant);
             max-width: 600px;
             margin: 0 auto 2rem auto;
             line-height: 1.6;

@@ -1839,7 +1839,7 @@ style.textContent += `
     }
     .countdown-message {
         text-align: center;
-        color: var(--accent-color, #FF6B35);
+        color: var(--prestige);
         font-size: 1.5rem;
         font-weight: 600;
         display: flex;
