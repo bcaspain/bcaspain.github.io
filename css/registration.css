@@ -2,7 +2,7 @@
 /* Do not remove — base layout previously lived as HTML style="" attrs */
 
 #adult-count {
-  width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; display: none;
+  width: 100%; padding: 8px; border: 1px solid var(--outline-variant); border-radius: 5px; font-size: 0.9rem; display: none;
 }
 
 #bankAccountNumber {
@@ -18,7 +18,7 @@
 }
 
 #children-count {
-  width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; display: none;
+  width: 100%; padding: 8px; border: 1px solid var(--outline-variant); border-radius: 5px; font-size: 0.9rem; display: none;
 }
 
 #children-under-5 {
@@ -26,23 +26,23 @@
 }
 
 #children-under-5-count {
-  width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; display: none;
+  width: 100%; padding: 8px; border: 1px solid var(--outline-variant); border-radius: 5px; font-size: 0.9rem; display: none;
 }
 
 #contact {
-  flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
+  flex: 1; padding: 12px; border: 2px solid var(--outline-variant); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
 }
 
 #country-code {
-  width: 85px; padding: 12px 25px 12px 8px; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; transition: border-color 0.3s ease; background-color: white; cursor: pointer;
+  width: 85px; padding: 12px 25px 12px 8px; border: 2px solid var(--outline-variant); border-radius: 8px; font-size: 0.9rem; transition: border-color 0.3s ease; background-color: var(--surface-container-lowest); cursor: pointer;
 }
 
 #custom-donation-amount {
-  width: 100%; padding: 12px 12px 12px 35px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; text-align: left; font-weight: 600;
+  width: 100%; padding: 12px 12px 12px 35px; border: 2px solid var(--outline-variant); border-radius: 8px; font-size: 1rem; text-align: left; font-weight: 600;
 }
 
 #custom-donation-warning {
-  display: none; background: rgba(255, 68, 68, 0.1); border: 1px solid #ff4444; border-radius: 6px; padding: 0.5rem 0.75rem; margin-top: 0.5rem;
+  display: none; background: rgba(255, 68, 68, 0.1); border: 1px solid var(--error); border-radius: 6px; padding: 0.5rem 0.75rem; margin-top: 0.5rem;
 }
 
 #day-pass {
@@ -50,27 +50,27 @@
 }
 
 #day-pass-count {
-  width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; display: none;
+  width: 100%; padding: 8px; border: 1px solid var(--outline-variant); border-radius: 5px; font-size: 0.9rem; display: none;
 }
 
 #donation-minus {
-  width: 40px; height: 40px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 1.3rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #666; transition: all 0.3s ease; flex-shrink: 0;
+  width: 40px; height: 40px; border: 2px solid var(--outline-variant); background: var(--surface-container-lowest); border-radius: 8px; font-size: 1.3rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant); transition: all 0.3s ease; flex-shrink: 0;
 }
 
 #donation-plus {
-  width: 40px; height: 40px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 1.3rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #666; transition: all 0.3s ease; flex-shrink: 0;
+  width: 40px; height: 40px; border: 2px solid var(--outline-variant); background: var(--surface-container-lowest); border-radius: 8px; font-size: 1.3rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--on-surface-variant); transition: all 0.3s ease; flex-shrink: 0;
 }
 
 #email {
-  width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
+  width: 100%; padding: 12px; border: 2px solid var(--outline-variant); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
 }
 
 #emailConfirm {
-  width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
+  width: 100%; padding: 12px; border: 2px solid var(--outline-variant); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
 }
 
 #name {
-  width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
+  width: 100%; padding: 12px; border: 2px solid var(--outline-variant); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
 }
 
 #paymentInfo {
@@ -78,11 +78,15 @@
 }
 
 #registration {
-  margin-top: 40px; background: white;
+  margin-top: 40px;
+  background: transparent;
 }
 
 #registrationForm {
-  background: white; padding: 2rem; border-radius: 15px; border: 2px solid var(--red);
+  background: var(--surface-container-lowest);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid var(--outline-variant);
 }
 
 #students {
@@ -102,20 +106,28 @@
 }
 
 #transactionId {
-  width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; background: white;
+  width: 100%; padding: 12px; border: 2px solid var(--outline-variant); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; background: var(--surface-container-lowest);
 }
 
 .benefit-card {
-  background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); border-left: 3px solid var(--yellow);
+  background: var(--surface-container-lowest); padding: 1rem; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); border-left: 3px solid var(--yellow);
+}
+
+.benefit-card h4 {
+  color: var(--on-surface);
 }
 
 .closing-message {
   text-align: center; background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(255, 193, 7, 0.1) 100%); padding: 1.5rem; border-radius: 10px;
 }
 
+.closing-message p {
+  color: var(--on-surface-variant);
+}
+
 .contribution-option {
-  background: #f8f9fa;
-  border: 2px solid #ddd;
+  background: var(--surface-container-lowest);
+  border: 2px solid var(--outline-variant);
   border-radius: 10px;
   padding: 1rem;
   transition: all 0.3s ease;
@@ -156,11 +168,12 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #666;
+  color: var(--on-surface-variant);
   font-weight: 600;
   z-index: 1;
 }
 
+.info-header h1,
 .info-header h3 {
   color: var(--red);
   font-size: 3.5rem;
@@ -169,13 +182,13 @@
 }
 
 .info-header p {
-  color: rgb(62, 63, 62);
+  color: var(--on-surface-variant);
   font-size: 1.9rem;
   line-height: 1.6;
 }
 
 .info-header p:last-child {
-  color: green;
+  color: var(--green);
   font-size: 1.6rem;
 }
 
@@ -186,7 +199,7 @@
 }
 
 .form-header p {
-  color: #666;
+  color: var(--on-surface-variant);
   font-size: 1rem;
 }
 
@@ -206,22 +219,93 @@
 
 .registration-cta {
   text-align: center;
-  background: var(--red);
-  padding: 2rem;
-  border-radius: 15px;
-  color: white;
+  margin-top: 2rem;
+  padding: clamp(2rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--radius-lg, 16px);
+  border: 1px solid var(--outline-variant);
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 0%, color-mix(in srgb, var(--secondary) 10%, transparent), transparent 55%),
+    var(--surface-container-low);
+  color: var(--on-surface);
+  box-shadow: var(--shadow-light);
+  position: relative;
+}
+
+.registration-cta h3 {
+  color: var(--on-surface);
+  margin-bottom: 0.5rem;
+}
+
+.registration-cta p {
+  color: var(--on-surface-variant);
+  margin-bottom: 1.5rem;
+}
+
+.registration-cta > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .registration .form-label,
 .registration-form label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--on-surface);
   font-weight: 600;
 }
 
 .contribution-types {
   margin-bottom: 2rem;
+}
+
+.contribution-types > div:first-child {
+  color: var(--on-surface);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.contribution-types > div:nth-child(2) {
+  background: color-mix(in srgb, var(--secondary) 6%, transparent);
+  border: 1px solid var(--outline-variant);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.contribution-types > div:nth-child(2) p {
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+.contribution-types > div:nth-child(2) p + p {
+  margin-top: 0.5rem;
+}
+
+.contribution-option label,
+.contribution-option span {
+  color: var(--on-surface);
+}
+
+#paymentInfo h4,
+#paymentInfo h5 {
+  color: var(--on-surface);
+}
+
+#paymentInfo .bank-details strong {
+  color: var(--on-surface);
+}
+
+#paymentInfo .bank-details span,
+#paymentInfo p {
+  color: var(--on-surface-variant);
+}
+
+.registration-form small,
+#registrationForm small {
+  color: var(--on-surface-variant);
 }
 
 .copy-btn {
@@ -241,11 +325,11 @@
 }
 
 .fa-heart {
-  margin-right: 0.5rem; color: #ff4444;
+  margin-right: 0.5rem; color: var(--error);
 }
 
 .form-container {
-  background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 3rem; position: relative; overflow: hidden;
+  background: var(--surface-container-lowest); border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 3rem; position: relative; overflow: hidden;
 }
 
 .form-grid {
@@ -265,11 +349,16 @@
 }
 
 .info-content {
-  color: #333; line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;
+  color: var(--on-surface); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;
 }
 
 .info-header {
-  text-align: center; margin-bottom: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.8); border-radius: 20px; border: 2px solid rgba(253, 126, 20, 0.1);
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: color-mix(in srgb, var(--surface-container-lowest) 92%, transparent);
+  border-radius: 20px;
+  border: 2px solid color-mix(in srgb, var(--secondary) 12%, transparent);
 }
 
 .js-privacy-modal-link {
@@ -280,12 +369,8 @@
   display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;
 }
 
-.registration-cta {
-  text-align: center; margin-top: 1.5rem; padding: 1.5rem; background: var(--red); border-radius: 12px; color: white; box-shadow: 0 3px 15px rgba(220,53,69,0.3);
-}
-
 .registration-info {
-  background: white; border-radius: 20px;
+  background: var(--surface-container-lowest); border-radius: 20px;
 }
 
 .total-amount {
@@ -313,7 +398,7 @@
             background-size: 12px;
             text-align: center;
             font-weight: 600;
-            color: #333;
+            color: var(--on-surface);
         }
         
         select#country-code:focus {
@@ -386,7 +471,7 @@
         }
         
         .custom-form-wrapper:hover .registration-form {
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+            box-shadow: 0 8px 25px rgba(176, 45, 33, 0.18);
         }
         
         /* Form styling enhancements */
@@ -457,16 +542,17 @@
         .privacy-consent {
             margin-bottom: 2rem;
             padding: 1.25rem 1.5rem;
-            background: linear-gradient(135deg, rgba(220, 53, 69, 0.04) 0%, rgba(255, 193, 7, 0.06) 100%);
-            border: 2px solid rgba(220, 53, 69, 0.15);
+            background: var(--surface-container);
+            border: 1px solid var(--outline-variant);
             border-radius: 12px;
-            border-left: 4px solid var(--red);
+            border-left: 4px solid var(--primary-container);
+            box-shadow: var(--shadow-light);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .privacy-consent:focus-within {
-            border-color: rgba(220, 53, 69, 0.35);
-            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.08);
+            border-color: color-mix(in srgb, var(--primary-container) 45%, var(--outline-variant));
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-container) 12%, transparent);
         }
 
         .privacy-consent-label {
@@ -495,9 +581,9 @@
             width: 22px;
             height: 22px;
             margin-top: 2px;
-            border: 2px solid #ccc;
+            border: 2px solid var(--outline-variant);
             border-radius: 6px;
-            background: white;
+            background: var(--surface-container-lowest);
             transition: all 0.2s ease;
             position: relative;
         }
@@ -534,7 +620,7 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             font-weight: 600;
-            color: #333;
+            color: var(--on-surface);
             font-size: 0.95rem;
             margin-bottom: 0.75rem;
         }
@@ -551,13 +637,13 @@
             display: block;
             font-size: 0.9rem;
             line-height: 1.6;
-            color: #555;
+            color: var(--on-surface-variant);
         }
 
         .privacy-consent-lang--es {
             margin-bottom: 0.6rem;
             padding-bottom: 0.6rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid var(--outline-variant);
         }
 
         .privacy-consent-lang a {
@@ -664,14 +750,14 @@
         @media (max-width: 768px) {
             .copy-btn {
                 border: 2px solid rgba(255,255,255,0.2) !important;
-                background: linear-gradient(135deg, var(--green) 0%, #28a745 100%) !important;
+                background: linear-gradient(135deg, var(--green) 0%, var(--green) 100%) !important;
                 -webkit-tap-highlight-color: transparent !important;
                 touch-action: manipulation !important;
             }
             
             .copy-btn:hover {
                 border-color: rgba(255,255,255,0.4) !important;
-                background: linear-gradient(135deg, #28a745 0%, var(--green) 100%) !important;
+                background: linear-gradient(135deg, var(--green) 0%, var(--green) 100%) !important;
             }
             
             .copy-btn:active {
@@ -683,7 +769,7 @@
         @media (max-width: 480px) {
             .copy-btn {
                 border: 2px solid rgba(255,255,255,0.3) !important;
-                background: linear-gradient(135deg, var(--green) 0%, #28a745 100%) !important;
+                background: linear-gradient(135deg, var(--green) 0%, var(--green) 100%) !important;
                 font-weight: bold !important;
                 -webkit-tap-highlight-color: transparent !important;
                 touch-action: manipulation !important;
@@ -691,7 +777,7 @@
             
             .copy-btn:hover {
                 border-color: rgba(255,255,255,0.5) !important;
-                background: linear-gradient(135deg, #28a745 0%, var(--green) 100%) !important;
+                background: linear-gradient(135deg, var(--green) 0%, var(--green) 100%) !important;
             }
             
             .copy-btn:active {
@@ -765,7 +851,7 @@
         
         /* Form Footer Styling */
         .form-footer {
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 8%, transparent) 0%, color-mix(in srgb, var(--prestige) 8%, transparent) 100%);
             border-radius: 10px;
             padding: 1.5rem;
             margin-top: 2rem;
@@ -820,26 +906,32 @@
         }
         
         /* Call to Action Styling */
-        .registration-cta {
-            position: relative;
-            overflow: hidden;
-        }
-        
         .registration-cta .btn-primary {
-            background: white !important;
-            color: var(--red) !important;
-            border: 2px solid white !important;
+            background: var(--primary-container) !important;
+            color: var(--on-primary-container) !important;
+            border: 1px solid transparent !important;
         }
-        
+
+        .registration-cta .btn-primary:hover {
+            background: var(--primary) !important;
+            color: var(--on-primary) !important;
+        }
+
         .registration-cta .btn-secondary {
             background: transparent !important;
-            color: white !important;
-            border: 2px solid white !important;
+            color: var(--on-surface) !important;
+            border: 1px solid var(--outline-variant) !important;
         }
-        
+
+        .registration-cta .btn-secondary:hover {
+            background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
+            border-color: var(--secondary) !important;
+            color: var(--on-surface) !important;
+        }
+
         .registration-cta .btn {
             width: auto !important;
-            margin-bottom: 1rem !important;
+            margin-bottom: 0 !important;
             padding: 12px 20px !important;
             font-size: 1rem !important;
             text-align: center !important;
@@ -847,29 +939,13 @@
             align-items: center !important;
             justify-content: center !important;
             border-radius: 10px !important;
-        }
-        
-        .registration-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        
-        .registration-cta .btn {
-            transition: all 0.3s ease;
             position: relative;
             z-index: 1;
         }
-        
+
         .registration-cta .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
         
         /* Donation button styles */
@@ -1046,7 +1122,8 @@
                 margin-bottom: 2rem !important;
             }
             
-            .registration-info .info-header h3 {
+            .registration-info .info-header h1,
+.info-header h3 {
                 font-size: 2.5rem !important;
             }
             
@@ -1342,22 +1419,9 @@
             
             .registration-cta .btn {
                 width: 100% !important;
-                margin-bottom: 1rem !important;
+                margin-bottom: 0 !important;
                 padding: 12px 20px !important;
                 font-size: 1rem !important;
-            }
-            
-            /* Maintain button colors on mobile */
-            .registration-cta .btn-primary {
-                background: white !important;
-                color: var(--red) !important;
-                border: 2px solid white !important;
-            }
-            
-            .registration-cta .btn-secondary {
-                background: transparent !important;
-                color: white !important;
-                border: 2px solid white !important;
             }
             
             .section-header h2 {
@@ -1409,7 +1473,8 @@
                 padding: 0rem !important;
             }
             
-            .registration-info .info-header h3 {
+            .registration-info .info-header h1,
+.info-header h3 {
                 font-size: 2.5rem !important;
             }
             
@@ -1829,7 +1894,7 @@
             color: var(--red);
             font-weight: 600;
             z-index: 1;
-            background: white;
+            background: var(--surface-container-lowest);
             padding: 1rem 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -1870,8 +1935,8 @@
         
         /* Form container enhancements */
         .form-container {
-            background: linear-gradient(135deg, white 0%, #fefefe 100%);
-            border: 1px solid rgba(220, 53, 69, 0.1);
+            background: linear-gradient(135deg, var(--surface-container-lowest) 0%, var(--surface-container-low) 100%);
+            border: 1px solid var(--outline-variant);
         }
         
         .form-container::before {
@@ -1881,6 +1946,108 @@
             left: 0;
             right: 0;
             height: 4px;
-background: var(--red);
+            background: linear-gradient(90deg, var(--primary-container), var(--secondary));
             border-radius: 20px 20px 0 0;
         }
+
+/* ── Dark theme: registration page readability ── */
+[data-theme="dark"] .registration-cta {
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 0%, rgba(245, 166, 35, 0.1), transparent 55%),
+    var(--surface-container-lowest) !important;
+  border-color: var(--stone) !important;
+  color: var(--on-surface) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .registration-cta h3 {
+  color: var(--on-surface) !important;
+}
+
+[data-theme="dark"] .registration-cta p {
+  color: var(--on-surface-variant) !important;
+}
+
+[data-theme="dark"] .registration-cta .btn-secondary {
+  color: var(--on-surface) !important;
+  border-color: var(--stone) !important;
+}
+
+[data-theme="dark"] .registration-cta .btn-secondary:hover {
+  background: color-mix(in srgb, var(--secondary) 12%, transparent) !important;
+  border-color: var(--inverse-primary) !important;
+}
+
+[data-theme="dark"] .privacy-consent {
+  background: var(--surface-container) !important;
+  border-color: var(--stone) !important;
+  border-left-color: var(--inverse-primary) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="dark"] .privacy-consent-check {
+  background: var(--surface-container-lowest);
+  border-color: var(--stone);
+}
+
+[data-theme="dark"] .privacy-consent:focus-within {
+  border-color: color-mix(in srgb, var(--inverse-primary) 40%, var(--stone));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--inverse-primary) 14%, transparent);
+}
+[data-theme="dark"] #paymentInfo {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--green) 12%, var(--surface-container-lowest)) 0%,
+    var(--surface-container-lowest) 100%
+  ) !important;
+  border-left-color: var(--green) !important;
+}
+
+[data-theme="dark"] #paymentInfo .bank-details,
+[data-theme="dark"] #paymentInfo .baizum-details {
+  background: var(--surface-container) !important;
+  border: 1px solid var(--stone);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+[data-theme="dark"] #bankAccountNumber {
+  color: #81c784;
+}
+
+[data-theme="dark"] .info-header p:last-child {
+  color: #81c784;
+}
+
+[data-theme="dark"] select#country-code {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cabfa9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .contribution-option--donation h4,
+[data-theme="dark"] .contribution-option--donation p {
+  color: var(--on-surface) !important;
+}
+
+/* Registration not yet open */
+.registration-soon {
+  display: block;
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2rem);
+}
+
+.registration-soon-title {
+  color: var(--secondary);
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .registration-soon-title {
+  color: var(--inverse-primary);
+}
+
+.registration-soon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}

@@ -361,7 +361,7 @@
             .schedule-image-card p {
                 font-size: 0.85rem !important;
                 margin-top: 0.75rem !important;
-                color: #888 !important;
+                color: var(--on-surface-variant) !important;
             }
             
             .schedule-actions {
@@ -401,7 +401,7 @@
             .schedule-image-card p {
                 font-size: 0.8rem !important;
                 margin-top: 0.75rem !important;
-                color: #888 !important;
+                color: var(--on-surface-variant) !important;
             }
             
             .schedule-image-wrapper {

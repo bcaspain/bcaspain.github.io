@@ -1,6 +1,20 @@
 // Registration Form JavaScript with Security Enhancements
 document.addEventListener('DOMContentLoaded', function() {
+    // Flip to true when online registration opens
+    const REGISTRATION_OPEN = false; // CHANGE: Flip to true when online registration opens
+
+    const notOpenEl = document.getElementById('registration-not-open');
     const form = document.getElementById('registrationForm');
+
+    if (!REGISTRATION_OPEN) {
+        if (notOpenEl) notOpenEl.style.display = 'block';
+        if (form) form.hidden = true;
+        return;
+    }
+
+    if (form) form.hidden = false;
+    if (notOpenEl) notOpenEl.style.display = 'none';
+
     const totalAmount = document.getElementById('totalAmount');
     const email = document.getElementById('email');
     const emailConfirm = document.getElementById('emailConfirm');
@@ -22,6 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
         'children-under-5': 0,
         'day-pass': 35
     });
+
+    // Theme-aware surfaces (avoid light inline backgrounds in dark mode)
+    const SURFACE_LOWEST = 'var(--surface-container-lowest)';
+    const SURFACE = 'var(--surface-container)';
+    const CONTRIBUTION_SELECTED_BG = 'color-mix(in srgb, var(--secondary) 8%, transparent)';
+    const TEXT_MUTED = 'var(--on-surface-variant)';
     
     // Security: Form integrity tracking
     let formInitialState = null;
@@ -285,24 +305,24 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!nameValue) {
             nameField.setCustomValidity('Name is required');
-            nameField.style.borderColor = '#ff4444';
+            nameField.style.borderColor = 'var(--error)';
             nameField.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             nameMsg.textContent = '❌ Name is required';
-            nameMsg.style.color = '#ff4444';
+            nameMsg.style.color = 'var(--error)';
             return false;
         } else if (nameValue.length < 2) {
             nameField.setCustomValidity('Name must be at least 2 characters long');
-            nameField.style.borderColor = '#ff4444';
+            nameField.style.borderColor = 'var(--error)';
             nameField.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             nameMsg.textContent = '❌ Name must be at least 2 characters long';
-            nameMsg.style.color = '#ff4444';
+            nameMsg.style.color = 'var(--error)';
             return false;
         } else {
             nameField.setCustomValidity('');
-            nameField.style.borderColor = '#228B22';
+            nameField.style.borderColor = 'var(--green)';
             nameField.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
             nameMsg.textContent = '✅ Valid name';
-            nameMsg.style.color = '#228B22';
+            nameMsg.style.color = 'var(--green)';
             return true;
         }
     }
@@ -390,31 +410,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!cleanPhone) {
             contact.setCustomValidity('Phone number is required');
-            contact.style.borderColor = '#ff4444';
+            contact.style.borderColor = 'var(--error)';
             contact.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             phoneMsg.textContent = '❌ Phone number is required';
-            phoneMsg.style.color = '#ff4444';
+            phoneMsg.style.color = 'var(--error)';
             return false;
         } else if (cleanPhone.length < rule.min) {
             contact.setCustomValidity(`Phone number must be at least ${rule.min} digits for ${rule.name}`);
-            contact.style.borderColor = '#ff4444';
+            contact.style.borderColor = 'var(--error)';
             contact.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             phoneMsg.textContent = `❌ Must be at least ${rule.min} digits for ${rule.name}`;
-            phoneMsg.style.color = '#ff4444';
+            phoneMsg.style.color = 'var(--error)';
             return false;
         } else if (cleanPhone.length > rule.max) {
             contact.setCustomValidity(`Phone number must be at most ${rule.max} digits for ${rule.name}`);
-            contact.style.borderColor = '#ff4444';
+            contact.style.borderColor = 'var(--error)';
             contact.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             phoneMsg.textContent = `❌ Must be at most ${rule.max} digits for ${rule.name}`;
-            phoneMsg.style.color = '#ff4444';
+            phoneMsg.style.color = 'var(--error)';
             return false;
         } else {
             contact.setCustomValidity('');
-            contact.style.borderColor = '#228B22';
+            contact.style.borderColor = 'var(--green)';
             contact.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
             phoneMsg.textContent = `✅ Valid ${rule.name} phone number`;
-            phoneMsg.style.color = '#228B22';
+            phoneMsg.style.color = 'var(--green)';
             return true;
         }
     }
@@ -430,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Style country code select on focus and change
     countryCode.addEventListener('focus', function() {
         this.style.borderColor = 'var(--red)';
-        this.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.1)';
+        this.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--secondary) 12%, transparent)';
     });
 
     countryCode.addEventListener('change', function() {
@@ -443,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.borderColor = 'var(--green)';
             this.style.boxShadow = '0 0 0 3px rgba(40, 167, 69, 0.1)';
         } else {
-            this.style.borderColor = '#ddd';
+            this.style.borderColor = 'var(--outline-variant)';
             this.style.boxShadow = 'none';
         }
     });
@@ -541,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function() {
             donationInput.title = 'Optional: Add any donation amount you wish to contribute (€5 increments with buttons)';
             donationInput.min = 0; // No minimum required
             donationInput.disabled = false;
-            donationInput.style.backgroundColor = 'white';
+            donationInput.style.backgroundColor = SURFACE_LOWEST;
             donationInput.style.cursor = 'text';
             
             // Button logic - simple increment/decrement
@@ -562,7 +582,7 @@ document.addEventListener('DOMContentLoaded', function() {
             donationInput.title = 'Ticket selection is mandatory. Please select tickets first.';
             donationInput.value = ''; // Clear value when no tickets
             donationInput.disabled = true;
-            donationInput.style.backgroundColor = '#f5f5f5';
+            donationInput.style.backgroundColor = SURFACE;
             donationInput.style.cursor = 'not-allowed';
             donationInput.min = 0;
             
@@ -621,32 +641,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     const adultCount = document.getElementById('adult-count');
                     adultCount.style.display = 'none';
                     adultCount.value = '0';
-                    adultOption.style.borderColor = '#ddd';
-                    adultOption.style.background = '#f8f9fa';
+                    adultOption.style.borderColor = 'var(--outline-variant)';
+                    adultOption.style.background = SURFACE_LOWEST;
                 }
                 if (childrenCheckbox.checked) {
                     childrenCheckbox.checked = false;
                     const childrenCount = document.getElementById('children-count');
                     childrenCount.style.display = 'none';
                     childrenCount.value = '0';
-                    childrenOption.style.borderColor = '#ddd';
-                    childrenOption.style.background = '#f8f9fa';
+                    childrenOption.style.borderColor = 'var(--outline-variant)';
+                    childrenOption.style.background = SURFACE_LOWEST;
                 }
                 if (childrenUnder5Checkbox.checked) {
                     childrenUnder5Checkbox.checked = false;
                     const childrenUnder5Count = document.getElementById('children-under-5-count');
                     childrenUnder5Count.style.display = 'none';
                     childrenUnder5Count.value = '0';
-                    childrenUnder5Option.style.borderColor = '#ddd';
-                    childrenUnder5Option.style.background = '#f8f9fa';
+                    childrenUnder5Option.style.borderColor = 'var(--outline-variant)';
+                    childrenUnder5Option.style.background = SURFACE_LOWEST;
                 }
                 if (dayPassCheckbox.checked) {
                     dayPassCheckbox.checked = false;
                     const dayPassCount = document.getElementById('day-pass-count');
                     dayPassCount.style.display = 'none';
                     dayPassCount.value = '0';
-                    dayPassOption.style.borderColor = '#ddd';
-                    dayPassOption.style.background = '#f8f9fa';
+                    dayPassOption.style.borderColor = 'var(--outline-variant)';
+                    dayPassOption.style.background = SURFACE_LOWEST;
                 }
             }
         } else {
@@ -663,8 +683,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isRegularOrChildrenSelected && studentCheckbox.checked) {
                 // Uncheck student if Regular, Children, or Day Pass are selected
                 studentCheckbox.checked = false;
-                studentOption.style.borderColor = '#ddd';
-                studentOption.style.background = '#f8f9fa';
+                studentOption.style.borderColor = 'var(--outline-variant)';
+                studentOption.style.background = SURFACE_LOWEST;
             }
         }
         
@@ -686,18 +706,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Handle custom donation
                     const customInputs = document.getElementById('custom-donation-inputs');
                     customInputs.style.display = 'block';
-                    optionDiv.style.borderColor = '#FF6B35';
-                    optionDiv.style.background = 'rgba(255, 107, 53, 0.05)';
+                    optionDiv.style.borderColor = 'var(--secondary)';
+                    optionDiv.style.background = CONTRIBUTION_SELECTED_BG;
                 } else if (this.id === 'students') {
                     // Handle student option - no count needed
-                    optionDiv.style.borderColor = '#FF6B35';
-                    optionDiv.style.background = 'rgba(255, 107, 53, 0.05)';
+                    optionDiv.style.borderColor = 'var(--secondary)';
+                    optionDiv.style.background = CONTRIBUTION_SELECTED_BG;
                 } else {
                     // Handle regular options
                     countInput.style.display = 'block';
                     countInput.value = '1';
-                    optionDiv.style.borderColor = '#FF6B35';
-                    optionDiv.style.background = 'rgba(255, 107, 53, 0.05)';
+                    optionDiv.style.borderColor = 'var(--secondary)';
+                    optionDiv.style.background = CONTRIBUTION_SELECTED_BG;
                 }
             } else {
                 if (this.id === 'custom-donation') {
@@ -709,20 +729,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (warningElement) {
                         warningElement.style.display = 'none';
                     }
-                    optionDiv.style.borderColor = '#ddd';
-                    optionDiv.style.background = '#f8f9fa';
+                    optionDiv.style.borderColor = 'var(--outline-variant)';
+                    optionDiv.style.background = SURFACE_LOWEST;
                 } else if (this.id === 'students') {
                     // Handle student option unchecked
-                    optionDiv.style.borderColor = '#ddd';
-                    optionDiv.style.background = '#f8f9fa';
+                    optionDiv.style.borderColor = 'var(--outline-variant)';
+                    optionDiv.style.background = SURFACE_LOWEST;
                 } else {
                     // Handle regular options
                     if (countInput) {
                         countInput.style.display = 'none';
                         countInput.value = '0';
                     }
-                    optionDiv.style.borderColor = '#ddd';
-                    optionDiv.style.background = '#f8f9fa';
+                    optionDiv.style.borderColor = 'var(--outline-variant)';
+                    optionDiv.style.background = SURFACE_LOWEST;
                 }
             }
             
@@ -779,8 +799,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 childrenUnder5Checkbox.checked = false;
                 childrenUnder5Count.style.display = 'none';
                 childrenUnder5Count.value = '0';
-                childrenUnder5Option.style.borderColor = '#ddd';
-                childrenUnder5Option.style.background = '#f8f9fa';
+                childrenUnder5Option.style.borderColor = 'var(--outline-variant)';
+                childrenUnder5Option.style.background = SURFACE_LOWEST;
             }
         }
     }
@@ -834,7 +854,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // If no tickets selected, donation field should be disabled
         if (ticketPrice === 0) {
-            customDonationAmount.style.borderColor = '#ddd';
+            customDonationAmount.style.borderColor = 'var(--outline-variant)';
             customDonationAmount.style.boxShadow = 'none';
             donationMsg.textContent = '';
                 if (warningElement) {
@@ -845,33 +865,33 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Tickets are selected - validate donation amount (if provided)
         if (customDonationAmount.value && amount <= 0) {
-            customDonationAmount.style.borderColor = '#ff4444';
+            customDonationAmount.style.borderColor = 'var(--error)';
             customDonationAmount.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             donationMsg.textContent = '❌ Donation amount must be greater than €0';
-            donationMsg.style.color = '#ff4444';
+            donationMsg.style.color = 'var(--error)';
             if (warningElement) {
                 warningElement.style.display = 'block';
             }
             return false;
         } else if (amount > 10000) {
-            customDonationAmount.style.borderColor = '#ff4444';
+            customDonationAmount.style.borderColor = 'var(--error)';
             customDonationAmount.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             donationMsg.textContent = '❌ Donation amount seems too high. Please contact us for large donations.';
-            donationMsg.style.color = '#ff4444';
+            donationMsg.style.color = 'var(--error)';
             return false;
         } else if (amount > 0) {
             // Valid donation amount
-            customDonationAmount.style.borderColor = '#228B22';
+            customDonationAmount.style.borderColor = 'var(--green)';
             customDonationAmount.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
             donationMsg.textContent = `✅ Thank you for your €${amount.toFixed(2)} donation!`;
-            donationMsg.style.color = '#228B22';
+            donationMsg.style.color = 'var(--green)';
             if (warningElement) {
                 warningElement.style.display = 'none';
             }
             return true;
             } else {
             // Empty donation (which is fine)
-            customDonationAmount.style.borderColor = '#ddd';
+            customDonationAmount.style.borderColor = 'var(--outline-variant)';
             customDonationAmount.style.boxShadow = 'none';
             donationMsg.textContent = '';
                 if (warningElement) {
@@ -920,8 +940,8 @@ document.addEventListener('DOMContentLoaded', function() {
             updateDonationControls(ticketPrice); // Update button states
             
             // Update button styles
-            this.style.background = newValue > 0 ? '#f8f9fa' : 'white';
-            this.style.borderColor = newValue > 0 ? 'var(--red)' : '#ddd';
+            this.style.background = newValue > 0 ? SURFACE : SURFACE_LOWEST;
+            this.style.borderColor = newValue > 0 ? 'var(--red)' : 'var(--outline-variant)';
         });
         
         donationPlusBtn.addEventListener('click', function() {
@@ -942,13 +962,13 @@ document.addEventListener('DOMContentLoaded', function() {
             updateDonationControls(ticketPrice); // Update button states
             
             // Update button styles
-            this.style.background = '#f8f9fa';
+            this.style.background = SURFACE;
             this.style.borderColor = 'var(--red)';
             
             // Reset after a short delay
             setTimeout(() => {
-                this.style.background = 'white';
-                this.style.borderColor = '#ddd';
+                this.style.background = SURFACE_LOWEST;
+                this.style.borderColor = 'var(--outline-variant)';
             }, 150);
         });
         
@@ -963,8 +983,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             btn.addEventListener('mouseleave', function() {
                 if (!this.disabled) {
-                    this.style.borderColor = '#ddd';
-                    this.style.color = '#666';
+                    this.style.borderColor = 'var(--outline-variant)';
+                    this.style.color = TEXT_MUTED;
                 }
             });
         });
@@ -1018,34 +1038,34 @@ document.addEventListener('DOMContentLoaded', function() {
         let emailValid = false;
         if (!emailValue) {
             email.setCustomValidity('Email is required');
-            email.style.borderColor = '#ff4444';
+            email.style.borderColor = 'var(--error)';
             email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             emailMsg.textContent = '❌ Email is required';
-            emailMsg.style.color = '#ff4444';
+            emailMsg.style.color = 'var(--error)';
         } else if (emailValue.length > 254) {
             email.setCustomValidity('Email address is too long');
-            email.style.borderColor = '#ff4444';
+            email.style.borderColor = 'var(--error)';
             email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             emailMsg.textContent = '❌ Email address is too long';
-            emailMsg.style.color = '#ff4444';
+            emailMsg.style.color = 'var(--error)';
         } else if (!emailRegex.test(emailValue)) {
                 email.setCustomValidity('Please enter a valid email address');
-                email.style.borderColor = '#ff4444';
+                email.style.borderColor = 'var(--error)';
                 email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
                 emailMsg.textContent = '❌ Please enter a valid email address';
-                emailMsg.style.color = '#ff4444';
+                emailMsg.style.color = 'var(--error)';
         } else if (emailValue.includes('..') || emailValue.startsWith('.') || emailValue.endsWith('.')) {
             email.setCustomValidity('Email contains invalid characters');
-            email.style.borderColor = '#ff4444';
+            email.style.borderColor = 'var(--error)';
             email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             emailMsg.textContent = '❌ Email contains invalid characters';
-                emailMsg.style.color = '#ff4444';
+                emailMsg.style.color = 'var(--error)';
             } else {
                 email.setCustomValidity('');
-                email.style.borderColor = '#228B22';
+                email.style.borderColor = 'var(--green)';
                 email.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
                 emailMsg.textContent = '✅ Valid email format';
-                emailMsg.style.color = '#228B22';
+                emailMsg.style.color = 'var(--green)';
             emailValid = true;
         }
         
@@ -1053,35 +1073,35 @@ document.addEventListener('DOMContentLoaded', function() {
         let emailConfirmValid = false;
         if (!emailConfirmValue) {
             emailConfirm.setCustomValidity('Please confirm your email');
-            emailConfirm.style.borderColor = '#ff4444';
+            emailConfirm.style.borderColor = 'var(--error)';
             emailConfirm.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
             emailConfirmMsg.textContent = '❌ Please confirm your email';
-            emailConfirmMsg.style.color = '#ff4444';
+            emailConfirmMsg.style.color = 'var(--error)';
         } else if (!emailRegex.test(emailConfirmValue)) {
                 emailConfirm.setCustomValidity('Please enter a valid email address');
-                emailConfirm.style.borderColor = '#ff4444';
+                emailConfirm.style.borderColor = 'var(--error)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
                 emailConfirmMsg.textContent = '❌ Please enter a valid email address';
-                emailConfirmMsg.style.color = '#ff4444';
+                emailConfirmMsg.style.color = 'var(--error)';
             } else if (emailValue && emailValue !== emailConfirmValue) {
                 emailConfirm.setCustomValidity('Emails do not match');
-                emailConfirm.style.borderColor = '#ff4444';
+                emailConfirm.style.borderColor = 'var(--error)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
                 emailConfirmMsg.textContent = '❌ Emails do not match';
-                emailConfirmMsg.style.color = '#ff4444';
+                emailConfirmMsg.style.color = 'var(--error)';
         } else if (emailValue && emailValue === emailConfirmValue && emailValid) {
                 emailConfirm.setCustomValidity('');
-                emailConfirm.style.borderColor = '#228B22';
+                emailConfirm.style.borderColor = 'var(--green)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
                 emailConfirmMsg.textContent = '✅ Emails match perfectly!';
-                emailConfirmMsg.style.color = '#228B22';
+                emailConfirmMsg.style.color = 'var(--green)';
             emailConfirmValid = true;
             } else {
                 emailConfirm.setCustomValidity('');
-                emailConfirm.style.borderColor = '#228B22';
+                emailConfirm.style.borderColor = 'var(--green)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
                 emailConfirmMsg.textContent = '✅ Valid email format';
-                emailConfirmMsg.style.color = '#228B22';
+                emailConfirmMsg.style.color = 'var(--green)';
             emailConfirmValid = true;
         }
         
@@ -1210,11 +1230,11 @@ document.addEventListener('DOMContentLoaded', function() {
         errorDiv.id = 'validation-errors';
         errorDiv.style.cssText = `
             background: rgba(255, 68, 68, 0.1);
-            border: 2px solid #ff4444;
+            border: 2px solid var(--error);
             border-radius: 8px;
             padding: 1rem;
             margin: 1rem 0;
-            color: #ff4444;
+            color: var(--error);
             font-weight: 600;
             position: sticky;
             top: 20px;
@@ -1287,8 +1307,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Reset styling for all options
                 checkbox.checked = false;
-                optionDiv.style.borderColor = '#ddd';
-                optionDiv.style.background = '#f8f9fa';
+                optionDiv.style.borderColor = 'var(--outline-variant)';
+                optionDiv.style.background = SURFACE_LOWEST;
                 optionDiv.style.opacity = '1';
                 optionDiv.style.cursor = 'pointer';
                 
@@ -1354,7 +1374,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pleaseWaitMsg = document.createElement('div');
     pleaseWaitMsg.id = 'please-wait-message';
     pleaseWaitMsg.style.cssText = `
-        background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 193, 7, 0.1) 100%);
+        background: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 12%, transparent) 0%, color-mix(in srgb, var(--prestige) 12%, transparent) 100%);
         border: 2px solid var(--red);
         border-radius: 12px;
         padding: 1.5rem;
@@ -1363,7 +1383,7 @@ document.addEventListener('DOMContentLoaded', function() {
         font-weight: 600;
         text-align: center;
         font-size: 1.2rem;
-        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
+        box-shadow: 0 4px 15px color-mix(in srgb, var(--secondary) 20%, transparent);
         animation: pulse 2s infinite;
     `;
     pleaseWaitMsg.innerHTML = `
@@ -1371,10 +1391,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <i class="fas fa-clock" style="font-size: 1.5rem; margin-right: 0.5rem;"></i>
             Please wait while you are registering...
         </div>
-        <div style="font-size: 0.9rem; color: #666; font-weight: 400; margin-bottom: 1rem;">
+        <div style="font-size: 0.9rem; color: var(--on-surface-variant); font-weight: 400; margin-bottom: 1rem;">
             This may take a few moments. Please do not refresh the page.
         </div>
-        <div style="width: 100%; height: 4px; background: rgba(255, 107, 53, 0.2); border-radius: 2px; overflow: hidden;">
+        <div style="width: 100%; height: 4px; background: color-mix(in srgb, var(--secondary) 20%, transparent); border-radius: 2px; overflow: hidden;">
             <div style="width: 100%; height: 100%; background: var(--red); border-radius: 2px; animation: loading 2s infinite;"></div>
         </div>
     `;
@@ -1514,12 +1534,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputs = form.querySelectorAll('input, select');
     inputs.forEach(input => {
         input.addEventListener('focus', function() {
-            this.style.borderColor = '#FF6B35';
-            this.style.boxShadow = '0 0 0 3px rgba(255, 107, 53, 0.1)';
+            this.style.borderColor = 'var(--secondary)';
+            this.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--secondary) 18%, transparent)';
         });
         
         input.addEventListener('blur', function() {
-            this.style.borderColor = '#ddd';
+            this.style.borderColor = 'var(--outline-variant)';
             this.style.boxShadow = 'none';
         });
     });
@@ -1541,17 +1561,17 @@ document.addEventListener('DOMContentLoaded', function() {
         @keyframes highlight {
             0% { 
                 background-color: rgba(255, 68, 68, 0.1);
-                border-color: #ff4444;
+                border-color: var(--error);
                 box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.3);
             }
             50% { 
                 background-color: rgba(255, 68, 68, 0.2);
-                border-color: #ff4444;
+                border-color: var(--error);
                 box-shadow: 0 0 0 6px rgba(255, 68, 68, 0.4);
             }
             100% { 
                 background-color: rgba(255, 68, 68, 0.1);
-                border-color: #ff4444;
+                border-color: var(--error);
                 box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.3);
             }
         }

@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+
+# Private / non-content URLs
 Disallow: /qr/
+Disallow: /html/navbar.html
+Disallow: /html/feedback_dp_2025.html
 
 Sitemap: https://bcaspain.org/sitemap.xml

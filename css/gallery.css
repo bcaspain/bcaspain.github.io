@@ -351,9 +351,9 @@
 
         .gallery-filter {
             appearance: none;
-            border: 1px solid rgba(225, 21, 41, 0.28);
-            background: #fff;
-            color: #7a1c24;
+            border: 1px solid var(--outline-variant);
+            background: var(--surface-container-lowest);
+            color: var(--secondary);
             font-family: inherit;
             font-size: 0.86rem;
             font-weight: 600;
@@ -377,7 +377,7 @@
 
         .gallery-filter-empty {
             text-align: center;
-            color: #666;
+            color: var(--on-surface-variant);
             margin: 1rem 0 2rem;
         }
 
@@ -388,8 +388,8 @@
         }
 
         [data-theme="dark"] .gallery-filter.active {
-            background: var(--primary-container, #f5a623);
-            border-color: var(--primary-container, #f5a623);
+            background: var(--primary-container);
+            border-color: var(--primary-container);
             color: #643f00;
         }
 
@@ -451,7 +451,7 @@
         }
 
         .gallery-reel-frame.is-active {
-            border-color: #f5a623;
+            border-color: var(--primary-container);
             box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.35), 0 14px 32px rgba(0, 0, 0, 0.28);
         }
 
@@ -666,7 +666,7 @@
         
         .year-description {
             font-size: 1.2rem;
-            color: #666;
+            color: var(--on-surface-variant);
             font-weight: 400;
             max-width: 600px;
             margin: 0 auto;
@@ -702,7 +702,7 @@
             object-fit: cover;
             transition: transform 0.3s ease;
             pointer-events: none;
-            background: #ddd;
+            background: var(--outline-variant);
         }
         
         .gallery-item[data-year]:hover img {
@@ -869,7 +869,7 @@
         
         .coming-soon-content p {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--on-surface-variant);
             margin: 0 0 2rem;
             line-height: 1.6;
             text-align: center;

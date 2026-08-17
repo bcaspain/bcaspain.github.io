@@ -1278,7 +1278,7 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 2rem 1.5rem;
-    border: 2px solid #ec5f08;
+    border: 2px solid var(--secondary);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25), 
                 0 5px 15px rgba(255, 215, 0, 0.1) inset;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -4313,7 +4313,7 @@ section + section {
     }
     
     .btn-primary {
-        background: linear-gradient(135deg, #ec5f08 0%, #FF6B35 100%) !important;
+        background: var(--gradient-primary) !important;
     }
     
     .btn-secondary {
@@ -5455,7 +5455,7 @@ section + section {
     align-items: center;
     justify-content: center;
     padding: 3rem 0;
-    background: linear-gradient(135deg, #f9f1e7 0%, #e8f4f8 100%);
+    background: linear-gradient(135deg, var(--surface-container-low) 0%, var(--surface-container) 100%);
     position: relative;
 }
 
@@ -5469,7 +5469,7 @@ section + section {
 
 .divider-icon {
     margin: 0 2rem;
-    background: linear-gradient(135deg, var(--primary-color), #20B2AA);
+    background: linear-gradient(135deg, var(--primary-color), var(--tertiary));
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -5567,7 +5567,7 @@ section + section {
 }
 
 .venue-table thead {
-    background: linear-gradient(135deg, var(--primary-color), #ff8c5a);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-container));
 }
 
 .venue-table thead th {
@@ -5608,7 +5608,7 @@ section + section {
 }
 
 .venue-table tbody td:last-child {
-    color: #20B2AA;
+    color: var(--tertiary);
     font-weight: 600;
 }
 
@@ -5625,7 +5625,7 @@ section + section {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, var(--primary-color), #ff8c5a);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-container));
     color: white !important;
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
@@ -5638,7 +5638,7 @@ section + section {
 .venue-link:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 127, 62, 0.4);
-    background: linear-gradient(135deg, #ff8c5a, var(--primary-color));
+    background: linear-gradient(135deg, var(--secondary-container), var(--primary-color));
 }
 
 .venue-link i {
@@ -5660,14 +5660,14 @@ section + section {
 }
 
 .location-metro {
-    color: #20B2AA;
+    color: var(--tertiary);
     font-size: 0.85rem;
     font-weight: 600;
 }
 
 .location-metro i {
     margin-right: 0.3rem;
-    color: #20B2AA;
+    color: var(--tertiary);
 }
 
 /* Contact Page Venue Elements */
@@ -5679,7 +5679,7 @@ section + section {
 }
 
 .contact-metro {
-    color: #20B2AA;
+    color: var(--tertiary);
     font-size: 0.9rem;
     font-weight: 600;
     margin-top: 0.5rem;
@@ -5687,7 +5687,7 @@ section + section {
 
 .contact-metro i {
     margin-right: 0.5rem;
-    color: #20B2AA;
+    color: var(--tertiary);
 }
 
 /* Registration Page Venue Details */
@@ -5786,22 +5786,22 @@ section + section {
 }
 
 .map-container {
-    background: var(--white);
+    background: var(--surface-container-lowest);
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--shadow-light);
-    border: 2px solid rgba(232, 114, 12, 0.15);
+    border: 1px solid var(--outline-variant);
     transition: all 0.3s ease;
 }
 
 .map-container:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-medium);
-    border-color: var(--primary-color);
+    border-color: var(--primary-container);
 }
 
 .map-container h4 {
-    color: var(--primary-color);
+    color: var(--primary-container);
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -5847,19 +5847,19 @@ section + section {
 
 .map-address {
     text-align: center;
-    color: var(--text-dark);
+    color: var(--on-surface-variant);
     font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
 }
 
 .map-address i {
-    color: var(--primary-color);
+    color: var(--primary-container);
     margin-right: 0.5rem;
 }
 
 .map-address i.fa-train {
-    color: #20B2AA;
+    color: var(--tertiary-container);
 }
 
 /* Mobile responsive for maps */
@@ -5943,10 +5943,10 @@ section + section {
 .location-details {
     margin: 1rem 0;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--surface-container);
     border-radius: 10px;
-    border: 2px solid rgba(232, 114, 12, 0.15);
-    border-left: 4px solid var(--primary-color);
+    border: 1px solid var(--outline-variant);
+    border-left: 4px solid var(--primary-container);
     box-shadow: var(--shadow-light);
 }
 
@@ -5954,10 +5954,11 @@ section + section {
     text-align: left;
     margin: 0.5rem 0;
     font-size: 0.9rem;
+    color: var(--on-surface-variant);
 }
 
 .location-details .map-address strong {
-    color: var(--text-dark);
+    color: var(--on-surface);
     font-weight: 600;
 }
 
@@ -6378,7 +6379,7 @@ section + section {
     align-items: center;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    background: #ff6b35;
+    background: var(--secondary);
 }
 
 .video-modal-header h3 {
@@ -8104,7 +8105,7 @@ body {
         border-radius: 16px !important;
         background: rgba(0,0,0,0.25) !important;
         backdrop-filter: blur(20px) !important;
-        border: 2px solid #ec5f08 !important;
+        border: 2px solid var(--secondary) !important;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
         padding: 1.5rem 1rem !important;
         position: relative;
@@ -10027,7 +10028,7 @@ body {
         margin-top: 1.5rem !important;
         padding: 1.5rem !important;
         border-radius: 12px !important;
-        box-shadow: 0 3px 15px rgba(220,53,69,0.3) !important;
+        box-shadow: var(--shadow-light) !important;
     }
     
     .registration-cta h3 {
