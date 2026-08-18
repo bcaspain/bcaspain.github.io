@@ -230,7 +230,7 @@
     player.id = 'dhaak-float-player';
     player.innerHTML =
       '<button type="button" class="dhaak-float-btn" aria-label="Play dhaak drums" aria-pressed="false" title="Play Dhaak (drag to move)">' +
-        '<img src="' + asset('assets/images/dhaak-icon.png') + '" alt="" class="dhaak-float-icon" aria-hidden="true">' +
+        '<img src="' + asset('assets/images/dhaak-icon.webp') + '" alt="" class="dhaak-float-icon" aria-hidden="true">' +
         '<span class="dhaak-float-label">Play Dhaak</span>' +
       '</button>' +
       '<p class="dhaak-float-hint">Drag to move · Tap to play</p>' +
