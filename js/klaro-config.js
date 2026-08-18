@@ -20,7 +20,16 @@
     hideLearnMore: false,
     noticeAsModal: false,
     disablePoweredBy: true,
-    lang: document.documentElement.lang && document.documentElement.lang.indexOf('es') === 0 ? 'es' : 'en',
+    lang: (function () {
+      if (window.i18n && typeof window.i18n.getLang === 'function') {
+        var current = window.i18n.getLang();
+        return (current === 'es' || current === 'ca') ? current : 'en';
+      }
+      var htmlLang = document.documentElement.lang || '';
+      if (htmlLang.indexOf('ca') === 0) return 'ca';
+      if (htmlLang.indexOf('es') === 0) return 'es';
+      return 'en';
+    })(),
     translations: {
       en: {
         consentModal: {
@@ -86,6 +95,39 @@
         },
         'google-analytics': {
           description: 'Google Analytics recopila datos anonimizados sobre el uso del sitio.'
+        },
+        poweredBy: ''
+      },
+      ca: {
+        consentModal: {
+          title: 'Preferències de privacitat',
+          description:
+            "Utilitzem cookies i tecnologies similars per entendre com utilitzes el lloc i per millorar-lo. Pots acceptar-les totes, rebutjar-les totes o triar quins serveis permetre. Consulta la nostra <a href=\"/html/cookies.html\">Política de Galetes</a> i la nostra <a href=\"/html/privacidad.html\">Política de Privacitat</a> per a més informació."
+        },
+        consentNotice: {
+          title: 'La teva privacitat importa',
+          description:
+            "Utilitzem galetes per entendre com s'utilitza aquest lloc. <br/>Pots acceptar, rebutjar o configurar en qualsevol moment. Consulta la nostra <a href=\"/html/cookies.html\">Política de Galetes</a>.",
+          learnMore: 'Configurar'
+        },
+        ok: 'Acceptar-ho tot',
+        decline: 'Rebutjar-ho tot',
+        save: 'Desar',
+        close: 'Tancar',
+        acceptAll: 'Acceptar-ho tot',
+        acceptSelected: 'Desar selecció',
+        service: {
+          disableAll: { title: 'Rebutjar-ho tot', description: 'Rebutjar tots els serveis no essencials' },
+          optOut: { title: '(opt-out)', description: 'Es carrega per defecte llevat que ho desactivis' },
+          required: { title: '(sempre necessari)', description: 'Aquest servei és necessari perquè el lloc funcioni' },
+          purposes: 'Finalitats',
+          purpose: 'Finalitat'
+        },
+        purposes: {
+          analytics: { title: 'Analítica', description: "Estadístiques d'ús anonimitzades per millorar el lloc." }
+        },
+        'google-analytics': {
+          description: "Google Analytics recull dades anonimitzades sobre l'ús del lloc."
         },
         poweredBy: ''
       }

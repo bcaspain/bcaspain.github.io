@@ -1,3 +1,7 @@
+function t(key, vars) {
+    return window.i18n ? window.i18n.t(key, vars) : key;
+}
+
 // DOM Elements
 let navbar = null;
 let navMenu = null;
@@ -186,8 +190,9 @@ function updateLastModified() {
             hour12: true,
             timeZoneName: 'short'
         };
-        const formattedDate = lastModified.toLocaleString('en-US', options);
-        lastUpdatedElement.textContent = `Last updated: ${formattedDate}`;
+        const locale = window.i18n ? window.i18n.getLang() : 'en';
+        const formattedDate = lastModified.toLocaleString(locale, options);
+        lastUpdatedElement.textContent = t('home.dp.lastUpdated', { date: formattedDate });
     }
 }
 
@@ -207,7 +212,7 @@ function updateCountdown() {
         const countdownMessage = `
             <div class="countdown-message">
                 <i class="fas fa-star"></i>
-                <span>Durga Puja 2026 has begun!</span>
+                <span>${t('home.dp.begun')}</span>
                 <i class="fas fa-star"></i>
             </div>
         `;
@@ -242,7 +247,8 @@ function updateCountdown() {
         Object.entries(labels).forEach(([unit, label]) => {
             if (label) {
                 const value = { days, hours, minutes, seconds }[unit];
-                label.textContent = value === 1 ? unit.slice(0, -1) : unit;
+                const singularKey = unit.slice(0, -1); // 'days' -> 'day', etc.
+                label.textContent = value === 1 ? t('home.dp.' + singularKey) : t('home.dp.' + unit);
             }
         });
     });
@@ -656,28 +662,28 @@ function handleContactForm(e) {
     
     // Validate form data
     if (!data.contactName || !data.contactEmail || !data.contactSubject || !data.contactMessage) {
-        showNotification('Please fill in all required fields.', 'error');
+        showNotification(t('validation.contact.fillRequired'), 'error');
         return;
     }
 
     // GDPR: explicit consent required before processing personal data (RGPD Art. 6.1.a)
     const privacyCheckbox = document.getElementById('contactPrivacy');
     if (privacyCheckbox && !privacyCheckbox.checked) {
-        showNotification('Please accept the Privacy Policy to continue.', 'error');
+        showNotification(t('validation.contact.privacyRequired'), 'error');
         return;
     }
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.contactEmail)) {
-        showNotification('Please enter a valid email address.', 'error');
+        showNotification(t('validation.contact.invalidEmail'), 'error');
         return;
     }
-    
+
     // Show loading state
     const submitBtn = e.target.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + t('validation.contact.sending');
     submitBtn.disabled = true;
 
     // Prepare data for Google Sheets
@@ -705,12 +711,12 @@ function handleContactForm(e) {
         body: JSON.stringify(sheetData)
     })
     .then(response => {
-        showNotification('Message sent successfully! We will get back to you soon.', 'success');
+        showNotification(t('validation.contact.sentSuccess'), 'success');
         e.target.reset();
     })
     .catch(error => {
         console.error('Error sending to Google Sheets:', error);
-        showNotification('Failed to send message. Please try again or contact us directly.', 'error');
+        showNotification(t('validation.contact.sendFailed'), 'error');
     })
     .finally(() => {
         submitBtn.innerHTML = originalText;
@@ -731,7 +737,7 @@ function handleNewsletterForm(e) {
 
     // Simulate subscription
     setTimeout(() => {
-        showNotification('Successfully subscribed to our newsletter!', 'success');
+        showNotification(t('validation.contact.newsletterSuccess'), 'success');
         e.target.reset();
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
@@ -1258,7 +1264,7 @@ function openVideoModal(videoSrc, title) {
         videoModal.setAttribute('aria-hidden', 'false');
         videoModal._openerEl = document.activeElement;
 
-        videoModalTitle.textContent = title || 'Video';
+        videoModalTitle.textContent = title || t('validation.video.defaultTitle');
         
         // iOS Safari Video Fixes
         videoModalPlayer.setAttribute('webkit-playsinline', 'true');
@@ -1281,7 +1287,7 @@ function openVideoModal(videoSrc, title) {
             // Validate video source before setting
             if (!videoSrc || videoSrc === '') {
                 console.error('Invalid video source:', videoSrc);
-                showNotification('Video source not found. Please try again.', 'error');
+                showNotification(t('validation.video.sourceNotFound'), 'error');
                 return;
             }
             
@@ -1382,7 +1388,7 @@ function openVideoModal(videoSrc, title) {
             
             // Only show error for actual video loading failures, not autoplay restrictions
             if (videoModalPlayer.error && videoModalPlayer.error.code !== 4) { // 4 = MEDIA_ERR_SRC_NOT_SUPPORTED
-                const errorMessage = 'Video playback failed. Please check your connection and try again.';
+                const errorMessage = t('validation.video.playbackFailedRetryConnection');
                 showNotification(errorMessage, 'error');
                 
                 // Close modal after error (but give user time to see the message)
@@ -1415,7 +1421,7 @@ function openVideoModal(videoSrc, title) {
                 console.log('Video autoplay failed (normal on iOS):', error);
                 // Show play button or instruction for iOS
                 const playButton = document.createElement('div');
-                playButton.innerHTML = '<i class="fas fa-play"></i> Tap to Play';
+                playButton.innerHTML = '<i class="fas fa-play"></i> ' + t('validation.video.tapToPlay');
                 playButton.style.cssText = `
                     position: absolute;
                     top: 50%;
@@ -1444,7 +1450,7 @@ function openVideoModal(videoSrc, title) {
                         console.error('Manual play failed:', playError);
                         // Only show error for actual playback failures, not autoplay restrictions
                         if (playError.name !== 'NotAllowedError') {
-                            showNotification('Video playback failed. Please try again.', 'error');
+                            showNotification(t('validation.video.playbackFailed'), 'error');
                         }
                     });
                     this.remove();
@@ -1658,7 +1664,7 @@ function initVideoModal() {
         // Make feature items focusable
         item.setAttribute('tabindex', '0');
         item.setAttribute('role', 'button');
-        item.setAttribute('aria-label', `Play video: ${item.getAttribute('data-title')}`);
+        item.setAttribute('aria-label', t('validation.video.playAria', { title: item.getAttribute('data-title') }));
     });
     
     // Close modal when clicking close button

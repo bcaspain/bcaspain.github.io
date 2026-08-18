@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-i18n-title="rabindraRegister.pageTitle">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <script src="../js/theme-pref.js"></script>
+    <script src="../js/i18n/strings.en.js"></script>
+    <script src="../js/i18n/strings.es.js"></script>
+    <script src="../js/i18n/strings.ca.js"></script>
+    <script src="../js/i18n.js"></script>
     <title>Register — Rabindra Jayanti Barcelona | BCA Spain</title>
-    <meta name="description" content="Register your attendance for Rabindra Jayanti in Barcelona — an evening of music, dance, and poetry honouring Rabindranath Tagore.">
+    <meta name="description" content="Register your attendance for Rabindra Jayanti in Barcelona — an evening of music, dance, and poetry honouring Rabindranath Tagore." data-i18n-attr="content:rabindraRegister.metaDescription">
     <meta name="author" content="Bengali Cultural Association Barcelona">
     <link rel="canonical" href="https://bcaspain.org/html/rabindra-jayanti-register.html">
 
@@ -71,8 +75,8 @@
         <section id="rabindra-register" class="page-section page-section-warm">
             <div class="container">
                 <div class="section-header mb-md">
-                    <h1 class="section-title mb-sm">Rabindra Jayanti Registration</h1>
-                    <p class="section-subtitle mb-0">
+                    <h1 class="section-title mb-sm" data-i18n="rabindraRegister.title">Rabindra Jayanti Registration</h1>
+                    <p class="section-subtitle mb-0" data-i18n-html="rabindraRegister.subtitleHtml">
                         This evening took place on <strong>Saturday, 9 May 2026</strong> at <strong>Teatro Calabria</strong>. Registration is closed.
                     </p>
                 </div>
@@ -83,10 +87,11 @@
                             <img
                                 src="../events/rabindra-jayanti.webp"
                                 alt="Rabindra Jayanti poster"
+                                data-i18n-attr="alt:home.rabindraRecap.posterAlt"
                                 loading="lazy"
                             />
                         </button>
-                        <div class="poster-caption">
+                        <div class="poster-caption" data-i18n-html="rabindraRegister.posterCaptionHtml">
                             Click the poster to view full size. You can also <a href="rabindra-jayanti.html" class="link-underline">view event details</a>.
                         </div>
                     </div>
@@ -94,23 +99,23 @@
                     <div class="paper-card paper-card-lg">
                         <div id="rj-sold-out" class="sold-out" style="display:block">
                             <div class="sold-out-emoji">🎟️</div>
-                            <div class="sold-out-title">This event has ended</div>
-                            <p>
+                            <div class="sold-out-title" data-i18n="rabindraRegister.soldOutTitle">This event has ended</div>
+                            <p data-i18n-html="rabindraRegister.soldOutTextHtml">
                                 Rabindra Jayanti 2026 took place on <strong>9 May</strong>. Thank you to everyone who came.
                             </p>
                             <a href="rabindra-jayanti.html" class="btn btn-secondary btn-pill">
-                                <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to event
+                                <i class="fas fa-arrow-left" aria-hidden="true"></i> <span data-i18n="rabindraRegister.backToEvent">Back to event</span>
                             </a>
                         </div>
 
                         <form id="rabindraRegistrationForm" class="form-stack" hidden>
                             <div class="form-row">
                                 <div>
-                                    <label for="rj-name" class="form-label">Name *</label>
+                                    <label for="rj-name" class="form-label" data-i18n="rabindraRegister.nameLabel">Name *</label>
                                     <input id="rj-name" name="name" type="text" required minlength="2" maxlength="100" class="form-control">
                                 </div>
                                 <div>
-                                    <label for="rj-attendees" class="form-label">Number of attendees *</label>
+                                    <label for="rj-attendees" class="form-label" data-i18n="rabindraRegister.attendeesLabel">Number of attendees *</label>
                                     <select id="rj-attendees" name="attendees" required class="form-control form-control-select">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -122,17 +127,17 @@
 
                             <div class="form-row">
                                 <div>
-                                    <label for="rj-email" class="form-label">Email *</label>
+                                    <label for="rj-email" class="form-label" data-i18n="rabindraRegister.emailLabel">Email *</label>
                                     <input id="rj-email" name="email" type="email" required maxlength="254" class="form-control">
                                 </div>
                                 <div>
-                                    <label for="rj-email-confirm" class="form-label">Re-enter Email *</label>
+                                    <label for="rj-email-confirm" class="form-label" data-i18n="rabindraRegister.emailConfirmLabel">Re-enter Email *</label>
                                     <input id="rj-email-confirm" name="emailConfirm" type="email" required maxlength="254" class="form-control">
                                 </div>
                             </div>
 
                             <div>
-                                <label for="rj-contact" class="form-label">Contact / WhatsApp *</label>
+                                <label for="rj-contact" class="form-label" data-i18n="rabindraRegister.contactLabel">Contact / WhatsApp *</label>
                                 <div class="form-phone-row">
                                     <select id="rj-country-code" name="countryCode" required class="form-control-code">
                                         <option value="+34">+34</option>
@@ -148,21 +153,23 @@
                                     </select>
                                     <input id="rj-contact" name="contact" type="tel" required pattern="[0-9]{9,15}" inputmode="numeric" minlength="9" maxlength="15"
                                         placeholder="Enter number without country code"
+                                        data-i18n-attr="placeholder:rabindraRegister.phonePlaceholder"
                                         class="form-control-grow"
                                         onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                 </div>
                             </div>
 
                             <div>
-                                <label for="rj-coupon" class="form-label">Coupon code (optional)</label>
+                                <label for="rj-coupon" class="form-label" data-i18n="rabindraRegister.couponLabel">Coupon code (optional)</label>
                                 <input id="rj-coupon" name="coupon" type="text" maxlength="50" autocapitalize="characters" autocomplete="off"
                                     placeholder="Enter coupon code"
+                                    data-i18n-attr="placeholder:rabindraRegister.couponPlaceholder"
                                     class="form-control form-control-upper">
                             </div>
 
                             <label class="form-consent">
                                 <input id="rj-privacy" type="checkbox" required>
-                                <span>
+                                <span data-i18n-html="rabindraRegister.consentHtml">
                                     I consent to the processing of my details for event coordination. More info: <a href="privacidad.html" class="link-underline">Política de Privacidad</a>.
                                 </span>
                             </label>
@@ -173,26 +180,26 @@
 
                             <div class="form-actions">
                                 <button id="rj-submit" type="submit" class="btn btn-primary btn-pill">
-                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Registration
+                                    <i class="fas fa-paper-plane" aria-hidden="true"></i> <span data-i18n="rabindraRegister.submitBtn">Submit Registration</span>
                                 </button>
                                 <a class="btn btn-secondary btn-pill" href="rabindra-jayanti.html">
-                                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to event
+                                    <i class="fas fa-arrow-left" aria-hidden="true"></i> <span data-i18n="rabindraRegister.backToEvent">Back to event</span>
                                 </a>
                             </div>
 
-                            <div id="rj-success" class="form-alert is-success">
+                            <div id="rj-success" class="form-alert is-success" data-i18n="rabindraRegister.successMsg">
                                 Registration submitted. Thank you!
                             </div>
                         </form>
                     </div>
                 </div>
 
-                <div id="rabindraRegisterPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" class="poster-modal">
-                    <button type="button" id="rabindraRegisterPosterClose" class="poster-modal-close" aria-label="Close poster">
+                <div id="rabindraRegisterPosterModal" role="dialog" aria-modal="true" aria-label="Rabindra Jayanti poster" data-i18n-attr="aria-label:home.rabindraRecap.posterAlt" class="poster-modal">
+                    <button type="button" id="rabindraRegisterPosterClose" class="poster-modal-close" aria-label="Close poster" data-i18n-attr="aria-label:home.rabindraRecap.closePoster">
                         <i class="fas fa-times" aria-hidden="true"></i>
                     </button>
                     <div class="poster-modal-body">
-                        <img src="../events/rabindra-jayanti.webp" alt="Rabindra Jayanti poster full size" />
+                        <img src="../events/rabindra-jayanti.webp" alt="Rabindra Jayanti poster full size" data-i18n-attr="alt:home.rabindraRecap.posterAltFull" />
                     </div>
                 </div>
             </div>
@@ -203,21 +210,25 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="../BCA-logo.webp" alt="BCA Spain Logo" />
-                    <span>Bengali Cultural Association Barcelona (A registered non-profit organization in Spain)</span>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--facebook" aria-label="Facebook" data-i18n-attr="aria-label:common.nav.facebook" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/spain_bca/" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--instagram" aria-label="Instagram" data-i18n-attr="aria-label:common.nav.instagram" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                 </div>
-                <p>
+                <div class="footer-logo">
+                    <img src="../BCA-logo.webp" alt="BCA Spain Logo" data-i18n-attr="alt:common.footer.logoAlt" />
+                    <span data-i18n="common.footer.orgTagline">Bengali Cultural Association Barcelona (A registered non-profit organization in Spain)</span>
+                </div>
+                <p data-i18n="common.footer.description">
                     Preserving and promoting Bengali culture in Barcelona through community events and traditional celebrations.
                 </p>
                 <div class="footer-bottom">
                     <p class="footer-legal">
-                        <a href="aviso-legal.html" class="link-underline">Aviso Legal</a> ·
-                        <a href="privacidad.html" class="link-underline">Política de Privacidad</a> ·
-                        <a href="cookies.html" class="link-underline">Política de Cookies</a>
+                        <a href="aviso-legal.html" class="link-underline" data-i18n="common.footer.avisoLegal">Aviso Legal</a> ·
+                        <a href="privacidad.html" class="link-underline" data-i18n="common.footer.privacidad">Política de Privacidad</a> ·
+                        <a href="cookies.html" class="link-underline" data-i18n="common.footer.cookies">Política de Cookies</a>
                     </p>
                     <p>
-                        &copy; 2026 Bengali Cultural Association Barcelona (A registered non-profit organization in Spain). All rights reserved.
+                        &copy; 2026 Bengali Cultural Association Barcelona <span data-i18n="common.footer.nonprofitNote">(A registered non-profit organization in Spain)</span>. <span data-i18n="common.footer.rights">All rights reserved.</span>
                     </p>
                 </div>
             </div>
@@ -225,7 +236,7 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top" data-i18n-attr="aria-label:common.backToTop;title:common.backToTop">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 

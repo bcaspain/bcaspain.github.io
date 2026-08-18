@@ -5,6 +5,10 @@
   const STORAGE_KEY = 'bca-dhaak-position';
   const DRAG_THRESHOLD = 8;
 
+  function t(key, vars) {
+    return window.i18n ? window.i18n.t(key, vars) : key;
+  }
+
   function siteBase() {
     const parts = window.location.pathname.split('/').filter(Boolean);
     if (parts.length && /\.html?$/i.test(parts[parts.length - 1])) {
@@ -188,9 +192,9 @@
       player.classList.toggle('is-playing', playing);
       btn.classList.toggle('is-playing', playing);
       btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-      btn.setAttribute('aria-label', playing ? 'Stop dhaak drums' : 'Play dhaak drums');
-      btn.setAttribute('title', playing ? 'Stop Dhaak (drag to move)' : 'Play Dhaak (drag to move)');
-      if (label) label.textContent = playing ? 'Stop Dhaak' : 'Play Dhaak';
+      btn.setAttribute('aria-label', playing ? t('validation.dhaakPlayer.stopAria') : t('validation.dhaakPlayer.playAria'));
+      btn.setAttribute('title', playing ? t('validation.dhaakPlayer.stopTitle') : t('validation.dhaakPlayer.playTitle'));
+      if (label) label.textContent = playing ? t('validation.dhaakPlayer.stopLabel') : t('validation.dhaakPlayer.playLabel');
     }
 
     btn.addEventListener('click', function () {
@@ -229,11 +233,11 @@
     player.className = 'dhaak-float';
     player.id = 'dhaak-float-player';
     player.innerHTML =
-      '<button type="button" class="dhaak-float-btn" aria-label="Play dhaak drums" aria-pressed="false" title="Play Dhaak (drag to move)">' +
+      '<button type="button" class="dhaak-float-btn" aria-label="' + t('validation.dhaakPlayer.playAria') + '" aria-pressed="false" title="' + t('validation.dhaakPlayer.playTitle') + '">' +
         '<img src="' + asset('assets/images/dhaak-icon.webp') + '" alt="" class="dhaak-float-icon" aria-hidden="true">' +
-        '<span class="dhaak-float-label">Play Dhaak</span>' +
+        '<span class="dhaak-float-label">' + t('validation.dhaakPlayer.playLabel') + '</span>' +
       '</button>' +
-      '<p class="dhaak-float-hint">Drag to move · Tap to play</p>' +
+      '<p class="dhaak-float-hint">' + t('validation.dhaakPlayer.hint') + '</p>' +
       '<audio class="dhaak-float-audio" preload="none" loop>' +
         '<source src="' + asset('assets/audio/dhaak.ogg') + '" type="audio/ogg">' +
       '</audio>';

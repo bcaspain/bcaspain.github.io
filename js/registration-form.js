@@ -22,7 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const countryCode = document.getElementById('country-code');
     const successMessage = document.getElementById('successMessage');
     const nameField = document.getElementById('name');
-    
+
+    function t(key, vars) {
+        return window.i18n ? window.i18n.t(key, vars) : key;
+    }
+
     // Security: Form submission state with timestamp to prevent multiple submissions and rate limiting
     let isSubmitting = false;
     let lastSubmissionTime = 0;
@@ -307,21 +311,21 @@ document.addEventListener('DOMContentLoaded', function() {
             nameField.setCustomValidity('Name is required');
             nameField.style.borderColor = 'var(--error)';
             nameField.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            nameMsg.textContent = '❌ Name is required';
+            nameMsg.textContent = t('validation.registration.nameRequired');
             nameMsg.style.color = 'var(--error)';
             return false;
         } else if (nameValue.length < 2) {
             nameField.setCustomValidity('Name must be at least 2 characters long');
             nameField.style.borderColor = 'var(--error)';
             nameField.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            nameMsg.textContent = '❌ Name must be at least 2 characters long';
+            nameMsg.textContent = t('validation.registration.nameTooShort');
             nameMsg.style.color = 'var(--error)';
             return false;
         } else {
             nameField.setCustomValidity('');
             nameField.style.borderColor = 'var(--green)';
             nameField.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
-            nameMsg.textContent = '✅ Valid name';
+            nameMsg.textContent = t('validation.registration.nameValid');
             nameMsg.style.color = 'var(--green)';
             return true;
         }
@@ -394,46 +398,47 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Country-specific validation rules
         const countryRules = {
-            '+34': { min: 9, max: 9, name: 'Spain' },      // Spain
-            '+91': { min: 10, max: 10, name: 'India' },    // India
-            '+44': { min: 10, max: 11, name: 'UK' },       // UK
-            '+1': { min: 10, max: 10, name: 'US/Canada' }, // US/Canada
-            '+33': { min: 9, max: 10, name: 'France' },    // France
-            '+49': { min: 10, max: 12, name: 'Germany' },  // Germany
-            '+39': { min: 9, max: 10, name: 'Italy' },     // Italy
-            '+31': { min: 9, max: 9, name: 'Netherlands' }, // Netherlands
-            '+32': { min: 8, max: 9, name: 'Belgium' },    // Belgium
-            '+351': { min: 9, max: 9, name: 'Portugal' }   // Portugal
+            '+34': { min: 9, max: 9, name: 'spain' },      // Spain
+            '+91': { min: 10, max: 10, name: 'india' },    // India
+            '+44': { min: 10, max: 11, name: 'uk' },       // UK
+            '+1': { min: 10, max: 10, name: 'usCanada' },  // US/Canada
+            '+33': { min: 9, max: 10, name: 'france' },    // France
+            '+49': { min: 10, max: 12, name: 'germany' },  // Germany
+            '+39': { min: 9, max: 10, name: 'italy' },     // Italy
+            '+31': { min: 9, max: 9, name: 'netherlands' }, // Netherlands
+            '+32': { min: 8, max: 9, name: 'belgium' },    // Belgium
+            '+351': { min: 9, max: 9, name: 'portugal' }   // Portugal
         };
-        
-        const rule = countryRules[selectedCountryCode] || { min: 9, max: 15, name: 'International' };
-        
+
+        const rule = countryRules[selectedCountryCode] || { min: 9, max: 15, name: 'international' };
+        const countryName = t('validation.countries.' + rule.name);
+
         if (!cleanPhone) {
             contact.setCustomValidity('Phone number is required');
             contact.style.borderColor = 'var(--error)';
             contact.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            phoneMsg.textContent = '❌ Phone number is required';
+            phoneMsg.textContent = t('validation.registration.phoneRequired');
             phoneMsg.style.color = 'var(--error)';
             return false;
         } else if (cleanPhone.length < rule.min) {
-            contact.setCustomValidity(`Phone number must be at least ${rule.min} digits for ${rule.name}`);
+            contact.setCustomValidity(`Phone number must be at least ${rule.min} digits for ${countryName}`);
             contact.style.borderColor = 'var(--error)';
             contact.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            phoneMsg.textContent = `❌ Must be at least ${rule.min} digits for ${rule.name}`;
+            phoneMsg.textContent = t('validation.registration.phoneTooShort', { min: rule.min, country: countryName });
             phoneMsg.style.color = 'var(--error)';
             return false;
         } else if (cleanPhone.length > rule.max) {
-            contact.setCustomValidity(`Phone number must be at most ${rule.max} digits for ${rule.name}`);
+            contact.setCustomValidity(`Phone number must be at most ${rule.max} digits for ${countryName}`);
             contact.style.borderColor = 'var(--error)';
             contact.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            phoneMsg.textContent = `❌ Must be at most ${rule.max} digits for ${rule.name}`;
+            phoneMsg.textContent = t('validation.registration.phoneTooLong', { max: rule.max, country: countryName });
             phoneMsg.style.color = 'var(--error)';
             return false;
         } else {
             contact.setCustomValidity('');
             contact.style.borderColor = 'var(--green)';
             contact.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
-            phoneMsg.textContent = `✅ Valid ${rule.name} phone number`;
+            phoneMsg.textContent = t('validation.registration.phoneValid', { country: countryName });
             phoneMsg.style.color = 'var(--green)';
             return true;
         }
@@ -557,8 +562,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (ticketPrice > 0) {
             // Tickets selected - enable optional donation
-            donationInput.placeholder = 'Optional donation amount';
-            donationInput.title = 'Optional: Add any donation amount you wish to contribute (€5 increments with buttons)';
+            donationInput.placeholder = t('validation.registration.donationPlaceholderActive');
+            donationInput.title = t('validation.registration.donationTitleActive');
             donationInput.min = 0; // No minimum required
             donationInput.disabled = false;
             donationInput.style.backgroundColor = SURFACE_LOWEST;
@@ -578,8 +583,8 @@ document.addEventListener('DOMContentLoaded', function() {
             plusBtn.style.cursor = 'pointer';
         } else {
             // No tickets selected - disable donation
-            donationInput.placeholder = 'Please select tickets first';
-            donationInput.title = 'Ticket selection is mandatory. Please select tickets first.';
+            donationInput.placeholder = t('validation.registration.donationPlaceholderDisabled');
+            donationInput.title = t('validation.registration.donationTitleDisabled');
             donationInput.value = ''; // Clear value when no tickets
             donationInput.disabled = true;
             donationInput.style.backgroundColor = SURFACE;
@@ -867,7 +872,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (customDonationAmount.value && amount <= 0) {
             customDonationAmount.style.borderColor = 'var(--error)';
             customDonationAmount.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            donationMsg.textContent = '❌ Donation amount must be greater than €0';
+            donationMsg.textContent = t('validation.registration.donationTooLow');
             donationMsg.style.color = 'var(--error)';
             if (warningElement) {
                 warningElement.style.display = 'block';
@@ -876,14 +881,14 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (amount > 10000) {
             customDonationAmount.style.borderColor = 'var(--error)';
             customDonationAmount.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            donationMsg.textContent = '❌ Donation amount seems too high. Please contact us for large donations.';
+            donationMsg.textContent = t('validation.registration.donationTooHigh');
             donationMsg.style.color = 'var(--error)';
             return false;
         } else if (amount > 0) {
             // Valid donation amount
             customDonationAmount.style.borderColor = 'var(--green)';
             customDonationAmount.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
-            donationMsg.textContent = `✅ Thank you for your €${amount.toFixed(2)} donation!`;
+            donationMsg.textContent = t('validation.registration.donationThanks', { amount: amount.toFixed(2) });
             donationMsg.style.color = 'var(--green)';
             if (warningElement) {
                 warningElement.style.display = 'none';
@@ -1040,31 +1045,31 @@ document.addEventListener('DOMContentLoaded', function() {
             email.setCustomValidity('Email is required');
             email.style.borderColor = 'var(--error)';
             email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            emailMsg.textContent = '❌ Email is required';
+            emailMsg.textContent = t('validation.registration.emailRequired');
             emailMsg.style.color = 'var(--error)';
         } else if (emailValue.length > 254) {
             email.setCustomValidity('Email address is too long');
             email.style.borderColor = 'var(--error)';
             email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            emailMsg.textContent = '❌ Email address is too long';
+            emailMsg.textContent = t('validation.registration.emailTooLong');
             emailMsg.style.color = 'var(--error)';
         } else if (!emailRegex.test(emailValue)) {
                 email.setCustomValidity('Please enter a valid email address');
                 email.style.borderColor = 'var(--error)';
                 email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-                emailMsg.textContent = '❌ Please enter a valid email address';
+                emailMsg.textContent = t('validation.registration.emailInvalid');
                 emailMsg.style.color = 'var(--error)';
         } else if (emailValue.includes('..') || emailValue.startsWith('.') || emailValue.endsWith('.')) {
             email.setCustomValidity('Email contains invalid characters');
             email.style.borderColor = 'var(--error)';
             email.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            emailMsg.textContent = '❌ Email contains invalid characters';
+            emailMsg.textContent = t('validation.registration.emailInvalidChars');
                 emailMsg.style.color = 'var(--error)';
             } else {
                 email.setCustomValidity('');
                 email.style.borderColor = 'var(--green)';
                 email.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
-                emailMsg.textContent = '✅ Valid email format';
+                emailMsg.textContent = t('validation.registration.emailValid');
                 emailMsg.style.color = 'var(--green)';
             emailValid = true;
         }
@@ -1075,32 +1080,32 @@ document.addEventListener('DOMContentLoaded', function() {
             emailConfirm.setCustomValidity('Please confirm your email');
             emailConfirm.style.borderColor = 'var(--error)';
             emailConfirm.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-            emailConfirmMsg.textContent = '❌ Please confirm your email';
+            emailConfirmMsg.textContent = t('validation.registration.emailConfirmRequired');
             emailConfirmMsg.style.color = 'var(--error)';
         } else if (!emailRegex.test(emailConfirmValue)) {
                 emailConfirm.setCustomValidity('Please enter a valid email address');
                 emailConfirm.style.borderColor = 'var(--error)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-                emailConfirmMsg.textContent = '❌ Please enter a valid email address';
+                emailConfirmMsg.textContent = t('validation.registration.emailInvalid');
                 emailConfirmMsg.style.color = 'var(--error)';
             } else if (emailValue && emailValue !== emailConfirmValue) {
                 emailConfirm.setCustomValidity('Emails do not match');
                 emailConfirm.style.borderColor = 'var(--error)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(255, 68, 68, 0.1)';
-                emailConfirmMsg.textContent = '❌ Emails do not match';
+                emailConfirmMsg.textContent = t('validation.registration.emailsMismatch');
                 emailConfirmMsg.style.color = 'var(--error)';
         } else if (emailValue && emailValue === emailConfirmValue && emailValid) {
                 emailConfirm.setCustomValidity('');
                 emailConfirm.style.borderColor = 'var(--green)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
-                emailConfirmMsg.textContent = '✅ Emails match perfectly!';
+                emailConfirmMsg.textContent = t('validation.registration.emailsMatch');
                 emailConfirmMsg.style.color = 'var(--green)';
             emailConfirmValid = true;
             } else {
                 emailConfirm.setCustomValidity('');
                 emailConfirm.style.borderColor = 'var(--green)';
                 emailConfirm.style.boxShadow = '0 0 0 3px rgba(34, 139, 34, 0.1)';
-                emailConfirmMsg.textContent = '✅ Valid email format';
+                emailConfirmMsg.textContent = t('validation.registration.emailValid');
                 emailConfirmMsg.style.color = 'var(--green)';
             emailConfirmValid = true;
         }
@@ -1124,57 +1129,57 @@ document.addEventListener('DOMContentLoaded', function() {
         // Security: Rate limiting check
         const now = Date.now();
         if (now - lastSubmissionTime < SUBMISSION_COOLDOWN) {
-            errors.push('Please wait before submitting again (rate limit)');
+            errors.push(t('validation.registration.rateLimited'));
             logSecurityEvent('RATE_LIMIT_EXCEEDED', null);
             return errors;
         }
         
         // Security: Basic bot detection
         if (detectBot()) {
-            errors.push('Automated submission detected');
+            errors.push(t('validation.registration.botDetected'));
             logSecurityEvent('BOT_DETECTED', null);
             return errors;
         }
         
         // Security: Form integrity check
         if (!verifyFormIntegrity()) {
-            errors.push('Form integrity check failed');
+            errors.push(t('validation.registration.integrityFailed'));
             logSecurityEvent('INTEGRITY_FAILURE', null);
             return errors;
         }
         
         // Validate name (final validation with security)
         if (!validateNameFinal()) {
-            errors.push('Please enter a valid name');
+            errors.push(t('validation.registration.invalidName'));
         }
         
         // Validate phone
         if (!validatePhone()) {
-            errors.push('Please enter a valid phone number');
+            errors.push(t('validation.registration.invalidPhone'));
         }
         
         // Validate emails
         if (!validateEmails()) {
-            errors.push('Please enter valid matching email addresses');
+            errors.push(t('validation.registration.invalidEmails'));
         }
 
         // GDPR: explicit consent required before processing personal data (RGPD Art. 6.1.a)
         const privacyCheckbox = document.getElementById('registrationPrivacy');
         if (privacyCheckbox && !privacyCheckbox.checked) {
-            errors.push('You must accept the Privacy Policy to continue.');
+            errors.push(t('validation.registration.privacyRequired'));
         }
         
         // Validate custom donation if there's a value entered
         const customDonationInput = document.getElementById('custom-donation-amount');
         const customDonationValue = parseFloat(customDonationInput.value) || 0;
         if (customDonationInput.value && !validateCustomDonation()) {
-            errors.push('Please enter a valid donation amount');
+            errors.push(t('validation.registration.invalidDonation'));
         }
         
         // Security: Get form data with validation and sanitization
         const formData = getSecureFormData();
         if (!formData) {
-            errors.push('Form data validation failed');
+            errors.push(t('validation.registration.formDataFailed'));
             return errors;
         }
         
@@ -1183,33 +1188,33 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Tickets are now mandatory - must select at least one ticket type
         if (totalPeople === 0) {
-            errors.push('Please select at least one ticket type. Ticket selection is mandatory.');
+            errors.push(t('validation.registration.noTicketSelected'));
         }
         
         // Ticket price must be greater than 0
         if (ticketPrice === 0) {
-            errors.push('Please select valid ticket types with proper counts.');
+            errors.push(t('validation.registration.invalidTicketTypes'));
         }
         
         // Total amount should never be 0 if we reach this point
         if (totalAmount === 0) {
-            errors.push('Total amount cannot be €0. Please select valid ticket types.');
+            errors.push(t('validation.registration.totalZero'));
         }
         
         // Validate that selected checkboxes have proper counts
         const selectedContributions = document.querySelectorAll('input[name="contributionTypes"]:checked');
         for (let checkbox of selectedContributions) {
             if (checkbox.id === 'adult' && adultCount === 0) {
-                errors.push('Please enter a count for adults (above 12 years)');
+                errors.push(t('validation.registration.countAdult'));
             }
             if (checkbox.id === 'children' && childAboveCount === 0) {
-                errors.push('Please enter a count for children (5-12 years)');
+                errors.push(t('validation.registration.countChildren'));
             }
             if (checkbox.id === 'children-under-5' && childBelowCount === 0) {
-                errors.push('Please enter a count for children (up to 5 years)');
+                errors.push(t('validation.registration.countUnder5'));
             }
             if (checkbox.id === 'day-pass' && dayPassCount === 0) {
-                errors.push('Please enter a count for day pass (guests)');
+                errors.push(t('validation.registration.countDayPass'));
             }
         }
         
@@ -1243,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         const errorTitle = document.createElement('h4');
-        errorTitle.textContent = '⚠️ Please fix the following errors:';
+        errorTitle.textContent = t('validation.registration.errorsHeading');
         errorTitle.style.margin = '0 0 0.5rem 0';
         errorDiv.appendChild(errorTitle);
         
@@ -1325,7 +1330,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset form state
             isSubmitting = false;
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Register Now';
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> ' + t('validation.registration.registerNowBtn');
             submitBtn.disabled = false;
             
             // Add visual highlight animation instead of scrolling
@@ -1367,7 +1372,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show loading state
     const submitBtn = document.getElementById('submitBtn');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + t('validation.registration.sendingBtn');
     submitBtn.disabled = true;
     
     // Show please wait message
@@ -1389,10 +1394,10 @@ document.addEventListener('DOMContentLoaded', function() {
     pleaseWaitMsg.innerHTML = `
         <div style="margin-bottom: 0.5rem;">
             <i class="fas fa-clock" style="font-size: 1.5rem; margin-right: 0.5rem;"></i>
-            Please wait while you are registering...
+            ${t('validation.registration.pleaseWaitTitle')}
         </div>
         <div style="font-size: 0.9rem; color: var(--on-surface-variant); font-weight: 400; margin-bottom: 1rem;">
-            This may take a few moments. Please do not refresh the page.
+            ${t('validation.registration.pleaseWaitSubtitle')}
         </div>
         <div style="width: 100%; height: 4px; background: color-mix(in srgb, var(--secondary) 20%, transparent); border-radius: 2px; overflow: hidden;">
             <div style="width: 100%; height: 100%; background: var(--red); border-radius: 2px; animation: loading 2s infinite;"></div>
@@ -1411,7 +1416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 pleaseWaitMsg.remove();
             }
             
-            showValidationErrors(['Security validation failed. Please refresh and try again.']);
+            showValidationErrors([t('validation.registration.securityFailed')]);
             isSubmitting = false;
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
@@ -1524,7 +1529,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.disabled = false;
                     
                     // Show error message to user
-                    alert('Registration failed. Please try again or contact support.');
+                    alert(t('validation.registration.submitFailedAlert'));
                 }
             });
         }
