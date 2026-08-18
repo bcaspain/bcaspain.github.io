@@ -508,6 +508,34 @@ a.btn:hover,
   color: var(--nav-text-hover) !important;
 }
 
+/* Compact icon-only nav items (Facebook/Instagram) — reuse .nav-link's
+   per-breakpoint color/hover treatment, just tighten the box to an icon. */
+.nav-social-link {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 !important;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.nav-social-link::after {
+  display: none;
+}
+
+@media (max-width: 1600px) {
+  .nav-menu > .nav-social-link {
+    display: inline-flex !important;
+    width: 3rem;
+    max-width: 3rem;
+    height: 3rem;
+    padding: 0 !important;
+    margin: 0.25rem auto;
+  }
+}
+
 .nav-toggle .bar {
   background: var(--nav-toggle-bar) !important;
 }
@@ -546,7 +574,7 @@ a.btn:hover,
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1600px) {
   .nav-menu {
     background: var(--nav-mobile-bg) !important;
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15) !important;
@@ -777,29 +805,6 @@ a.btn:hover,
 }
 .legal-page th { background: var(--surface-container-low); }
 
-.lang-toggle {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-end;
-  margin-bottom: 1.25rem;
-}
-.lang-toggle button {
-  padding: 6px 14px;
-  border: 1px solid var(--secondary);
-  background: var(--surface-container-lowest);
-  color: var(--secondary);
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  font-weight: 600;
-  font-family: var(--font-body);
-}
-.lang-toggle button.active {
-  background: var(--secondary);
-  color: var(--on-secondary);
-}
-.legal-page section[lang="en"] { display: none; }
-.legal-page.show-en section[lang="es"] { display: none; }
-.legal-page.show-en section[lang="en"] { display: block; }
 
 .manage-btn {
   margin-top: 1rem;
@@ -1118,6 +1123,22 @@ html.legal-embed body { background: var(--surface-container-lowest); }
 .social-icon--gmail,
 .social-icon-link--gmail,
 .social-row a[title*="email"] { background: #EA4335; }
+
+/* Compact social row for page footers (reuses .social-icon-link colors/hover) */
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-social .social-icon-link {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 1.05rem;
+}
 
 /* Follow us section chrome — centered copy + icons */
 .social-media-section .social-media-content,
@@ -1484,17 +1505,6 @@ body.landing .main-content {
   border-color: rgba(255, 193, 7, 0.35) !important;
 }
 
-[data-theme="dark"] .lang-toggle button {
-  background: var(--surface-container-lowest);
-  color: var(--secondary);
-  border-color: var(--secondary);
-}
-
-[data-theme="dark"] .lang-toggle button.active {
-  background: var(--secondary);
-  color: var(--on-secondary);
-}
-
 [data-theme="dark"] .legal-page th {
   background: var(--surface-container);
 }
@@ -1607,7 +1617,7 @@ body.landing .main-content {
 /* ========== navbar-mobile (merged) ========== */
 
 /* Mobile navbar — loaded after other styles via navbar.js */
-@media (max-width: 768px) {
+@media (max-width: 1600px) {
     .nav-menu {
         position: fixed;
         top: var(--navbar-height, 70px);

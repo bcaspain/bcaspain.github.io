@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-i18n-title="registration.pageTitle">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <script src="../js/theme-pref.js"></script>
+    <script src="../js/i18n/strings.en.js"></script>
+    <script src="../js/i18n/strings.es.js"></script>
+    <script src="../js/i18n/strings.ca.js"></script>
+    <script src="../js/i18n.js"></script>
     <title>Register for Durga Puja 2026 Barcelona | BCA Spain</title>
-    <meta name="description" content="Register for Durga Puja 2026 in Barcelona. The celebration is free; donations help the non-profit Bengali Cultural Association welcome everyone.">
+    <meta name="description" content="Register for Durga Puja 2026 in Barcelona. The celebration is free; donations help the non-profit Bengali Cultural Association welcome everyone." data-i18n-attr="content:registration.metaDescription">
     <meta name="author" content="Bengali Cultural Association Barcelona">
     <link rel="canonical" href="https://bcaspain.org/html/registration.html">
 
@@ -74,9 +78,9 @@
             <!-- Registration Information -->
             <div class="registration-info" >
                 <div class="info-header" >
-                    <h1 >Durga Pujo Registration 2026</h1>
-                    <p >Being a non-profit organization, we rely on donations to make this event joyous and more accessible to everyone.</p>
-                    <p >Walk-in is free. Parking is free. Donations are welcome. Tickets cover lunch and other activities.</p> 
+                    <h1 data-i18n="registration.info.title">Durga Pujo Registration 2026</h1>
+                    <p data-i18n="registration.info.nonprofit">Being a non-profit organization, we rely on donations to make this event joyous and more accessible to everyone.</p>
+                    <p data-i18n="registration.info.free">Walk-in is free. Parking is free. Donations are welcome. Tickets cover lunch and other activities.</p>
                 </div>
                 
                 <!-- <div class="info-content" >
@@ -91,13 +95,13 @@
                     <div style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary, #c45c26);">
                         <i class="fas fa-clock" aria-hidden="true"></i>
                     </div>
-                    <h3 style="margin-bottom: 0.75rem;">Registration opening soon</h3>
-                    <p style="max-width: 32rem; margin: 0 auto; line-height: 1.6;">
+                    <h3 style="margin-bottom: 0.75rem;" data-i18n="registration.disabled.title">Registration opening soon</h3>
+                    <p style="max-width: 32rem; margin: 0 auto; line-height: 1.6;" data-i18n="registration.disabled.text">
                         Online registration for Durga Puja 2026 is not open yet. We will enable registration soon — please check back here for updates.
                     </p>
                     <p style="margin-top: 1.25rem;">
                         <a href="contact.html" class="btn btn-secondary">
-                            <i class="fas fa-envelope"></i> Contact Us
+                            <i class="fas fa-envelope"></i> <span data-i18n="registration.disabled.contactUs">Contact Us</span>
                         </a>
                     </p>
                 </div>
@@ -128,20 +132,20 @@
 
                     <form id="registrationForm" class="registration-form" hidden>
                         <div class="form-header" >
-                                                          <h3 >Member Registration Form</h3>
-                            <p >Please fill in your details below</p>
+                                                          <h3 data-i18n="registration.form.header">Member Registration Form</h3>
+                            <p data-i18n="registration.form.subheader">Please fill in your details below</p>
                         </div>
                         
                         <div class="form-grid" >
                             <!-- Name Field -->
                             <div class="form-group">
-                                <label for="name" class="form-label">Name *</label>
-                                <input type="text" id="name" name="name" required minlength="2" maxlength="100" title="Name can only contain letters and spaces, minimum 2 characters"  class="form-control">
+                                <label for="name" class="form-label" data-i18n="registration.form.nameLabel">Name *</label>
+                                <input type="text" id="name" name="name" required minlength="2" maxlength="100" title="Name can only contain letters and spaces, minimum 2 characters" data-i18n-attr="title:registration.form.nameTitle" class="form-control">
                             </div>
                             
                             <!-- Contact Number Field -->
                             <div class="form-group">
-                                <label for="contact" class="form-label">Contact/Whatsapp Number *</label>
+                                <label for="contact" class="form-label" data-i18n="registration.form.contactLabel">Contact/Whatsapp Number *</label>
                                 <div class="form-phone-row">
                                     <select class="form-control form-control-select" id="country-code" name="country-code" required >
                                         <option value="+34">+34</option>
@@ -155,7 +159,7 @@
                                         <option value="+32">+32</option>
                                         <option value="+351">+351</option>
                                     </select>
-                                    <input type="tel" id="contact" name="contact" required pattern="[0-9]{9,15}" inputmode="numeric" minlength="9" maxlength="15" placeholder="Enter number without country code" title="Please enter a valid phone number (9-15 digits)" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                    <input type="tel" id="contact" name="contact" required pattern="[0-9]{9,15}" inputmode="numeric" minlength="9" maxlength="15" placeholder="Enter number without country code" data-i18n-attr="placeholder:registration.form.phonePlaceholder;title:registration.form.phoneTitle" title="Please enter a valid phone number (9-15 digits)" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                 </div>
                             </div>
                         </div>
@@ -163,14 +167,14 @@
                         <div class="form-grid" >
                             <!-- Email Field -->
                             <div class="form-group">
-                                <label for="email" class="form-label">Email *</label>
-                                <input type="email" id="email" name="email" required maxlength="254" title="Please enter a valid email address" class="form-control">
+                                <label for="email" class="form-label" data-i18n="registration.form.emailLabel">Email *</label>
+                                <input type="email" id="email" name="email" required maxlength="254" title="Please enter a valid email address" data-i18n-attr="title:registration.form.emailTitle" class="form-control">
                             </div>
                             
                             <!-- Re-enter Email Field -->
                             <div class="form-group">
-                                <label for="emailConfirm" class="form-label">Re-enter Email *</label>
-                                <input type="email" id="emailConfirm" name="emailConfirm" required maxlength="254" title="Please re-enter your email address to confirm" class="form-control">
+                                <label for="emailConfirm" class="form-label" data-i18n="registration.form.emailConfirmLabel">Re-enter Email *</label>
+                                <input type="email" id="emailConfirm" name="emailConfirm" required maxlength="254" title="Please re-enter your email address to confirm" data-i18n-attr="title:registration.form.emailConfirmTitle" class="form-control">
                             </div>
                         </div>
                         
@@ -180,17 +184,17 @@
                             <!-- BCA Members Section -->
                             <div >
                                 <!-- BCA Members Tag -->
-                                                                <div >
+                                                                <div data-i18n="registration.form.selectTickets">
                                     Select Tickets (Mandatory) *
                                 </div>
                                 
                                 <!-- Ticket Validity Note -->
                                 <div >
                                     <p >
-                                        <strong>Ticket Validity:</strong> All tickets (except day pass) are valid for all days of Puja.
+                                        <strong data-i18n="registration.form.ticketValidityLabel">Ticket Validity:</strong> <span data-i18n="registration.form.ticketValidityText">All tickets (except day pass) are valid for all days of Puja.</span>
                                     </p>
                                     <p >
-                                        <strong>Dates:</strong> Saturday, October 17 – Wednesday, October 21, 2026
+                                        <strong data-i18n="registration.form.datesLabel">Dates:</strong> <span data-i18n="registration.form.datesText">Saturday, October 17 – Wednesday, October 21, 2026</span>
                                     </p>
                                 </div>
                                 <!-- BCA Members Options -->
@@ -198,25 +202,25 @@
                                 <div class="contribution-option" >
                                     <div >
                                         <input type="checkbox" id="adult" name="contributionTypes" value="adult" data-price="65" data-category="bca-members" >
-                                        <label for="adult" >Regular (above 12 years)</label>
+                                        <label for="adult" data-i18n="registration.form.adultLabel">Regular (above 12 years)</label>
                                         <span >€65</span>
                                     </div>
-                                    <input type="number" id="adult-count" name="adult-count" min="0" value="0" placeholder="Count"  class="form-control">
+                                    <input type="number" id="adult-count" name="adult-count" min="0" value="0" placeholder="Count" data-i18n-attr="placeholder:registration.form.countPlaceholder" class="form-control">
                                 </div>
                                 
                                 <div class="contribution-option" >
                                     <div >
                                         <input type="checkbox" id="children" name="contributionTypes" value="children" data-price="35" data-category="bca-members" >
-                                        <label for="children" >Children (5-12 years)</label>
+                                        <label for="children" data-i18n="registration.form.childrenLabel">Children (5-12 years)</label>
                                         <span >€35</span>
                                     </div>
-                                    <input type="number" id="children-count" name="children-count" min="0" value="0" placeholder="Count"  class="form-control">
+                                    <input type="number" id="children-count" name="children-count" min="0" value="0" placeholder="Count" data-i18n-attr="placeholder:registration.form.countPlaceholder" class="form-control">
                                 </div>
                                 
                                 <div class="contribution-option" >
                                     <div >
                                         <input type="checkbox" id="students" name="contributionTypes" value="students" data-price="55" data-category="bca-members" >
-                                        <label for="students" >Students (Individuals)</label>
+                                        <label for="students" data-i18n="registration.form.studentsLabel">Students (Individuals)</label>
                                         <span >€55</span>
                                     </div>
                                 </div>
@@ -224,19 +228,19 @@
                                 <div class="contribution-option" >
                                     <div >
                                         <input type="checkbox" id="children-under-5" name="contributionTypes" value="children-under-5" data-price="0" data-category="bca-members" >
-                                        <label for="children-under-5" >Children (upto 5 years)</label>
-                                        <span >Free</span>
+                                        <label for="children-under-5" data-i18n="registration.form.under5Label">Children (upto 5 years)</label>
+                                        <span data-i18n="registration.form.free">Free</span>
                                     </div>
-                                    <input type="number" id="children-under-5-count" name="children-under-5-count" min="0" value="0" placeholder="Count"  class="form-control">
+                                    <input type="number" id="children-under-5-count" name="children-under-5-count" min="0" value="0" placeholder="Count" data-i18n-attr="placeholder:registration.form.countPlaceholder" class="form-control">
                                 </div>
                                 
                                 <div class="contribution-option" >
                                     <div >
                                         <input type="checkbox" id="day-pass" name="contributionTypes" value="day-pass" data-price="35" data-category="bca-members" >
-                                        <label for="day-pass" >Day Pass (Guests)</label>
+                                        <label for="day-pass" data-i18n="registration.form.dayPassLabel">Day Pass (Guests)</label>
                                         <span >€35</span>
                                     </div>
-                                    <input type="number" id="day-pass-count" name="day-pass-count" min="0" value="0" placeholder="Count"  class="form-control">
+                                    <input type="number" id="day-pass-count" name="day-pass-count" min="0" value="0" placeholder="Count" data-i18n-attr="placeholder:registration.form.countPlaceholder" class="form-control">
                                 </div>
                                 
 
@@ -249,25 +253,25 @@
                                     <div >
                                         <h4 >
                                             <i class="fas fa-heart" ></i>
-                                            Additional Donation (Optional)
+                                            <span data-i18n="registration.form.donationTitle">Additional Donation (Optional)</span>
                                         </h4>
-                                        <p >Add any donation amount you wish to contribute.</p>
+                                        <p data-i18n="registration.form.donationDesc">Add any donation amount you wish to contribute.</p>
                 
                                     </div>
                                     <div class="donation-controls" >
                                         <div >
-                                            <button type="button" id="donation-minus" class="donation-btn"  title="Decrease donation">−</button>
+                                            <button type="button" id="donation-minus" class="donation-btn" data-i18n-attr="title:registration.form.donationDecrease" title="Decrease donation">−</button>
                                             <div >
                                                 <span >€</span>
-                                                <input type="number" id="custom-donation-amount" name="custom-donation-amount" min="0" max="10000" step="0.01" placeholder="Optional donation amount" title="Optional: Add any donation amount you wish to contribute"  class="form-control">
+                                                <input type="number" id="custom-donation-amount" name="custom-donation-amount" min="0" max="10000" step="0.01" placeholder="Optional donation amount" data-i18n-attr="placeholder:registration.form.donationPlaceholder;title:registration.form.donationInputTitle" title="Optional: Add any donation amount you wish to contribute" class="form-control">
                                             </div>
-                                            <button type="button" id="donation-plus" class="donation-btn"  title="Increase donation">+</button>
+                                            <button type="button" id="donation-plus" class="donation-btn" data-i18n-attr="title:registration.form.donationIncrease" title="Increase donation">+</button>
                                         </div>
                                         <!-- Warning message positioned within donation controls -->
                                         <div id="custom-donation-warning" class="donation-warning" >
                                             <p >
                                                 <i class="fas fa-exclamation-triangle" ></i>
-                                                <span>Please enter a valid amount greater than €0.</span>
+                                                <span data-i18n="registration.form.donationWarning">Please enter a valid amount greater than €0.</span>
                                             </p>
                                         </div>
                                     </div>
@@ -279,7 +283,7 @@
                         
                         <!-- Total Amount Display -->
                         <div class="total-amount" >
-                            <h4 >Total Amount</h4>
+                            <h4 data-i18n="registration.form.totalAmount">Total Amount</h4>
                             <div id="totalAmount" >€0</div>
                         </div>
                         
@@ -288,39 +292,39 @@
                             
                             <!-- Payment Methods Header -->
                             <h4 >
-                                <i class="fas fa-university"></i> Payment Method
+                                <i class="fas fa-university"></i> <span data-i18n="registration.form.paymentMethod">Payment Method</span>
                             </h4>
                 
                             <!-- Method 2: Bank Transfer -->
                             <div >
                                 <h5 >
-                                    <i class="fas fa-university"></i> Bank Transfer
+                                    <i class="fas fa-university"></i> <span data-i18n="registration.form.bankTransfer">Bank Transfer</span>
                                 </h5>
                                 <!-- Payment Instructions Note -->
                                 <div >
                                     <p >
-                                        <strong>Payment Note:</strong> Please transfer the above amount using the payment method below.
+                                        <strong data-i18n="registration.form.paymentNoteLabel">Payment Note:</strong> <span data-i18n="registration.form.paymentNoteText">Please transfer the above amount using the payment method below.</span>
                                     </p>
                                     <p >
-                                        <strong>Important:</strong> Mention in subject/Concepto: Your NAME - Donation
+                                        <strong data-i18n="registration.form.paymentImportantLabel">Important:</strong> <span data-i18n="registration.form.paymentImportantText">Mention in subject/Concepto: Your NAME - Donation</span>
                                     </p>
                                 </div>                            
                                 <div class="bank-details">
                                     <div >
-                                        <strong >Account Number:</strong>
+                                        <strong data-i18n="registration.form.accountNumberLabel">Account Number:</strong>
                                         <div >
                                             <span id="bankAccountNumber" >ES26 0049 2990 2029 1459 9908</span>
-                                            <button type="button" class="copy-btn" onclick="copyToClipboard('bankAccountNumber', 'Bank account number')" title="Copy bank account number" >
+                                            <button type="button" class="copy-btn" onclick="copyToClipboard('bankAccountNumber', 'Bank account number')" title="Copy bank account number" data-i18n-attr="title:registration.form.copyAccountTitle" >
                                                 <i class="fas fa-copy"></i>
                                             </button>
                                         </div>
                                     </div>
                                     <div >
-                                        <strong >Bank:</strong>
+                                        <strong data-i18n="registration.form.bankLabel">Bank:</strong>
                                         <span >Santander</span>
                                     </div>
                                     <div >
-                                        <strong >Account Name:</strong>
+                                        <strong data-i18n="registration.form.accountNameLabel">Account Name:</strong>
                                         <span >Bengali Cultural Association</span>
                                     </div>
                                 </div>
@@ -334,9 +338,9 @@
                         
                         <!-- Transaction ID Field -->
                         <div class="form-group" >
-                            <label for="transactionId" >Transaction ID (Optional)</label>
-                            <input type="text" id="transactionId" name="transactionId" placeholder="Enter your payment transaction ID"  class="form-control">
-                            <small >Please provide your payment transaction ID for faster verification (optional)</small>
+                            <label for="transactionId" data-i18n="registration.form.transactionIdLabel">Transaction ID (Optional)</label>
+                            <input type="text" id="transactionId" name="transactionId" placeholder="Enter your payment transaction ID" data-i18n-attr="placeholder:registration.form.transactionIdPlaceholder" class="form-control">
+                            <small data-i18n="registration.form.transactionIdHint">Please provide your payment transaction ID for faster verification (optional)</small>
                         </div>
 
                         <!-- GDPR consent (RGPD Art. 6.1.a) -->
@@ -347,13 +351,10 @@
                                 <span class="privacy-consent-body">
                                     <span id="privacy-consent-heading" class="privacy-consent-title">
                                         <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                                        Consentimiento de privacidad / Privacy consent
+                                        <span data-i18n="registration.form.privacyTitle">Privacy consent</span>
                                         <span class="privacy-required" aria-hidden="true">*</span>
                                     </span>
-                                    <span class="privacy-consent-lang privacy-consent-lang--es" lang="es">
-                                        He leído y acepto la <a href="privacidad.html" class="js-privacy-modal-link">Política de Privacidad</a> y consiento el tratamiento de mis datos para la gestión de la inscripción.
-                                    </span>
-                                    <span class="privacy-consent-lang privacy-consent-lang--en" lang="en">
+                                    <span class="privacy-consent-lang" data-i18n-html="registration.form.privacyText">
                                         I have read and accept the <a href="privacidad.html" class="js-privacy-modal-link">Privacy Policy</a> and consent to the processing of my data for registration purposes.
                                     </span>
                                 </span>
@@ -364,7 +365,7 @@
                         <div class="form-submit" >
                             <button type="submit" id="submitBtn" >
                                 <i class="fas fa-paper-plane"></i>
-                                Send Registration
+                                <span data-i18n="registration.form.submitBtn">Send Registration</span>
                             </button>
                         </div>
                     </form>
@@ -376,9 +377,9 @@
                         <div >
                             <i class="fas fa-check"></i>
                         </div>
-                        <h3 >Registration Submitted Successfully!</h3>
-                        <p >Thank you for registering for Durga Puja 2026 Barcelona. Please check your email for the registration confirmation. You will receive your tickets shortly after payment verification.</p>
-                        <p >Thank you! 🙏</p>
+                        <h3 data-i18n="registration.form.successTitle">Registration Submitted Successfully!</h3>
+                        <p data-i18n="registration.form.successText">Thank you for registering for Durga Puja 2026 Barcelona. Please check your email for the registration confirmation. You will receive your tickets shortly after payment verification.</p>
+                        <p data-i18n="registration.form.successThanks">Thank you! 🙏</p>
                     </div>
                 </div>
                 
@@ -391,7 +392,7 @@
                         <div >
                             <i class="fas fa-ticket-alt"></i>
                         </div>
-                        <h4 >Guaranteed Entry</h4>
+                        <h4 data-i18n="registration.benefits.entry">Guaranteed Entry</h4>
                     </div>
                 </div>
                 
@@ -400,30 +401,30 @@
                         <div >
                             <i class="fas fa-utensils"></i>
                         </div>
-                        <h4 >Traditional Lunch</h4>
+                        <h4 data-i18n="registration.benefits.lunch">Traditional Lunch</h4>
                     </div>
                 </div>
             </div>
 
              <!-- Closing Message -->
              <div class="closing-message" >
-                <p >We're grateful for the generosity shown during the Protima idol donations and look forward to your continued support to make this Durga Puja unforgettable. With the arrival of the divine murti, let's ensure the celebration is as grand as the occasion.</p>
-                <p >Thank you for your support! 🙏</p>
+                <p data-i18n="registration.closing.text">We're grateful for the generosity shown during the Protima idol donations and look forward to your continued support to make this Durga Puja unforgettable. With the arrival of the divine murti, let's ensure the celebration is as grand as the occasion.</p>
+                <p data-i18n="registration.closing.thanks">Thank you for your support! 🙏</p>
             </div>
             
             <!-- Call to Action -->
             <div class="registration-cta" >
-                <h3 >Questions About Registration?</h3>
-                <p >Our team is here to help you with any questions</p>
+                <h3 data-i18n="registration.cta.title">Questions About Registration?</h3>
+                <p data-i18n="registration.cta.text">Our team is here to help you with any questions</p>
                 <div >
                     <a href="faq.html" class="btn btn-primary" >
-                        <i class="fas fa-circle-question"></i> Read the FAQ
+                        <i class="fas fa-circle-question"></i> <span data-i18n="registration.cta.readFaq">Read the FAQ</span>
                     </a>
                     <a href="contact.html" class="btn btn-secondary" >
-                        <i class="fas fa-envelope"></i> Contact Us
+                        <i class="fas fa-envelope"></i> <span data-i18n="registration.cta.contactUs">Contact Us</span>
                     </a>
                     <a href="schedule.html" class="btn btn-secondary" >
-                        <i class="fas fa-calendar"></i> View Schedule
+                        <i class="fas fa-calendar"></i> <span data-i18n="registration.cta.viewSchedule">View Schedule</span>
                     </a>
                 </div>
             </div>
@@ -436,24 +437,28 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--facebook" aria-label="Facebook" data-i18n-attr="aria-label:common.nav.facebook" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/spain_bca/" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--instagram" aria-label="Instagram" data-i18n-attr="aria-label:common.nav.instagram" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                </div>
                 
                     <p class="footer-legal">
-                        <a href="aviso-legal.html" class="link-underline">Aviso Legal</a> ·
-                        <a href="privacidad.html" class="js-privacy-modal-link" class="link-underline">Política de Privacidad</a> ·
-                        <a href="cookies.html" class="link-underline">Política de Cookies</a>
+                        <a href="aviso-legal.html" class="link-underline" data-i18n="common.footer.avisoLegal">Aviso Legal</a> ·
+                        <a href="privacidad.html" class="js-privacy-modal-link link-underline" data-i18n="common.footer.privacidad">Política de Privacidad</a> ·
+                        <a href="cookies.html" class="link-underline" data-i18n="common.footer.cookies">Política de Cookies</a>
                     </p>
                    <!-- <p >
                         #Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
                     </p>-->
                     <p>
-                        &copy; 2026 Bengali Cultural Association Barcelona. All rights reserved.
+                        &copy; 2026 Bengali Cultural Association Barcelona. <span data-i18n="common.footer.rights">All rights reserved.</span>
                     </p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top" data-i18n-attr="aria-label:common.backToTop;title:common.backToTop">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 

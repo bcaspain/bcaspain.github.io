@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-i18n-title="gallery.pageTitle">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <script src="../js/theme-pref.js"></script>
+    <script src="../js/i18n/strings.en.js"></script>
+    <script src="../js/i18n/strings.es.js"></script>
+    <script src="../js/i18n/strings.ca.js"></script>
+    <script src="../js/i18n.js"></script>
     <title>Photo Gallery — Bengali Cultural Association Barcelona</title>
-    <meta name="description" content="Photos from Durga Puja and community events in Barcelona, 2022–2025 — idols, performances, food, and gatherings with BCA Spain.">
+    <meta name="description" content="Photos from Durga Puja and community events in Barcelona, 2022–2025 — idols, performances, food, and gatherings with BCA Spain." data-i18n-attr="content:gallery.metaDescription">
     <meta name="author" content="Bengali Cultural Association Barcelona">
     <link rel="canonical" href="https://bcaspain.org/html/gallery.html">
 
@@ -82,8 +86,8 @@
     <section id="gallery" class="gallery-section" >
         <div class="container">
             <div class="section-header">
-                <h1 class="section-title">Photo Gallery</h1>
-                <p class="section-subtitle">A chapter for every year — scroll the reel, then step into the full story</p>
+                <h1 class="section-title" data-i18n="gallery.sectionTitle">Photo Gallery</h1>
+                <p class="section-subtitle" data-i18n="gallery.sectionSubtitle">A chapter for every year — scroll the reel, then step into the full story</p>
             </div>
             
                     <!-- Year Navigation Tabs -->
@@ -100,18 +104,18 @@
         <!-- 2026 Gallery Section -->
         <div class="year-section" id="year-2026" aria-hidden="true">
                 <div class="year-header">
-                    <h3 class="year-title">2026 - Durga Puja Celebrations</h3>
-                    <p class="year-description">Photos from this year's celebrations will appear here soon</p>
+                    <h3 class="year-title" data-i18n="gallery.year2026Title">2026 - Durga Puja Celebrations</h3>
+                    <p class="year-description" data-i18n="gallery.year2026Desc">Photos from this year's celebrations will appear here soon</p>
                 </div>
                 <div class="gallery">
                     <div class="coming-soon-container">
                         <div class="coming-soon-content">
                             <i class="fas fa-camera"></i>
-                            <h4>Photos Coming Soon</h4>
-                            <p>Be part of Durga Puja 2026 in Barcelona — register now, and your memories will live here.</p>
+                            <h4 data-i18n="gallery.comingSoonTitle">Photos Coming Soon</h4>
+                            <p data-i18n="gallery.comingSoonText">Be part of Durga Puja 2026 in Barcelona — register now, and your memories will live here.</p>
                             <a href="registration.html" class="btn btn-primary btn-large">
                                 <i class="fas fa-ticket-alt"></i>
-                                <span>Register Now</span>
+                                <span data-i18n="gallery.registerNow">Register Now</span>
                             </a>
                         </div>
                     </div>
@@ -121,15 +125,15 @@
         <!-- 2025 Gallery Section -->
         <div class="year-section active" id="year-2025" aria-hidden="false">
                 <div class="year-header">
-                    <h3 class="year-title">2025 - Durga Puja Celebrations</h3>
-                    <p class="year-description">Memories from last year's celebrations</p>
+                    <h3 class="year-title" data-i18n="gallery.year2025Title">2025 - Durga Puja Celebrations</h3>
+                    <p class="year-description" data-i18n="gallery.yearDescLastYear">Memories from last year's celebrations</p>
                 </div>
-                <div class="gallery-filters" role="toolbar" aria-label="Filter 2025 photos by category">
-                    <button type="button" class="gallery-filter active" data-filter="all">All</button>
-                    <button type="button" class="gallery-filter" data-filter="puja">Puja &amp; idol</button>
-                    <button type="button" class="gallery-filter" data-filter="performances">Performances</button>
-                    <button type="button" class="gallery-filter" data-filter="gatherings">Gatherings</button>
-                    <button type="button" class="gallery-filter" data-filter="food">Food</button>
+                <div class="gallery-filters" role="toolbar" aria-label="Filter 2025 photos by category" data-i18n-attr="aria-label:gallery.filterAriaLabel" data-i18n-vars="year:2025">
+                    <button type="button" class="gallery-filter active" data-filter="all" data-i18n="gallery.filterAllBtn">All</button>
+                    <button type="button" class="gallery-filter" data-filter="puja" data-i18n="gallery.filters.puja">Puja &amp; idol</button>
+                    <button type="button" class="gallery-filter" data-filter="performances" data-i18n="gallery.filters.performances">Performances</button>
+                    <button type="button" class="gallery-filter" data-filter="gatherings" data-i18n="gallery.filters.gatherings">Gatherings</button>
+                    <button type="button" class="gallery-filter" data-filter="food" data-i18n="gallery.filters.food">Food</button>
                 </div>
                 <div class="gallery" id="gallery-2025">
                     <div class="gallery-item" data-year="2025" data-category="puja">
@@ -333,21 +337,21 @@
                         <div class="gallery-overlay"></div>
                     </div>
                 </div>
-                <p class="gallery-filter-empty" hidden>No photos in this category yet.</p>
+                <p class="gallery-filter-empty" hidden data-i18n="gallery.noPhotosYet">No photos in this category yet.</p>
             </div>
             
         <!-- 2024 Gallery Section -->
         <div class="year-section" id="year-2024" aria-hidden="true">
                 <div class="year-header">
-                    <h3 class="year-title">2024 - Cultural Heritage</h3>
-                    <p class="year-description">Memories from last year's celebrations</p>
+                    <h3 class="year-title" data-i18n="gallery.year2024Title">2024 - Cultural Heritage</h3>
+                    <p class="year-description" data-i18n="gallery.yearDescLastYear">Memories from last year's celebrations</p>
                 </div>
-                <div class="gallery-filters" role="toolbar" aria-label="Filter 2024 photos by category">
-                    <button type="button" class="gallery-filter active" data-filter="all">All</button>
-                    <button type="button" class="gallery-filter" data-filter="puja">Puja &amp; idol</button>
-                    <button type="button" class="gallery-filter" data-filter="performances">Performances</button>
-                    <button type="button" class="gallery-filter" data-filter="gatherings">Gatherings</button>
-                    <button type="button" class="gallery-filter" data-filter="food">Food</button>
+                <div class="gallery-filters" role="toolbar" aria-label="Filter 2024 photos by category" data-i18n-attr="aria-label:gallery.filterAriaLabel" data-i18n-vars="year:2024">
+                    <button type="button" class="gallery-filter active" data-filter="all" data-i18n="gallery.filterAllBtn">All</button>
+                    <button type="button" class="gallery-filter" data-filter="puja" data-i18n="gallery.filters.puja">Puja &amp; idol</button>
+                    <button type="button" class="gallery-filter" data-filter="performances" data-i18n="gallery.filters.performances">Performances</button>
+                    <button type="button" class="gallery-filter" data-filter="gatherings" data-i18n="gallery.filters.gatherings">Gatherings</button>
+                    <button type="button" class="gallery-filter" data-filter="food" data-i18n="gallery.filters.food">Food</button>
                 </div>
                 <div class="gallery">
                     <div class="gallery-item" data-year="2024" data-category="puja">
@@ -471,21 +475,21 @@
                         <div class="gallery-overlay"></div>
                     </div>
                 </div>
-                <p class="gallery-filter-empty" hidden>No photos in this category yet.</p>
+                <p class="gallery-filter-empty" hidden data-i18n="gallery.noPhotosYet">No photos in this category yet.</p>
             </div>
 
         <!-- 2023 Gallery Section -->
             <div class="year-section" id="year-2023" aria-hidden="true">
                 <div class="year-header">
-                    <h3 class="year-title">2023 - Community Bonding</h3>
-                    <p class="year-description">Special moments from community celebrations</p>
+                    <h3 class="year-title" data-i18n="gallery.year2023Title">2023 - Community Bonding</h3>
+                    <p class="year-description" data-i18n="gallery.year2023Desc">Special moments from community celebrations</p>
                 </div>
-                <div class="gallery-filters" role="toolbar" aria-label="Filter 2023 photos by category">
-                    <button type="button" class="gallery-filter active" data-filter="all">All</button>
-                    <button type="button" class="gallery-filter" data-filter="puja">Puja &amp; idol</button>
-                    <button type="button" class="gallery-filter" data-filter="performances">Performances</button>
-                    <button type="button" class="gallery-filter" data-filter="gatherings">Gatherings</button>
-                    <button type="button" class="gallery-filter" data-filter="food">Food</button>
+                <div class="gallery-filters" role="toolbar" aria-label="Filter 2023 photos by category" data-i18n-attr="aria-label:gallery.filterAriaLabel" data-i18n-vars="year:2023">
+                    <button type="button" class="gallery-filter active" data-filter="all" data-i18n="gallery.filterAllBtn">All</button>
+                    <button type="button" class="gallery-filter" data-filter="puja" data-i18n="gallery.filters.puja">Puja &amp; idol</button>
+                    <button type="button" class="gallery-filter" data-filter="performances" data-i18n="gallery.filters.performances">Performances</button>
+                    <button type="button" class="gallery-filter" data-filter="gatherings" data-i18n="gallery.filters.gatherings">Gatherings</button>
+                    <button type="button" class="gallery-filter" data-filter="food" data-i18n="gallery.filters.food">Food</button>
                 </div>
                 <div class="gallery">
                     <div class="gallery-item" data-year="2023" data-category="puja">
@@ -573,21 +577,21 @@
                         <div class="gallery-overlay"></div>
                     </div>
                 </div>
-                <p class="gallery-filter-empty" hidden>No photos in this category yet.</p>
+                <p class="gallery-filter-empty" hidden data-i18n="gallery.noPhotosYet">No photos in this category yet.</p>
             </div>
 
         <!-- 2022 Gallery Section -->
         <div class="year-section" id="year-2022" aria-hidden="true">
                 <div class="year-header">
-                    <h3 class="year-title">2022 - Foundation Years</h3>
-                    <p class="year-description">Early memories from our community's journey</p>
+                    <h3 class="year-title" data-i18n="gallery.year2022Title">2022 - Foundation Years</h3>
+                    <p class="year-description" data-i18n="gallery.year2022Desc">Early memories from our community's journey</p>
                 </div>
-                <div class="gallery-filters" role="toolbar" aria-label="Filter 2022 photos by category">
-                    <button type="button" class="gallery-filter active" data-filter="all">All</button>
-                    <button type="button" class="gallery-filter" data-filter="puja">Puja &amp; idol</button>
-                    <button type="button" class="gallery-filter" data-filter="performances">Performances</button>
-                    <button type="button" class="gallery-filter" data-filter="gatherings">Gatherings</button>
-                    <button type="button" class="gallery-filter" data-filter="food">Food</button>
+                <div class="gallery-filters" role="toolbar" aria-label="Filter 2022 photos by category" data-i18n-attr="aria-label:gallery.filterAriaLabel" data-i18n-vars="year:2022">
+                    <button type="button" class="gallery-filter active" data-filter="all" data-i18n="gallery.filterAllBtn">All</button>
+                    <button type="button" class="gallery-filter" data-filter="puja" data-i18n="gallery.filters.puja">Puja &amp; idol</button>
+                    <button type="button" class="gallery-filter" data-filter="performances" data-i18n="gallery.filters.performances">Performances</button>
+                    <button type="button" class="gallery-filter" data-filter="gatherings" data-i18n="gallery.filters.gatherings">Gatherings</button>
+                    <button type="button" class="gallery-filter" data-filter="food" data-i18n="gallery.filters.food">Food</button>
                 </div>
                 <div class="gallery">
                     <div class="gallery-item" data-year="2022" data-category="puja">
@@ -631,7 +635,7 @@
                         <div class="gallery-overlay"></div>
                     </div>
                 </div>
-                <p class="gallery-filter-empty" hidden>No photos in this category yet.</p>
+                <p class="gallery-filter-empty" hidden data-i18n="gallery.noPhotosYet">No photos in this category yet.</p>
             </div>
 
         </div><!-- /.year-panels -->
@@ -641,20 +645,20 @@
             
     <div id="lightbox" class="lightbox">
         <span id="closeBtn" class="close">&times;</span>
-        <button id="prevBtn" class="nav-btn prev-btn" aria-label="Previous image">
+        <button id="prevBtn" class="nav-btn prev-btn" aria-label="Previous image" data-i18n-attr="aria-label:gallery.prevImage">
             <i class="fas fa-chevron-left" aria-hidden="true"></i>
         </button>
-        <button id="nextBtn" class="nav-btn next-btn" aria-label="Next image">
+        <button id="nextBtn" class="nav-btn next-btn" aria-label="Next image" data-i18n-attr="aria-label:gallery.nextImage">
             <i class="fas fa-chevron-right" aria-hidden="true"></i>
         </button>
         <div class="lightbox-content-wrapper">
-            <img id="lightboxImg" class="lightbox-content" alt="Lightbox Image">
+            <img id="lightboxImg" class="lightbox-content" alt="Lightbox Image" data-i18n-attr="alt:gallery.lightboxImgAlt">
             <div class="image-counter">
                 <span id="currentImage">1</span> / <span id="totalImages">63</span>
             </div>
             <div id="loadingIndicator" class="loading-indicator">
                 <div class="spinner"></div>
-                <span>Loading image...</span>
+                <span data-i18n="gallery.loadingImage">Loading image...</span>
             </div>
         </div>
     </div>
@@ -664,27 +668,31 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--facebook" aria-label="Facebook" data-i18n-attr="aria-label:common.nav.facebook" title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/spain_bca/" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--instagram" aria-label="Instagram" data-i18n-attr="aria-label:common.nav.instagram" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                </div>
                 <div class="footer-logo">
-                    <img src="../BCA-logo.webp" alt="BCA Spain Logo">
-                    <span>Bengali Cultural Association Barcelona</span>
+                    <img src="../BCA-logo.webp" alt="BCA Spain Logo" data-i18n-attr="alt:common.footer.logoAlt">
+                    <span data-i18n="common.footer.orgName">Bengali Cultural Association Barcelona</span>
                 </div>
                     <p class="footer-legal">
-                        <a href="aviso-legal.html" class="link-underline">Aviso Legal</a> ·
-                        <a href="privacidad.html" class="link-underline">Política de Privacidad</a> ·
-                        <a href="cookies.html" class="link-underline">Política de Cookies</a>
+                        <a href="aviso-legal.html" class="link-underline" data-i18n="common.footer.avisoLegal">Aviso Legal</a> ·
+                        <a href="privacidad.html" class="link-underline" data-i18n="common.footer.privacidad">Política de Privacidad</a> ·
+                        <a href="cookies.html" class="link-underline" data-i18n="common.footer.cookies">Política de Cookies</a>
                     </p>
                    <!-- <p >
                         #Bengali Cultural Association Barcelona — NIF: {{NIF}} — Inscrita en el Registro de Asociaciones de {{REGISTRO}} nº {{NUM}} — {{DIRECCIÓN}}
                     </p>-->
                 <p>
-                    &copy; 2026 Bengali Cultural Association Barcelona. All rights reserved.
+                    &copy; 2026 Bengali Cultural Association Barcelona. <span data-i18n="common.footer.rights">All rights reserved.</span>
                 </p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top" data-i18n-attr="aria-label:common.backToTop;title:common.backToTop">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
@@ -709,8 +717,8 @@
     <noscript>
         
         <div >
-            <p><strong>JavaScript is disabled</strong></p>
-            <p>Please enable JavaScript to use the interactive gallery features.</p>
+            <p><strong data-i18n="gallery.noscriptTitle">JavaScript is disabled</strong></p>
+            <p data-i18n="gallery.noscriptText">Please enable JavaScript to use the interactive gallery features.</p>
         </div>
     </noscript>
     
@@ -1001,14 +1009,14 @@
         }
 
 
+        function t(key, vars) {
+          return window.i18n ? window.i18n.t(key, vars) : key;
+        }
+
         const REEL_ORDER = ['all', 'puja', 'performances', 'gatherings', 'food'];
-        const REEL_LABELS = {
-          all: 'Full chapter',
-          puja: 'Puja & idol',
-          performances: 'Performances',
-          gatherings: 'Gatherings',
-          food: 'Food'
-        };
+        function reelLabel(filter) {
+          return t('gallery.filters.' + filter);
+        }
 
         function applyCategoryFilter(section, filter, opts) {
           opts = opts || {};
@@ -1068,11 +1076,11 @@
 
             const reel = document.createElement('div');
             reel.className = 'gallery-reel';
-            reel.setAttribute('aria-label', 'Chapter reel');
+            reel.setAttribute('aria-label', t('gallery.reelAriaLabel'));
 
             const intro = document.createElement('p');
             intro.className = 'gallery-reel-kicker';
-            intro.textContent = 'Chapter reel — pick a scene';
+            intro.textContent = t('gallery.reelKicker');
             reel.appendChild(intro);
 
             const track = document.createElement('div');
@@ -1096,7 +1104,7 @@
               frame.className = 'gallery-reel-frame' + (filter === 'all' ? ' is-active' : '');
               frame.setAttribute('data-filter', filter);
               frame.setAttribute('role', 'listitem');
-              frame.setAttribute('aria-label', 'Show ' + (REEL_LABELS[filter] || filter));
+              frame.setAttribute('aria-label', t('gallery.reelShowAria', { label: reelLabel(filter) }));
 
               const mark = document.createElement('span');
               mark.className = 'gallery-reel-index';
@@ -1113,7 +1121,7 @@
 
               const caption = document.createElement('span');
               caption.className = 'gallery-reel-caption';
-              caption.innerHTML = '<strong>' + (REEL_LABELS[filter] || filter) + '</strong><em>View chapter</em>';
+              caption.innerHTML = '<strong>' + reelLabel(filter) + '</strong><em>' + t('gallery.reelViewChapter') + '</em>';
 
               frame.appendChild(mark);
               frame.appendChild(media);
@@ -1178,7 +1186,24 @@
 
         // Start initialization
         initializeGallery();
-        
+
+        // Keep JS-built chapter reel captions in sync with the language switcher
+        // (they're generated once at build time, not declarative [data-i18n]).
+        document.addEventListener('bca:langchange', function() {
+          document.querySelectorAll('.gallery-reel').forEach(function(reel) {
+            reel.setAttribute('aria-label', t('gallery.reelAriaLabel'));
+            var kicker = reel.querySelector('.gallery-reel-kicker');
+            if (kicker) kicker.textContent = t('gallery.reelKicker');
+            reel.querySelectorAll('.gallery-reel-frame').forEach(function(frame) {
+              var filter = frame.getAttribute('data-filter') || 'all';
+              var label = reelLabel(filter);
+              frame.setAttribute('aria-label', t('gallery.reelShowAria', { label: label }));
+              var caption = frame.querySelector('.gallery-reel-caption');
+              if (caption) caption.innerHTML = '<strong>' + label + '</strong><em>' + t('gallery.reelViewChapter') + '</em>';
+            });
+          });
+        });
+
         // Performance optimization: Debounce resize handler
         let resizeTimeout;
         window.addEventListener('resize', function() {
