@@ -160,6 +160,10 @@
   padding-left: 1.2rem;
 }
 
+.faq-answer ul:last-child {
+  margin-bottom: 0;
+}
+
 .faq-answer a {
   color: var(--secondary);
   font-weight: 600;
