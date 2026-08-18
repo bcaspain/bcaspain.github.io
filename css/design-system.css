@@ -1127,6 +1127,26 @@ html.legal-embed body { background: var(--surface-container-lowest); }
   margin-inline: auto;
 }
 
+.teaser-strip#social-media {
+  text-align: center;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 1.5rem 4rem;
+  background: var(--scene-c-bg, var(--surface-container-low));
+}
+
+.teaser-strip#social-media .scene-inner {
+  max-width: 46rem;
+}
+
+.teaser-strip#social-media h2 {
+  margin-bottom: 0.8rem;
+}
+
+.teaser-strip#social-media p {
+  color: var(--paper-dim, var(--on-surface-variant));
+  margin: 0 auto 0.25rem;
+  max-width: 36rem;
+}
+
 .social-media-section .social-media-content {
   max-width: 40rem;
 }
