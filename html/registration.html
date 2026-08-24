@@ -321,13 +321,6 @@
                             <small >Please provide your payment transaction ID for faster verification (optional)</small>
                         </div>
 
-                        <div class="form-group" >
-                            <label for="paymentProofFile" >Payment proof attachment (Optional)</label>
-                            <input type="file" id="paymentProofFile" name="paymentProofFile" accept="image/png,image/jpeg,image/webp,application/pdf,.png,.jpg,.jpeg,.webp,.pdf" class="form-control form-control-file">
-                            <small >Upload a screenshot or PDF of your bank transfer (PNG, JPG, WEBP, or PDF — max 5 MB)</small>
-                            <small id="paymentProofFileName" class="payment-proof-filename" hidden></small>
-                        </div>
-
                         <!-- GDPR consent (RGPD Art. 6.1.a) -->
                         <div class="privacy-consent" role="group" aria-labelledby="privacy-consent-heading">
                             <label class="privacy-consent-label" for="registrationPrivacy">
@@ -349,9 +342,6 @@
                             </label>
                         </div>
 
-                        <!-- reCAPTCHA (site key injected at deploy / via local-env.js) -->
-                        <div id="recaptcha-widget" class="form-group" aria-label="reCAPTCHA verification"></div>
-                        
                         <!-- Submit Button -->
                         <div class="form-submit" >
                             <button type="submit" id="submitBtn" >
@@ -559,7 +549,6 @@
     <script src="../js/local-env.js"></script>
     <script>
         if (!window.DP_GAS_URL) window.DP_GAS_URL = '__DP_GAS_URL__';
-        if (!window.RECAPTCHA_SITE_KEY) window.RECAPTCHA_SITE_KEY = '__RECAPTCHA_SITE_KEY__';
     </script>
     <script src="../js/registration-form.js"></script>
 </body>

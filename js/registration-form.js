@@ -16,47 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (notOpenEl) notOpenEl.style.display = 'none';
     if (!form) return;
 
-    function resolveRecaptchaSiteKey() {
-        const key = (window.RECAPTCHA_SITE_KEY || '').trim();
-        if (!key || key === '__RECAPTCHA_SITE_KEY__' || key === 'YOUR_RECAPTCHA_SITE_KEY') {
-            return '';
-        }
-        return key;
-    }
-
     const registrationScriptUrl = (
         window.DP_GAS_URL && window.DP_GAS_URL !== '__DP_GAS_URL__'
             ? window.DP_GAS_URL
             : ''
     ).replace(/\/$/, '');
-
-    const recaptchaSiteKey = resolveRecaptchaSiteKey();
-
-    function initRecaptcha() {
-        const container = document.getElementById('recaptcha-widget');
-        if (!container) return;
-
-        if (!recaptchaSiteKey) {
-            container.hidden = true;
-            return;
-        }
-
-        container.hidden = false;
-
-        window.onRecaptchaLoad = function() {
-            grecaptcha.render(container, { sitekey: recaptchaSiteKey });
-        };
-
-        if (document.querySelector('script[src*="recaptcha/api.js"]')) return;
-
-        const script = document.createElement('script');
-        script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit';
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
-    }
-
-    initRecaptcha();
 
     const totalAmount = document.getElementById('totalAmount');
     const email = document.getElementById('email');
@@ -79,15 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'children-under-5': 0,
         'day-pass': 35
     });
-
-    const PAYMENT_PROOF_MAX_BYTES = 5 * 1024 * 1024;
-    const PAYMENT_PROOF_ALLOWED_TYPES = Object.freeze([
-        'image/png',
-        'image/jpeg',
-        'image/jpg',
-        'image/webp',
-        'application/pdf'
-    ]);
 
     // Theme-aware surfaces (avoid light inline backgrounds in dark mode)
     const SURFACE_LOWEST = 'var(--surface-container-lowest)';
@@ -1169,65 +1124,6 @@ document.addEventListener('DOMContentLoaded', function() {
     emailConfirm.addEventListener('blur', validateEmails);
     emailConfirm.addEventListener('keyup', validateEmails);
 
-    const paymentProofFileInput = document.getElementById('paymentProofFile');
-    if (paymentProofFileInput) {
-        paymentProofFileInput.addEventListener('change', updatePaymentProofFileName);
-    }
-
-    function getPaymentProofFile() {
-        const input = document.getElementById('paymentProofFile');
-        return input?.files?.[0] || null;
-    }
-
-    function validatePaymentProofFile(file) {
-        if (!file) return null;
-        if (!PAYMENT_PROOF_ALLOWED_TYPES.includes(file.type)) {
-            return 'Payment proof must be a PNG, JPG, WEBP, or PDF file.';
-        }
-        if (file.size > PAYMENT_PROOF_MAX_BYTES) {
-            return 'Payment proof file must be 5 MB or smaller.';
-        }
-        return null;
-    }
-
-    function sanitizePaymentProofFileName(name) {
-        const baseName = (name || 'payment-proof').split(/[/\\]/).pop();
-        return baseName.replace(/[^a-zA-Z0-9._-]/g, '_').substring(0, 200);
-    }
-
-    function readPaymentProofFile(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const result = reader.result;
-                if (typeof result !== 'string' || !result.includes(',')) {
-                    reject(new Error('Failed to read payment proof file.'));
-                    return;
-                }
-                resolve({
-                    name: sanitizePaymentProofFileName(file.name),
-                    mimeType: file.type,
-                    data: result.split(',')[1]
-                });
-            };
-            reader.onerror = () => reject(new Error('Failed to read payment proof file.'));
-            reader.readAsDataURL(file);
-        });
-    }
-
-    function updatePaymentProofFileName() {
-        const file = getPaymentProofFile();
-        const label = document.getElementById('paymentProofFileName');
-        if (!label) return;
-        if (file) {
-            label.textContent = 'Selected: ' + file.name;
-            label.hidden = false;
-        } else {
-            label.textContent = '';
-            label.hidden = true;
-        }
-    }
-    
     // Security-enhanced comprehensive form validation with integrity checks
     function validateForm() {
         const errors = [];
@@ -1275,11 +1171,6 @@ document.addEventListener('DOMContentLoaded', function() {
             errors.push('You must accept the Privacy Policy to continue.');
         }
 
-        const paymentProofError = validatePaymentProofFile(getPaymentProofFile());
-        if (paymentProofError) {
-            errors.push(paymentProofError);
-        }
-        
         // Validate custom donation if there's a value entered
         const customDonationInput = document.getElementById('custom-donation-amount');
         const customDonationValue = parseFloat(customDonationInput.value) || 0;
@@ -1406,8 +1297,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset form
             form.reset();
             totalAmount.textContent = '€0';
-            updatePaymentProofFileName();
-            
             // Reset contribution options styling
             contributionCheckboxes.forEach(checkbox => {
                 const countId = checkbox.id + '-count';
@@ -1436,10 +1325,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clear donation field
             document.getElementById('custom-donation-amount').value = '';
 
-            if (recaptchaSiteKey && typeof grecaptcha !== 'undefined') {
-                try { grecaptcha.reset(); } catch (_) {}
-            }
-            
             // Reset children-under-5 visibility
             updateChildrenUnder5Visibility();
             
@@ -1457,7 +1342,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission to Google Sheets
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Prevent multiple submissions
@@ -1472,19 +1357,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        let recaptchaToken = '';
-        if (recaptchaSiteKey) {
-            if (typeof grecaptcha === 'undefined') {
-                showValidationErrors(['reCAPTCHA failed to load. Please refresh and try again.']);
-                return;
-            }
-            recaptchaToken = grecaptcha.getResponse();
-            if (!recaptchaToken) {
-                showValidationErrors(['Please complete the reCAPTCHA verification.']);
-                return;
-            }
-        }
-        
         // Remove any existing error messages
         const existingErrorDiv = document.getElementById('validation-errors');
         if (existingErrorDiv) {
@@ -1580,7 +1452,6 @@ document.addEventListener('DOMContentLoaded', function() {
             day_pass: dayPassCount,
             total_amount: totalAmount,
             payment_proof: sanitizedTransactionId || '',
-            recaptcha_token: recaptchaToken,
             
             // Security fields
             security_token: securityToken,
@@ -1599,22 +1470,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         };
 
-        try {
-            const paymentProofFile = getPaymentProofFile();
-            if (paymentProofFile) {
-                data.payment_proof_file = await readPaymentProofFile(paymentProofFile);
-            }
-        } catch (fileError) {
-            console.error('Error reading payment proof file:', fileError);
-            const pleaseWaitMsg = document.getElementById('please-wait-message');
-            if (pleaseWaitMsg) pleaseWaitMsg.remove();
-            showValidationErrors(['Could not read the payment proof file. Please try again with a different file.']);
-            isSubmitting = false;
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            return;
-        }
-        
         // Send to Google Sheets
         sendToGoogleSheets(data);
         

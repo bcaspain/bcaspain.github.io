@@ -5,5 +5,3 @@
 //    then open http://localhost:8080/html/registration.html
 
 window.DP_GAS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-// Optional — only set when reCAPTCHA is configured:
-// window.RECAPTCHA_SITE_KEY = 'your-site-key-here';

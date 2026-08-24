@@ -29,12 +29,10 @@ jobs:
         env:
           RJ_GAS_URL: ${{ secrets.RJ_GAS_URL }}
           DP_GAS_URL: ${{ secrets.DP_GAS_URL }}
-          RECAPTCHA_SITE_KEY: ${{ secrets.RECAPTCHA_SITE_KEY }}
         run: |
           sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" html/rabindra-jayanti-register.html
           sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" html/rabindra-jayanti.html
           sed -i "s|__DP_GAS_URL__|${DP_GAS_URL}|g" html/registration.html
-          sed -i "s|__RECAPTCHA_SITE_KEY__|${RECAPTCHA_SITE_KEY}|g" html/registration.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
