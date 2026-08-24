@@ -257,6 +257,28 @@
   font-weight: 600;
 }
 
+.form-control-file {
+  padding: 0.65rem 0.75rem;
+  cursor: pointer;
+}
+
+.form-control-file::file-selector-button {
+  margin-right: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--outline-variant);
+  border-radius: 8px;
+  background: var(--surface-container);
+  color: var(--on-surface);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.payment-proof-filename {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--on-surface-variant);
+}
+
 .contribution-types {
   margin-bottom: 2rem;
 }

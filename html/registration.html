@@ -85,26 +85,8 @@
                 
             </div>
             
-            <!-- Registration temporarily disabled -->
+            <!-- Enhanced Form Container -->
             <div class="form-container">
-                <div class="custom-form-wrapper registration-disabled-notice" style="text-align: center; padding: 3rem 1.5rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary, #c45c26);">
-                        <i class="fas fa-clock" aria-hidden="true"></i>
-                    </div>
-                    <h3 style="margin-bottom: 0.75rem;">Registration opening soon</h3>
-                    <p style="max-width: 32rem; margin: 0 auto; line-height: 1.6;">
-                        Online registration for Durga Puja 2026 is not open yet. We will enable registration soon — please check back here for updates.
-                    </p>
-                    <p style="margin-top: 1.25rem;">
-                        <a href="contact.html" class="btn btn-secondary">
-                            <i class="fas fa-envelope"></i> Contact Us
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Enhanced Form Container (disabled — remove hidden to re-enable) -->
-            <div class="form-container" hidden>
                 <!-- Form Header -->
                 
                 <!-- Custom Registration Form -->
@@ -332,11 +314,18 @@
             
                         </div>
                         
-                        <!-- Transaction ID Field -->
+                        <!-- Transaction ID & payment proof -->
                         <div class="form-group" >
                             <label for="transactionId" >Transaction ID (Optional)</label>
                             <input type="text" id="transactionId" name="transactionId" placeholder="Enter your payment transaction ID"  class="form-control">
                             <small >Please provide your payment transaction ID for faster verification (optional)</small>
+                        </div>
+
+                        <div class="form-group" >
+                            <label for="paymentProofFile" >Payment proof attachment (Optional)</label>
+                            <input type="file" id="paymentProofFile" name="paymentProofFile" accept="image/png,image/jpeg,image/webp,application/pdf,.png,.jpg,.jpeg,.webp,.pdf" class="form-control form-control-file">
+                            <small >Upload a screenshot or PDF of your bank transfer (PNG, JPG, WEBP, or PDF — max 5 MB)</small>
+                            <small id="paymentProofFileName" class="payment-proof-filename" hidden></small>
                         </div>
 
                         <!-- GDPR consent (RGPD Art. 6.1.a) -->
@@ -359,6 +348,9 @@
                                 </span>
                             </label>
                         </div>
+
+                        <!-- reCAPTCHA (site key injected at deploy / via local-env.js) -->
+                        <div id="recaptcha-widget" class="form-group" aria-label="reCAPTCHA verification"></div>
                         
                         <!-- Submit Button -->
                         <div class="form-submit" >
@@ -559,12 +551,16 @@
     
     <!-- Fallback for users with JavaScript disabled -->
     <noscript>
-        <p>Online registration is not open yet. Please check back soon or read our <a href="faq.html">FAQ</a> for visiting information.</p>
+        <p>JavaScript is required to complete registration. Please enable JavaScript or contact us at <a href="mailto:info@bcaspain.org">info@bcaspain.org</a>.</p>
     </noscript>
     
     
     <script src="../js/privacy-policy-modal.js"></script>
-    <!-- Registration form disabled — uncomment when re-enabling the form above -->
-    <!-- <script src="../js/registration-form.js"></script> -->
+    <script src="../js/local-env.js"></script>
+    <script>
+        if (!window.DP_GAS_URL) window.DP_GAS_URL = '__DP_GAS_URL__';
+        if (!window.RECAPTCHA_SITE_KEY) window.RECAPTCHA_SITE_KEY = '__RECAPTCHA_SITE_KEY__';
+    </script>
+    <script src="../js/registration-form.js"></script>
 </body>
 </html>
