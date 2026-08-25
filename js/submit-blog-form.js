@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function postToGas(url, data) {
         var payload = JSON.stringify(data);
-        console.log('[blog] POST bytes≈' + payload.length);
         return fetch(url, {
             method: 'POST',
             mode: 'no-cors',
@@ -179,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 showSuccess();
             })
             .catch(function(err) {
-                console.error('Blog submission failed:', err);
                 resetUi();
                 showErrors([err.message || 'Submission failed. Please try again.']);
             });

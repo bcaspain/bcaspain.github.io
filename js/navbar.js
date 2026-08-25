@@ -50,8 +50,7 @@
       setActiveLink(placeholder);
 
       document.dispatchEvent(new Event('navbar:loaded'));
-    } catch (err) {
-      console.error(err);
+    } catch {
     }
   }
 

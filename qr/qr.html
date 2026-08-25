@@ -414,15 +414,11 @@
     // Analytics and Monitoring
     const Analytics = {
       log: function(event, data = {}) {
-        if (CONFIG.DEBUG_MODE) {
-          console.log(`[Analytics] ${event}:`, data);
-        }
         // In production, send to your analytics service
         // Example: gtag('event', event, data);
       },
       
       error: function(error, context = {}) {
-        console.error(`[Error] ${error.message}`, context);
         // In production, send to error tracking service
         // Example: Sentry.captureException(error, { extra: context });
       }
@@ -443,18 +439,12 @@
         const cached = this.cache.get(key);
         
         if (cached && Date.now() - cached.timestamp < CONFIG.CACHE_DURATION) {
-          if (CONFIG.DEBUG_MODE) {
-            console.log(`[Cache] Hit for: ${qrText.substring(0, 20)}...`);
-          }
           Analytics.log('cache_hit', { qrText: qrText.substring(0, 20) + '...' });
           return cached.result;
         }
         
         if (cached && Date.now() - cached.timestamp >= CONFIG.CACHE_DURATION) {
           this.cache.delete(key); // Remove expired cache
-          if (CONFIG.DEBUG_MODE) {
-            console.log(`[Cache] Expired for: ${qrText.substring(0, 20)}...`);
-          }
         }
         
         return null;
@@ -474,10 +464,6 @@
           timestamp: Date.now(),
           qrText: qrText
         });
-        
-        if (CONFIG.DEBUG_MODE) {
-          console.log(`[Cache] Stored for: ${qrText.substring(0, 20)}...`);
-        }
         Analytics.log('cache_set', { qrText: qrText.substring(0, 20) + '...', result: result });
       },
       
@@ -492,18 +478,11 @@
             deletedCount++;
           }
         }
-        
-        if (CONFIG.DEBUG_MODE && deletedCount > 0) {
-          console.log(`[Cache] Cleaned up ${deletedCount} expired entries`);
-        }
       },
       
       // Clear all cache
       clear: function() {
         this.cache.clear();
-        if (CONFIG.DEBUG_MODE) {
-          console.log('[Cache] All cache cleared');
-        }
         Analytics.log('cache_cleared');
       },
       
@@ -603,10 +582,6 @@
       try {
         // Generate hash of entered code
         const enteredHash = await generateHash(enteredCode);
-        
-        if (CONFIG.DEBUG_MODE) {
-          console.log('Entered hash:', enteredHash);
-        }
         
         // Compare with stored hash
         if (enteredHash === CONFIG.VERIFICATION_HASH) {
@@ -779,10 +754,6 @@
           
           const data = await response.json();
           
-          if (CONFIG.DEBUG_MODE) {
-            console.log('API Response:', data);
-          }
-          
           appState.totalScans++;
           
           // Cache the result for future use
@@ -923,40 +894,21 @@
     window.addEventListener('load', () => {
       const loadTime = performance.now();
       Analytics.log('page_load', { loadTime: Math.round(loadTime) });
-      
-      // Log cache stats on page load
-      if (CONFIG.DEBUG_MODE) {
-        const cacheStats = TicketCache.getStats();
-        console.log('[Cache] Initial stats:', cacheStats);
-      }
     });
 
     // Cache management functions (accessible from console for debugging)
     window.TicketCache = TicketCache;
     window.getCacheStats = function() {
       const stats = TicketCache.getStats();
-      console.log('📊 Cache Statistics:', stats);
       return stats;
     };
     
     window.clearCache = function() {
       TicketCache.clear();
-      console.log('🗑️ Cache cleared');
     };
     
     window.showCachePerformance = function() {
-      const stats = TicketCache.getStats();
-      const hitRate = stats.total > 0 ? ((stats.valid / stats.total) * 100).toFixed(1) : 0;
-      
-      console.log(`
-🚀 Cache Performance Report:
-📊 Total Entries: ${stats.total}
-✅ Valid Entries: ${stats.valid}
-⏰ Expired Entries: ${stats.expired}
-🎯 Hit Rate: ${hitRate}%
-📏 Max Size: ${stats.maxSize}
-⏱️ Cache Duration: ${CONFIG.CACHE_DURATION / 1000}s
-      `);
+      return TicketCache.getStats();
     };
 
     // Auto-cleanup cache every 5 minutes
@@ -969,14 +921,8 @@
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
           .then(registration => {
-            if (CONFIG.DEBUG_MODE) {
-              console.log('SW registered: ', registration);
-            }
           })
           .catch(registrationError => {
-            if (CONFIG.DEBUG_MODE) {
-              console.log('SW registration failed: ', registrationError);
-            }
           });
       });
     }
