@@ -29,6 +29,150 @@ document.addEventListener('DOMContentLoaded', function() {
     const countryCode = document.getElementById('country-code');
     const successMessage = document.getElementById('successMessage');
     const nameField = document.getElementById('name');
+    const paymentProofFileInput = document.getElementById('paymentProofFile');
+    const paymentProofFilename = document.getElementById('paymentProofFilename');
+
+    const MAX_PAYMENT_PROOF_BYTES = 1024 * 1024; // 1 MB (must match Apps Script)
+    const ALLOWED_PAYMENT_PROOF_MIMES = Object.freeze([
+        'image/png',
+        'image/jpeg',
+        'application/pdf'
+    ]);
+
+    function clearPaymentProofFilename() {
+        if (paymentProofFilename) paymentProofFilename.textContent = '';
+    }
+
+    function inferPaymentProofMime(file) {
+        const typed = String((file && file.type) || '').toLowerCase();
+        if (typed === 'image/jpg') return 'image/jpeg';
+        if (ALLOWED_PAYMENT_PROOF_MIMES.indexOf(typed) !== -1) return typed;
+        const name = String((file && file.name) || '').toLowerCase();
+        if (name.endsWith('.png')) return 'image/png';
+        if (name.endsWith('.jpg') || name.endsWith('.jpeg')) return 'image/jpeg';
+        if (name.endsWith('.pdf')) return 'application/pdf';
+        return typed;
+    }
+
+    function validatePaymentProofFile(file) {
+        if (!file) return null;
+        const mime = inferPaymentProofMime(file);
+        if (ALLOWED_PAYMENT_PROOF_MIMES.indexOf(mime) === -1) {
+            return 'Invalid file type. Only PNG, JPG, and PDF are allowed.';
+        }
+        if (file.size > MAX_PAYMENT_PROOF_BYTES) {
+            return 'File too large. Maximum size is 1 MB.';
+        }
+        return null;
+    }
+
+    function readPaymentProofFile(file) {
+        return new Promise(function(resolve, reject) {
+            if (!file) {
+                resolve(null);
+                return;
+            }
+            const error = validatePaymentProofFile(file);
+            if (error) {
+                reject(new Error(error));
+                return;
+            }
+            const mime = inferPaymentProofMime(file);
+            const reader = new FileReader();
+            reader.onload = function() {
+                const dataUrl = String(reader.result || '');
+                const base64 = dataUrl.includes(',') ? dataUrl.split(',')[1] : '';
+                if (!base64) {
+                    reject(new Error('Could not read payment proof file.'));
+                    return;
+                }
+                resolve({
+                    payment_file_base64: base64,
+                    payment_file_name: file.name || 'payment-proof',
+                    payment_file_mime: mime
+                });
+            };
+            reader.onerror = function() {
+                reject(new Error('Could not read payment proof file.'));
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    /** Apps Script web apps redirect; form POST keeps large bodies better than fetch+json. */
+    function postRegistrationToGas(url, data) {
+        const payload = JSON.stringify(data);
+        const hasFile = Boolean(data && data.payment_file_base64);
+        console.log('[registration] POST bytes≈' + payload.length + ' hasFile=' + hasFile);
+
+        if (!hasFile) {
+            return fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: payload
+            });
+        }
+
+        return new Promise(function(resolve) {
+            const frameName = 'gasUploadFrame' + Date.now();
+            const iframe = document.createElement('iframe');
+            iframe.name = frameName;
+            iframe.setAttribute('aria-hidden', 'true');
+            iframe.style.cssText = 'display:none;width:0;height:0;border:0;';
+            document.body.appendChild(iframe);
+
+            const formEl = document.createElement('form');
+            formEl.method = 'POST';
+            formEl.action = url;
+            formEl.target = frameName;
+            formEl.acceptCharset = 'UTF-8';
+            formEl.style.display = 'none';
+
+            const input = document.createElement('textarea');
+            input.name = 'payload';
+            input.value = payload;
+            formEl.appendChild(input);
+            document.body.appendChild(formEl);
+            formEl.submit();
+
+            window.setTimeout(function() {
+                try { document.body.removeChild(formEl); } catch (err) {}
+                try { document.body.removeChild(iframe); } catch (err) {}
+                resolve();
+            }, 3000);
+        });
+    }
+
+    if (paymentProofFileInput) {
+        paymentProofFileInput.addEventListener('change', function() {
+            const file = paymentProofFileInput.files && paymentProofFileInput.files[0];
+            if (!file) {
+                clearPaymentProofFilename();
+                return;
+            }
+            const error = validatePaymentProofFile(file);
+            if (error) {
+                paymentProofFileInput.value = '';
+                clearPaymentProofFilename();
+                alert(error);
+                return;
+            }
+            if (paymentProofFilename) {
+                const sizeKb = Math.max(1, Math.round(file.size / 1024));
+                paymentProofFilename.textContent = file.name + ' (' + sizeKb + ' KB)';
+            }
+        });
+    }
+
+    const privacySwitch = document.getElementById('registrationPrivacy');
+    if (privacySwitch) {
+        const syncPrivacySwitch = function() {
+            privacySwitch.setAttribute('aria-checked', privacySwitch.checked ? 'true' : 'false');
+        };
+        syncPrivacySwitch();
+        privacySwitch.addEventListener('change', syncPrivacySwitch);
+    }
     
     // Security: Form submission state with timestamp to prevent multiple submissions and rate limiting
     let isSubmitting = false;
@@ -246,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const adultCount = Math.max(0, Math.min(50, parseInt(adultCountElement.value) || 0));
             const childAboveCount = Math.max(0, Math.min(50, parseInt(childrenCountElement.value) || 0));
             const childBelowCount = Math.max(0, Math.min(50, parseInt(childrenUnder5CountElement.value) || 0));
-            const dayPassCount = Math.max(0, Math.min(50, parseInt(dayPassCountElement.value) || 0));
+            const dayPassCount = 0; // Day Pass (Guests) hidden / disabled
             const isStudentSelected = Boolean(studentElement.checked);
             
             // Security: Recalculate prices using secure method
@@ -629,17 +773,19 @@ document.addEventListener('DOMContentLoaded', function() {
             adultCheckbox.disabled = isStudentSelected;
             childrenCheckbox.disabled = isStudentSelected;
             childrenUnder5Checkbox.disabled = isStudentSelected;
-            dayPassCheckbox.disabled = isStudentSelected;
+            dayPassCheckbox.disabled = true;
+            dayPassCheckbox.checked = false;
             
             // Add visual indication for disabled options
             adultOption.style.opacity = isStudentSelected ? '0.5' : '1';
             childrenOption.style.opacity = isStudentSelected ? '0.5' : '1';
             childrenUnder5Option.style.opacity = isStudentSelected ? '0.5' : '1';
-            dayPassOption.style.opacity = isStudentSelected ? '0.5' : '1';
+            dayPassOption.style.opacity = '0.5';
             adultOption.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
             childrenOption.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
             childrenUnder5Option.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
-            dayPassOption.style.cursor = isStudentSelected ? 'not-allowed' : 'pointer';
+            dayPassOption.style.cursor = 'not-allowed';
+            dayPassOption.style.display = 'none';
             
             if (isStudentSelected) {
                 // Uncheck other options if student is selected
@@ -678,7 +824,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             // If Regular, Children, or Day Pass options are selected/deselected
-            const isRegularOrChildrenSelected = adultCheckbox.checked || childrenCheckbox.checked || childrenUnder5Checkbox.checked || dayPassCheckbox.checked;
+            const isRegularOrChildrenSelected = adultCheckbox.checked || childrenCheckbox.checked || childrenUnder5Checkbox.checked;
             
             // Handle Student option
             studentCheckbox.disabled = isRegularOrChildrenSelected;
@@ -1215,9 +1361,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (checkbox.id === 'children-under-5' && childBelowCount === 0) {
                 errors.push('Please enter a count for children (up to 5 years)');
             }
-            if (checkbox.id === 'day-pass' && dayPassCount === 0) {
-                errors.push('Please enter a count for day pass (guests)');
-            }
         }
         
         return errors;
@@ -1324,6 +1467,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Clear donation field
             document.getElementById('custom-donation-amount').value = '';
+            clearPaymentProofFilename();
 
             // Reset children-under-5 visibility
             updateChildrenUnder5Visibility();
@@ -1432,6 +1576,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const sanitizedEmail = sanitizeInput(htmlFormData.get('email'), 'email');
         const sanitizedContact = sanitizeInput(htmlFormData.get('contact'), 'phone');
         const sanitizedTransactionId = sanitizeInput(document.getElementById('transactionId').value.trim(), 'text');
+        const paymentProofFile = paymentProofFileInput && paymentProofFileInput.files
+            ? paymentProofFileInput.files[0]
+            : null;
         
                     // Security: Use secure calculation instead of user input
             const { adultCount, childAboveCount, childBelowCount, dayPassCount, customDonationAmount, isStudentSelected, totalAmount } = secureFormData;
@@ -1470,76 +1617,47 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         };
 
-        // Send to Google Sheets
-        sendToGoogleSheets(data);
+        function resetSubmitUi() {
+            const pleaseWaitEl = document.getElementById('please-wait-message');
+            if (pleaseWaitEl) pleaseWaitEl.remove();
+            isSubmitting = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+
+        readPaymentProofFile(paymentProofFile)
+            .then(function(filePayload) {
+                if (filePayload) {
+                    data.payment_file_base64 = filePayload.payment_file_base64;
+                    data.payment_file_name = filePayload.payment_file_name;
+                    data.payment_file_mime = filePayload.payment_file_mime;
+                }
+                sendToGoogleSheets(data);
+            })
+            .catch(function(fileErr) {
+                console.error('Payment proof read failed:', fileErr);
+                resetSubmitUi();
+                showValidationErrors([fileErr.message || 'Could not read payment proof file.']);
+            });
         
         
         function sendToGoogleSheets(data) {
             if (!registrationScriptUrl) {
                 console.error('Registration endpoint not configured.');
                 alert('Registration is temporarily unavailable. Please try again later or contact support.');
-                isSubmitting = false;
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                const pleaseWaitMsg = document.getElementById('please-wait-message');
-                if (pleaseWaitMsg) pleaseWaitMsg.remove();
+                resetSubmitUi();
                 return;
             }
 
-            // Simple direct request (no CORS complications)
-            fetch(registrationScriptUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
+            postRegistrationToGas(registrationScriptUrl, data)
             .then(() => {
                 // Show success message and reset form
                 showSuccessMessage();
             })
             .catch(error => {
                 console.error('Error submitting registration:', error);
-                
-                // Try direct request as fallback (for production)
-                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                    fetch(registrationScriptUrl, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data)
-                    })
-                    .then(() => {
-                        // Assume success for no-cors requests
-                        // Show success message and reset form
-                        showSuccessMessage();
-                    })
-                    .catch(fallbackError => {
-                        console.error('Fallback also failed:', fallbackError);
-                        showError();
-                    });
-                } else {
-                    showError();
-                }
-                
-                function showError() {
-                    // Remove please wait message
-                    const pleaseWaitMsg = document.getElementById('please-wait-message');
-                    if (pleaseWaitMsg) {
-                        pleaseWaitMsg.remove();
-                    }
-                    
-                    // Reset submission state and button
-                    isSubmitting = false;
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    
-                    // Show error message to user
-                    alert('Registration failed. Please try again or contact support.');
-                }
+                resetSubmitUi();
+                alert('Registration failed. Please try again or contact support.');
             });
         }
     });

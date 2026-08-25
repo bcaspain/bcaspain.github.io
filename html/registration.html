@@ -169,7 +169,7 @@
                                 <!-- Ticket Validity Note -->
                                 <div >
                                     <p >
-                                        <strong>Ticket Validity:</strong> All tickets (except day pass) are valid for all days of Puja.
+                                        <!-- <strong>Ticket Validity:</strong> All tickets (except day pass) are valid for all days of Puja. -->
                                     </p>
                                     <p >
                                         <strong>Dates:</strong> Saturday, October 17 – Wednesday, October 21, 2026
@@ -212,13 +212,13 @@
                                     <input type="number" id="children-under-5-count" name="children-under-5-count" min="0" value="0" placeholder="Count"  class="form-control">
                                 </div>
                                 
-                                <div class="contribution-option" >
+                                <div class="contribution-option contribution-option--day-pass" hidden aria-hidden="true">
                                     <div >
-                                        <input type="checkbox" id="day-pass" name="contributionTypes" value="day-pass" data-price="35" data-category="bca-members" >
+                                        <input type="checkbox" id="day-pass" name="contributionTypes" value="day-pass" data-price="35" data-category="bca-members" disabled tabindex="-1">
                                         <label for="day-pass" >Day Pass (Guests)</label>
                                         <span >€35</span>
                                     </div>
-                                    <input type="number" id="day-pass-count" name="day-pass-count" min="0" value="0" placeholder="Count"  class="form-control">
+                                    <input type="number" id="day-pass-count" name="day-pass-count" min="0" value="0" placeholder="Count" class="form-control" disabled hidden>
                                 </div>
                                 
 
@@ -315,27 +315,33 @@
                         </div>
                         
                         <!-- Transaction ID & payment proof -->
-                        <div class="form-group" >
-                            <label for="transactionId" >Transaction ID (Optional)</label>
-                            <input type="text" id="transactionId" name="transactionId" placeholder="Enter your payment transaction ID"  class="form-control">
-                            <small >Please provide your payment transaction ID for faster verification (optional)</small>
+                        <div class="form-grid payment-optional-row">
+                            <div class="form-group">
+                                <label for="transactionId">Transaction ID (Optional)</label>
+                                <input type="text" id="transactionId" name="transactionId" placeholder="Enter your payment transaction ID" class="form-control">
+                                <small>Payment transaction ID for faster verification (optional)</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="paymentProofFile">Payment proof attachment (Optional)</label>
+                                <input type="file" id="paymentProofFile" name="paymentProofFile" class="form-control form-control-file" accept="image/png,image/jpeg,application/pdf,.png,.jpg,.jpeg,.pdf">
+                                <span id="paymentProofFilename" class="payment-proof-filename" aria-live="polite"></span>
+                                <small>PNG, JPG, or PDF — max 1 MB (optional)</small>
+                            </div>
                         </div>
 
                         <!-- GDPR consent (RGPD Art. 6.1.a) -->
                         <div class="privacy-consent" role="group" aria-labelledby="privacy-consent-heading">
                             <label class="privacy-consent-label" for="registrationPrivacy">
-                                <input type="checkbox" id="registrationPrivacy" name="registrationPrivacy" required class="privacy-consent-input">
+                                <input type="checkbox" id="registrationPrivacy" name="registrationPrivacy" required class="privacy-consent-input" role="switch" aria-checked="false">
                                 <span class="privacy-consent-check" aria-hidden="true"></span>
                                 <span class="privacy-consent-body">
                                     <span id="privacy-consent-heading" class="privacy-consent-title">
                                         <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                                        Consentimiento de privacidad / Privacy consent
+                                        Privacy consent
                                         <span class="privacy-required" aria-hidden="true">*</span>
                                     </span>
-                                    <span class="privacy-consent-lang privacy-consent-lang--es" lang="es">
-                                        He leído y acepto la <a href="privacidad.html" class="js-privacy-modal-link">Política de Privacidad</a> y consiento el tratamiento de mis datos para la gestión de la inscripción.
-                                    </span>
-                                    <span class="privacy-consent-lang privacy-consent-lang--en" lang="en">
+                                    <span class="privacy-consent-text">
                                         I have read and accept the <a href="privacidad.html" class="js-privacy-modal-link">Privacy Policy</a> and consent to the processing of my data for registration purposes.
                                     </span>
                                 </span>
