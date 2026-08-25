@@ -2500,7 +2500,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .visitor-counter img {
     border: none !important;
-    max-width: 100% !important;
+    max-width: 200px !important;
     height: auto !important;
     display: block !important;
     margin: 0 auto !important;
