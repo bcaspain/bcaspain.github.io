@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <script src="../js/theme-pref.js"></script>
     <title>Submit to Magazine &amp; Blog | BCA Spain</title>
-    <meta name="description" content="Submit writing or images for the BCA magazine and website blog via a Google Drive or Google Docs link.">
+    <meta name="description" content="Submit writing or images for the Bengali Cultural Association magazine and website blog.">
     <meta name="author" content="Bengali Cultural Association Barcelona">
     <link rel="canonical" href="https://bcaspain.org/html/submit_blog.html">
 
     <meta property="og:title" content="Submit to Magazine & Blog | BCA Spain">
-    <meta property="og:description" content="Share your writing or images for the BCA magazine and website blog via Google Drive or Google Docs.">
+    <meta property="og:description" content="Share your writing or images for the BCA magazine and website blog.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bcaspain.org/html/submit_blog.html">
     <meta property="og:image" content="https://bcaspain.org/slider/a11.webp">
@@ -19,7 +19,7 @@
     <meta property="og:locale" content="en_GB">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Submit to Magazine & Blog | BCA Spain">
-    <meta name="twitter:description" content="Share your writing or images for the BCA magazine and website blog via Google Drive or Google Docs.">
+    <meta name="twitter:description" content="Share your writing or images for the BCA magazine and website blog.">
     <meta name="twitter:image" content="https://bcaspain.org/slider/a11.webp">
 
     <script type="application/ld+json">
@@ -28,7 +28,7 @@
       "@type": "WebPage",
       "name": "Submit to Magazine & Blog | BCA Spain",
       "url": "https://bcaspain.org/html/submit_blog.html",
-      "description": "Submit writing or images for the BCA magazine and website blog via a Google Drive or Google Docs link."
+      "description": "Submit writing or images for the Bengali Cultural Association magazine and website blog."
     }
     </script>
 
@@ -68,7 +68,7 @@
                 <div class="info-header">
                     <h1>Magazine &amp; Blog Submissions</h1>
                     <p>Share writing or images for our community magazine and the BCA Spain website blog.</p>
-                    <p>Upload your content to Google Drive or Google Docs, then share a view link here. Make sure our team can open the link.</p>
+                    <p>Accepted files: DOC, DOCX, JPG, or PNG (max 10&nbsp;MB). You may also add an optional link to related content.</p>
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
                     <form id="blogSubmitForm" class="registration-form">
                         <div class="form-header">
                             <h3>Submission form</h3>
-                            <p>Please fill in your details and paste your Google Drive or Google Docs link</p>
+                            <p>Please fill in your details and attach your content</p>
                         </div>
 
                         <div class="form-grid">
@@ -130,10 +130,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="contentLink" class="form-label">Google Drive / Docs link *</label>
-                                <input type="url" id="contentLink" name="contentLink" required maxlength="2048" placeholder="https://docs.google.com/… or https://drive.google.com/…" class="form-control" title="Google Drive or Google Docs share link to your content">
-                                <small>Share link with view access — Google Docs, Google Drive file, or folder</small>
+                                <label for="contentLink" class="form-label">Content link (optional)</label>
+                                <input type="url" id="contentLink" name="contentLink" maxlength="2048" placeholder="https://…" class="form-control" title="Optional link to related content">
+                                <small>Optional — Google Doc, Drive folder, or other URL</small>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contentFile" class="form-label">Content file *</label>
+                            <input type="file" id="contentFile" name="contentFile" required class="form-control form-control-file" accept=".doc,.docx,.jpg,.jpeg,.png,image/png,image/jpeg,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                            <span id="contentFilename" class="payment-proof-filename" aria-live="polite"></span>
+                            <small>DOC, DOCX, JPG, or PNG — max 10&nbsp;MB</small>
                         </div>
 
                         <div class="privacy-consent" role="group" aria-labelledby="privacy-consent-heading">
