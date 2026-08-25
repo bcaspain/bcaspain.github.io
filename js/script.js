@@ -75,19 +75,16 @@ function initMobileButtonFix() {
 function initMobileSlideshowReorder() {
     const isMobile = window.innerWidth <= 768;
     
-    console.log('Mobile slideshow and countdown reorder - isMobile:', isMobile);
     
     // Always clean up first to prevent duplicates
     const existingMobileSlideshow = document.querySelector('.mobile-slideshow');
     const existingMobileCountdown = document.querySelector('.mobile-countdown');
     
     if (existingMobileSlideshow) {
-        console.log('Removing existing mobile slideshow');
         existingMobileSlideshow.remove();
     }
     
     if (existingMobileCountdown) {
-        console.log('Removing existing mobile countdown');
         existingMobileCountdown.remove();
     }
     
@@ -97,12 +94,6 @@ function initMobileSlideshowReorder() {
         const countdown = document.querySelector('.hero-right-section .countdown-section');
         const heroText = document.querySelector('.hero-text');
         
-        console.log('Mobile mode - Elements found:', { 
-            heroTitle: !!heroTitle, 
-            slideshow: !!slideshow, 
-            countdown: !!countdown,
-            heroText: !!heroText
-        });
         
         if (heroTitle && slideshow && heroText) {
             // Clone the slideshow for mobile — placed after the hero title
@@ -112,7 +103,6 @@ function initMobileSlideshowReorder() {
             heroTitle.insertAdjacentElement('afterend', mobileSlideshow);
             slideshow.classList.add('hidden-on-mobile');
             
-            console.log('Mobile slideshow created and positioned');
         } else if (slideshow) {
             slideshow.classList.remove('hidden-on-mobile');
         }
@@ -148,7 +138,6 @@ function initMobileSlideshowReorder() {
             // Hide the original countdown on mobile by adding a class
             countdown.classList.add('hidden-on-mobile');
             
-            console.log('Mobile countdown created and positioned after subtitle');
         }
     } else {
         // On desktop, show original slideshow and countdown
@@ -157,12 +146,10 @@ function initMobileSlideshowReorder() {
         
         if (slideshow) {
             slideshow.classList.remove('hidden-on-mobile');
-            console.log('Desktop mode - original slideshow restored');
         }
         
         if (countdown) {
             countdown.classList.remove('hidden-on-mobile');
-            console.log('Desktop mode - original countdown restored');
         }
     }
 }
@@ -281,13 +268,10 @@ function initCountdown() {
 
 // Ensure countdown is initialized when DOM is loaded
 if (document.readyState === 'loading') {
-    console.log('DOM still loading, adding DOMContentLoaded listener');
     document.addEventListener('DOMContentLoaded', () => {
-        console.log('DOM loaded, initializing countdown');
         initCountdown();
     });
 } else {
-    console.log('DOM already loaded, initializing countdown immediately');
     initCountdown();
 }
 
@@ -709,7 +693,6 @@ function handleContactForm(e) {
         e.target.reset();
     })
     .catch(error => {
-        console.error('Error sending to Google Sheets:', error);
         showNotification('Failed to send message. Please try again or contact us directly.', 'error');
     })
     .finally(() => {
@@ -853,7 +836,6 @@ function initScrollAnimations() {
             
             mobileAnimateElements.forEach(el => mobileObserver.observe(el));
         } catch (e) {
-            console.log('Intersection Observer not supported, using scroll fallback');
             // Fallback for older browsers
             window.addEventListener('scroll', () => {
                 mobileAnimateElements.forEach(el => {
@@ -940,7 +922,6 @@ function initFormValidation() {
 function initTouchGestures() {
     // Touch gesture handler disabled to prevent unwanted scroll to top behavior
     // when clicking on elements. Users can still use the back-to-top button.
-    console.log('Touch gestures disabled to prevent unwanted scroll behavior');
     
     // Original touch gesture code commented out to prevent unwanted scroll to top:
     /*
@@ -1101,18 +1082,6 @@ function setInitialActiveNavLink() {
             return;
         }
     });
-    
-    
-    console.log('Current page:', currentPage);
-    console.log('Active link set for:', currentPage);
-    
-    // Verify active link was set
-    const activeLink = document.querySelector('.nav-link.active');
-    if (activeLink) {
-        console.log('Active link found:', activeLink.getAttribute('href'));
-    } else {
-        console.log('No active link found - this might be an issue');
-    }
 }
 
 // Initialize everything when DOM is loaded
@@ -1216,10 +1185,8 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
             .then(registration => {
-                console.log('SW registered: ', registration);
             })
             .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
             });
     });
 }
@@ -1245,7 +1212,6 @@ function resolveFeatureVideoSrc(item, fallbackSrc) {
 }
 
 function openVideoModal(videoSrc, title) {
-    console.log('Opening video modal:', videoSrc, title);
     if (videoModal && videoModalPlayer && videoModalTitle) {
         // Create a unique session ID for this modal open
         const sessionId = Date.now() + Math.random();
@@ -1272,7 +1238,6 @@ function openVideoModal(videoSrc, title) {
         requestAnimationFrame(() => {
             // Check if this session is still current
             if (currentVideoModalSession !== sessionId) {
-                console.log('Modal session changed, aborting video load');
                 return;
             }
             
@@ -1280,12 +1245,10 @@ function openVideoModal(videoSrc, title) {
             
             // Validate video source before setting
             if (!videoSrc || videoSrc === '') {
-                console.error('Invalid video source:', videoSrc);
                 showNotification('Video source not found. Please try again.', 'error');
                 return;
             }
             
-            console.log('Setting video source:', videoSrc);
             
             // Set video source after modal is visible
             videoModalPlayer.src = videoSrc;
@@ -1304,11 +1267,9 @@ function openVideoModal(videoSrc, title) {
         const handleMetadataLoaded = function() {
             // Check if this session is still current
             if (currentVideoModalSession !== sessionId) {
-                console.log('Session changed during metadata load, aborting');
                 return;
             }
             
-            console.log('Video metadata loaded successfully');
             const videoWidth = this.videoWidth;
             const videoHeight = this.videoHeight;
             if (!videoWidth || !videoHeight) return;
@@ -1349,13 +1310,11 @@ function openVideoModal(videoSrc, title) {
         
         // Add error handling for video loading
         const loadStartHandler = function() {
-            console.log('Video loading started');
         };
         
         videoModalPlayer.addEventListener('loadstart', loadStartHandler);
         
         const canPlayHandler = function() {
-            console.log('Video can play');
         };
         
         videoModalPlayer.addEventListener('canplay', canPlayHandler);
@@ -1363,7 +1322,6 @@ function openVideoModal(videoSrc, title) {
         const errorHandler = function(e) {
             // Check if this session is still current (use currentVideoModalSession directly)
             if (!currentVideoModalSession || currentVideoModalSession !== sessionId) {
-                console.log('No active session, ignoring error');
                 return;
             }
 
@@ -1372,13 +1330,6 @@ function openVideoModal(videoSrc, title) {
                 return;
             }
             
-            console.error('Video playback error:', e);
-            console.error('Video error details:', {
-                error: videoModalPlayer.error,
-                networkState: videoModalPlayer.networkState,
-                readyState: videoModalPlayer.readyState,
-                src: videoModalPlayer.src
-            });
             
             // Only show error for actual video loading failures, not autoplay restrictions
             if (videoModalPlayer.error && videoModalPlayer.error.code !== 4) { // 4 = MEDIA_ERR_SRC_NOT_SUPPORTED
@@ -1412,7 +1363,6 @@ function openVideoModal(videoSrc, title) {
         // Handle video play with iOS compatibility
         const playVideo = () => {
             videoModalPlayer.play().catch(function(error) {
-                console.log('Video autoplay failed (normal on iOS):', error);
                 // Show play button or instruction for iOS
                 const playButton = document.createElement('div');
                 playButton.innerHTML = '<i class="fas fa-play"></i> Tap to Play';
@@ -1435,13 +1385,11 @@ function openVideoModal(videoSrc, title) {
                 const playButtonClickHandler = function() {
                     // Check if this session is still current
                     if (currentVideoModalSession !== sessionId) {
-                        console.log('Session changed, removing play button');
                         this.remove();
                         return;
                     }
                     
                     videoModalPlayer.play().catch(function(playError) {
-                        console.error('Manual play failed:', playError);
                         // Only show error for actual playback failures, not autoplay restrictions
                         if (playError.name !== 'NotAllowedError') {
                             showNotification('Video playback failed. Please try again.', 'error');
@@ -1499,19 +1447,12 @@ function openVideoModal(videoSrc, title) {
         
         window.addEventListener('resize', handleResize);
         
-        console.log('Video modal opened successfully');
     } else {
-        console.error('Video modal elements not found:', {
-            videoModal: !!videoModal,
-            videoModalPlayer: !!videoModalPlayer,
-            videoModalTitle: !!videoModalTitle
-        });
     }
 }
 
 function closeVideoModal() {
     if (videoModal && videoModalPlayer) {
-        console.log('Closing video modal...');
 
         const scrollY = parseInt(videoModal.getAttribute('data-scroll-position') || '0', 10) || 0;
         const openerEl = videoModal._openerEl;
@@ -1570,9 +1511,7 @@ function closeVideoModal() {
             modalContent.style.width = '';
         }
 
-        console.log('Video modal closed successfully at scroll', scrollY);
     } else {
-        console.warn('Video modal elements not found for closing');
     }
 }
 
@@ -1589,7 +1528,6 @@ function cleanupVideoModal() {
                 listener.element.removeEventListener(listener.event, listener.handler);
             }
         } catch (e) {
-            console.log('Error removing event listener:', e);
         }
     });
     videoModalEventListeners = [];
@@ -1601,34 +1539,28 @@ function addVideoModalEventListener(element, event, handler, options = {}) {
         element.addEventListener(event, handler, options);
         videoModalEventListeners.push({ element, event, handler, options });
     } catch (e) {
-        console.error('Error adding event listener:', e);
     }
 }
 
 function initVideoModal() {
     // Prevent multiple initializations
     if (videoModalInitialized) {
-        console.log('Video modal already initialized, skipping...');
         return;
     }
     
-    console.log('Initializing video modal...');
     
     // Clean up any existing event listeners
     cleanupVideoModal();
     
     // Add click event listeners to feature items
     const featureItems = document.querySelectorAll('.feature-item[data-video]');
-    console.log('Found feature items with videos:', featureItems.length);
 
     if (featureItems.length === 0) {
-        console.warn('No feature items with data-video attribute found! Still wiring up modal close handlers below, since pages like index.html open the modal via their own inline script.');
     }
 
     featureItems.forEach((item, index) => {
         const videoSrc = item.getAttribute('data-video');
         const title = item.getAttribute('data-title');
-        console.log(`Feature item ${index}:`, videoSrc, title);
         
         // Add click event listener to the entire feature item
         const clickHandler = function(e) {
@@ -1636,7 +1568,6 @@ function initVideoModal() {
             e.stopPropagation();
             const videoSrc = resolveFeatureVideoSrc(this, this.getAttribute('data-video'));
             const title = this.getAttribute('data-title');
-            console.log('Feature item clicked:', videoSrc);
             openVideoModal(videoSrc, title);
         };
         
@@ -1668,7 +1599,6 @@ function initVideoModal() {
                 e.preventDefault();
                 closeVideoModal();
             } catch (error) {
-                console.error('Error in close button handler:', error);
                 // Fallback: just hide the modal
                 if (videoModal) {
                     videoModal.style.display = 'none';
@@ -1745,7 +1675,6 @@ function initVideoModal() {
     
     // Mark as initialized
     videoModalInitialized = true;
-    console.log('Video modal initialization completed successfully');
 }
 
 // Clean up video modal on page unload

@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function postRegistrationToGas(url, data) {
         const payload = JSON.stringify(data);
         const hasFile = Boolean(data && data.payment_file_base64);
-        console.log('[registration] POST bytes≈' + payload.length + ' hasFile=' + hasFile);
 
         if (!hasFile) {
             return fetch(url, {
@@ -272,12 +271,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Security: Log security events
     function logSecurityEvent(eventType, element) {
-        console.warn(`🚨 Security Event: ${eventType}`, {
-            timestamp: Date.now(),
-            element: element?.id || element?.tagName,
-            userAgent: navigator.userAgent,
-            token: securityToken
-        });
     }
     
     // Security: Enhanced input sanitization
@@ -1635,7 +1628,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 sendToGoogleSheets(data);
             })
             .catch(function(fileErr) {
-                console.error('Payment proof read failed:', fileErr);
                 resetSubmitUi();
                 showValidationErrors([fileErr.message || 'Could not read payment proof file.']);
             });
@@ -1643,7 +1635,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         function sendToGoogleSheets(data) {
             if (!registrationScriptUrl) {
-                console.error('Registration endpoint not configured.');
                 alert('Registration is temporarily unavailable. Please try again later or contact support.');
                 resetSubmitUi();
                 return;
@@ -1655,7 +1646,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 showSuccessMessage();
             })
             .catch(error => {
-                console.error('Error submitting registration:', error);
                 resetSubmitUi();
                 alert('Registration failed. Please try again or contact support.');
             });
