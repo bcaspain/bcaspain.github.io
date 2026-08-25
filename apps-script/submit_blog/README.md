@@ -6,7 +6,7 @@ Same layout as registration: Config / Main / Upload / Email / Helpers.
 
 | Time | Order no | email | Name | Whatsapp No | Content type | content link | content |
 |------|----------|-------|------|-------------|--------------|--------------|---------|
-| auto | `BLOG-…` | req | req | req | any string | req (Google link) | empty (no file upload) |
+| auto | `BLOG-…` | req | req | req | any string | optional | Drive URL of uploaded file |
 
 - Spreadsheet: `16Th2BgQ9ooLT4flarJ1QsAyfQ31V23w7lUX4BjL9OA4` (tab `Sheet1`)
 - Drive folder: `1tn2g5Xp2bAPEGl3h3n5uR7aH4r_Tl6WM`
@@ -20,10 +20,10 @@ Same layout as registration: Config / Main / Upload / Email / Helpers.
 | `email` | yes | |
 | `whatsapp` | yes | |
 | `content_type` | no* | Any string accepted |
-| `content_link` | yes | Google Drive or Google Docs share URL |
-| `file_base64` | no | Always empty (file upload disabled) |
-| `file_name` | no | Always empty |
-| `file_mime` | no | Always empty |
+| `content_link` | no | Optional URL |
+| `file_base64` | yes | DOC / DOCX / JPG / PNG |
+| `file_name` | yes | With file |
+| `file_mime` | recommended | |
 
 \* May be empty string; not validated against a fixed list.
 
