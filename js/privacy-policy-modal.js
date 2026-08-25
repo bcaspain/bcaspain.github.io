@@ -95,14 +95,15 @@
         modal.setAttribute('aria-modal', 'true');
         modal.setAttribute('aria-labelledby', 'privacyPolicyModalTitle');
         modal.setAttribute('aria-hidden', 'true');
+        var t = window.i18n ? window.i18n.t : function (key) { return key; };
         modal.innerHTML = [
             '<div class="privacy-policy-modal__backdrop" data-privacy-modal-close></div>',
             '<div class="privacy-policy-modal__panel">',
             '  <header class="privacy-policy-modal__header">',
             '    <h2 id="privacyPolicyModalTitle" class="privacy-policy-modal__title">',
-            '      Política de Privacidad / Privacy Policy',
+            '      ' + t('common.privacyModal.title'),
             '    </h2>',
-            '    <button type="button" class="privacy-policy-modal__close" data-privacy-modal-close aria-label="Close privacy policy">',
+            '    <button type="button" class="privacy-policy-modal__close" data-privacy-modal-close aria-label="' + t('common.privacyModal.close') + '">',
             '      <i class="fas fa-times" aria-hidden="true"></i>',
             '    </button>',
             '  </header>',

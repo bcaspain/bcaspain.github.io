@@ -14,9 +14,10 @@ window.RJ_GAS_URL = window.RJ_GAS_URL || '__RJ_GAS_URL__';
 
   function applyBadge(left, capacity) {
     var soldOut = left === 0;
+    var t = window.i18n ? window.i18n.t : function (key) { return key; };
     var label   = soldOut
-      ? '\uD83D\uDEAB SOLD OUT'
-      : left + '\u00A0/\u00A0' + capacity + ' seats left';
+      ? t('rabindraRegister.seatsSoldOut')
+      : t('rabindraRegister.seatsLeft', { left: left, capacity: capacity });
 
     targets.forEach(function (el) {
       el.textContent = label;

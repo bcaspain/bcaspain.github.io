@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+  function t(key, vars) {
+    return window.i18n ? window.i18n.t(key, vars) : key;
+  }
+
   // URL is set via window.RJ_GAS_URL in the HTML before this script loads.
   var gasUrl = (
     window.RJ_GAS_URL && window.RJ_GAS_URL !== '__RJ_GAS_URL__'
@@ -106,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var soldOut = left === 0;
     var label   = soldOut
-      ? '\uD83D\uDEAB SOLD OUT'
-      : left + '\u00A0/\u00A0' + capacity + ' seats left';
+      ? t('rabindraRegister.seatsSoldOut')
+      : t('rabindraRegister.seatsLeft', { left: left, capacity: capacity });
 
     badges.forEach(function (el) {
       el.textContent = label;
@@ -146,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (!GAS_READY) {
-      showError('Registration is not yet available. Please contact the organizers.');
+      showError(t('rabindraRegister.notAvailable'));
       return;
     }
 
@@ -158,10 +162,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var attendees    = Math.max(1, Math.min(4, parseInt((attendeesEl ? attendeesEl.value : '1'), 10) || 1));
     var coupon       = sanitize((couponEl ? couponEl.value : '').toUpperCase(), 50);
 
-    if (!name || name.length < 2)      { showError('Please enter a valid name (at least 2 characters).', nameEl);         return; }
-    if (!email || !email.includes('@')) { showError('Please enter a valid email address.', emailEl);                       return; }
-    if (email !== emailConfirm)         { showError('Email addresses do not match. Please check and try again.', emailConfirmEl); return; }
-    if (!contact || contact.length < 9) { showError('Please enter a valid phone number (at least 9 digits).', contactEl); return; }
+    if (!name || name.length < 2)      { showError(t('rabindraRegister.invalidNameMin'), nameEl);         return; }
+    if (!email || !email.includes('@')) { showError(t('rabindraRegister.invalidEmail'), emailEl);                       return; }
+    if (email !== emailConfirm)         { showError(t('rabindraRegister.emailMismatch'), emailConfirmEl); return; }
+    if (!contact || contact.length < 9) { showError(t('rabindraRegister.invalidPhoneMin'), contactEl); return; }
 
     var params = new URLSearchParams({
       action:    'register',
@@ -173,20 +177,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var originalHTML = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i> Submitting\u2026';
+    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i> ' + t('rabindraRegister.submitting');
     setDisabled(true);
 
     fetch(gasUrl + '?' + params.toString())
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (!data || data.ok !== true) {
-          var msg = (data && data.error) ? data.error : 'Registration failed. Please try again.';
+          var msg = (data && data.error) ? data.error : t('rabindraRegister.submitFailed');
 
           if (data && (data.left === 0 || /fully booked/i.test(data.error || ''))) {
             updateSeatsAfterReg(0, window.rjSeatsCapacity || 110);
             window.rjShowSoldOut();
           } else if (data && /already registered/i.test(data.error || '')) {
-            showError('This email address is already registered. If you need help, please contact the organizers.', emailEl);
+            showError(t('rabindraRegister.emailAlreadyRegistered'), emailEl);
           } else {
             showError(msg);
           }
@@ -202,13 +206,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (successEl) {
-          successEl.textContent   = 'Registration confirmed! A confirmation email has been sent. Thank you!';
+          successEl.textContent   = t('rabindraRegister.confirmedSuccess');
           successEl.style.display = 'block';
           successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       })
       .catch(function () {
-        showError('Could not reach the server. Please check your connection or contact the organizers.');
+        showError(t('rabindraRegister.connectionError'));
       })
       .finally(function () {
         submitBtn.innerHTML = originalHTML;
