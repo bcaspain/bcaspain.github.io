@@ -214,11 +214,14 @@ dmypy.json
 .yarn/install-state.gz
 .pnp.* 
 
-# Apps Script local projects (ignore all, keep clasp README only)
+# Apps Script local projects (ignore all, keep clasp READMEs only)
 apps-script/*
 !apps-script/registration/
 apps-script/registration/*
 !apps-script/registration/README.md
+!apps-script/submit_blog/
+apps-script/submit_blog/*
+!apps-script/submit_blog/README.md
 
 .env
 
