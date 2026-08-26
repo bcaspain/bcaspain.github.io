@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -25,12 +25,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Inject secrets into HTML
         env:
           RJ_GAS_URL: ${{ secrets.RJ_GAS_URL }}
+          DP_GAS_URL: ${{ secrets.DP_GAS_URL }}
+          BLOG_GAS_URL: ${{ secrets.BLOG_GAS_URL }}
+          DP_RECAPTCHA_SITE_KEY: ${{ secrets.DP_RECAPTCHA_SITE_KEY }}
+          BLOG_RECAPTCHA_SITE_KEY: ${{ secrets.BLOG_RECAPTCHA_SITE_KEY }}
         run: |
           sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" html/rabindra-jayanti-register.html
           sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" html/rabindra-jayanti.html
+          sed -i "s|__DP_GAS_URL__|${DP_GAS_URL}|g" html/registration.html
+          sed -i "s|__BLOG_GAS_URL__|${BLOG_GAS_URL}|g" html/submit_blog.html
+          # Prefer blog-specific key; fall back to shared DP key for same domain
+          BLOG_KEY="${BLOG_RECAPTCHA_SITE_KEY:-$DP_RECAPTCHA_SITE_KEY}"
+          sed -i "s|__BLOG_RECAPTCHA_SITE_KEY__|${BLOG_KEY}|g" html/submit_blog.html
+          sed -i "s|__DP_RECAPTCHA_SITE_KEY__|${DP_RECAPTCHA_SITE_KEY}|g" html/registration.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
