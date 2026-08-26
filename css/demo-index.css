@@ -16,65 +16,77 @@ body.demo-welcome {
 
 .demo-welcome-hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  align-items: stretch;
-  gap: 0;
-  padding: 0;
-  background: var(--scene-hero-bg);
-  overflow: hidden;
-}
-
-.demo-welcome-visual {
-  position: relative;
-  min-height: 52vh;
-  overflow: hidden;
-}
-
-.demo-welcome-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: saturate(0.92) contrast(1.04);
-  transform: scale(1.04);
-}
-
-.demo-welcome-visual .demo-veil {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, transparent 40%, var(--ink) 98%),
-    linear-gradient(180deg, transparent 55%, rgba(250, 249, 249, 0.55) 100%);
-  pointer-events: none;
-}
-
-[data-theme="dark"] .demo-welcome-visual .demo-veil {
-  background:
-    linear-gradient(90deg, transparent 40%, var(--ink) 98%),
-    linear-gradient(180deg, transparent 50%, rgba(20, 26, 34, 0.45) 100%);
-}
-
-.demo-welcome-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(5rem, 10vh, 7rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vh, 5rem);
+  padding: clamp(5rem, 10vh, 7rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 6vh, 5rem);
+  background: var(--scene-hero-bg);
+  overflow: hidden;
   position: relative;
-  z-index: 2;
 }
 
-.demo-welcome-copy .brand-mark {
+.demo-welcome-inner {
+  width: 100%;
+  max-width: 88rem;
+  margin: 0 auto;
+}
+
+.demo-welcome-header {
+  text-align: left;
+}
+
+.demo-welcome-header .brand-mark {
   font-family: var(--font-display);
   font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.15rem);
   color: var(--paper);
   letter-spacing: 0.02em;
-  margin: 0 0 1.4rem;
+  margin: 0 0 1rem;
+}
+
+.demo-welcome-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.8fr);
+  grid-template-rows: auto auto;
+  gap: clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.75rem);
+  align-items: start;
+}
+
+.demo-welcome-visual {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.demo-welcome-video {
+  position: relative;
+  padding: 56.25% 0 0 0;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.demo-welcome-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.demo-welcome-aside {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  min-width: 0;
 }
 
 .demo-swagat {
   font-family: 'Noto Sans Bengali', var(--font-bengali), sans-serif;
-  font-size: clamp(3.35rem, 2.2rem + 4.2vw, 5.6rem);
+  font-size: clamp(2.4rem, 1.6rem + 2.8vw, 4rem);
   font-weight: 700;
   line-height: 1.05;
   color: var(--paper);
@@ -86,20 +98,22 @@ body.demo-welcome {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.7rem, 1.3rem + 1.5vw, 2.55rem);
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem);
   color: var(--terracotta-glow);
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.25rem;
 }
 
 .demo-welcome-lead {
   color: var(--paper-dim);
   font-size: 1.2rem;
   line-height: 1.7;
-  max-width: 36rem;
-  margin: 0 0 2rem;
+  max-width: none;
+  margin: 0;
 }
 
 .demo-welcome-actions {
+  grid-column: 1;
+  grid-row: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
@@ -108,7 +122,8 @@ body.demo-welcome {
 .demo-welcome-hero .scroll-cue {
   position: absolute;
   bottom: 1.6rem;
-  left: clamp(1.25rem, 5vw, 4rem);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Floating seal — bright theme: cream glass + red→saffron */
@@ -585,36 +600,24 @@ body.demo-welcome {
 
 @media (max-width: 980px) {
   .demo-welcome-hero {
-    grid-template-columns: 1fr;
     min-height: auto;
+    padding-top: clamp(4.5rem, 12vw, 5.5rem);
   }
 
-  .demo-welcome-visual {
-    min-height: 38vh;
-    max-height: 46vh;
-    order: -1;
+  .demo-welcome-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 
-  .demo-seal {
-    left: 50%;
-    right: auto;
-    bottom: 0.85rem;
-    transform: translateX(-50%);
-    animation-name: demoSealCentered;
+  .demo-welcome-visual,
+  .demo-welcome-aside,
+  .demo-welcome-actions {
+    grid-column: 1;
+    grid-row: auto;
   }
 
-  .demo-welcome-visual .demo-veil {
-    background:
-      linear-gradient(180deg, transparent 35%, var(--ink) 100%);
-  }
-
-  [data-theme="dark"] .demo-welcome-visual .demo-veil {
-    background:
-      linear-gradient(180deg, transparent 35%, var(--ink) 100%);
-  }
-
-  .demo-welcome-copy {
-    padding: 1.75rem 1.25rem 2.5rem;
+  .demo-welcome-aside {
+    padding-top: 0;
   }
 
   .demo-welcome-hero .scroll-cue {
@@ -659,11 +662,6 @@ body.demo-welcome {
   .demo-welcome .scene:not(.demo-welcome-hero):not(.home-hero) {
     padding-inline: 1.15rem;
     padding-block: clamp(3rem, 8vw, 4rem);
-  }
-
-  .demo-welcome-visual {
-    min-height: 34vh;
-    max-height: 40vh;
   }
 
   .demo-swagat {
@@ -860,8 +858,8 @@ body.demo-welcome {
     font-size: 0.52rem;
   }
 
-  .demo-welcome-copy {
-    padding-inline: 1.1rem;
+  .demo-welcome-inner {
+    padding-inline: 0.1rem;
   }
 
   .demo-welcome .home-hero {
