@@ -46,7 +46,6 @@ body.demo-welcome {
 .demo-welcome-main {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.8fr);
-  grid-template-rows: auto auto;
   gap: clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.75rem);
   align-items: start;
 }
@@ -112,18 +111,17 @@ body.demo-welcome {
 }
 
 .demo-welcome-actions {
-  grid-column: 1;
-  grid-row: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+  margin-top: 0.25rem;
 }
 
 .demo-welcome-hero .scroll-cue {
   position: absolute;
   bottom: 1.6rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: clamp(1.25rem, 5vw, 4rem);
+  transform: none;
 }
 
 /* Floating seal — bright theme: cream glass + red→saffron */
@@ -610,8 +608,7 @@ body.demo-welcome {
   }
 
   .demo-welcome-visual,
-  .demo-welcome-aside,
-  .demo-welcome-actions {
+  .demo-welcome-aside {
     grid-column: 1;
     grid-row: auto;
   }
