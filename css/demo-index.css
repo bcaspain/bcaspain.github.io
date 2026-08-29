@@ -12,23 +12,70 @@ body.demo-welcome {
   max-width: 78rem;
 }
 
-/* ── Welcome hero ─────────────────────────────────────────── */
+/* ── Welcome hero (Shopify-style full-screen video) ───────── */
 
 .demo-welcome-hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: clamp(5rem, 10vh, 7rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 6vh, 5rem);
-  background: var(--scene-hero-bg);
+  justify-content: flex-end;
+  padding: clamp(4.5rem, 10vh, 6.5rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 4vh, 3rem);
+  background: #0a0c0e;
   overflow: hidden;
   position: relative;
+  isolation: isolate;
+}
+
+/* Full-bleed looping background video */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video-bg iframe,
+.hero-video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.hero-video-bg video.is-poster-only {
+  object-fit: cover;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(10, 12, 14, 0.22) 0%, rgba(10, 12, 14, 0.08) 42%, rgba(10, 12, 14, 0.48) 72%, rgba(10, 12, 14, 0.82) 100%),
+    linear-gradient(90deg, rgba(10, 12, 14, 0.58) 0%, rgba(10, 12, 14, 0.22) 42%, rgba(10, 12, 14, 0.08) 100%);
+  pointer-events: none;
 }
 
 .demo-welcome-inner {
   width: 100%;
   max-width: 88rem;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.demo-welcome-content {
+  max-width: 34rem;
 }
 
 .demo-welcome-header {
@@ -43,29 +90,218 @@ body.demo-welcome {
   margin: 0 0 1rem;
 }
 
-.demo-welcome-main {
-  display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.8fr);
-  gap: clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.75rem);
-  align-items: start;
+.demo-welcome-hero .scene-eyebrow {
+  color: rgba(255, 248, 239, 0.8);
+  margin-bottom: 0.65rem;
+  font-size: 0.72rem;
 }
 
-.demo-welcome-visual {
-  grid-column: 1;
-  grid-row: 1;
-  position: relative;
-  min-width: 0;
+.demo-welcome-hero .scene-eyebrow::before {
+  background: rgba(255, 248, 239, 0.55);
 }
 
-.demo-welcome-video {
-  position: relative;
-  padding: 56.25% 0 0 0;
+.demo-swagat {
+  font-family: 'Noto Sans Bengali', var(--font-bengali), sans-serif;
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #fff8ef;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.demo-swagat-en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 0.95rem + 0.7vw, 1.55rem);
+  color: var(--terracotta-glow);
+  margin: 0 0 0.65rem;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.28);
+}
+
+.demo-welcome-lead {
+  color: rgba(255, 248, 239, 0.86);
+  font-size: clamp(0.92rem, 0.88rem + 0.2vw, 1.05rem);
+  line-height: 1.6;
+  max-width: 32rem;
+  margin: 0 0 1.15rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.22);
+}
+
+.demo-welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.5rem;
+}
+
+.demo-welcome-hero .demo-welcome-actions .btn {
+  padding: 0.5rem 0.95rem !important;
+  font-size: 0.84rem !important;
+  font-weight: 600 !important;
+  min-height: unset !important;
   border-radius: 0.35rem;
-  overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
 }
 
-.demo-welcome-video iframe {
+.demo-welcome-hero .demo-welcome-actions .btn i {
+  font-size: 0.78rem !important;
+}
+
+.demo-welcome-hero .btn-secondary {
+  color: #fff8ef !important;
+  border-color: rgba(255, 248, 239, 0.55) !important;
+  background: rgba(10, 12, 14, 0.35) !important;
+  -webkit-text-fill-color: #fff8ef;
+  backdrop-filter: blur(8px);
+}
+
+.demo-welcome-hero .btn-secondary:hover {
+  color: #fff8ef !important;
+  border-color: rgba(255, 248, 239, 0.85) !important;
+  background: rgba(10, 12, 14, 0.55) !important;
+  -webkit-text-fill-color: #fff8ef;
+}
+
+/* Optional watch-full-video control — bottom-right corner */
+.hero-watch-video-btn {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2.25rem);
+  bottom: clamp(1.1rem, 3vh, 1.75rem);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.35rem;
+  border: 1px solid rgba(245, 166, 35, 0.55);
+  border-radius: 999px;
+  background: rgba(10, 12, 14, 0.52);
+  backdrop-filter: blur(10px);
+  color: #ffc857;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow:
+    0 0 14px rgba(245, 166, 35, 0.28),
+    0 0 28px rgba(239, 108, 0, 0.12);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-watch-video-btn:hover,
+.hero-watch-video-btn:focus-visible {
+  border-color: rgba(255, 200, 87, 0.9);
+  background: rgba(10, 12, 14, 0.68);
+  color: #ffd978;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 20px rgba(245, 166, 35, 0.45),
+    0 0 36px rgba(239, 108, 0, 0.22);
+  outline: none;
+}
+
+.hero-watch-video-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5a623 0%, #ef6c00 100%);
+  color: #1a1c1c;
+  font-size: 0.58rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.65);
+}
+
+.demo-welcome-hero .scroll-cue {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 248, 239, 0.55);
+  z-index: 2;
+}
+
+/* Transparent navbar over hero (Shopify-style) */
+body.demo-welcome .navbar:not(.scrolled) {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(255, 248, 239, 0.12);
+}
+
+body.demo-welcome .navbar:not(.scrolled) .logo-text,
+body.demo-welcome .navbar:not(.scrolled) .nav-link {
+  color: #fff8ef !important;
+}
+
+body.demo-welcome .navbar:not(.scrolled) .nav-toggle .bar {
+  background: #fff8ef !important;
+}
+
+/* Full-video modal */
+.hero-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000000;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.hero-video-modal[hidden] {
+  display: none;
+}
+
+.hero-video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.82);
+  cursor: pointer;
+}
+
+.hero-video-modal-panel {
+  position: relative;
+  width: min(92vw, 72rem);
+  z-index: 1;
+}
+
+.hero-video-modal-close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 248, 239, 0.12);
+  color: #fff8ef;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease;
+}
+
+.hero-video-modal-close:hover,
+.hero-video-modal-close:focus-visible {
+  background: rgba(255, 248, 239, 0.22);
+  outline: none;
+}
+
+.hero-video-modal-frame {
+  position: relative;
+  padding-top: 56.25%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  background: #000;
+}
+
+.hero-video-modal-frame iframe {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -73,55 +309,20 @@ body.demo-welcome {
   border: 0;
 }
 
-.demo-welcome-aside {
-  grid-column: 2;
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.25rem;
-  min-width: 0;
+body.hero-video-modal-open {
+  overflow: hidden;
 }
 
-.demo-swagat {
-  font-family: 'Noto Sans Bengali', var(--font-bengali), sans-serif;
-  font-size: clamp(2.4rem, 1.6rem + 2.8vw, 4rem);
-  font-weight: 700;
-  line-height: 1.05;
-  color: var(--paper);
-  margin: 0 0 0.35rem;
-  letter-spacing: -0.02em;
-}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-bg {
+    display: none;
+  }
 
-.demo-swagat-en {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem);
-  color: var(--terracotta-glow);
-  margin: 0 0 0.25rem;
-}
-
-.demo-welcome-lead {
-  color: var(--paper-dim);
-  font-size: 1.2rem;
-  line-height: 1.7;
-  max-width: none;
-  margin: 0;
-}
-
-.demo-welcome-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-top: 0.25rem;
-}
-
-.demo-welcome-hero .scroll-cue {
-  position: absolute;
-  bottom: 1.6rem;
-  left: clamp(1.25rem, 5vw, 4rem);
-  transform: none;
+  .demo-welcome-hero {
+    background:
+      linear-gradient(180deg, rgba(10, 12, 14, 0.55), rgba(10, 12, 14, 0.92)),
+      url('../idol.webp') center / cover no-repeat;
+  }
 }
 
 /* Floating seal — bright theme: cream glass + red→saffron */
@@ -598,27 +799,80 @@ body.demo-welcome {
 
 @media (max-width: 980px) {
   .demo-welcome-hero {
-    min-height: auto;
-    padding-top: clamp(4.5rem, 12vw, 5.5rem);
+    min-height: 100vh;
+    min-height: 100dvh;
+    justify-content: flex-end;
+    padding:
+      clamp(4.5rem, 10vw, 5.5rem)
+      clamp(1rem, 3.5vw, 1.5rem)
+      clamp(4rem, 8vh, 5rem);
   }
 
-  .demo-welcome-main {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
+  .hero-video-overlay {
+    background:
+      linear-gradient(180deg, rgba(10, 12, 14, 0.28) 0%, rgba(10, 12, 14, 0.12) 36%, rgba(10, 12, 14, 0.58) 64%, rgba(10, 12, 14, 0.92) 100%),
+      linear-gradient(180deg, rgba(10, 12, 14, 0.4) 0%, transparent 45%);
   }
 
-  .demo-welcome-visual,
-  .demo-welcome-aside {
-    grid-column: 1;
-    grid-row: auto;
+  .demo-welcome-content {
+    max-width: 30rem;
   }
 
-  .demo-welcome-aside {
-    padding-top: 0;
+  .demo-swagat {
+    font-size: clamp(1.85rem, 4vw, 2.65rem);
+  }
+
+  .demo-swagat-en {
+    font-size: clamp(1rem, 2.4vw, 1.32rem);
+    margin-bottom: 0.55rem;
+  }
+
+  .demo-welcome-lead {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .demo-welcome-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .demo-welcome-actions .btn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .demo-welcome-hero .demo-welcome-actions .btn {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 2.35rem !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+  }
+
+  .demo-welcome-actions .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-watch-video-btn {
+    right: clamp(0.85rem, 3vw, 1.25rem);
+    bottom: clamp(0.85rem, 2.5vh, 1.25rem);
   }
 
   .demo-welcome-hero .scroll-cue {
-    display: none;
+    display: flex;
+    left: clamp(0.85rem, 3vw, 1.25rem);
+    bottom: clamp(0.85rem, 2.5vh, 1.25rem);
+    transform: none;
+    font-size: 0.68rem;
+  }
+
+  .hero-video-modal-panel {
+    width: min(94vw, 52rem);
   }
 
   .demo-pillars {
@@ -656,33 +910,86 @@ body.demo-welcome {
     overflow-x: clip;
   }
 
+  .demo-welcome-hero {
+    min-height: 100svh;
+    justify-content: flex-end;
+    padding:
+      calc(var(--navbar-height, 70px) + 0.35rem)
+      0.9rem
+      max(3.5rem, calc(env(safe-area-inset-bottom) + 2.85rem));
+  }
+
+  .demo-welcome-inner {
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .hero-video-overlay {
+    background:
+      linear-gradient(180deg, rgba(10, 12, 14, 0.18) 0%, rgba(10, 12, 14, 0.08) 42%, rgba(10, 12, 14, 0.52) 68%, rgba(10, 12, 14, 0.9) 100%);
+  }
+
   .demo-welcome .scene:not(.demo-welcome-hero):not(.home-hero) {
     padding-inline: 1.15rem;
     padding-block: clamp(3rem, 8vw, 4rem);
   }
 
+  .demo-welcome-hero .scene-eyebrow {
+    margin-bottom: 0.4rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .demo-welcome-header .brand-mark {
+    margin-bottom: 0.35rem;
+    font-size: 0.82rem;
+  }
+
   .demo-swagat {
-    font-size: clamp(2.55rem, 11vw, 3.4rem);
+    font-size: clamp(1.9rem, 8.5vw, 2.55rem);
+    margin-bottom: 0.15rem;
   }
 
   .demo-swagat-en {
-    font-size: clamp(1.35rem, 5.5vw, 1.7rem);
-    margin-bottom: 1.1rem;
+    font-size: clamp(1rem, 4.2vw, 1.28rem);
+    margin-bottom: 0.45rem;
   }
 
   .demo-welcome-lead {
-    font-size: 1.1rem;
-    line-height: 1.65;
-    margin-bottom: 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 0.7rem;
   }
 
-  .demo-welcome-actions,
-  .demo-invite-actions,
-  .demo-welcome .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
+  .demo-welcome-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
     width: 100%;
+    margin-bottom: 0;
+  }
+
+  .demo-welcome-actions .btn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .demo-welcome-hero .demo-welcome-actions .btn {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 2.15rem !important;
+    min-width: 0 !important;
+    padding: 0.42rem 0.6rem !important;
+    font-size: 0.76rem !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    border-radius: 0.35rem;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .demo-welcome-hero .demo-welcome-actions .btn i {
+    font-size: 0.72rem !important;
+    margin-right: 0.3rem !important;
   }
 
   .demo-welcome-actions .btn,
@@ -691,6 +998,55 @@ body.demo-welcome {
     width: 100%;
     justify-content: center;
     text-align: center;
+  }
+
+  .hero-watch-video-btn {
+    right: max(0.75rem, env(safe-area-inset-right, 0.75rem));
+    bottom: max(0.75rem, env(safe-area-inset-bottom, 0.75rem));
+    font-size: 0.66rem;
+    gap: 0.38rem;
+    padding: 0.3rem 0.58rem 0.3rem 0.3rem;
+  }
+
+  .hero-watch-video-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+    font-size: 0.52rem;
+  }
+
+  .demo-welcome-hero .scroll-cue {
+    display: none;
+  }
+
+  .hero-video-modal {
+    padding: 0.65rem;
+    padding-bottom: max(0.65rem, env(safe-area-inset-bottom));
+  }
+
+  .hero-video-modal-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-video-modal-close {
+    top: 0.35rem;
+    right: 0.35rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+  }
+
+  .hero-video-modal-frame {
+    border-radius: 0.35rem;
+  }
+
+  .demo-invite-actions,
+  .demo-welcome .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
   }
 
   .demo-who-section h2,
@@ -829,6 +1185,38 @@ body.demo-welcome {
 }
 
 @media (max-width: 560px) {
+  .demo-welcome-hero {
+    padding-bottom: max(3.25rem, calc(env(safe-area-inset-bottom) + 2.65rem));
+  }
+
+  .demo-swagat {
+    font-size: clamp(1.75rem, 7.8vw, 2.2rem);
+  }
+
+  .demo-swagat-en {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .demo-welcome-lead {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin-bottom: 0.55rem;
+  }
+
+  .demo-welcome-hero .demo-welcome-actions .btn {
+    min-height: 2rem !important;
+    padding: 0.38rem 0.5rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .hero-watch-video-label {
+    max-width: 5.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .demo-rhythm-rail {
     grid-template-columns: 1fr;
   }
@@ -872,5 +1260,24 @@ body.demo-welcome {
   .demo-welcome .scene-eyebrow {
     font-size: 0.68rem;
     letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-watch-video-label {
+    display: none;
+  }
+
+  .hero-watch-video-btn {
+    padding: 0.35rem;
+    border-radius: 50%;
+    width: 2.15rem;
+    height: 2.15rem;
+    justify-content: center;
+  }
+
+  .hero-watch-video-icon {
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }

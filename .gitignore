@@ -230,3 +230,5 @@ apps-script/submit_blog/*
 design/
 OLD_index.html 
 .claude/
+
+video/encode-hero.sh
