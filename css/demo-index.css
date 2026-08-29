@@ -34,6 +34,7 @@ body.demo-welcome {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  background: #0a0c0e url('../idol.webp') center / cover no-repeat;
 }
 
 .hero-video-bg iframe,
@@ -50,10 +51,16 @@ body.demo-welcome {
   object-fit: cover;
   object-position: center;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.hero-video-bg video.is-ready {
+  opacity: 1;
 }
 
 .hero-video-bg video.is-poster-only {
-  object-fit: cover;
+  opacity: 1;
 }
 
 .hero-video-overlay {

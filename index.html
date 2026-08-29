@@ -130,6 +130,13 @@
     <link rel="stylesheet" href="css/demo-index.css">
     <link rel="stylesheet" href="css/design-system.css">
 
+    <!-- Progressive MP4: browser streams via HTTP range requests (faststart moov atom) -->
+    <link rel="preload" as="video" href="video/hero-bg-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+    <link rel="preload" as="video" href="video/hero-bg-tablet.mp4" type="video/mp4" media="(min-width: 768px) and (max-width: 1199px)">
+    <link rel="preload" as="video" href="video/hero-bg-desktop.mp4" type="video/mp4" media="(min-width: 1200px)">
+    <link rel="preload" as="image" href="idol.webp" type="image/webp">
+
+    <script defer src="js/hero-bg-video.js"></script>
     <script defer src="js/navbar.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/webp" href="BCA-logo.webp">
@@ -158,14 +165,19 @@
         <div class="hero-video-bg" aria-hidden="true">
             <video
                 id="heroBgVideo"
-                class="hero-video-bg-el"
+                class="hero-video-bg-el is-loading"
                 muted
                 loop
+                autoplay
                 playsinline
-                preload="metadata"
+                preload="auto"
                 poster="idol.webp"
                 tabindex="-1"
-                aria-hidden="true"></video>
+                aria-hidden="true">
+                <source src="video/hero-bg-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+                <source src="video/hero-bg-tablet.mp4" type="video/mp4" media="(min-width: 768px) and (max-width: 1199px)">
+                <source src="video/hero-bg-desktop.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="hero-video-overlay" aria-hidden="true"></div>
 
@@ -688,7 +700,6 @@
         </div>
     </div>
 
-    <script defer src="js/hero-bg-video.js"></script>
     <script defer src="js/visitor-counter.js"></script>
     <script src="js/script.js"></script>
     <script src="js/theme.js"></script>
