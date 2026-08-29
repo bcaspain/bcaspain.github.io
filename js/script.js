@@ -322,6 +322,10 @@ function closeNavMenu() {
         toggle.classList.remove('active');
         toggle.setAttribute('aria-expanded', 'false');
 
+        document.querySelectorAll('.nav-dropdown[open]').forEach((dropdown) => {
+            dropdown.open = false;
+        });
+
         const scrollY = body.style.top;
         body.style.position = '';
         body.style.top = '';
