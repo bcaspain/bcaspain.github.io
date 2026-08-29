@@ -7,11 +7,23 @@
   var video = document.getElementById('heroBgVideo');
   if (!video) return;
 
+  // Injected at deploy time (Cloudflare/GitHub Actions). Empty → local video/ folder.
+  var MEDIA_BASE_URL = '__MEDIA_BASE_URL__';
+
+  function resolveMediaBase() {
+    if (!MEDIA_BASE_URL || MEDIA_BASE_URL === '__MEDIA_BASE_URL__') return 'video';
+    return MEDIA_BASE_URL.replace(/\/$/, '');
+  }
+
+  function mediaUrl(filename) {
+    return resolveMediaBase() + '/' + filename;
+  }
+
   var POSTER = 'video/welcome-image.webp';
   var SOURCES = {
-    mobile: 'video/hero-bg-mobile.mp4',
-    tablet: 'video/hero-bg-tablet.mp4',
-    desktop: 'video/hero-bg-desktop.mp4'
+    mobile: mediaUrl('hero-bg-mobile.mp4'),
+    tablet: mediaUrl('hero-bg-tablet.mp4'),
+    desktop: mediaUrl('hero-bg-desktop.mp4')
   };
 
   var activeTier = null;

@@ -35,7 +35,9 @@ jobs:
           BLOG_GAS_URL: ${{ secrets.BLOG_GAS_URL }}
           DP_RECAPTCHA_SITE_KEY: ${{ secrets.DP_RECAPTCHA_SITE_KEY }}
           BLOG_RECAPTCHA_SITE_KEY: ${{ secrets.BLOG_RECAPTCHA_SITE_KEY }}
+          MEDIA_BASE_URL: ${{ secrets.MEDIA_BASE_URL }}
         run: |
+          sed -i "s|__MEDIA_BASE_URL__|${MEDIA_BASE_URL}|g" js/hero-bg-video.js
           sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" html/rabindra-jayanti-register.html
           sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" html/rabindra-jayanti.html
           sed -i "s|__DP_GAS_URL__|${DP_GAS_URL}|g" html/registration.html

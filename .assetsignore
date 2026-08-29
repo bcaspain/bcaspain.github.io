@@ -9,3 +9,5 @@ NOTNEEDED/
 .claude/
 wrangler.jsonc
 .assetsignore
+video/*.mp4
+video/*.webm
