@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bcaspain-github-io",
+  "compatibility_date": "2026-08-28",
+  "assets": {
+    "directory": ".",
+    "exclude": [
+      ".git/**",
+      ".github/**",
+      "apps-script/**",
+      "design/**",
+      "NOTNEEDED/**",
+      ".cursor/**",
+      ".claude/**"
+    ]
+  }
+}
