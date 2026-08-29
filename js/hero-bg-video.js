@@ -7,7 +7,7 @@
   var video = document.getElementById('heroBgVideo');
   if (!video) return;
 
-  var POSTER = 'idol.webp';
+  var POSTER = 'video/welcome-image.webp';
   var SOURCES = {
     mobile: 'video/hero-bg-mobile.mp4',
     tablet: 'video/hero-bg-tablet.mp4',
@@ -194,17 +194,7 @@
     ensureLoopAttrs();
 
     var tier = pickTier();
-    if (!currentSrcForTier(tier)) {
-      loadTier(tier, true);
-    } else {
-      activeTier = tier;
-      ensureLoopAttrs();
-      video.preload = 'auto';
-      bindFadeIn();
-      video.classList.add('is-loading');
-      video.load();
-      video.play().catch(function () {});
-    }
+    loadTier(tier, true);
 
     video.addEventListener('error', function onError() {
       video.removeEventListener('error', onError);

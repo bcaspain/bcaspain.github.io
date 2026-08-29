@@ -130,11 +130,7 @@
     <link rel="stylesheet" href="css/demo-index.css">
     <link rel="stylesheet" href="css/design-system.css">
 
-    <!-- Progressive MP4: browser streams via HTTP range requests (faststart moov atom) -->
-    <link rel="preload" as="video" href="video/hero-bg-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
-    <link rel="preload" as="video" href="video/hero-bg-tablet.mp4" type="video/mp4" media="(min-width: 768px) and (max-width: 1199px)">
-    <link rel="preload" as="video" href="video/hero-bg-desktop.mp4" type="video/mp4" media="(min-width: 1200px)">
-    <link rel="preload" as="image" href="idol.webp" type="image/webp">
+    <link rel="preload" as="image" href="video/welcome-image.webp" type="image/webp">
 
     <script defer src="js/hero-bg-video.js"></script>
     <script defer src="js/navbar.js"></script>
@@ -170,14 +166,10 @@
                 loop
                 autoplay
                 playsinline
-                preload="auto"
-                poster="idol.webp"
+                preload="none"
+                poster="video/welcome-image.webp"
                 tabindex="-1"
-                aria-hidden="true">
-                <source src="video/hero-bg-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
-                <source src="video/hero-bg-tablet.mp4" type="video/mp4" media="(min-width: 768px) and (max-width: 1199px)">
-                <source src="video/hero-bg-desktop.mp4" type="video/mp4">
-            </video>
+                aria-hidden="true"></video>
         </div>
         <div class="hero-video-overlay" aria-hidden="true"></div>
 
@@ -208,7 +200,7 @@
         </div>
         <button type="button" class="hero-watch-video-btn reveal-up" id="heroWatchVideoBtn" aria-haspopup="dialog" aria-controls="heroVideoModal" aria-label="Watch full video">
             <span class="hero-watch-video-icon" aria-hidden="true"><i class="fas fa-play"></i></span>
-            <span class="hero-watch-video-label">Watch full video</span>
+            <span class="hero-watch-video-label">Full Video</span>
         </button>
         <div class="scroll-cue"><span class="stem"></span>Scroll</div>
     </section>
