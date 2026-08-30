@@ -290,13 +290,51 @@ body.demo-welcome .navbar:not(.scrolled) {
   border-bottom: 1px solid rgba(255, 248, 239, 0.12);
 }
 
-body.demo-welcome .navbar:not(.scrolled) .logo-text,
-body.demo-welcome .navbar:not(.scrolled) .nav-link {
-  color: #fff8ef !important;
+/* Desktop: light text on transparent bar over video */
+@media (min-width: 769px) {
+  body.demo-welcome .navbar:not(.scrolled) .logo-text,
+  body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu .nav-link,
+  body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu .nav-dropdown-toggle {
+    color: #fff8ef !important;
+    -webkit-text-fill-color: #fff8ef;
+  }
 }
 
-body.demo-welcome .navbar:not(.scrolled) .nav-toggle .bar {
-  background: #fff8ef !important;
+/* Mobile: light top bar only — slide-out menu keeps theme contrast */
+@media (max-width: 768px) {
+  body.demo-welcome .navbar:not(.scrolled) .logo-text {
+    color: #fff8ef !important;
+    -webkit-text-fill-color: #fff8ef;
+  }
+
+  body.demo-welcome .navbar:not(.scrolled) .nav-toggle .bar {
+    background: #fff8ef !important;
+  }
+
+  body.demo-welcome .nav-menu {
+    background: var(--nav-mobile-bg) !important;
+  }
+
+  body.demo-welcome .nav-menu > .nav-link,
+  body.demo-welcome .nav-menu > .nav-dropdown > .nav-dropdown-toggle {
+    color: var(--nav-text) !important;
+    -webkit-text-fill-color: var(--nav-text);
+  }
+
+  body.demo-welcome .nav-menu .nav-dropdown-item {
+    color: var(--nav-text-muted) !important;
+    -webkit-text-fill-color: var(--nav-text-muted);
+  }
+
+  body.demo-welcome .nav-menu > .nav-link:hover,
+  body.demo-welcome .nav-menu > .nav-link.active,
+  body.demo-welcome .nav-menu > .nav-dropdown > .nav-dropdown-toggle:hover,
+  body.demo-welcome .nav-menu > .nav-dropdown[open] > .nav-dropdown-toggle,
+  body.demo-welcome .nav-menu .nav-dropdown-item:hover,
+  body.demo-welcome .nav-menu .nav-dropdown-item.active {
+    color: var(--nav-text-hover) !important;
+    -webkit-text-fill-color: var(--nav-text-hover);
+  }
 }
 
 /* Full-video modal */
