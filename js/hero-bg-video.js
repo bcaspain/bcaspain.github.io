@@ -11,7 +11,8 @@
   var MEDIA_BASE_URL = '__MEDIA_BASE_URL__';
 
   function resolveMediaBase() {
-    if (!MEDIA_BASE_URL || MEDIA_BASE_URL === '__MEDIA_BASE_URL__') return 'video';
+    // Avoid comparing to __MEDIA_BASE_URL__ — sed replaces every occurrence in this file.
+    if (!MEDIA_BASE_URL || MEDIA_BASE_URL.indexOf('__') === 0) return 'video';
     return MEDIA_BASE_URL.replace(/\/$/, '');
   }
 
