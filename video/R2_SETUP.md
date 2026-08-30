@@ -40,11 +40,13 @@ If unset, the site falls back to local `video/` (works on GitHub Pages; Cloudfla
 
 ## 4. Cloudflare build command
 
-Append to your existing `sed` build command:
+Set the build command to:
 
 ```bash
-sed -i "s|__MEDIA_BASE_URL__|${MEDIA_BASE_URL}|g" js/hero-bg-video.js
+bash scripts/cloudflare-build.sh
 ```
+
+This injects `MEDIA_BASE_URL` and form secrets from Cloudflare environment variables.
 
 ## 5. Verify
 
