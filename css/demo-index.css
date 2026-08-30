@@ -290,13 +290,25 @@ body.demo-welcome .navbar:not(.scrolled) {
   border-bottom: 1px solid rgba(255, 248, 239, 0.12);
 }
 
-/* Desktop: light text on transparent bar over video */
+/* Desktop: light text on transparent bar over video (top-level links only) */
 @media (min-width: 769px) {
   body.demo-welcome .navbar:not(.scrolled) .logo-text,
-  body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu .nav-link,
-  body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu .nav-dropdown-toggle {
+  body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu > .nav-link,
+  body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu > .nav-dropdown > .nav-dropdown-toggle {
     color: #fff8ef !important;
     -webkit-text-fill-color: #fff8ef;
+  }
+
+  /* Dropdown panel sits on light surface in daytime — use theme text colors */
+  body.demo-welcome .navbar:not(.scrolled) .nav-dropdown-menu .nav-dropdown-item {
+    color: var(--nav-text-muted) !important;
+    -webkit-text-fill-color: var(--nav-text-muted);
+  }
+
+  body.demo-welcome .navbar:not(.scrolled) .nav-dropdown-menu .nav-dropdown-item:hover,
+  body.demo-welcome .navbar:not(.scrolled) .nav-dropdown-menu .nav-dropdown-item.active {
+    color: var(--nav-text-hover) !important;
+    -webkit-text-fill-color: var(--nav-text-hover);
   }
 }
 
