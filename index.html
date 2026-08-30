@@ -130,6 +130,9 @@
     <link rel="stylesheet" href="css/demo-index.css">
     <link rel="stylesheet" href="css/design-system.css">
 
+    <link rel="preload" as="image" href="video/welcome-image.webp" type="image/webp">
+
+    <script defer src="js/hero-bg-video.js"></script>
     <script defer src="js/navbar.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/webp" href="BCA-logo.webp">
@@ -153,43 +156,52 @@
         <a href="#contact" data-label="Follow us"></a>
     </nav>
 
-    <!-- ============ WELCOME HERO ============ -->
+    <!-- ============ WELCOME HERO (Shopify-style video background) ============ -->
     <section class="scene demo-welcome-hero" id="welcome">
-        <div class="demo-welcome-visual">
-            <img src="gallery/2025/IMG_38.webp" alt="Members of the Bengali Cultural Association gathered together in Barcelona" loading="eager" width="1400" height="1600">
-            <div class="demo-veil"></div>
-            <div class="demo-seal" aria-hidden="true">
-                <strong>Since<br>2022</strong>
-                <span>Barcelona</span>
+        <div class="hero-video-bg" aria-hidden="true">
+            <video
+                id="heroBgVideo"
+                class="hero-video-bg-el is-loading"
+                muted
+                loop
+                autoplay
+                playsinline
+                preload="none"
+                poster="video/welcome-image.webp"
+                tabindex="-1"
+                aria-hidden="true"></video>
+        </div>
+        <div class="hero-video-overlay" aria-hidden="true"></div>
+
+        <div class="demo-welcome-inner">
+            <div class="demo-welcome-content">
+                <header class="demo-welcome-header">
+                    <p class="scene-eyebrow reveal-up">Bengali Cultural Association · Barcelona</p>
+                    <h1 class="demo-swagat reveal-up" lang="bn">স্বাগতম <span class="visually-hidden" lang="en">Welcome to the Bengali Cultural Association Barcelona</span></h1>
+                    <p class="demo-swagat-en reveal-up">Welcome — we're so glad you're here.</p>
+                    <p class="demo-welcome-lead reveal-up">
+                        Your cultural home in Barcelona. Come for the festivals, stay for the community —
+                        language, food, music, and friendship, all year round.
+                    </p>
+                </header>
+                <div class="demo-welcome-actions reveal-up">
+                    <a href="html/dp2026.html" class="btn btn-primary">
+                        <span>Durga Puja 2026</span>
+                    </a>
+                    <a href="html/about.html" class="btn btn-secondary">
+                        <span>Our story</span>
+                    </a>
+                    <a href="html/registration.html" class="btn btn-secondary">
+                        <i class="fas fa-ticket-alt" aria-hidden="true"></i>
+                        <span>Register for Puja</span>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="demo-welcome-copy">
-            <p class="scene-eyebrow reveal-up">Bengali Cultural Association · Spain</p>
-            <p class="brand-mark reveal-up">BCA Barcelona</p>
-            <h1 class="demo-swagat reveal-up" lang="bn">স্বাগতম <span class="visually-hidden" lang="en">Welcome to the Bengali Cultural Association Barcelona</span></h1>
-            <p class="demo-swagat-en reveal-up">Welcome home.</p>
-            <p class="demo-welcome-lead reveal-up">
-                You have arrived at a small, stubborn piece of Bengal living in Barcelona —
-                a registered non-profit where language, food, music, and friendship
-                keep finding each other, season after season.
-            </p>
-            <div class="demo-welcome-actions reveal-up">
-                <a href="html/about.html" class="btn btn-secondary btn-large">
-                    <span>Our story</span>
-                </a>
-                <a href="html/dp2026.html" class="btn btn-primary btn-large">
-                    <span>Durga Puja 2026</span>
-                </a>
-                <a href="html/registration.html" class="btn btn-secondary btn-large">
-                    <i class="fas fa-ticket-alt"></i>
-                    <span>Register for Puja</span>
-                </a>
-                <a href="html/submit_blog.html" class="btn btn-secondary btn-large">
-                    <i class="fas fa-pen-nib"></i>
-                    <span>Submit Blog</span>
-                </a>
-            </div>
-        </div>
+        <button type="button" class="hero-watch-video-btn reveal-up" id="heroWatchVideoBtn" aria-haspopup="dialog" aria-controls="heroVideoModal" aria-label="Watch full video">
+            <span class="hero-watch-video-icon" aria-hidden="true"><i class="fas fa-play"></i></span>
+            <span class="hero-watch-video-label">Full Video</span>
+        </button>
         <div class="scroll-cue"><span class="stem"></span>Scroll</div>
     </section>
 
@@ -662,6 +674,24 @@
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
+    <div id="heroVideoModal" class="hero-video-modal" role="dialog" aria-modal="true" aria-label="Durga Puja full video" aria-hidden="true" hidden>
+        <button type="button" class="hero-video-modal-backdrop" id="heroVideoModalBackdrop" aria-label="Close video"></button>
+        <div class="hero-video-modal-panel">
+            <button type="button" class="hero-video-modal-close" id="heroVideoModalClose" aria-label="Close video">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <div class="hero-video-modal-frame">
+                <iframe
+                    id="heroVideoModalPlayer"
+                    src=""
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Durga Puja full video"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <script defer src="js/visitor-counter.js"></script>
     <script src="js/script.js"></script>
     <script src="js/theme.js"></script>
@@ -701,6 +731,43 @@
       function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+
+      (function () {
+        var VIMEO_ID = '1221590676';
+        var FULL_SRC = 'https://player.vimeo.com/video/' + VIMEO_ID + '?autoplay=1&title=0&byline=0&portrait=0';
+        var watchBtn = document.getElementById('heroWatchVideoBtn');
+        var modal = document.getElementById('heroVideoModal');
+        var closeBtn = document.getElementById('heroVideoModalClose');
+        var backdrop = document.getElementById('heroVideoModalBackdrop');
+        var player = document.getElementById('heroVideoModalPlayer');
+        if (!watchBtn || !modal || !player) return;
+
+        var opener = null;
+
+        function openModal() {
+          opener = document.activeElement;
+          modal.hidden = false;
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('hero-video-modal-open');
+          player.src = FULL_SRC;
+          closeBtn.focus();
+        }
+
+        function closeModal() {
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('hero-video-modal-open');
+          player.src = '';
+          modal.hidden = true;
+          if (opener && typeof opener.focus === 'function') opener.focus();
+        }
+
+        watchBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function (e) {
+          if (!modal.hidden && e.key === 'Escape') closeModal();
+        });
+      })();
     </script>
 </body>
 </html>
