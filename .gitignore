@@ -222,6 +222,9 @@ apps-script/registration/*
 !apps-script/submit_blog/
 apps-script/submit_blog/*
 !apps-script/submit_blog/README.md
+!apps-script/contact_us/
+apps-script/contact_us/*
+!apps-script/contact_us/README.md
 
 .env
 

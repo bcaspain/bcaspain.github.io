@@ -129,6 +129,7 @@
     <link rel="stylesheet" href="css/landing.css">
     <link rel="stylesheet" href="css/demo-index.css">
     <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/blog.css">
 
     <link rel="preload" as="image" href="video/welcome-image.webp" type="image/webp">
 
@@ -151,6 +152,7 @@
         <a href="#rabindra-jayanti-announcement" data-label="Rabindra"></a>
         <a href="#bridge" data-label="Barcelona"></a>
         <a href="#invite" data-label="Invitation"></a>
+        <a href="#blog-teaser" data-label="Blog"></a>
         <a href="#gallery-teaser" data-label="Gallery"></a>
         <a href="#sponsors-teaser" data-label="Sponsors"></a>
         <a href="#contact" data-label="Follow us"></a>
@@ -518,6 +520,18 @@
         </div>
     </section>
 
+    <!-- ============ BLOG TEASER ============ -->
+
+    <section class="scene scene-b blog-home-teaser" id="blog-teaser">
+        <div class="scene-inner reveal-up">
+            <p class="scene-eyebrow">From the blog</p>
+            <h2>Stories from our community</h2>
+            <p class="blog-home-lede">Travel diaries, recipes, cultural essays, and voices from BCA Barcelona.</p>
+            <div class="blog-home-grid" id="blog-home-grid" hidden></div>
+            <a href="/blog/" class="btn btn-primary blog-home-cta"><i class="fas fa-book-open" aria-hidden="true"></i> Read all posts</a>
+        </div>
+    </section>
+
     <!-- ============ COMMUNITY ============ -->
 
     <section class="scene scene-a teaser-strip moments-teaser" id="gallery-teaser">
@@ -696,6 +710,8 @@
     <script src="js/script.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/color-theme.js"></script>
+    <script defer src="js/blog-posts.js"></script>
+    <script defer src="js/blog-home-teaser.js"></script>
     <script>
       (function () {
         var fill = document.getElementById('progressFill');
@@ -705,7 +721,7 @@
           var max = doc.scrollHeight - doc.clientHeight;
           var p = max > 0 ? (doc.scrollTop / max) * 100 : 0;
           if (fill) fill.style.width = p + '%';
-          var sections = ['welcome', 'who', 'hero', 'chapters', 'rabindra-jayanti-announcement', 'bridge', 'invite', 'gallery-teaser', 'sponsors-teaser', 'contact'];
+          var sections = ['welcome', 'who', 'hero', 'chapters', 'rabindra-jayanti-announcement', 'bridge', 'invite', 'blog-teaser', 'gallery-teaser', 'sponsors-teaser', 'contact'];
           var active = sections[0];
           sections.forEach(function (id) {
             var el = document.getElementById(id);

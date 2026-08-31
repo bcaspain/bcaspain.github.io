@@ -668,7 +668,17 @@ function handleContactForm(e) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
-    // Prepare data for Google Sheets
+    const scriptURL =
+        window.CONTACT_GAS_URL && window.CONTACT_GAS_URL !== '__CONTACT_GAS_URL__'
+            ? window.CONTACT_GAS_URL
+            : '';
+    if (!scriptURL) {
+        showNotification('Contact form is temporarily unavailable. Please email info@bcaspain.org.', 'error');
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        return;
+    }
+
     const sheetData = {
         timestamp: new Date().toISOString(),
         name: data.contactName,
@@ -677,19 +687,10 @@ function handleContactForm(e) {
         message: data.contactMessage
     };
 
-
-
-    // Production mode - send to Google Sheets
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxNnWhmvY5RLAvr29gjdPaFHmNCGnaJ8Qt_Pr7UkPjVOqVmQdX3_reC9qn-GEup7QHwiQ/exec'; // ⚠️ REPLACE WITH YOUR NEW DEPLOYED URL!
-
-    
-    
     fetch(scriptURL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(sheetData)
     })
     .then(response => {

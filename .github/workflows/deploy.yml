@@ -33,6 +33,7 @@ jobs:
           RJ_GAS_URL: ${{ secrets.RJ_GAS_URL }}
           DP_GAS_URL: ${{ secrets.DP_GAS_URL }}
           BLOG_GAS_URL: ${{ secrets.BLOG_GAS_URL }}
+          CONTACT_GAS_URL: ${{ secrets.CONTACT_GAS_URL }}
           DP_RECAPTCHA_SITE_KEY: ${{ secrets.DP_RECAPTCHA_SITE_KEY }}
           BLOG_RECAPTCHA_SITE_KEY: ${{ secrets.BLOG_RECAPTCHA_SITE_KEY }}
         run: |
@@ -40,6 +41,7 @@ jobs:
           sed -i "s|__RJ_GAS_URL__|${RJ_GAS_URL}|g" html/rabindra-jayanti.html
           sed -i "s|__DP_GAS_URL__|${DP_GAS_URL}|g" html/registration.html
           sed -i "s|__BLOG_GAS_URL__|${BLOG_GAS_URL}|g" html/submit_blog.html
+          sed -i "s|__CONTACT_GAS_URL__|${CONTACT_GAS_URL}|g" html/contact.html
           # Prefer blog-specific key; fall back to shared DP key for same domain
           BLOG_KEY="${BLOG_RECAPTCHA_SITE_KEY:-$DP_RECAPTCHA_SITE_KEY}"
           sed -i "s|__BLOG_RECAPTCHA_SITE_KEY__|${BLOG_KEY}|g" html/submit_blog.html
