@@ -366,7 +366,7 @@ function initMobileNavigation() {
     // Close menu when navigating (not when expanding Attractions dropdown)
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            if (window.innerWidth >= 1280) return;
+            if (window.innerWidth >= 901) return;
             if (link.classList.contains('nav-dropdown-toggle')) return;
 
             e.stopPropagation();
@@ -382,7 +382,7 @@ function initMobileNavigation() {
     // Close menu when clicking outside (mobile/tablet) - with better handling
     let clickTimeout;
     document.addEventListener('click', (e) => {
-        if (window.innerWidth < 1280 && navMenu.classList.contains('active')) {
+        if (window.innerWidth < 901 && navMenu.classList.contains('active')) {
             // Clear any existing timeout
             if (clickTimeout) {
                 clearTimeout(clickTimeout);
@@ -409,7 +409,7 @@ function initMobileNavigation() {
 
     // Close menu on window resize to desktop size
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1280) {
+        if (window.innerWidth >= 901) {
             closeNavMenu();
         }
     });
