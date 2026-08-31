@@ -3,11 +3,12 @@
     "slug": "my-india-experience",
     "title": "My India Experience",
     "excerpt": "Manuel G. Marciani on a three-week journey through India — hospitality, six languages, and faiths that coexist side by side.",
-    "date": "2026-09-02",
+    "date": "2026-09-01",
     "author": "Manuel G. Marciani",
     "image": "/blog/images/my-india-experience.webp",
     "imageAlt": "Araku Valley — a mother and her child selling vegetables at a market stall",
-    "tags": ["Travel", "India", "Community"]
+    "tags": ["Travel"],
+    "featured": true
   },
   {
     "slug": "is-asana-practice-all-about-flexibility",
@@ -17,6 +18,51 @@
     "author": "Chandana Bhowmick",
     "image": "/blog/images/is-asana-practice-all-about-flexibility.webp",
     "imageAlt": "Chandana Bhowmick practicing an advanced yoga arm balance outdoors",
-    "tags": ["Yoga", "Wellness", "Community"]
+    "tags": ["Culture"],
+    "featured": true
+  },
+  {
+    "slug": "notun-generation-durga-pujo",
+    "title": "Notun Generation aar Durga Pujo",
+    "excerpt": "Debmalya Roy on keeping Durga Puja alive for probashi kids — participation, Benglish, and passing the culture on. From Sharodiya 2025.",
+    "date": "2026-09-01",
+    "author": "Debmalya Roy",
+    "image": "/blog/images/notun-generation-durga-pujo.webp",
+    "imageAlt": "Durga Puja celebrations at BCA Barcelona, 2024",
+    "tags": ["Culture"],
+    "series": "Sharodiya 2025"
+  },
+  {
+    "slug": "mutton-gora-kalia",
+    "title": "Mutton Gora Kalia — recipe",
+    "excerpt": "Surashree's Bengali mutton curry from Sharodiya 2025 — slow-cooked, rich, and perfect for a festive table.",
+    "date": "2026-09-01",
+    "author": "Surashree",
+    "imagePlaceholder": "Food",
+    "imageAlt": "Food",
+    "tags": ["Food"],
+    "series": "Sharodiya 2025"
+  },
+  {
+    "slug": "the-tragic-hard-worker",
+    "title": "The tragic hard worker",
+    "excerpt": "Tamojit Kumar Manna on গাধা insults, Shakespeare, and Fanny — the BBC's smartest donkey. From Sharodiya 2025.",
+    "date": "2026-09-01",
+    "author": "Tamojit Kumar Manna",
+    "image": "/blog/images/the-tragic-hard-worker.webp",
+    "imageAlt": "Illustration for The tragic hard worker essay on donkeys",
+    "tags": ["Essay"],
+    "series": "Sharodiya 2025"
+  },
+  {
+    "slug": "pompeii-arnab-sarkar",
+    "title": "Pompeii — a Bengali travel diary",
+    "excerpt": "Arnab Sarkar on Pompeii and Vesuvius — a Bengali essay from Sharodiya 2025, with an English summary.",
+    "date": "2026-09-01",
+    "author": "Arnab Sarkar",
+    "image": "/blog/images/pompeii-arnab-sarkar.webp",
+    "imageAlt": "Arnab Sarkar at the ancient ruins of Pompeii, Italy",
+    "tags": ["Travel"],
+    "series": "Sharodiya 2025"
   }
 ]

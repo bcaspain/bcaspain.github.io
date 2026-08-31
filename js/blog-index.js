@@ -2,60 +2,58 @@
 (() => {
   const grid = document.getElementById('blog-posts-grid');
   const empty = document.getElementById('blog-empty-state');
-  if (!grid) return;
+  const filterBar = document.getElementById('blog-tag-filter');
+  const noResults = document.getElementById('blog-no-results');
+  if (!grid || !window.BCA_BLOG) return;
 
-  function formatDate(iso) {
-    try {
-      return new Intl.DateTimeFormat('en-GB', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-      }).format(new Date(iso + 'T12:00:00'));
-    } catch {
-      return iso;
+  let allPosts = [];
+
+  function getActiveTag() {
+    return new URLSearchParams(window.location.search).get('tag') || '';
+  }
+
+  function render() {
+    const activeTag = getActiveTag();
+    const filtered = allPosts.filter((post) => window.BCA_BLOG.postMatchesTag(post, activeTag));
+
+    if (filterBar) {
+      filterBar.innerHTML = window.BCA_BLOG.renderTagFilter(allPosts, activeTag);
+      filterBar.hidden = allPosts.length === 0;
     }
-  }
 
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
+    if (filtered.length === 0) {
+      grid.hidden = true;
+      if (noResults) {
+        noResults.hidden = false;
+        const label = filterBar?.querySelector('.blog-tag-link.is-active');
+        const tagName = label ? label.textContent : activeTag;
+        noResults.innerHTML = `
+          <p>No posts tagged <strong>${window.BCA_BLOG.escapeHtml(tagName)}</strong> yet.</p>
+          <p><a href="/blog/" class="btn btn-secondary">Show all posts</a></p>`;
+      }
+      if (empty) empty.hidden = true;
+      return;
+    }
 
-  function renderCard(post) {
-    const href = `${post.slug}.html`;
-    const tags = (post.tags || []).join(' · ');
-    return `
-      <a href="${escapeHtml(href)}" class="blog-post-card">
-        <div class="card-image">
-          <img src="${escapeHtml(post.image)}" alt="${escapeHtml(post.imageAlt || post.title)}" loading="lazy" decoding="async" width="1024" height="682">
-        </div>
-        <div class="card-content">
-          <h3>${escapeHtml(post.title)}</h3>
-          <p>${escapeHtml(post.excerpt)}</p>
-          ${tags ? `<p class="blog-post-tags">${escapeHtml(tags)}</p>` : ''}
-          <time datetime="${escapeHtml(post.date)}">${formatDate(post.date)}</time>
-        </div>
-      </a>`;
+    grid.innerHTML = filtered
+      .map((post) => window.BCA_BLOG.renderCard(post, { activeTag }))
+      .join('');
+    grid.hidden = false;
+    if (empty) empty.hidden = true;
+    if (noResults) noResults.hidden = true;
   }
 
   async function loadPosts() {
     try {
-      const res = await fetch('/data/blog-posts.json', { cache: 'no-cache' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const posts = await res.json();
-      if (!Array.isArray(posts) || posts.length === 0) return;
-
-      posts.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-      grid.innerHTML = posts.map(renderCard).join('');
-      grid.hidden = false;
-      if (empty) empty.hidden = true;
+      allPosts = await window.BCA_BLOG.fetchPosts();
+      if (allPosts.length === 0) return;
+      render();
     } catch {
       /* Keep empty state visible on fetch failure */
     }
   }
+
+  window.addEventListener('popstate', render);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadPosts);
