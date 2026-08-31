@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "my-india-experience",
+    "title": "My India Experience",
+    "excerpt": "Manuel G. Marciani on a three-week journey through India — hospitality, six languages, and faiths that coexist side by side.",
+    "date": "2026-09-02",
+    "author": "Manuel G. Marciani",
+    "image": "/blog/images/my-india-experience.webp",
+    "imageAlt": "Araku Valley — a mother and her child selling vegetables at a market stall",
+    "tags": ["Travel", "India", "Community"]
+  },
+  {
+    "slug": "is-asana-practice-all-about-flexibility",
+    "title": "Is Asana Practice all about Flexibility?",
+    "excerpt": "You don't have to be flexible to do yoga — Chandana Bhowmick on strength, Ashtanga, and how body and mind grow together on the mat.",
+    "date": "2026-09-01",
+    "author": "Chandana Bhowmick",
+    "image": "/blog/images/is-asana-practice-all-about-flexibility.webp",
+    "imageAlt": "Chandana Bhowmick practicing an advanced yoga arm balance outdoors",
+    "tags": ["Yoga", "Wellness", "Community"]
+  }
+]

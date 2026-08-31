@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+  BLOG POST TEMPLATE — copy this file, rename to your-slug.html, then replace all {{PLACEHOLDERS}}.
+  Do not link to this file from the site.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+    <script src="../js/theme-pref.js"></script>
+    <title>{{TITLE}} — BCA Spain Blog</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="author" content="{{AUTHOR}}">
+    <link rel="canonical" href="https://bcaspain.org/blog/{{SLUG}}.html">
+
+    <meta property="og:title" content="{{TITLE}} — BCA Spain Blog">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bcaspain.org/blog/{{SLUG}}.html">
+    <meta property="og:image" content="https://bcaspain.org{{IMAGE}}">
+    <meta property="og:image:alt" content="{{IMAGE_ALT}}">
+    <meta property="og:site_name" content="Bengali Cultural Association Barcelona">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITLE}} — BCA Spain Blog">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+    <meta name="twitter:image" content="https://bcaspain.org{{IMAGE}}">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{TITLE}}",
+      "description": "{{META_DESCRIPTION}}",
+      "image": "https://bcaspain.org{{IMAGE}}",
+      "datePublished": "{{DATE_ISO}}",
+      "dateModified": "{{DATE_ISO}}",
+      "author": {
+        "@type": "Person",
+        "name": "{{AUTHOR}}"
+      },
+      "publisher": { "@id": "https://bcaspain.org/#organization" },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://bcaspain.org/blog/{{SLUG}}.html"
+      }
+    }
+    </script>
+
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-ZHNQ37V3SX"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHNQ37V3SX', { 'anonymize_ip': true });
+    </script>
+
+    <script defer src="../js/klaro.min.js"></script>
+    <script defer src="../js/klaro-config.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="../css/landing.css">
+    <link rel="stylesheet" href="../css/design-system.css">
+
+    <script defer src="../js/navbar.js"></script>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body class="scroll-container">
+    <div class="main-content">
+        <div id="navbar-placeholder"></div>
+
+        <article class="blog-article">
+            <header class="blog-article-header container">
+                <p class="blog-article-eyebrow"><a href="/blog/">Blog</a></p>
+                <h1>{{TITLE}}</h1>
+                <p class="blog-article-meta">
+                    <time datetime="{{DATE_ISO}}">{{DATE_DISPLAY}}</time>
+                    · {{AUTHOR}}
+                </p>
+            </header>
+
+            <figure class="blog-article-hero container">
+                <img src="{{IMAGE}}" alt="{{IMAGE_ALT}}" width="1024" height="682" loading="eager" decoding="async">
+            </figure>
+
+            <div class="blog-article-body container">
+                <!-- ARTICLE BODY: use <p>, <h2>, <ul>, etc. -->
+                {{BODY}}
+            </div>
+
+            <footer class="blog-article-footer container">
+                <div class="blog-author-card">
+                    <h2>About the author</h2>
+                    {{AUTHOR_BIO}}
+                </div>
+                <p class="blog-article-back">
+                    <a href="/blog/" class="btn btn-secondary"><i class="fas fa-arrow-left" aria-hidden="true"></i> All posts</a>
+                    <a href="../html/submit_blog.html" class="btn btn-primary"><i class="fas fa-pen-nib" aria-hidden="true"></i> Write for us</a>
+                </p>
+            </footer>
+        </article>
+
+        <section class="scene scene-c teaser-strip" id="social-media">
+            <div class="scene-inner">
+                <h2 class="heading-md">Follow us</h2>
+                <p>Stay connected with our community and get the latest updates on events and celebrations.</p>
+                <div class="social-icons-container" role="list">
+                    <a href="https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--facebook" title="Follow us on Facebook" role="listitem"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/spain_bca" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--instagram" title="Follow us on Instagram" role="listitem"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://youtube.com/@bengaliculturalassociation?si=NB5TkAc9gZsgX11i" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--youtube" title="Subscribe to our YouTube channel" role="listitem"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/34693005986" target="_blank" rel="noopener noreferrer" class="social-icon-link social-icon-link--whatsapp" title="Contact us on WhatsApp" role="listitem"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    <a href="mailto:info@bcaspain.org" class="social-icon-link social-icon-link--gmail" title="Send us an email" role="listitem"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-legal">
+                    <a href="../html/aviso-legal.html" class="link-underline">Aviso Legal</a> ·
+                    <a href="../html/privacidad.html" class="link-underline">Política de Privacidad</a> ·
+                    <a href="../html/cookies.html" class="link-underline">Política de Cookies</a>
+                </p>
+                <p>&copy; 2026 Bengali Cultural Association Barcelona. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script defer src="../js/visitor-counter.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

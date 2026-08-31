@@ -4,6 +4,9 @@
   function normalizePath(pathname) {
     // GitHub Pages may serve / and /index.html interchangeably.
     if (!pathname || pathname === '/' || pathname === '/index.html') return '/';
+    if (pathname === '/blog' || pathname === '/blog/' || pathname === '/blog/index.html') {
+      return '/blog/';
+    }
     return pathname;
   }
 
@@ -12,6 +15,9 @@
     const links = Array.from(container.querySelectorAll('a.nav-link'));
 
     links.forEach((a) => a.classList.remove('active'));
+    container.querySelectorAll('.nav-dropdown-toggle').forEach((toggle) => {
+      toggle.classList.remove('active');
+    });
 
     // Prefer exact match; fallback to matching by filename.
     const exact = links.find((a) => {
@@ -33,6 +39,27 @@
     const active = exact || byFilename;
     if (active) {
       active.classList.add('active');
+      const dropdown = active.closest('.nav-dropdown');
+      const toggle = dropdown?.querySelector('.nav-dropdown-toggle');
+      if (toggle) toggle.classList.add('active');
+      return;
+    }
+
+    // Any page under /blog/ (e.g. future posts) highlights the Blog nav item.
+    if (current.startsWith('/blog/') && current !== '/blog/') {
+      const blogLink = links.find((a) => {
+        try {
+          return normalizePath(new URL(a.getAttribute('href'), window.location.origin).pathname) === '/blog/';
+        } catch {
+          return false;
+        }
+      });
+      if (blogLink) {
+        blogLink.classList.add('active');
+        const dropdown = blogLink.closest('.nav-dropdown');
+        const toggle = dropdown?.querySelector('.nav-dropdown-toggle');
+        if (toggle) toggle.classList.add('active');
+      }
     }
   }
 
