@@ -517,8 +517,8 @@ a.btn:hover,
   color: var(--nav-text-hover) !important;
 }
 
-/* Desktop nav — fluid type & spacing before mobile menu (769px+) */
-@media (min-width: 769px) {
+/* Desktop nav — fluid type & spacing (901px+; below that uses mobile slide-out menu) */
+@media (min-width: 901px) {
   .navbar .nav-link {
     font-size: var(--nav-link-size) !important;
     font-weight: 600 !important;
@@ -562,6 +562,28 @@ a.btn:hover,
   }
 }
 
+/* Don't clip the Attractions dropdown on horizontal nav (site.css tablet sets overflow:hidden) */
+@media (min-width: 901px) {
+  .navbar,
+  .nav-container,
+  .nav-menu {
+    overflow: visible !important;
+  }
+
+  .nav-dropdown {
+    position: relative;
+    z-index: 1101;
+  }
+
+  .nav-dropdown[open] {
+    z-index: 1102;
+  }
+
+  .navbar .nav-dropdown-menu {
+    z-index: 1103;
+  }
+}
+
 .nav-toggle .bar {
   background: var(--nav-toggle-bar) !important;
 }
@@ -600,7 +622,7 @@ a.btn:hover,
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nav-menu {
     background: var(--nav-mobile-bg) !important;
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15) !important;
@@ -1680,8 +1702,8 @@ body.landing .main-content {
 
 /* ========== navbar-mobile (merged) ========== */
 
-/* Mobile navbar — loaded after other styles via navbar.js */
-@media (max-width: 768px) {
+/* Mobile navbar — hamburger + slide-out menu (≤900px) */
+@media (max-width: 900px) {
     .nav-menu {
         position: fixed;
         top: var(--navbar-height, 70px);

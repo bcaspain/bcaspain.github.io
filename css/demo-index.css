@@ -291,7 +291,7 @@ body.demo-welcome .navbar:not(.scrolled) {
 }
 
 /* Desktop: light text on transparent bar over video (top-level links only) */
-@media (min-width: 769px) {
+@media (min-width: 901px) {
   body.demo-welcome .navbar:not(.scrolled) .logo-text,
   body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu > .nav-link,
   body.demo-welcome .navbar:not(.scrolled) .nav-container > .nav-menu > .nav-dropdown > .nav-dropdown-toggle {
@@ -299,21 +299,44 @@ body.demo-welcome .navbar:not(.scrolled) {
     -webkit-text-fill-color: #fff8ef;
   }
 
-  /* Dropdown panel sits on light surface in daytime — use theme text colors */
+  /* Glass dropdown — matches welcome hero card over video */
+  body.demo-welcome .navbar:not(.scrolled) .nav-dropdown-menu {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 248, 239, 0.1) 0%,
+        rgba(10, 12, 14, 0.42) 50%,
+        rgba(10, 12, 14, 0.52) 100%) !important;
+    border: 1px solid rgba(255, 248, 239, 0.2) !important;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 248, 239, 0.14) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(1.12);
+    backdrop-filter: blur(14px) saturate(1.12);
+  }
+
   body.demo-welcome .navbar:not(.scrolled) .nav-dropdown-menu .nav-dropdown-item {
-    color: var(--nav-text-muted) !important;
-    -webkit-text-fill-color: var(--nav-text-muted);
+    color: rgba(255, 248, 239, 0.92) !important;
+    -webkit-text-fill-color: rgba(255, 248, 239, 0.92);
+    background: transparent !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
   }
 
   body.demo-welcome .navbar:not(.scrolled) .nav-dropdown-menu .nav-dropdown-item:hover,
   body.demo-welcome .navbar:not(.scrolled) .nav-dropdown-menu .nav-dropdown-item.active {
-    color: var(--nav-text-hover) !important;
-    -webkit-text-fill-color: var(--nav-text-hover);
+    color: #fff8ef !important;
+    -webkit-text-fill-color: #fff8ef;
+    background: rgba(255, 248, 239, 0.1) !important;
+  }
+
+  body.demo-welcome .navbar:not(.scrolled) .nav-dropdown[open] > .nav-dropdown-toggle {
+    background: rgba(255, 248, 239, 0.08);
+    border-radius: 0.35rem;
   }
 }
 
 /* Mobile: light top bar only — slide-out menu keeps theme contrast */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   body.demo-welcome .navbar:not(.scrolled) .logo-text {
     color: #fff8ef !important;
     -webkit-text-fill-color: #fff8ef;
