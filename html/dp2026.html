@@ -343,9 +343,9 @@
                     <div class="event-icon">
                         <i class="fas fa-music"></i>
                     </div>
-                    <h3>Cultural Program</h3>
+                    <h3>Cultural Concert 2026</h3>
                     <p class="event-when">18:00 · Friday 23 October 2026</p>
-                    <p class="event-description">Traditional music, dance performances, and cultural activities</p>
+                    <p class="event-description">Dance, live Bengali band, and theatre — Sanskritik Sandhya</p>
 
                     <div class="venue-info">
                         <h4>
@@ -361,10 +361,10 @@
                     </div>
 
                     <p class="free-badge">Free</p>
-                    <button type="button" class="btn btn-secondary" onclick="openCommunityProgramPopup()">
+                    <a href="cultural-concert.html" class="btn btn-secondary">
                         <i class="fas fa-calendar-alt"></i>
-                        <span>View Community Program</span>
-                    </button>
+                        <span>View details</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -521,13 +521,6 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-        </div>
-    </div>
-
-    <div id="communityProgramModal" class="modal" role="dialog" aria-modal="true" aria-label="Community program">
-        <div class="modal-content">
-            <button type="button" class="close" onclick="closeCommunityProgramPopup()" aria-label="Close community program">&times;</button>
-            <img src="../community-program.webp" alt="Bengali Cultural Program" class="modal-image">
         </div>
     </div>
 
@@ -691,20 +684,6 @@
 
     <!-- Scripts -->
     <script>
-    function openCommunityProgramPopup() {
-        var modal = document.getElementById('communityProgramModal');
-        if (!modal) return;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeCommunityProgramPopup() {
-        var modal = document.getElementById('communityProgramModal');
-        if (!modal) return;
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-
     function openFullSchedulePopup() {
         var modal = document.getElementById('fullScheduleModal');
         if (!modal) return;
@@ -720,15 +699,12 @@
     }
 
     window.addEventListener('click', function(event) {
-        var communityModal = document.getElementById('communityProgramModal');
         var scheduleModal = document.getElementById('fullScheduleModal');
-        if (event.target === communityModal) closeCommunityProgramPopup();
         if (event.target === scheduleModal) closeFullSchedulePopup();
     });
 
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-            closeCommunityProgramPopup();
             closeFullSchedulePopup();
         }
     });
