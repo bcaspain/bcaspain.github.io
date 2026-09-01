@@ -39,10 +39,23 @@
       <a href="/html/contact.html" class="nav-link">Contact</a>
     </div>
 
-    <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-controls="nav-menu" aria-expanded="false">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+    <div class="nav-actions">
+      <button
+        type="button"
+        class="color-theme-toggle"
+        id="color-theme-toggle"
+        data-color-theme-toggle
+        aria-label="Switch to light mode"
+        aria-pressed="true"
+        title="Switch to light mode">
+        <i class="fas fa-sun" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-controls="nav-menu" aria-expanded="false" role="button" tabindex="0">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
     </div>
   </div>
 </nav>

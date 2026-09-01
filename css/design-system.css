@@ -615,6 +615,64 @@ a.btn-download:hover {
   background: var(--nav-toggle-bar) !important;
 }
 
+/* Theme toggle — navbar right (desktop); beside menu button (mobile) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+  z-index: 1001;
+}
+
+.color-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--nav-border);
+  border-radius: var(--radius);
+  background: var(--nav-hover-bg);
+  color: var(--nav-text);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.color-theme-toggle:hover,
+.color-theme-toggle:focus-visible {
+  color: var(--nav-text-hover);
+  border-color: color-mix(in srgb, var(--nav-text-hover) 55%, var(--nav-border));
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary-container) 28%, transparent);
+}
+
+.color-theme-toggle i {
+  pointer-events: none;
+}
+
+@media (min-width: 901px) {
+  .nav-actions {
+    margin-left: clamp(0.5rem, 0.2rem + 0.8vw, 1.25rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-actions {
+    gap: 0.4rem;
+  }
+
+  .color-theme-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+}
+
 .logo-img {
   background: transparent !important;
   box-shadow: none !important;

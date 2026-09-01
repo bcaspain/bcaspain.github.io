@@ -389,7 +389,10 @@ function initMobileNavigation() {
             }
 
             // Only close if clicking on the overlay, not on menu content
-            if (!navMenu.contains(e.target) && !toggle.contains(e.target)) {
+            if (!navMenu.contains(e.target)) {
+                const navActions = toggle.closest('.nav-actions');
+                if (navActions && navActions.contains(e.target)) return;
+
                 // Add a delay to prevent immediate closing and allow for proper event handling
                 clickTimeout = setTimeout(() => {
                     if (navMenu.classList.contains('active')) {
