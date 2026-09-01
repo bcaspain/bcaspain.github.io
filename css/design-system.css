@@ -1889,3 +1889,118 @@ body.landing .main-content {
     }
 }
 
+/* Guard against legacy site.css nav overrides */
+@media (max-width: 900px) {
+    .navbar,
+    .nav-container {
+        overflow: visible !important;
+    }
+
+    .navbar .nav-menu {
+        max-width: none !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        justify-content: flex-start !important;
+        flex-wrap: nowrap !important;
+        left: 0 !important;
+        animation: none !important;
+    }
+
+    .navbar .nav-menu:not(.active) {
+        transform: translateX(100%) !important;
+        pointer-events: none !important;
+    }
+
+    .navbar .nav-menu.active {
+        transform: translateX(0) !important;
+        pointer-events: auto !important;
+    }
+
+    .nav-toggle {
+        display: flex !important;
+    }
+}
+
+/* ── Responsive buttons (canonical — same visual size on mobile/tablet) ── */
+
+.blog-back-link,
+.blog-tag-link,
+.btn-pill {
+  min-height: auto !important;
+  min-width: auto !important;
+}
+
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.btn-large {
+  min-width: auto;
+}
+
+@media (max-width: 1024px) {
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    min-height: 44px;
+    min-width: auto !important;
+    font-size: 1.0625rem !important;
+    line-height: 1.2 !important;
+    padding: 0.8rem 1.35rem !important;
+    font-weight: 600 !important;
+  }
+
+  .btn i {
+    font-size: 1rem !important;
+  }
+
+  .btn-large {
+    padding: 0.75rem 1.25rem !important;
+    font-size: 1rem !important;
+    min-height: 44px;
+    min-width: auto !important;
+    font-weight: 600 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .btn-large.btn-primary {
+    background: var(--primary-container) !important;
+    color: var(--on-primary-container) !important;
+    -webkit-text-fill-color: var(--on-primary-container);
+    box-shadow: var(--shadow-light) !important;
+  }
+
+  .btn-large.btn-secondary {
+    background: transparent !important;
+    color: var(--primary-container) !important;
+    border: 2px solid var(--primary-container) !important;
+    box-shadow: none !important;
+  }
+
+  .btn-primary:not(.btn-large) {
+    background: var(--primary-container) !important;
+    color: var(--on-primary-container) !important;
+    -webkit-text-fill-color: var(--on-primary-container);
+    border: none !important;
+    box-shadow: var(--shadow-light) !important;
+  }
+
+  .btn-secondary:not(.btn-large) {
+    background: transparent !important;
+    color: var(--primary-container) !important;
+    border: 2px solid var(--primary-container) !important;
+    box-shadow: none !important;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .blog-article-back .btn {
+    min-width: auto !important;
+  }
+}

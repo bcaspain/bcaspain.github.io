@@ -71,14 +71,22 @@
     <div class="main-content">
         <div id="navbar-placeholder"></div>
 
+        <div class="blog-article-layout">
+            <div class="blog-article-main">
         <article class="blog-article">
             <header class="blog-article-header container">
+                <p class="blog-article-nav-top">
+                    <a href="/blog/" class="blog-back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> All posts</a>
+                </p>
                 <p class="blog-article-eyebrow"><a href="/blog/">Blog</a> · <span class="blog-post-series">Sharodiya 2025</span></p>
                 <h1>Mutton Gora Kalia</h1>
-                <p class="blog-article-meta">
-                    <time datetime="2026-09-01">1 Sep 2026</time>
-                    · Surashree
-                </p>
+                <div
+                    class="blog-article-byline"
+                    id="blog-article-byline"
+                    data-author="Surashree"
+                    data-date="2026-09-01"
+                    data-date-display="1 Sep 2026"
+                ></div>
                 <div class="blog-article-tags" id="blog-article-tags" hidden></div>
             </header>
 
@@ -102,16 +110,17 @@
             </div>
 
             <footer class="blog-article-footer container">
-                <div class="blog-author-card">
-                    <h2>About the author</h2>
-                    <p><strong>Surashree</strong> — BCA Barcelona community member and contributor to Sharodiya 2025.</p>
-                </div>
                 <p class="blog-article-back">
                     <a href="/blog/" class="btn btn-secondary"><i class="fas fa-arrow-left" aria-hidden="true"></i> All posts</a>
                     <a href="../html/submit_blog.html" class="btn btn-primary"><i class="fas fa-pen-nib" aria-hidden="true"></i> Write for us</a>
                 </p>
             </footer>
         </article>
+            </div>
+            <aside class="blog-article-sidebar" id="blog-article-sidebar" aria-label="More stories" hidden></aside>
+        </div>
+
+        <section class="blog-article-more-mobile" id="blog-article-more-mobile" aria-label="Continue reading" hidden></section>
 
         <section class="scene scene-c teaser-strip" id="social-media">
             <div class="scene-inner">

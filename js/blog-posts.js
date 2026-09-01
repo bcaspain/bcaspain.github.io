@@ -111,6 +111,89 @@ window.BCA_BLOG = (() => {
     return `${allLink}${tagLinks}`;
   }
 
+  function pickRelatedPosts(current, posts, limit = 4) {
+    const others = posts.filter((p) => p.slug !== current.slug);
+    const currentTags = new Set(current.tags || []);
+
+    const scored = others.map((post) => {
+      let score = 0;
+      if (current.series && post.series === current.series) score += 100;
+      (post.tags || []).forEach((tag) => {
+        if (currentTags.has(tag)) score += 10;
+      });
+      const dateNum = Number((post.date || '').replace(/-/g, ''));
+      if (dateNum) score += dateNum / 1e8;
+      return { post, score };
+    });
+
+    scored.sort((a, b) => {
+      const byScore = b.score - a.score;
+      return byScore !== 0 ? byScore : a.post.slug.localeCompare(b.post.slug);
+    });
+
+    return scored.slice(0, limit).map(({ post }) => post);
+  }
+
+  function relatedPostsHeading(current, related) {
+    if (
+      current.series &&
+      related.some((p) => p.series === current.series)
+    ) {
+      return `More from ${current.series}`;
+    }
+    const tag = (current.tags || [])[0];
+    if (tag) return `More on ${tag}`;
+    return 'More from our blog';
+  }
+
+  function renderRelatedThumb(post) {
+    if (post.imagePlaceholder) {
+      return `<div class="blog-related-thumb blog-related-thumb--label" aria-hidden="true">${escapeHtml(post.imagePlaceholder)}</div>`;
+    }
+    if (!post.image) return '';
+    return `<div class="blog-related-thumb"><img src="${escapeHtml(post.image)}" alt="${escapeHtml(post.imageAlt || post.title)}" loading="lazy" decoding="async" width="56" height="42"></div>`;
+  }
+
+  function renderRelatedMeta(post) {
+    const parts = [formatDate(post.date)];
+    if (post.series) parts.push(post.series);
+    else if (post.tags?.[0]) parts.push(post.tags[0]);
+    return parts.join(' · ');
+  }
+
+  function renderRelatedPostsPanel(current, related, options = {}) {
+    if (!related.length) return '';
+
+    const heading =
+      options.heading ||
+      relatedPostsHeading(current, related);
+    const headingClass = options.headingClass || 'blog-related-heading';
+    const listClass = options.listClass || 'blog-related-list';
+
+    const items = related
+      .map((post) => {
+        const href = `${options.baseHref || ''}${post.slug}.html`;
+        return `
+        <li class="blog-related-item">
+          <a href="${escapeHtml(href)}">
+            ${renderRelatedThumb(post)}
+            <div class="blog-related-text">
+              <p class="blog-related-title">${escapeHtml(post.title)}</p>
+              <p class="blog-related-meta">${escapeHtml(renderRelatedMeta(post))}</p>
+            </div>
+          </a>
+        </li>`;
+      })
+      .join('');
+
+    return `
+      <h2 class="${headingClass}">${escapeHtml(heading)}</h2>
+      <ul class="${listClass}">
+        ${items}
+      </ul>
+      <a href="/blog/" class="blog-related-all">View all posts <span aria-hidden="true">→</span></a>`;
+  }
+
   async function fetchPosts() {
     const res = await fetch('/data/blog-posts.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -130,6 +213,9 @@ window.BCA_BLOG = (() => {
     renderCardTags,
     renderCard,
     renderTagFilter,
+    pickRelatedPosts,
+    relatedPostsHeading,
+    renderRelatedPostsPanel,
     fetchPosts,
   };
 })();

@@ -189,6 +189,8 @@ body.demo-welcome {
 .demo-welcome-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 0.55rem;
   margin-bottom: 0.5rem;
 }
@@ -639,6 +641,10 @@ body.hero-video-modal-open {
   margin-top: 1.8rem;
 }
 
+.demo-welcome .hero-actions {
+  justify-content: center;
+}
+
 /* ── Year rhythm (not festival-first) ─────────────────────── */
 
 .demo-rhythm-head {
@@ -974,19 +980,17 @@ body.hero-video-modal-open {
   }
 
   .demo-welcome-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 0.55rem;
     margin-bottom: 0.35rem;
   }
 
-  .demo-welcome-actions .btn:first-child {
-    grid-column: 1 / -1;
-  }
-
   .demo-welcome-hero .demo-welcome-actions .btn {
-    width: 100% !important;
-    max-width: none !important;
+    width: auto !important;
+    max-width: 100%;
     min-height: 2.35rem !important;
     padding: 0.5rem 0.75rem !important;
     font-size: 0.82rem !important;
@@ -994,7 +998,7 @@ body.hero-video-modal-open {
   }
 
   .demo-welcome-actions .btn {
-    width: 100%;
+    width: auto;
     justify-content: center;
     text-align: center;
   }
@@ -1127,20 +1131,18 @@ body.hero-video-modal-open {
   }
 
   .demo-welcome-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 0.35rem;
     width: 100%;
     margin-bottom: 0;
   }
 
-  .demo-welcome-actions .btn:first-child {
-    grid-column: 1 / -1;
-  }
-
   .demo-welcome-hero .demo-welcome-actions .btn {
-    width: 100% !important;
-    max-width: none !important;
+    width: auto !important;
+    max-width: 100%;
     min-height: 2rem !important;
     min-width: 0 !important;
     padding: 0.38rem 0.55rem !important;
@@ -1159,10 +1161,24 @@ body.hero-video-modal-open {
 
   .demo-welcome-actions .btn,
   .demo-invite-actions .btn,
-  .demo-welcome .hero-actions .btn {
-    width: 100%;
+  .demo-welcome .hero-actions .btn,
+  .demo-welcome .blog-home-actions .btn,
+  .demo-welcome .demo-sponsors-cta .btn,
+  .demo-welcome .rj-card .btn {
+    width: auto;
+    max-width: 100%;
     justify-content: center;
     text-align: center;
+  }
+
+  .demo-invite-actions,
+  .demo-welcome .hero-actions,
+  .demo-welcome .blog-home-actions {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
   }
 
   .hero-watch-video-btn {
@@ -1206,14 +1222,6 @@ body.hero-video-modal-open {
 
   .hero-video-modal-frame {
     border-radius: 0.35rem;
-  }
-
-  .demo-invite-actions,
-  .demo-welcome .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
-    width: 100%;
   }
 
   .demo-who-section h2,

@@ -305,6 +305,9 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+            padding-top: calc(var(--navbar-height, 70px) + 2rem);
+            padding-bottom: 4rem;
+            scroll-margin-top: var(--navbar-height, 70px);
         }
         
         .gallery-section .container {
@@ -317,9 +320,21 @@
         
         /* Mobile container adjustments */
         @media (max-width: 768px) {
+            .gallery-section {
+                padding-top: calc(var(--navbar-height, 70px) + 1.25rem);
+                padding-bottom: 2.5rem;
+            }
+
             .gallery-section .container {
                 padding: 0;
                 margin: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-section {
+                padding-top: calc(var(--navbar-height, 70px) + 1rem);
+                padding-bottom: 2rem;
             }
         }
         

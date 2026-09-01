@@ -28,6 +28,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Build blog from Markdown
+        run: npm ci && npm run build:blog
+
       - name: Inject secrets into HTML
         env:
           RJ_GAS_URL: ${{ secrets.RJ_GAS_URL }}
