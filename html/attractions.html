@@ -112,19 +112,22 @@
                         </div>
                     </div>
 
-                    <!-- Cultural Show Card -->
-                    <div class="attraction-card">
-                        <div class="card-image">
-                            <img src="../gallery/2025/thumbs/IMG_6.webp" alt="Community cultural show on stage" loading="lazy" decoding="async" width="640" height="480" />
-                        </div>
-                        <div class="card-content">
-                            <h3>Community Cultural Show</h3>
-                            <p>Traditional performances and cultural programs</p>
-                            <button type="button" onclick="openCommunityProgramPopup()" class="btn btn-primary mt-sm">
-                                <i class="fas fa-calendar-alt"></i>
-                                View Events
-                            </button>
-                        </div>
+                    <!-- Cultural Concert Card -->
+                    <div class="attraction-card" id="cultural-concert">
+                        <a href="cultural-concert.html" class="attraction-card-link">
+                            <div class="card-image">
+                                <img src="../events/cultural-concert.webp" alt="Cultural Night — Sanskritik Sandhya, Durga Pujo 2026" loading="lazy" decoding="async" width="640" height="480" />
+                            </div>
+                            <div class="card-content">
+                                <h3>Cultural Concert</h3>
+                                <p>Cultural Night (Sanskritik Sandhya) — dance, live Bengali band &amp; theatre.<br>
+                                Friday 23 October 2026 · 6:00 PM · Federació d'Entitats, Carrer Calàbria 66, Barcelona · Free entry</p>
+                                <span class="btn btn-primary mt-sm">
+                                    <i class="fas fa-arrow-right"></i>
+                                    View details
+                                </span>
+                            </div>
+                        </a>
                     </div>
 
                     <!-- Food Stall Card -->
@@ -209,14 +212,6 @@
         </div>
     </footer>
 
-    <!-- Community Program Popup Modal -->
-    <div id="communityProgramModal" class="modal-overlay" onclick="closeCommunityProgramPopup()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="modal-close" onclick="closeCommunityProgramPopup()">&times;</span>
-            <img src="../community-program.webp" alt="Bengali Cultural Program" class="modal-image">
-        </div>
-    </div>
-
     <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="Back to top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
@@ -234,26 +229,6 @@
             };
             document.head.appendChild(script);
         }
-    </script>
-
-    <!-- Community Program Popup Scripts -->
-    <script>
-        function openCommunityProgramPopup() {
-            document.getElementById('communityProgramModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-        
-        function closeCommunityProgramPopup() {
-            document.getElementById('communityProgramModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeCommunityProgramPopup();
-            }
-        });
     </script>
 
     <!-- Scripts -->
