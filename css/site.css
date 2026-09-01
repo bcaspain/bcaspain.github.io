@@ -775,33 +775,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 100%;
 }
 
-.btn-primary {
-    background: var(--gradient-primary);
-    color: var(--white);
-    box-shadow: var(--shadow-medium);
-    border: none;
-    font-weight: 600;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-heavy);
-    background: var(--gradient-secondary);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    font-weight: 600;
-}
-
-.btn-secondary:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-}
+/* Buttons — canonical styles in design-system.css (loaded last) */
 
 .btn-outline {
     background: transparent;
@@ -815,32 +789,7 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--text-dark);
 }
 
-.btn-large {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.3rem;
-    font-weight: bold;
-    background: var(--gradient-secondary);
-    border: none;
-    box-shadow: var(--shadow-medium);
-    transition: all 0.3s ease;
-}
-
-.btn-large:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-heavy);
-    background: var(--gradient-primary);
-}
-
-.btn-large i {
-    font-size: 2rem;
-    color: white;
-    margin-right: 0.5rem;
-}
-
-.btn-large span {
-    font-weight: bold;
-    color: white;
-}
+/* btn-large / btn-primary / btn-secondary — see design-system.css */
 
 /* Navigation */
 .navbar {
@@ -2603,115 +2552,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive Design */
-/* iPad and Tablet Navigation Styles */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        overflow: hidden;
-    }
-    
-    .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-    }
-    
+/* Tablet desktop nav tweaks (901–1024). Hamburger / slide-out ≤900px: design-system.css */
+@media (min-width: 901px) and (max-width: 1024px) {
     .nav-container {
         padding: 0.8rem 1.5rem;
-        max-width: 100%;
-        overflow: hidden;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
-    
-    .nav-menu {
-        gap: 0.6rem;
-        flex-wrap: nowrap;
-        justify-content: flex-end;
-        max-width: calc(100% - 180px);
-        overflow: hidden;
-        display: flex;
-    }
-    
+
     .nav-link {
         font-size: 0.9rem;
         padding: 0.6rem 0.7rem;
-        white-space: nowrap;
-        flex-shrink: 0;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1.1;
-        font-weight: 600;
     }
-    
-    .nav-link:hover {
-        background: rgba(232, 114, 12, 0.08);
-        transform: translateY(-1px);
-    }
-    
+
     .logo-text {
         font-size: 1.1rem;
-        flex-shrink: 0;
     }
-    
+
     .logo-img {
         width: 45px;
         height: 45px;
-        flex-shrink: 0;
     }
-    
-    .nav-logo {
-        margin-right: 2.5rem;
-        position: relative;
-        left: -0.5rem;
-    }
-    
-    .nav-logo .logo-text {
-        font-size: 1.3rem !important;
-        font-weight: 700 !important;
-    }
-    
-    .nav-logo img {
-        width: 50px !important;
-        height: 50px !important;
-    }
-}
 
-/* Small iPad and Large Mobile */
-@media (min-width: 481px) and (max-width: 768px) {
-    .nav-container {
-        padding: 0.6rem 1rem;
-    }
-    
-    .nav-menu {
-        gap: 0.8rem;
-    }
-    
-    .nav-link {
-        font-size: 0.95rem;
-        padding: 0.3rem 0.5rem;
-    }
-    
-    .logo-text {
-        font-size: 1rem;
-    }
-    
-    .logo-img {
-        width: 40px;
-        height: 40px;
+    .nav-logo {
+        margin-right: 1.5rem;
     }
 }
 
@@ -2812,203 +2674,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* iPad Landscape Orientation */
-@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-    .nav-container {
-        padding: 0.6rem 1.5rem;
-    }
-    
-    .nav-menu {
-        gap: 0.5rem;
-    }
-    
-    .nav-link {
-        font-size: 0.9rem;
-        padding: 0.25rem 0.4rem;
-    }
-    
-    .nav-logo {
-        margin-right: 2.5rem;
-        position: relative;
-        left: -0.5rem;
-    }
-    
-    .nav-logo .logo-text {
-        font-size: 1.3rem !important;
-        font-weight: 700 !important;
-    }
-    
-    .nav-logo img {
-        width: 50px !important;
-        height: 50px !important;
-    }
-}
-
-/* Mobile Navigation - Only for actual mobile devices */
 @media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s ease-in-out;
-        box-shadow: var(--shadow-medium);
-        padding: 2rem 0;
-        z-index: 1000;
-        height: calc(100vh - 70px);
-        overflow-y: auto;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .nav-menu .nav-link {
-        padding: 1rem 2rem;
-        font-size: 1.3rem;
-        font-weight: 700;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-    
-    .nav-menu .nav-link:hover {
-        background-color: rgba(232, 114, 12, 0.1);
-        color: var(--primary-color);
-    }
-    
-    .nav-menu .nav-link.active {
-        background-color: rgba(232, 114, 12, 0.2);
-        color: var(--primary-color);
-    }
-
-    /* Dropdown inside mobile nav */
-    .nav-dropdown {
-        width: 100%;
-    }
-
-    .nav-dropdown-toggle {
-        width: 100%;
-        justify-content: center;
-        padding: 1rem 2rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-dropdown-menu {
-        position: static;
-        min-width: 0;
-        width: 100%;
-        box-shadow: none;
-        border: none;
-        border-radius: 0;
-        padding: 0.25rem 0 0.75rem 0;
-        background: transparent;
-        backdrop-filter: none;
-        gap: 0;
-    }
-
-    .nav-dropdown-item {
-        display: block;
-        padding: 0.9rem 2rem;
-        font-size: 1.15rem;
-        border-radius: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    }
-
-    .nav-toggle {
-        display: flex !important;
-        padding: 8px;
-        border-radius: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-    }
-
-    .nav-toggle:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .nav-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    .nav-toggle.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .nav-toggle.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s ease-in-out;
-        box-shadow: var(--shadow-medium);
-        padding: 2rem 0;
-        z-index: 1000;
-        height: calc(100vh - 70px);
-        overflow-y: auto;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    .nav-menu .nav-link {
-        padding: 1rem 2rem;
-        font-size: 1.3rem;
-        font-weight: 700;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-    
-    .nav-menu .nav-link:hover {
-        background-color: rgba(232, 114, 12, 0.1);
-        color: var(--primary-color);
-    }
-    
-    .nav-menu .nav-link.active {
-        background-color: rgba(232, 114, 12, 0.2);
-        color: var(--primary-color);
-    }
-
-    .nav-toggle {
-        display: flex !important;
-        padding: 8px;
-        border-radius: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-    }
-
-    .nav-toggle:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .nav-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    .nav-toggle.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .nav-toggle.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -4305,26 +3971,11 @@ section + section {
         transform: translateY(-2px);
     }
     
-    /* Button mobile styling */
+    /* Button mobile styling — colors in design-system.css */
     .hero-buttons .btn {
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .btn-primary {
-        background: var(--gradient-primary) !important;
-    }
-    
-    .btn-secondary {
-        background: rgba(255, 255, 255, 0.15) !important;
-        color: white !important;
-        border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.25) !important;
-        color: white !important;
     }
     
     /* Countdown mobile enhancement */
@@ -6232,21 +5883,7 @@ section + section {
         font-size: clamp(0.9rem, 2.5vw, 1rem);
     }
 
-    /* Button mobile fixes for small screens */
-    .btn,
-    .btn-primary,
-    .btn-secondary,
-    .btn-large {
-        min-height: 48px;
-        min-width: 48px;
-        font-size: 16px;
-        padding: 12px 20px;
-        position: relative;
-        z-index: 20;
-        pointer-events: auto;
-        touch-action: manipulation;
-    }
-
+    /* Small-screen hero buttons — sizing in design-system.css */
     .hero-buttons .btn {
         width: 100%;
         max-width: 280px;
@@ -7683,6 +7320,7 @@ body {
 
 /* Mobile Button Fixes - Ensure buttons are clickable on mobile */
 @media (max-width: 768px) {
+    /* Button mobile — touch behavior only; sizing in design-system.css */
     .btn,
     .btn-primary,
     .btn-secondary,
@@ -7693,97 +7331,15 @@ body {
         -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
         pointer-events: auto;
         cursor: pointer;
-        min-height: 44px; /* iOS minimum touch target size */
-        min-width: 44px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        border: none;
         outline: none;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
     }
-    
-    /* Button Color Consistency - Primary Buttons */
-    .btn-primary {
-        background: var(--gradient-primary) !important;
-        color: var(--white) !important;
-        box-shadow: var(--shadow-medium) !important;
-        border: none !important;
-        font-weight: 600 !important;
-    }
-    
-    .btn-primary:hover {
-        background: var(--gradient-secondary) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: var(--shadow-heavy) !important;
-    }
-    
-    .btn-primary:active {
-        transform: translateY(1px) !important;
-        box-shadow: var(--shadow-medium) !important;
-    }
-    
-    /* Button Color Consistency - Secondary Buttons */
-    .btn-secondary {
-        background: transparent !important;
-        color: var(--primary-color) !important;
-        border: 2px solid var(--primary-color) !important;
-        font-weight: 600 !important;
-    }
-    
-    .btn-secondary:hover {
-        background: var(--primary-color) !important;
-        color: var(--white) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: var(--shadow-medium) !important;
-    }
-    
-    .btn-secondary:active {
-        transform: translateY(1px) !important;
-        box-shadow: var(--shadow-light) !important;
-    }
-    
-    /* Button Color Consistency - Large Buttons */
-    .btn-large {
-        background: var(--gradient-secondary) !important;
-        color: var(--white) !important;
-        border: none !important;
-        box-shadow: var(--shadow-medium) !important;
-        font-weight: bold !important;
-    }
-    
-    .btn-large:hover {
-        background: var(--gradient-primary) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: var(--shadow-heavy) !important;
-    }
-    
-    .btn-large:active {
-        transform: translateY(1px) !important;
-        box-shadow: var(--shadow-medium) !important;
-    }
-    
-    /* Button Color Consistency - Outline Buttons */
-    .btn-outline {
-        background: transparent !important;
-        color: var(--text-dark) !important;
-        border: 2px solid var(--text-light) !important;
-    }
-    
-    .btn-outline:hover {
-        background: var(--text-dark) !important;
-        color: var(--white) !important;
-        border-color: var(--text-dark) !important;
-    }
-    
-    .btn-outline:active {
-        transform: translateY(1px) !important;
-    }
-    
-    /* Focus and active states for accessibility */
     .btn:focus,
     .btn-primary:focus,
     .btn-secondary:focus,
@@ -7846,8 +7402,6 @@ body {
         align-items: center !important;
         justify-content: center !important;
         text-decoration: none !important;
-        min-height: 44px !important;
-        min-width: 44px !important;
         cursor: pointer !important;
     }
     
@@ -8310,179 +7864,22 @@ body {
     }
 }
 
-/* iPad and Tablet Navigation (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .navbar {
-        overflow: hidden;
-        backdrop-filter: blur(15px);
-        background: rgba(255, 255, 255, 0.95);
-    }
-    
-    .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-    }
-    
-    .nav-container {
-        padding: 0.8rem 1.5rem;
-        max-width: 100%;
-        overflow: hidden;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .nav-menu {
-        gap: 0.3rem;
-        flex-wrap: nowrap;
-        justify-content: flex-end;
-        max-width: calc(100% - 180px);
-        overflow: hidden;
-        display: flex;
-    }
-    
-    .nav-link {
-        font-size: 0.9rem;
-        padding: 0.6rem 0.7rem;
-        white-space: nowrap;
-        flex-shrink: 0;
-        border-radius: 10px;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        transition: all 0.3s ease;
-        line-height: 1.1;
-        font-weight: 600;
-    }
-    
-    .nav-link:hover {
-        background: rgba(232, 114, 12, 0.08);
-        transform: translateY(-1px);
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-        flex-shrink: 0;
-        font-weight: 700;
-    }
-    
-    .logo-img {
-        width: 45px;
-        height: 45px;
-        flex-shrink: 0;
-    }
-}
+/* Mobile / tablet hamburger nav: see css/design-system.css (≤900px) */
 
-/* iPad Landscape Orientation */
-@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-    .nav-container {
-        padding: 0.6rem 1.5rem;
-    }
-    
-    .nav-menu {
-        gap: 0.3rem;
-        max-width: calc(100% - 150px);
-    }
-    
-    .nav-link {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.7rem;
-        line-height: 1.1;
-        font-weight: 600;
-        white-space: nowrap;
-    }
-    
-    .logo-text {
-        font-size: 1.1rem;
-        font-weight: 700;
-    }
-    
-    .logo-img {
-        width: 42px;
-        height: 42px;
-    }
-}
-
-/* Small iPad and Large Mobile (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-    .navbar {
-        backdrop-filter: blur(12px);
-        background: rgba(255, 255, 255, 0.95);
-    }
-    
-    .nav-container {
-        padding: 0.6rem 1rem;
-    }
-    
-    .nav-menu {
-        gap: 0.25rem;
-        max-width: calc(100% - 130px);
-    }
-    
-    .nav-link {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.6rem;
-        line-height: 1.1;
-        font-weight: 600;
-        white-space: nowrap;
-    }
-    
-    .logo-text {
-        font-size: 1.1rem;
-        font-weight: 700;
-    }
-    
-    .logo-img {
-        width: 42px;
-        height: 42px;
-    }
-}
-
-/* iPad Landscape Orientation */
-@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
-    .nav-container {
-        padding: 0.6rem 1.5rem;
-    }
-    
-    .nav-menu {
-        gap: 0.8rem;
-        max-width: calc(100% - 180px);
-    }
-    
-    .nav-link {
-        font-size: 0.95rem;
-        padding: 0.3rem 0.5rem;
-    }
-}
-
-/* iPad Pro and Large Tablet */
+/* iPad Pro and Large Tablet — hero tweaks */
 @media (min-width: 1025px) and (max-width: 1366px) {
     .navbar {
         backdrop-filter: blur(10px);
     }
-    
-    /* Hero content backdrop-filter for large tablet screens */
+
     .hero-content {
         backdrop-filter: blur(10px);
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
     }
-    
+
     .nav-container {
         padding: 1rem 2rem;
         max-width: 1200px;
-    }
-    
-    .nav-menu {
-        gap: 1.5rem;
-        max-width: calc(100% - 220px);
-    }
-    
-    .nav-link {
-        font-size: 1.2rem;
-        padding: 0.5rem 0.8rem;
     }
 }
 
@@ -8491,308 +7888,10 @@ body {
     .navbar {
         backdrop-filter: blur(10px);
     }
-    
-    /* Hero content backdrop-filter for medium screens */
+
     .hero-content {
         backdrop-filter: blur(10px);
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    }
-}
-
-/* Enhanced Mobile Navigation System */
-
-/* Mobile Navigation - Only for actual mobile devices */
-@media (max-width: 768px) {
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.99);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .nav-container {
-        padding: 0.8rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: var(--navbar-height, 70px);
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - var(--navbar-height, 70px));
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.98) 100%);
-        backdrop-filter: blur(20px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 1.5rem;
-        padding: 2rem 1rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 999;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-    }
-
-    .nav-menu.active {
-        left: 0;
-        animation: slideInFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: auto;
-        touch-action: manipulation;
-    }
-    
-    .nav-menu:not(.active) {
-        pointer-events: none;
-    }
-
-    .nav-menu .nav-link {
-        font-size: 1.3rem;
-        font-weight: 700;
-        padding: 1.2rem 1.5rem;
-        border-radius: 15px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        min-width: 180px;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.8);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        line-height: 1.1;
-        white-space: nowrap;
-    }
-
-    .nav-menu .nav-link::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(232, 114, 12, 0.1), transparent);
-        transition: left 0.5s ease;
-    }
-
-    .nav-menu .nav-link:hover::before {
-        left: 100%;
-    }
-
-    .nav-menu .nav-link:hover {
-        background: rgba(232, 114, 12, 0.1);
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 8px 25px rgba(232, 114, 12, 0.3);
-        color: var(--primary-color);
-    }
-
-    .nav-menu .nav-link.active {
-        background: rgba(232, 114, 12, 0.15);
-        color: var(--primary-color);
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(232, 114, 12, 0.4);
-    }
-
-    .nav-toggle {
-        display: flex !important;
-        padding: 12px;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1001;
-    }
-
-    .nav-toggle:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: scale(1.05);
-    }
-
-    .nav-toggle.active {
-        background: rgba(232, 114, 12, 0.2);
-        transform: scale(1.1);
-    }
-
-    .nav-toggle .bar {
-        width: 28px;
-        height: 3px;
-        background: var(--text-dark);
-        margin: 3px 0;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-radius: 2px;
-        transform-origin: center;
-    }
-
-    .nav-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-        transform: translateX(-20px) scale(0);
-    }
-
-    .nav-toggle.active .bar:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-        background: var(--primary-color);
-    }
-
-    .nav-toggle.active .bar:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-        background: var(--primary-color);
-    }
-
-    /* Mobile menu overlay */
-    .nav-menu::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(232, 114, 12, 0.05) 0%, rgba(192, 57, 43, 0.05) 100%);
-        z-index: -1;
-    }
-
-}
-
-@keyframes slideInFromLeft {
-    0% {
-        left: -100%;
-        opacity: 0;
-    }
-    100% {
-        left: 0;
-        opacity: 1;
-    }
-}
-
-/* Mobile Navigation - Enhanced 768px styles */
-@media (max-width: 768px) {
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.99);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .nav-container {
-        padding: 0.8rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: var(--navbar-height, 70px);
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - var(--navbar-height, 70px));
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 250, 0.98) 100%);
-        backdrop-filter: blur(20px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 1.5rem;
-        padding: 2rem 1rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 999;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-    }
-
-    .nav-menu.active {
-        left: 0;
-        animation: slideInFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: auto;
-        touch-action: manipulation;
-    }
-    
-    .nav-menu:not(.active) {
-        pointer-events: none;
-    }
-
-    .nav-menu .nav-link {
-        font-size: 1.2rem;
-        font-weight: 700;
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        min-width: 160px;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.8);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        line-height: 1.1;
-        white-space: nowrap;
-    }
-
-    .nav-menu .nav-link:hover {
-        background: rgba(232, 114, 12, 0.1);
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 6px 20px rgba(232, 114, 12, 0.3);
-        color: var(--primary-color);
-    }
-
-    .nav-menu .nav-link.active {
-        background: rgba(232, 114, 12, 0.15);
-        color: var(--primary-color);
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(232, 114, 12, 0.4);
-    }
-
-    /* Logo adjustments */
-    .nav-logo, .footer-logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .nav-logo .logo-img,
-    .footer-logo .logo-img {
-        width: 45px;
-        height: 45px;
-    }
-
-    .logo-text {
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-
-    .nav-toggle {
-        padding: 10px;
-        border-radius: 6px;
-    }
-
-    .nav-toggle .bar {
-        width: 26px;
-        height: 3px;
     }
 }
 
@@ -8835,29 +7934,8 @@ body {
 
 /* Small Screen Adjustments */
 @media (max-width: 480px) {
-    .navbar {
-        backdrop-filter: blur(12px);
-    }
-
     .nav-container {
         padding: 0.6rem 0.8rem;
-    }
-
-    .nav-menu {
-        padding: 1.5rem 0.8rem;
-        gap: 1rem;
-    }
-
-    .nav-menu .nav-link {
-        font-size: 1.1rem;
-        padding: 0.8rem 1.2rem;
-        min-width: 140px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1.1;
-        white-space: nowrap;
     }
 
     .nav-logo .logo-img,
@@ -8868,157 +7946,6 @@ body {
 
     .logo-text {
         font-size: 1rem;
-    }
-
-    .nav-toggle {
-        padding: 8px;
-        border-radius: 5px;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .nav-toggle .bar {
-        width: 24px;
-        height: 2.5px;
-    }
-}
-    
-    /* Additional button fixes for very small screens */
-    .btn,
-    .btn-primary,
-    .btn-secondary,
-    .btn-large {
-        min-height: 48px; /* Larger touch target for very small screens */
-        min-width: 48px;
-        font-size: 16px; /* Prevent zoom on iOS */
-        padding: 12px 20px;
-    }
-    
-    /* Button Color Consistency for Small Screens */
-    .btn-primary {
-        background: var(--gradient-primary) !important;
-        color: var(--white) !important;
-        box-shadow: var(--shadow-medium) !important;
-        border: none !important;
-        font-weight: 600 !important;
-    }
-    
-    .btn-primary:hover {
-        background: var(--gradient-secondary) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: var(--shadow-heavy) !important;
-    }
-    
-    .btn-primary:active {
-        transform: translateY(1px) !important;
-        box-shadow: var(--shadow-medium) !important;
-    }
-    
-    .btn-secondary {
-        background: transparent !important;
-        color: var(--primary-color) !important;
-        border: 2px solid var(--primary-color) !important;
-        font-weight: 600 !important;
-    }
-    
-    .btn-secondary:hover {
-        background: var(--primary-color) !important;
-        color: var(--white) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: var(--shadow-medium) !important;
-    }
-    
-    .btn-secondary:active {
-        transform: translateY(1px) !important;
-        box-shadow: var(--shadow-light) !important;
-    }
-    
-    .btn-large {
-        background: var(--gradient-secondary) !important;
-        color: var(--white) !important;
-        border: none !important;
-        box-shadow: var(--shadow-medium) !important;
-        font-weight: bold !important;
-    }
-    
-    .btn-large:hover {
-        background: var(--gradient-primary) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: var(--shadow-heavy) !important;
-    }
-    
-    .btn-large:active {
-        transform: translateY(1px) !important;
-        box-shadow: var(--shadow-medium) !important;
-    }
-    
-    .btn-outline {
-        background: transparent !important;
-        color: var(--text-dark) !important;
-        border: 2px solid var(--text-light) !important;
-    }
-    
-    .btn-outline:hover {
-        background: var(--text-dark) !important;
-        color: var(--white) !important;
-        border-color: var(--text-dark) !important;
-    }
-    
-    .btn-outline:active {
-        transform: translateY(1px) !important;
-    }
-    
-    .hero-buttons .btn {
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-    
-    /* Additional fix for very small screens */
-    .hero-buttons a.btn {
-        position: relative;
-        z-index: 30 !important;
-        pointer-events: auto !important;
-        touch-action: manipulation !important;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3) !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-decoration: none !important;
-        min-height: 48px !important;
-        min-width: 48px !important;
-        cursor: pointer !important;
-        font-size: 16px !important;
-        padding: 12px 20px !important;
-    }
-    
-    /* Enhanced video feature fixes for small screens */
-    .hero-features .feature-item {
-        min-height: 80px;
-        padding: 0.7rem 0.5rem;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: rgba(232, 114, 12, 0.3);
-    }
-    
-    .play-overlay {
-        opacity: 0.95;
-        background: rgba(232, 114, 12, 0.95);
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: rgba(232, 114, 12, 0.3);
-    }
-    
-    .video-modal-close {
-        min-height: 48px;
-        min-width: 48px;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -10192,28 +9119,10 @@ body {
     }
 }
 
-/* Extra Small Screen Navbar Optimizations */
+/* Extra Small Screen Navbar — logo sizing only; menu in design-system.css */
 @media (max-width: 360px) {
-    .navbar {
-        backdrop-filter: blur(10px);
-    }
-
     .nav-container {
         padding: 0.5rem 0.6rem;
-    }
-
-    .nav-menu {
-        padding: 1rem 0.6rem;
-        gap: 0.8rem;
-    }
-
-    .nav-menu .nav-link {
-        font-size: 1rem;
-        padding: 0.7rem 1rem;
-        min-width: 120px;
-        min-height: 40px;
-        line-height: 1.1;
-        white-space: nowrap;
     }
 
     .nav-logo .logo-img,
@@ -10224,18 +9133,6 @@ body {
 
     .logo-text {
         font-size: 0.9rem;
-    }
-
-    .nav-toggle {
-        padding: 6px;
-        border-radius: 4px;
-        min-width: 40px;
-        min-height: 40px;
-    }
-
-    .nav-toggle .bar {
-        width: 22px;
-        height: 2px;
     }
 }
 

@@ -732,62 +732,13 @@
   align-items: center;
 }
 
-.events-schedule-actions .btn-download {
-  background: transparent !important;
-  color: var(--secondary) !important;
-  border: 2px solid var(--secondary) !important;
-  border-radius: var(--radius, 8px);
-  padding: 0.65rem 1.1rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-}
-
-.events-schedule-actions .btn-download:hover {
-  background: var(--nav-hover-bg) !important;
-  color: var(--secondary) !important;
-  border-color: var(--secondary) !important;
-}
-
-[data-theme="dark"] .events-schedule-actions .btn-download {
-  color: var(--inverse-primary) !important;
-  border-color: var(--inverse-primary) !important;
-}
-
-[data-theme="dark"] .events-schedule-actions .btn-download:hover {
-  background: rgba(255, 185, 85, 0.14) !important;
-  color: var(--primary-container) !important;
-  border-color: var(--primary-container) !important;
-}
-
+.events-schedule-actions .btn-download,
 .events-schedule-actions .btn-secondary {
-  background: transparent !important;
-  color: var(--secondary) !important;
-  border: 2px solid var(--secondary) !important;
   border-radius: var(--radius, 8px);
   padding: 0.65rem 1.1rem;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 600;
-}
-
-.events-schedule-actions .btn-secondary:hover {
-  background: var(--nav-hover-bg) !important;
-}
-
-[data-theme="dark"] .events-schedule-actions .btn-secondary {
-  color: var(--inverse-primary) !important;
-  border-color: var(--inverse-primary) !important;
-}
-
-[data-theme="dark"] .events-schedule-actions .btn-secondary:hover {
-  background: rgba(255, 185, 85, 0.14) !important;
-  color: var(--primary-container) !important;
-  border-color: var(--primary-container) !important;
 }
 
 @media (max-width: 560px) {

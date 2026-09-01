@@ -998,30 +998,7 @@
             transform: scale(1.1);
         }
         
-        /* Call to Action Styling */
-        .registration-cta .btn-primary {
-            background: var(--primary-container) !important;
-            color: var(--on-primary-container) !important;
-            border: 1px solid transparent !important;
-        }
-
-        .registration-cta .btn-primary:hover {
-            background: var(--primary) !important;
-            color: var(--on-primary) !important;
-        }
-
-        .registration-cta .btn-secondary {
-            background: transparent !important;
-            color: var(--on-surface) !important;
-            border: 1px solid var(--outline-variant) !important;
-        }
-
-        .registration-cta .btn-secondary:hover {
-            background: color-mix(in srgb, var(--secondary) 8%, transparent) !important;
-            border-color: var(--secondary) !important;
-            color: var(--on-surface) !important;
-        }
-
+        /* Call to Action — button colors from design-system.css */
         .registration-cta .btn {
             width: auto !important;
             margin-bottom: 0 !important;
@@ -2068,16 +2045,6 @@
 
 [data-theme="dark"] .registration-cta p {
   color: var(--on-surface-variant) !important;
-}
-
-[data-theme="dark"] .registration-cta .btn-secondary {
-  color: var(--on-surface) !important;
-  border-color: var(--stone) !important;
-}
-
-[data-theme="dark"] .registration-cta .btn-secondary:hover {
-  background: color-mix(in srgb, var(--secondary) 12%, transparent) !important;
-  border-color: var(--inverse-primary) !important;
 }
 
 [data-theme="dark"] .privacy-consent {

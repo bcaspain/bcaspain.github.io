@@ -13,13 +13,11 @@
 }
 
 .btn-download {
-  background: transparent;
-  color: var(--secondary);
+  /* colors: design-system.css — layout only here */
   padding: 8px 20px;
   text-decoration: none;
   border-radius: var(--radius, 8px);
   font-weight: 600;
-  border: 2px solid var(--secondary);
 }
 
 .schedule-coming-soon {
@@ -88,24 +86,14 @@
   margin-right: 0.15rem;
 }
 
-.btn-download-sm {
-  padding: 0.35rem 0.75rem !important;
-  font-size: 0.85rem !important;
-}
-
-
 #schedule .schedule-coming-soon .btn-download {
-  background: transparent !important;
-  color: var(--secondary) !important;
   padding: 8px 20px;
   border-radius: var(--radius, 8px);
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border: 2px solid var(--secondary) !important;
-  font-weight: 600;
 }
+
 #schedule .schedule-coming-soon h3 {
   color: var(--secondary);
   font-size: 1.6rem;
@@ -642,13 +630,7 @@
 }
 
 .schedule-coming-soon .btn-download {
-  background: transparent !important;
-  color: var(--secondary) !important;
   padding: 8px 20px;
-  text-decoration: none;
-  border-radius: var(--radius, 8px);
-  font-weight: 600;
-  border: 2px solid var(--secondary) !important;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -738,56 +720,6 @@
   font-weight: 600 !important;
   padding: 0.75rem 1.25rem !important;
   font-size: 1rem !important;
-}
-
-/* Primary / secondary CTAs — design-system tokens */
-#schedule .schedule-cta .btn-primary,
-#schedule .schedule-cta .btn-primary.btn-large {
-  background: var(--primary-container) !important;
-  color: var(--on-primary-container) !important;
-  border: none !important;
-  -webkit-text-fill-color: var(--on-primary-container) !important;
-  box-shadow: var(--shadow-light);
-}
-
-#schedule .schedule-cta .btn-primary:hover,
-#schedule .schedule-cta .btn-primary.btn-large:hover {
-  background: var(--primary) !important;
-  color: var(--on-primary) !important;
-  -webkit-text-fill-color: var(--on-primary) !important;
-  border: none !important;
-}
-
-#schedule .schedule-cta .btn-secondary,
-#schedule .schedule-cta .btn-secondary.btn-large {
-  background: transparent !important;
-  color: var(--secondary) !important;
-  border: 2px solid var(--secondary) !important;
-  -webkit-text-fill-color: var(--secondary) !important;
-  box-shadow: none !important;
-}
-
-#schedule .schedule-cta .btn-secondary:hover,
-#schedule .schedule-cta .btn-secondary.btn-large:hover {
-  background: var(--nav-hover-bg) !important;
-  color: var(--secondary) !important;
-  border-color: var(--secondary) !important;
-  -webkit-text-fill-color: var(--secondary) !important;
-}
-
-[data-theme="dark"] #schedule .schedule-cta .btn-secondary,
-[data-theme="dark"] #schedule .schedule-cta .btn-secondary.btn-large {
-  color: var(--inverse-primary) !important;
-  border-color: var(--inverse-primary) !important;
-  -webkit-text-fill-color: var(--inverse-primary) !important;
-}
-
-[data-theme="dark"] #schedule .schedule-cta .btn-secondary:hover,
-[data-theme="dark"] #schedule .schedule-cta .btn-secondary.btn-large:hover {
-  background: rgba(255, 185, 85, 0.14) !important;
-  color: var(--primary-container) !important;
-  border-color: var(--primary-container) !important;
-  -webkit-text-fill-color: var(--primary-container) !important;
 }
 
 #schedule .schedule-cta .btn i,
@@ -885,17 +817,8 @@
 }
 
 #schedule .schedule-coming-soon .btn-download {
-  background: transparent !important;
-  color: var(--secondary) !important;
-  border: 2px solid var(--secondary) !important;
   border-radius: var(--radius, 8px);
   padding: 0.7rem 1.15rem;
-}
-
-#schedule .schedule-coming-soon .btn-download:hover {
-  background: var(--nav-hover-bg) !important;
-  color: var(--secondary) !important;
-  border-color: var(--secondary) !important;
 }
 
 #schedule .section-title {
@@ -960,33 +883,11 @@
 }
 
 #schedule .schedule-download-actions .btn-download {
-  background: transparent !important;
-  color: var(--secondary) !important;
-  border: 2px solid var(--secondary) !important;
   border-radius: var(--radius, 8px);
   padding: 0.7rem 1.15rem;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 600;
-}
-
-#schedule .schedule-download-actions .btn-download:hover {
-  background: var(--nav-hover-bg) !important;
-  color: var(--secondary) !important;
-  border-color: var(--secondary) !important;
-}
-
-[data-theme="dark"] #schedule .schedule-download-actions .btn-download {
-  color: var(--inverse-primary) !important;
-  border-color: var(--inverse-primary) !important;
-}
-
-[data-theme="dark"] #schedule .schedule-download-actions .btn-download:hover {
-  background: rgba(255, 185, 85, 0.14) !important;
-  color: var(--primary-container) !important;
-  border-color: var(--primary-container) !important;
 }
 
 /* Text schedule (SEO + accessibility) */
