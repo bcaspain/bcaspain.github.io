@@ -1,55 +1,69 @@
-/* Keep data-theme in sync with local day/night (no manual toggle). */
+/* Manual light / dark theme toggle — preference saved in localStorage. */
 (function () {
-  var DAY_START = 7;
-  var DAY_END = 19;
+  var STORAGE_KEY = 'bca-color-theme';
+  var DEFAULT_THEME = 'dark';
 
-  function themeFromLocalTime() {
-    var hour = new Date().getHours();
-    return hour >= DAY_START && hour < DAY_END ? 'light' : 'dark';
+  function getTheme() {
+    var current = document.documentElement.getAttribute('data-theme');
+    if (current === 'light' || current === 'dark') return current;
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === 'light' || stored === 'dark') return stored;
+    } catch (e) {}
+    return DEFAULT_THEME;
   }
 
-  function applyTheme() {
-    var next = themeFromLocalTime();
-    if (document.documentElement.getAttribute('data-theme') !== next) {
-      document.documentElement.setAttribute('data-theme', next);
-    }
-  }
+  function syncToggleButtons(theme) {
+    var isDark = theme === 'dark';
+    var label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
 
-  function msUntilNextBoundary() {
-    var now = new Date();
-    var next = new Date(now.getTime());
-    var hour = now.getHours();
-    if (hour < DAY_START) {
-      next.setHours(DAY_START, 0, 0, 0);
-    } else if (hour < DAY_END) {
-      next.setHours(DAY_END, 0, 0, 0);
-    } else {
-      next.setDate(next.getDate() + 1);
-      next.setHours(DAY_START, 0, 0, 0);
-    }
-    return Math.max(1000, next.getTime() - now.getTime());
-  }
+    document.querySelectorAll('[data-color-theme-toggle], .color-theme-toggle').forEach(function (btn) {
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
 
-  function scheduleNext() {
-    setTimeout(function () {
-      applyTheme();
-      scheduleNext();
-    }, msUntilNextBoundary());
-  }
-
-  function removeToggle() {
-    document.querySelectorAll('[data-color-theme-toggle], .color-theme-toggle').forEach(function (el) {
-      el.remove();
+      var icon = btn.querySelector('i');
+      if (icon) {
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+      }
     });
   }
 
-  applyTheme();
-  scheduleNext();
-  document.addEventListener('navbar:loaded', removeToggle);
+  function applyTheme(theme) {
+    if (theme !== 'light' && theme !== 'dark') theme = DEFAULT_THEME;
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch (e) {}
+    syncToggleButtons(theme);
+  }
+
+  function toggleTheme() {
+    applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+  }
+
+  function bindToggles() {
+    document.querySelectorAll('[data-color-theme-toggle], .color-theme-toggle').forEach(function (btn) {
+      if (btn.dataset.themeBound === '1') return;
+      btn.dataset.themeBound = '1';
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleTheme();
+      });
+    });
+  }
+
+  function init() {
+    applyTheme(getTheme());
+    bindToggles();
+  }
+
+  document.addEventListener('navbar:loaded', init);
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', removeToggle);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    removeToggle();
+    init();
   }
 })();
