@@ -444,7 +444,34 @@ a.btn:hover,
   box-shadow: var(--shadow-hover);
 }
 
-/* ── Cards ─────────────────────────────────────────────────── */
+/* Download links — same outline system as secondary */
+.btn-download,
+a.btn-download {
+  color: var(--secondary) !important;
+  border: 2px solid var(--secondary) !important;
+  background: transparent !important;
+  box-shadow: none;
+  -webkit-text-fill-color: var(--secondary);
+  text-decoration: none;
+}
+
+.btn-download:hover,
+a.btn-download:hover {
+  background: var(--secondary) !important;
+  color: var(--on-secondary) !important;
+  -webkit-text-fill-color: var(--on-secondary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Compact download chips (schedule language bar) */
+.btn-download-sm {
+  padding: 0.35rem 0.75rem !important;
+  font-size: 0.85rem !important;
+  min-height: auto !important;
+}
+
+/* Welcome hero video — glass outline on dark video (page-scoped in demo-index.css) */
 
 .card,
 .event-card,
@@ -1933,6 +1960,7 @@ body.landing .main-content {
 .btn,
 .btn-primary,
 .btn-secondary,
+.btn-download,
 .btn-outline,
 .btn-large {
   min-width: auto;
@@ -1942,6 +1970,7 @@ body.landing .main-content {
   .btn,
   .btn-primary,
   .btn-secondary,
+  .btn-download,
   .btn-outline {
     min-height: 44px;
     min-width: auto !important;
@@ -1973,11 +2002,13 @@ body.landing .main-content {
     box-shadow: var(--shadow-light) !important;
   }
 
-  .btn-large.btn-secondary {
+  .btn-large.btn-secondary,
+  .btn-large.btn-download {
     background: transparent !important;
-    color: var(--primary-container) !important;
-    border: 2px solid var(--primary-container) !important;
+    color: var(--secondary) !important;
+    border: 2px solid var(--secondary) !important;
     box-shadow: none !important;
+    -webkit-text-fill-color: var(--secondary);
   }
 
   .btn-primary:not(.btn-large) {
@@ -1988,11 +2019,13 @@ body.landing .main-content {
     box-shadow: var(--shadow-light) !important;
   }
 
-  .btn-secondary:not(.btn-large) {
+  .btn-secondary:not(.btn-large),
+  .btn-download:not(.btn-large) {
     background: transparent !important;
-    color: var(--primary-container) !important;
-    border: 2px solid var(--primary-container) !important;
+    color: var(--secondary) !important;
+    border: 2px solid var(--secondary) !important;
     box-shadow: none !important;
+    -webkit-text-fill-color: var(--secondary);
   }
 
   .hero-buttons .btn {

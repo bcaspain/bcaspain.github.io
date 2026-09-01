@@ -207,6 +207,7 @@ body.demo-welcome {
   font-size: 0.78rem !important;
 }
 
+/* Welcome hero only — glass outline on video (exception to global secondary) */
 .demo-welcome-hero .btn-secondary {
   color: #fff8ef !important;
   border-color: rgba(255, 248, 239, 0.42) !important;
