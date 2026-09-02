@@ -1,0 +1,48 @@
+# Bengali Cultural Association Barcelona
+
+> BCA Spain (Bengali Cultural Association Barcelona) is a registered non-profit founded in 2022. We keep Bengali culture alive in Barcelona through Durga Puja, Rabindra Jayanti, concerts, language, food, and community programmes for Bengalis and friends in Spain.
+
+Primary language: English. Blog posts may include Bengali with English summaries. Contact: info@bcaspain.org · WhatsApp: +34 693 005 986 · Barcelona, Catalunya, Spain.
+
+## Main
+
+- [Home](https://bcaspain.org/): Landing page with upcoming events and community highlights
+- [About](https://bcaspain.org/html/about.html): Mission, history, and who we are
+- [FAQ](https://bcaspain.org/html/faq.html): Common questions about membership and events
+- [Contact](https://bcaspain.org/html/contact.html): Get in touch with the association
+- [Gallery](https://bcaspain.org/html/gallery.html): Photos from past celebrations
+
+## Events
+
+- [Durga Puja 2026](https://bcaspain.org/html/dp2026.html): Main annual festival — October 2026, Barcelona
+- [Event schedule](https://bcaspain.org/html/schedule.html): Puja timings and programme
+- [Registration](https://bcaspain.org/html/registration.html): Sign up for Durga Puja 2026
+- [All events](https://bcaspain.org/html/attractions.html): Cultural events and attractions during the festival
+- [Cultural Concert 2026](https://bcaspain.org/html/cultural-concert.html): Music and performances
+- [Rabindra Jayanti](https://bcaspain.org/html/rabindra-jayanti.html): Annual celebration of Rabindranath Tagore
+
+## Blog
+
+- [Blog index](https://bcaspain.org/blog/): Stories, guides, and voices from the Bengali community in Barcelona
+- [Is Asana Practice all about Flexibility?](https://bcaspain.org/blog/is-asana-practice-all-about-flexibility.html): You don't have to be flexible to do yoga. BCA member Chandana Bhowmick on Ashtanga, strength, and how body and mind grow together on the mat.
+- [My India Experience](https://bcaspain.org/blog/my-india-experience.html): Manuel G. Marciani on his three-week journey through India — hospitality, languages, faith, and what Europe might learn from how diversity coexists.
+- [Mutton Gora Kalia — recipe](https://bcaspain.org/blog/mutton-gora-kalia.html): Surashree's Bengali mutton Gora Kalia from Sharodiya 2025 — a rich, slow-cooked curry perfect for festive tables. Recipe in Bengali with English summary.
+- [Notun Generation aar Durga Pujo](https://bcaspain.org/blog/notun-generation-durga-pujo.html): Debmalya Roy on keeping Durga Puja alive for probashi kids — participation, Benglish, and passing Bengali culture on. From Sharodiya 2025.
+- [Pompeii — a Bengali travel diary](https://bcaspain.org/blog/pompeii-arnab-sarkar.html): Arnab Sarkar on a day trip from Barcelona to Pompeii — Vesuvius, Roman streets, and a city frozen in AD 79. Bengali essay with English summary. From Sharodiya 2025.
+- [The tragic hard worker](https://bcaspain.org/blog/the-tragic-hard-worker.html): Tamojit Kumar Manna on why donkeys deserve more credit — from গাধা insults to Fanny, the BBC's smartest donkey. From Sharodiya 2025.
+
+## News
+
+- [Press & Media](https://bcaspain.org/html/news-media.html): News coverage and media about BCA Spain
+- [Write for us](https://bcaspain.org/html/submit_blog.html): Submit a blog post for editorial review
+
+## Optional
+
+- [Sitemap](https://bcaspain.org/sitemap.xml): Machine-readable list of public URLs
+- [Robots](https://bcaspain.org/robots.txt): Crawler rules
+- [Legal notice](https://bcaspain.org/html/aviso-legal.html): Aviso legal (Spanish)
+- [Privacy policy](https://bcaspain.org/html/privacidad.html): Política de privacidad (Spanish)
+- [Cookie policy](https://bcaspain.org/html/cookies.html): Política de cookies (Spanish)
+- [Facebook](https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/): Official Facebook page
+- [Instagram](https://www.instagram.com/spain_bca): Official Instagram
+- [YouTube](https://youtube.com/@bengaliculturalassociation): Official YouTube channel

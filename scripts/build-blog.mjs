@@ -14,6 +14,8 @@ const TEMPLATE_PATH = path.join(ROOT, 'blog', '_template.html');
 const BLOG_DIR = path.join(ROOT, 'blog');
 const POSTS_JSON_PATH = path.join(ROOT, 'data', 'blog-posts.json');
 const AUTHORS_JSON_PATH = path.join(ROOT, 'data', 'blog-authors.json');
+const SITEMAP_PATH = path.join(ROOT, 'sitemap.xml');
+const LLMS_TXT_PATH = path.join(ROOT, 'llms.txt');
 const SITE_ORIGIN = 'https://bcaspain.org';
 const SHARODIYA_PDF = '../brochures/BCA_Sharodiya_2025.pdf';
 
@@ -252,6 +254,122 @@ function buildPage(slug, data, bodyMarkdown, template) {
   return html;
 }
 
+/** Static public pages (canonical /html/ paths). Blog posts are appended from the build. */
+const STATIC_SITEMAP_PAGES = [
+  { loc: '/', lastmod: '2026-09-02', changefreq: 'weekly', priority: '1.0' },
+  { loc: '/html/dp2026.html', lastmod: '2026-09-02', changefreq: 'weekly', priority: '0.9' },
+  { loc: '/html/registration.html', lastmod: '2026-09-02', changefreq: 'weekly', priority: '0.9' },
+  { loc: '/html/schedule.html', lastmod: '2026-09-02', changefreq: 'weekly', priority: '0.8' },
+  { loc: '/html/attractions.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.8' },
+  { loc: '/html/about.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.8' },
+  { loc: '/html/gallery.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.7' },
+  { loc: '/blog/', lastmod: null, changefreq: 'weekly', priority: '0.7' },
+  { loc: '/html/news-media.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.6' },
+  { loc: '/html/submit_blog.html', lastmod: '2026-09-02', changefreq: 'yearly', priority: '0.4' },
+  { loc: '/html/cultural-concert.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.7' },
+  { loc: '/html/rabindra-jayanti.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.6' },
+  { loc: '/html/rabindra-jayanti-register.html', lastmod: '2026-09-02', changefreq: 'yearly', priority: '0.4' },
+  { loc: '/html/faq.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.8' },
+  { loc: '/html/contact.html', lastmod: '2026-09-02', changefreq: 'monthly', priority: '0.7' },
+  { loc: '/html/aviso-legal.html', lastmod: '2026-08-18', changefreq: 'yearly', priority: '0.2' },
+  { loc: '/html/privacidad.html', lastmod: '2026-08-18', changefreq: 'yearly', priority: '0.2' },
+  { loc: '/html/cookies.html', lastmod: '2026-08-18', changefreq: 'yearly', priority: '0.2' },
+];
+
+function sitemapUrlEntry({ loc, lastmod, changefreq, priority }) {
+  const lines = [
+    '  <url>',
+    `    <loc>${SITE_ORIGIN}${loc}</loc>`,
+  ];
+  if (lastmod) lines.push(`    <lastmod>${lastmod}</lastmod>`);
+  if (changefreq) lines.push(`    <changefreq>${changefreq}</changefreq>`);
+  if (priority) lines.push(`    <priority>${priority}</priority>`);
+  lines.push('  </url>');
+  return lines.join('\n');
+}
+
+function buildSitemap(postEntries) {
+  const latestPostDate = postEntries.reduce(
+    (latest, post) => (post.date > latest ? post.date : latest),
+    '1970-01-01',
+  );
+
+  const entries = STATIC_SITEMAP_PAGES.map((page) => {
+    if (page.loc === '/blog/' && !page.lastmod) {
+      return { ...page, lastmod: latestPostDate };
+    }
+    return page;
+  });
+
+  for (const post of postEntries) {
+    entries.push({
+      loc: `/blog/${post.slug}.html`,
+      lastmod: post.date,
+      changefreq: 'monthly',
+      priority: '0.6',
+    });
+  }
+
+  const body = entries.map(sitemapUrlEntry).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
+}
+
+function llmsLink(name, path, note) {
+  const url = path.startsWith('http') ? path : `${SITE_ORIGIN}${path}`;
+  return note ? `- [${name}](${url}): ${note}` : `- [${name}](${url})`;
+}
+
+function buildLlmsTxt(postEntries) {
+  const blogLines = postEntries.map(
+    (post) => llmsLink(post.title, `/blog/${post.slug}.html`, post.excerpt),
+  );
+
+  return `# Bengali Cultural Association Barcelona
+
+> BCA Spain (Bengali Cultural Association Barcelona) is a registered non-profit founded in 2022. We keep Bengali culture alive in Barcelona through Durga Puja, Rabindra Jayanti, concerts, language, food, and community programmes for Bengalis and friends in Spain.
+
+Primary language: English. Blog posts may include Bengali with English summaries. Contact: info@bcaspain.org · WhatsApp: +34 693 005 986 · Barcelona, Catalunya, Spain.
+
+## Main
+
+${llmsLink('Home', '/', 'Landing page with upcoming events and community highlights')}
+${llmsLink('About', '/html/about.html', 'Mission, history, and who we are')}
+${llmsLink('FAQ', '/html/faq.html', 'Common questions about membership and events')}
+${llmsLink('Contact', '/html/contact.html', 'Get in touch with the association')}
+${llmsLink('Gallery', '/html/gallery.html', 'Photos from past celebrations')}
+
+## Events
+
+${llmsLink('Durga Puja 2026', '/html/dp2026.html', 'Main annual festival — October 2026, Barcelona')}
+${llmsLink('Event schedule', '/html/schedule.html', 'Puja timings and programme')}
+${llmsLink('Registration', '/html/registration.html', 'Sign up for Durga Puja 2026')}
+${llmsLink('All events', '/html/attractions.html', 'Cultural events and attractions during the festival')}
+${llmsLink('Cultural Concert 2026', '/html/cultural-concert.html', 'Music and performances')}
+${llmsLink('Rabindra Jayanti', '/html/rabindra-jayanti.html', 'Annual celebration of Rabindranath Tagore')}
+
+## Blog
+
+${llmsLink('Blog index', '/blog/', 'Stories, guides, and voices from the Bengali community in Barcelona')}
+${blogLines.join('\n')}
+
+## News
+
+${llmsLink('Press & Media', '/html/news-media.html', 'News coverage and media about BCA Spain')}
+${llmsLink('Write for us', '/html/submit_blog.html', 'Submit a blog post for editorial review')}
+
+## Optional
+
+${llmsLink('Sitemap', '/sitemap.xml', 'Machine-readable list of public URLs')}
+${llmsLink('Robots', '/robots.txt', 'Crawler rules')}
+${llmsLink('Legal notice', '/html/aviso-legal.html', 'Aviso legal (Spanish)')}
+${llmsLink('Privacy policy', '/html/privacidad.html', 'Política de privacidad (Spanish)')}
+${llmsLink('Cookie policy', '/html/cookies.html', 'Política de cookies (Spanish)')}
+${llmsLink('Facebook', 'https://www.facebook.com/people/Bengali-Cultural-Association-in-Spain/100086456115653/', 'Official Facebook page')}
+${llmsLink('Instagram', 'https://www.instagram.com/spain_bca', 'Official Instagram')}
+${llmsLink('YouTube', 'https://youtube.com/@bengaliculturalassociation', 'Official YouTube channel')}
+`;
+}
+
 function main() {
   if (!fs.existsSync(POSTS_DIR)) {
     console.error('No blog/posts directory found.');
@@ -298,6 +416,12 @@ function main() {
   const sorted = sortPosts(postEntries);
   fs.writeFileSync(POSTS_JSON_PATH, `${JSON.stringify(sorted, null, 2)}\n`, 'utf8');
   console.log(`  wrote data/blog-posts.json (${sorted.length} posts)`);
+
+  fs.writeFileSync(SITEMAP_PATH, buildSitemap(sorted), 'utf8');
+  console.log(`  wrote sitemap.xml (${STATIC_SITEMAP_PAGES.length + sorted.length} URLs)`);
+
+  fs.writeFileSync(LLMS_TXT_PATH, buildLlmsTxt(sorted), 'utf8');
+  console.log(`  wrote llms.txt`);
 
   if (warnings.length) {
     console.warn('\nWarnings:');
