@@ -190,7 +190,9 @@ function buildPostListEntry(slug, data) {
 }
 
 function buildPage(slug, data, bodyMarkdown, template) {
-  const titleBrand = data.titleBrand || '— BCA Spain Blog';
+  const titleBrand = data.titleBrand || ' — BCA Spain Blog';
+  const headline = data.cardTitle || data.title;
+  const fullTitle = `${headline}${titleBrand}`;
   const ogImage = toAbsoluteUrl(data.ogImage || data.image);
   const metaDescription = data.excerpt || data.description || '';
   const ogDescription = data.ogDescription || metaDescription;
@@ -218,12 +220,15 @@ function buildPage(slug, data, bodyMarkdown, template) {
 
   const replacements = {
     '{{TITLE}}': escapeHtml(data.title),
+    '{{FULL_TITLE}}': escapeHtml(fullTitle),
+    '{{HEADLINE_JSON}}': escapeJson(headline),
     '{{TITLE_BRAND}}': escapeHtml(titleBrand),
     '{{TITLE_JSON}}': escapeJson(data.title),
     '{{SLUG}}': escapeHtml(slug),
     '{{META_DESCRIPTION}}': escapeHtml(metaDescription),
     '{{META_DESCRIPTION_JSON}}': escapeJson(metaDescription),
     '{{OG_DESCRIPTION}}': escapeHtml(ogDescription),
+    '{{OG_DESCRIPTION_JSON}}': escapeJson(ogDescription),
     '{{AUTHOR}}': escapeHtml(data.author),
     '{{AUTHOR_JSON}}': escapeJson(data.author),
     '{{DATE_ISO}}': escapeHtml(normalizeDate(data.date)),

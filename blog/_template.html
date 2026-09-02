@@ -1,44 +1,39 @@
 <!DOCTYPE html>
-<!--
-  BLOG POST TEMPLATE — copy this file, rename to your-slug.html, then replace all {{PLACEHOLDERS}}.
-  Do not link to this file from the site.
--->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="robots" content="noindex, nofollow">
     <script src="../js/theme-pref.js"></script>
-    <title>{{TITLE}} — BCA Spain Blog</title>
+    <title>{{FULL_TITLE}}</title>
     <meta name="description" content="{{META_DESCRIPTION}}">
     <meta name="author" content="{{AUTHOR}}">
     <link rel="canonical" href="https://bcaspain.org/blog/{{SLUG}}.html">
 
-    <meta property="og:title" content="{{TITLE}} — BCA Spain Blog">
-    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    <meta property="og:title" content="{{FULL_TITLE}}">
+    <meta property="og:description" content="{{OG_DESCRIPTION}}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://bcaspain.org/blog/{{SLUG}}.html">
-    <meta property="og:image" content="https://bcaspain.org{{IMAGE}}">
+    <meta property="og:image" content="{{OG_IMAGE}}">
     <meta property="og:image:alt" content="{{IMAGE_ALT}}">
     <meta property="og:site_name" content="Bengali Cultural Association Barcelona">
     <meta property="og:locale" content="en_GB">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{TITLE}} — BCA Spain Blog">
-    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
-    <meta name="twitter:image" content="https://bcaspain.org{{IMAGE}}">
+    <meta name="twitter:title" content="{{FULL_TITLE}}">
+    <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
+    <meta name="twitter:image" content="{{OG_IMAGE}}">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "{{TITLE}}",
-      "description": "{{META_DESCRIPTION}}",
-      "image": "https://bcaspain.org{{IMAGE}}",
+      "headline": "{{HEADLINE_JSON}}",
+      "description": "{{OG_DESCRIPTION_JSON}}",
+      "image": "{{OG_IMAGE}}",
       "datePublished": "{{DATE_ISO}}",
       "dateModified": "{{DATE_ISO}}",
-      "author": {
+      {{JSON_LD_EXTRA}}"author": {
         "@type": "Person",
-        "name": "{{AUTHOR}}"
+        "name": "{{AUTHOR_JSON}}"{{AUTHOR_URL_JSON}}
       },
       "publisher": { "@id": "https://bcaspain.org/#organization" },
       "mainEntityOfPage": {
@@ -61,7 +56,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{{EXTRA_HEAD}}    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../css/site.css">
     <link rel="stylesheet" href="../css/blog.css">
@@ -82,7 +77,7 @@
                 <p class="blog-article-nav-top">
                     <a href="/blog/" class="blog-back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> All posts</a>
                 </p>
-                <p class="blog-article-eyebrow"><a href="/blog/">Blog</a></p>
+                <p class="blog-article-eyebrow"><a href="/blog/">Blog</a>{{SERIES_EYEBROW}}</p>
                 <h1>{{TITLE}}</h1>
                 <div
                     class="blog-article-byline"
@@ -90,19 +85,10 @@
                     data-author="{{AUTHOR}}"
                     data-date="{{DATE_ISO}}"
                     data-date-display="{{DATE_DISPLAY}}"
-                ></div>
+                ></div>{{META_EXTRA}}
                 <div class="blog-article-tags" id="blog-article-tags" hidden></div>
             </header>
-
-            <figure class="blog-article-hero container">
-                <img src="{{IMAGE}}" alt="{{IMAGE_ALT}}" width="1024" height="682" loading="eager" decoding="async">
-            </figure>
-
-            <div class="blog-article-body container">
-                <!-- ARTICLE BODY: use <p>, <h2>, <ul>, etc. -->
-                {{BODY}}
-            </div>
-
+{{HERO_SECTION}}{{SUMMARY_SECTION}}{{BODY_SECTION}}
             <footer class="blog-article-footer container">
                 <p class="blog-article-back">
                     <a href="/blog/" class="btn btn-secondary"><i class="fas fa-arrow-left" aria-hidden="true"></i> All posts</a>
