@@ -325,6 +325,8 @@
 }
 
 .blog-article-header {
+  position: relative;
+  z-index: 2;
   padding: 6rem 1rem 1.25rem;
   max-width: 720px;
 }
@@ -390,6 +392,8 @@
 
 /* Byline row — author hover + date + reading time */
 .blog-article-byline {
+  position: relative;
+  z-index: 1;
   margin: 0;
 }
 
@@ -587,6 +591,8 @@
 }
 
 .blog-article-hero {
+  position: relative;
+  z-index: 1;
   max-width: 720px;
   margin-bottom: 2rem;
   padding: 0 1rem;
@@ -894,4 +900,39 @@
 
 .blog-related-all:hover {
   text-decoration: underline;
+}
+
+/* Mobile — keep author details above hero image; popover flows in document */
+@media (max-width: 767px) {
+  .blog-article-header {
+    padding-bottom: 1.75rem;
+  }
+
+  .blog-author-popover {
+    position: static;
+    display: none;
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+    margin-top: 0.65rem;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    box-shadow: var(--shadow-light);
+  }
+
+  .blog-author-popover::before,
+  .blog-author-inline::after {
+    display: none;
+  }
+
+  .blog-author-inline:hover .blog-author-popover,
+  .blog-author-inline:focus-within .blog-author-popover {
+    display: none;
+  }
+
+  .blog-author-inline.is-open .blog-author-popover {
+    display: block;
+  }
 }
